@@ -1,0 +1,109 @@
+using System.Linq;
+using UnityEngine;
+
+public class Player_BasicAttackState : EntityState
+{
+    private int currentAttackIndex;
+    private int attackIndex;
+    private float resetTime = 1f;
+    private float lastAttacktime;
+    private bool haveAttackQueue;
+    private bool isAttackEnd;
+    private bool isAllAnimAttack;
+
+    public Player_BasicAttackState(string nameState, StateMachine stateMachine, Player player) : base(nameState, stateMachine, player)
+    {
+        attackIndex = player.attackVelocities.Count();
+    }
+
+    public override void Enter()
+    {
+        base.Enter();
+
+        ResetCombo();
+
+        isTrigger = false;
+        haveAttackQueue = false;
+        isAttackEnd = false;
+        isAllAnimAttack = false;
+        currentAttackIndex++;
+    }
+
+    public override void Update()
+    {
+        base.Update();
+
+        // OnClick left mouse to queue attack
+        if (Input.GetKeyDown(KeyCode.Mouse0) && !isAttackEnd)
+        {
+            haveAttackQueue = true;
+        }
+
+        if (isAttackEnd && !isAllAnimAttack)
+        {
+            isAllAnimAttack = true;
+            anim.SetTrigger("attackEnd");
+        }
+
+        if (isTrigger)
+        {
+            StopMoving();
+
+            if (haveAttackQueue)
+            {
+                anim.SetBool(nameState, false);
+                player.EnterAttackQueue(player.basicAttackState);
+            }
+            else
+            {
+                stateMachine.ChangeState(player.idleState);
+            }
+        }
+        else
+        {
+            anim.SetInteger("attackIndex", currentAttackIndex);
+            GenerateAttackVelocity();
+        }
+    }
+
+    public override void Exit()
+    {
+        base.Exit();
+
+        lastAttacktime = Time.time;
+    }
+
+    public override void CallTrigger()
+    {
+        if (haveAttackQueue || isAttackEnd)
+        {
+            isTrigger = true;
+        }
+        else if (!isAttackEnd)
+        {
+            isAttackEnd = true;
+        }
+    }
+
+    /// <summary>
+    /// Reset (attackIndex) when overtime (resetTime) or fulled combo attack
+    /// </summary>
+    private void ResetCombo()
+    {
+        if (Time.time > lastAttacktime + resetTime)
+        {
+            currentAttackIndex = 0;
+        }
+
+        if (currentAttackIndex >= attackIndex)
+        {
+            currentAttackIndex = 0;
+        }
+    }
+
+    private void GenerateAttackVelocity()
+    {
+        player.SetVelocity(player.attackVelocities[currentAttackIndex - 1].x * player.faceDir,
+                            player.attackVelocities[currentAttackIndex - 1].y);
+    }
+}

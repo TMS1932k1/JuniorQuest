@@ -1,0 +1,65 @@
+using UnityEngine;
+
+public class Player_WallSlideState : EntityState
+{
+    public Player_WallSlideState(string nameState, StateMachine stateMachine, Player player) : base(nameState, stateMachine, player)
+    {
+    }
+
+    public override void Enter()
+    {
+        base.Enter();
+
+        player.transform.localScale = new Vector3(-1, 1, 1);
+    }
+
+    public override void Update()
+    {
+        base.Update();
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            stateMachine.ChangeState(player.wallJumpState);
+        }
+
+        HandleSlideSpeed();
+        CancleIfNeed();
+    }
+
+    public override void Exit()
+    {
+        base.Exit();
+
+        player.transform.localScale = new Vector3(1, 1, 1);
+
+        // Flip on ground when face direct diffrent with movement direct
+        if (Input.GetAxisRaw("Horizontal") != player.faceDir && player.groundDetect)
+        {
+            player.Flip();
+        }
+    }
+
+    private void HandleSlideSpeed()
+    {
+        if (Input.GetKey(KeyCode.S))
+        {
+            player.SetVelocity(0, rb.linearVelocityY);
+        }
+        else
+        {
+            player.SetVelocity(rb.linearVelocityX, rb.linearVelocityY * player.wallSlideMultiplier);
+        }
+    }
+
+    private void CancleIfNeed()
+    {
+        if (!player.wallDetect && !player.groundDetect) // When on air and not wall detection
+        {
+            stateMachine.ChangeState(player.fallState);
+        }
+        else if (player.groundDetect) // When ground detection
+        {
+            stateMachine.ChangeState(player.idleState);
+        }
+    }
+}
