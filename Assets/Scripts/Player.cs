@@ -8,6 +8,8 @@ public class Player : MonoBehaviour
     public float jumpForce;
     public float dashDuration;
     public float dashSpeed;
+    public float slideDuration;
+    public float slideSpeed;
     [Range(0, 1)]
     public float airMoveMultiplier;
     [Range(0, 1)]
@@ -35,6 +37,7 @@ public class Player : MonoBehaviour
     private Vector3 primaryWallCheckPosition;
     private Vector3 secondaryWallCheckPosition;
 
+
     // States
     public StateMachine stateMachine { get; private set; }
     public Player_IdleState idleState { get; private set; }
@@ -45,6 +48,8 @@ public class Player : MonoBehaviour
     public Player_WallJumpState wallJumpState { get; private set; }
     public Player_DashState dashState { get; private set; }
     public Player_BasicAttackState basicAttackState { get; private set; }
+    public Player_SlideState slideState { get; private set; }
+
 
     // Compoments
     public Animator anim { get; private set; }
@@ -67,6 +72,7 @@ public class Player : MonoBehaviour
         wallJumpState = new Player_WallJumpState("isWallJump", stateMachine, this);
         dashState = new Player_DashState("isDash", stateMachine, this);
         basicAttackState = new Player_BasicAttackState("isAttack", stateMachine, this);
+        slideState = new Player_SlideState("isSlide", stateMachine, this);
     }
 
     void Start()

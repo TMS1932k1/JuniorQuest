@@ -8,6 +8,7 @@ public class EntityState
     protected Rigidbody2D rb;
     protected Animator anim;
     protected bool isTrigger;
+    protected float stateTimer;
 
     public EntityState(string nameState, StateMachine stateMachine, Player player)
     {
@@ -32,6 +33,8 @@ public class EntityState
     /// </summary>
     public virtual void Update()
     {
+        stateTimer -= Time.deltaTime;
+
         if (Input.GetKeyDown(KeyCode.LeftShift) && !player.wallDetect)
         {
             stateMachine.ChangeState(player.dashState);

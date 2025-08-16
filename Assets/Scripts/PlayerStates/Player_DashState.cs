@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class Player_DashState : EntityState
 {
-    private float duration;
     private float originGravity;
 
     public Player_DashState(string nameState, StateMachine stateMachine, Player player) : base(nameState, stateMachine, player)
@@ -13,7 +12,7 @@ public class Player_DashState : EntityState
     {
         base.Enter();
 
-        duration = player.dashDuration;
+        stateTimer = player.dashDuration;
 
         originGravity = rb.gravityScale;
         rb.gravityScale = 0;
@@ -25,8 +24,7 @@ public class Player_DashState : EntityState
 
         player.SetVelocity(player.dashSpeed * player.faceDir, 0);
 
-        duration -= Time.deltaTime;
-        if (duration < 0 || CancleIfNeed())
+        if (stateTimer < 0 || CancleIfNeed())
         {
             if (player.groundDetect)
             {
@@ -42,6 +40,7 @@ public class Player_DashState : EntityState
     public override void Exit()
     {
         base.Exit();
+
         StopMoving();
         rb.gravityScale = originGravity;
     }

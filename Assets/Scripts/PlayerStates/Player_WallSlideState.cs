@@ -9,7 +9,6 @@ public class Player_WallSlideState : EntityState
     public override void Enter()
     {
         base.Enter();
-
         player.transform.localScale = new Vector3(-1, 1, 1);
     }
 
@@ -17,13 +16,13 @@ public class Player_WallSlideState : EntityState
     {
         base.Update();
 
+        HandleSlideSpeed();
+        CancleIfNeed();
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
             stateMachine.ChangeState(player.wallJumpState);
         }
-
-        HandleSlideSpeed();
-        CancleIfNeed();
     }
 
     public override void Exit()
@@ -47,7 +46,7 @@ public class Player_WallSlideState : EntityState
         }
         else
         {
-            player.SetVelocity(rb.linearVelocityX, rb.linearVelocityY * player.wallSlideMultiplier);
+            player.SetVelocity(0, rb.linearVelocityY * player.wallSlideMultiplier);
         }
     }
 
