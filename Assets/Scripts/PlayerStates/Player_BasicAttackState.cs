@@ -1,7 +1,7 @@
 using System.Linq;
 using UnityEngine;
 
-public class Player_BasicAttackState : EntityState
+public class Player_BasicAttackState : PlayerState
 {
     private int currentAttackIndex;
     private int attackIndex;

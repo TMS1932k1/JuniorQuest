@@ -1,23 +1,20 @@
 using UnityEngine;
 
-public class EntityState
+public abstract class EntityState
 {
     protected string nameState;
     protected StateMachine stateMachine;
-    protected Player player;
+    protected Entity entity;
     protected Rigidbody2D rb;
     protected Animator anim;
     protected bool isTrigger;
     protected float stateTimer;
 
-    public EntityState(string nameState, StateMachine stateMachine, Player player)
+    public EntityState(string nameState, StateMachine stateMachine, Entity entity)
     {
         this.nameState = nameState;
         this.stateMachine = stateMachine;
-        this.player = player;
-
-        rb = player.rb;
-        anim = player.anim;
+        this.entity = entity;
     }
 
     /// <summary>
@@ -25,7 +22,7 @@ public class EntityState
     /// </summary>
     public virtual void Enter()
     {
-        player.anim.SetBool(nameState, true);
+        entity.anim.SetBool(nameState, true);
     }
 
     /// <summary>
@@ -34,11 +31,6 @@ public class EntityState
     public virtual void Update()
     {
         stateTimer -= Time.deltaTime;
-
-        if (Input.GetKeyDown(KeyCode.LeftShift) && !player.wallDetect)
-        {
-            stateMachine.ChangeState(player.dashState);
-        }
     }
 
     /// <summary>
@@ -46,7 +38,7 @@ public class EntityState
     /// </summary>
     public virtual void Exit()
     {
-        player.anim.SetBool(nameState, false);
+        entity.anim.SetBool(nameState, false);
     }
 
     /// <summary>
@@ -54,7 +46,7 @@ public class EntityState
     /// </summary>
     protected void StopMoving()
     {
-        player.SetVelocity(0, 0);
+        entity.SetVelocity(0, 0);
     }
 
     public virtual void CallTrigger()

@@ -4,6 +4,7 @@ using UnityEngine;
 public class ParallaxLayer
 {
     [SerializeField] Transform transform;
+    [Range(0, 1)]
     [SerializeField] float speedMutiplier;
 
     private float widthLayer;

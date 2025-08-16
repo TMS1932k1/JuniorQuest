@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Player_SlideState : EntityState
+public class Player_SlideState : PlayerState
 {
     public Player_SlideState(string nameState, StateMachine stateMachine, Player player) : base(nameState, stateMachine, player)
     {
