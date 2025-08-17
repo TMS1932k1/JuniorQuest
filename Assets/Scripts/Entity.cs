@@ -85,6 +85,11 @@ public abstract class Entity : MonoBehaviour
         stateMachine.currentState.CallTrigger();
     }
 
+    public EntityState GetCurrentState()
+    {
+        return stateMachine.currentState;
+    }
+
     protected virtual void OnDrawGizmos()
     {
         Gizmos.color = Color.green;

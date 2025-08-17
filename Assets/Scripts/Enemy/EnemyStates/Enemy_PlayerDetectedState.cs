@@ -17,6 +17,11 @@ public class Enemy_PlayerDetectedState : EnemyState
         // Get continuously transform of player
         if (playerTransform == null)
             playerTransform = enemy.DetectPlayer().transform;
+
+        if (playerTransform == null)
+        {
+            playerTransform = enemy.GetComponent<Enemy_Health>().damageTransform;
+        }
     }
 
     public override void Update()

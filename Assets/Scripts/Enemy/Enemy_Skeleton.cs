@@ -1,0 +1,20 @@
+using UnityEngine;
+
+public class Enemy_Skeleton : Enemy
+{
+    protected override void Awake()
+    {
+        base.Awake();
+
+        idleState = new Enemy_IdleState("isIdle", stateMachine, this);
+        moveState = new Enemy_MoveState("isMove", stateMachine, this);
+        attackState = new Enemy_AttackState("isAttack", stateMachine, this);
+        playerDetectedState = new Enemy_PlayerDetectedState("isPlayerDetected", stateMachine, this);
+    }
+
+    protected override void Start()
+    {
+        base.Start();
+        stateMachine.Initialize(idleState);
+    }
+}
