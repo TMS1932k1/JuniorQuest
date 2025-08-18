@@ -1,8 +1,12 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
 public class Player : Entity
 {
+    public static event Action OnPlayerDeath;
+
+
     [Header("Move details")]
     public float moveSpeed;
     public float jumpForce;
@@ -32,6 +36,10 @@ public class Player : Entity
     public Player_DashState dashState { get; private set; }
     public Player_BasicAttackState basicAttackState { get; private set; }
     public Player_SlideState slideState { get; private set; }
+    public Player_HurtState hurtState { get; private set; }
+    public Player_DeathState deathState { get; private set; }
+
+    public bool isDead;
 
     protected override void Awake()
     {
@@ -46,6 +54,8 @@ public class Player : Entity
         dashState = new Player_DashState("isDash", stateMachine, this);
         basicAttackState = new Player_BasicAttackState("isAttack", stateMachine, this);
         slideState = new Player_SlideState("isSlide", stateMachine, this);
+        hurtState = new Player_HurtState("isHurt", stateMachine, this);
+        deathState = new Player_DeathState("isDeath", stateMachine, this);
     }
 
     protected override void Start()
@@ -54,9 +64,12 @@ public class Player : Entity
         stateMachine.Initialize(idleState);
     }
 
-    protected override void Update()
+    public override void OnDead()
     {
-        base.Update();
+        base.OnDead();
+
+        OnPlayerDeath?.Invoke();
+        stateMachine.ChangeState(deathState);
     }
 
     /// <summary>

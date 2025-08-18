@@ -21,10 +21,33 @@ public class Enemy : Entity
     public Enemy_MoveState moveState;
     public Enemy_AttackState attackState;
     public Enemy_PlayerDetectedState playerDetectedState;
+    public Enemy_DeathState deathState;
+
+
+    private void OnEnable()
+    {
+        Player.OnPlayerDeath += HandlePlayerDeath;
+    }
+
+    private void OnDisable()
+    {
+        Player.OnPlayerDeath -= HandlePlayerDeath;
+    }
+
+    public void HandlePlayerDeath()
+    {
+        stateMachine.ChangeState(idleState);
+    }
 
     public float GetAnimSpeedMutiplier()
     {
         return moveDetectedSpeed / moveSpeed;
+    }
+
+    public override void OnDead()
+    {
+        base.OnDead();
+        stateMachine.ChangeState(deathState);
     }
 
     protected override void HandleCollisions()

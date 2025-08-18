@@ -21,6 +21,7 @@ public class Enemy_PlayerDetectedState : EnemyState
         if (playerTransform == null)
         {
             playerTransform = enemy.GetComponent<Enemy_Health>().damageTransform;
+            lastPlayerDetectTime = Time.time;
         }
     }
 
@@ -30,11 +31,6 @@ public class Enemy_PlayerDetectedState : EnemyState
 
         UpdateTimeout();
 
-        if (OvertimeDetect() || enemy.wallDetect)
-        {
-            stateMachine.ChangeState(enemy.idleState);
-        }
-
         if (enemy.isAttack)
         {
             stateMachine.ChangeState(enemy.attackState);
@@ -42,6 +38,11 @@ public class Enemy_PlayerDetectedState : EnemyState
         else
         {
             enemy.SetVelocity(enemy.moveDetectedSpeed * GetDirectToPlayer(), rb.linearVelocityY);
+        }
+
+        if (OvertimeDetect() || enemy.wallDetect)
+        {
+            stateMachine.ChangeState(enemy.idleState);
         }
     }
 

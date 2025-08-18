@@ -16,7 +16,8 @@ public class PlayerState : EntityState
     {
         base.Update();
 
-        if (Input.GetKeyDown(KeyCode.LeftShift) && !player.wallDetect)
+        // Change DashState
+        if (Input.GetKeyDown(KeyCode.LeftShift) && !player.wallDetect && !player.isDead)
         {
             stateMachine.ChangeState(player.dashState);
         }

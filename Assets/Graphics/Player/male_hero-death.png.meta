@@ -150,7 +150,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 4096
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -184,9 +184,9 @@ TextureImporter:
         x: 43
         y: 47
         width: 35
-        height: 36
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        height: 72
+      alignment: 9
+      pivot: {x: 0.6, y: 0.25}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -203,12 +203,12 @@ TextureImporter:
       name: male_hero-death_1
       rect:
         serializedVersion: 2
-        x: 175
-        y: 49
-        width: 31
-        height: 30
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 173
+        y: 47
+        width: 35
+        height: 72
+      alignment: 9
+      pivot: {x: 0.6, y: 0.25}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -225,12 +225,12 @@ TextureImporter:
       name: male_hero-death_2
       rect:
         serializedVersion: 2
-        x: 304
-        y: 51
-        width: 30
-        height: 28
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 302
+        y: 47
+        width: 35
+        height: 72
+      alignment: 9
+      pivot: {x: 0.6, y: 0.25}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -247,12 +247,12 @@ TextureImporter:
       name: male_hero-death_3
       rect:
         serializedVersion: 2
-        x: 431
-        y: 51
-        width: 31
-        height: 26
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 429
+        y: 47
+        width: 35
+        height: 72
+      alignment: 9
+      pivot: {x: 0.6, y: 0.25}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -269,12 +269,12 @@ TextureImporter:
       name: male_hero-death_4
       rect:
         serializedVersion: 2
-        x: 559
-        y: 51
-        width: 31
-        height: 25
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 557
+        y: 47
+        width: 35
+        height: 72
+      alignment: 9
+      pivot: {x: 0.6, y: 0.25}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -291,12 +291,12 @@ TextureImporter:
       name: male_hero-death_5
       rect:
         serializedVersion: 2
-        x: 688
-        y: 51
-        width: 30
-        height: 25
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 685
+        y: 47
+        width: 35
+        height: 72
+      alignment: 9
+      pivot: {x: 0.6, y: 0.25}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -313,12 +313,12 @@ TextureImporter:
       name: male_hero-death_6
       rect:
         serializedVersion: 2
-        x: 817
-        y: 51
-        width: 30
-        height: 26
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 815
+        y: 47
+        width: 35
+        height: 72
+      alignment: 9
+      pivot: {x: 0.6, y: 0.25}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -335,12 +335,12 @@ TextureImporter:
       name: male_hero-death_7
       rect:
         serializedVersion: 2
-        x: 942
+        x: 939
         y: 47
-        width: 28
-        height: 39
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 35
+        height: 72
+      alignment: 9
+      pivot: {x: 0.6, y: 0.25}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -357,12 +357,12 @@ TextureImporter:
       name: male_hero-death_8
       rect:
         serializedVersion: 2
-        x: 1068
+        x: 1066
         y: 47
-        width: 29
-        height: 41
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 35
+        height: 72
+      alignment: 9
+      pivot: {x: 0.6, y: 0.25}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -379,12 +379,12 @@ TextureImporter:
       name: male_hero-death_9
       rect:
         serializedVersion: 2
-        x: 1198
-        y: 48
-        width: 27
-        height: 42
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1195
+        y: 47
+        width: 35
+        height: 72
+      alignment: 9
+      pivot: {x: 0.6, y: 0.25}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -401,12 +401,12 @@ TextureImporter:
       name: male_hero-death_10
       rect:
         serializedVersion: 2
-        x: 1328
-        y: 49
-        width: 25
-        height: 42
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1323
+        y: 47
+        width: 35
+        height: 72
+      alignment: 9
+      pivot: {x: 0.6, y: 0.25}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -423,12 +423,12 @@ TextureImporter:
       name: male_hero-death_11
       rect:
         serializedVersion: 2
-        x: 1455
-        y: 50
-        width: 26
-        height: 42
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1452
+        y: 47
+        width: 35
+        height: 72
+      alignment: 9
+      pivot: {x: 0.6, y: 0.25}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -445,12 +445,12 @@ TextureImporter:
       name: male_hero-death_12
       rect:
         serializedVersion: 2
-        x: 1583
-        y: 51
-        width: 26
-        height: 42
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1579
+        y: 47
+        width: 35
+        height: 72
+      alignment: 9
+      pivot: {x: 0.6, y: 0.25}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -467,12 +467,12 @@ TextureImporter:
       name: male_hero-death_13
       rect:
         serializedVersion: 2
-        x: 1710
-        y: 51
-        width: 27
-        height: 43
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1707
+        y: 47
+        width: 35
+        height: 72
+      alignment: 9
+      pivot: {x: 0.6, y: 0.25}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -489,12 +489,12 @@ TextureImporter:
       name: male_hero-death_14
       rect:
         serializedVersion: 2
-        x: 1838
-        y: 52
-        width: 26
-        height: 42
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1834
+        y: 47
+        width: 35
+        height: 72
+      alignment: 9
+      pivot: {x: 0.6, y: 0.25}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -511,12 +511,12 @@ TextureImporter:
       name: male_hero-death_15
       rect:
         serializedVersion: 2
-        x: 1969
-        y: 54
-        width: 23
-        height: 41
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1963
+        y: 47
+        width: 35
+        height: 72
+      alignment: 9
+      pivot: {x: 0.6, y: 0.25}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -533,12 +533,12 @@ TextureImporter:
       name: male_hero-death_16
       rect:
         serializedVersion: 2
-        x: 2097
-        y: 55
-        width: 23
-        height: 42
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 2091
+        y: 47
+        width: 35
+        height: 72
+      alignment: 9
+      pivot: {x: 0.6, y: 0.25}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -555,12 +555,12 @@ TextureImporter:
       name: male_hero-death_17
       rect:
         serializedVersion: 2
-        x: 2225
-        y: 55
-        width: 23
-        height: 49
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 2220
+        y: 47
+        width: 35
+        height: 72
+      alignment: 9
+      pivot: {x: 0.6, y: 0.25}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -577,12 +577,12 @@ TextureImporter:
       name: male_hero-death_18
       rect:
         serializedVersion: 2
-        x: 2353
-        y: 57
-        width: 23
-        height: 55
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 2349
+        y: 47
+        width: 35
+        height: 72
+      alignment: 9
+      pivot: {x: 0.6, y: 0.25}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -604,7 +604,7 @@ TextureImporter:
         width: 9
         height: 12
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -621,12 +621,12 @@ TextureImporter:
       name: male_hero-death_20
       rect:
         serializedVersion: 2
-        x: 2483
-        y: 59
-        width: 21
-        height: 58
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 2476
+        y: 47
+        width: 35
+        height: 72
+      alignment: 9
+      pivot: {x: 0.6, y: 0.25}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -648,7 +648,7 @@ TextureImporter:
         width: 8
         height: 13
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -670,7 +670,7 @@ TextureImporter:
         width: 7
         height: 11
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -687,12 +687,12 @@ TextureImporter:
       name: male_hero-death_23
       rect:
         serializedVersion: 2
-        x: 2609
-        y: 71
-        width: 23
-        height: 47
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 2604
+        y: 47
+        width: 35
+        height: 72
+      alignment: 9
+      pivot: {x: 0.6, y: 0.25}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -709,12 +709,12 @@ TextureImporter:
       name: male_hero-death_24
       rect:
         serializedVersion: 2
-        x: 2611
-        y: 65
-        width: 7
-        height: 7
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 2806
+        y: 31
+        width: 35
+        height: 72
+      alignment: 9
+      pivot: {x: 0.6, y: 0.25}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -731,12 +731,12 @@ TextureImporter:
       name: male_hero-death_25
       rect:
         serializedVersion: 2
-        x: 2620
-        y: 62
-        width: 10
-        height: 15
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 2862
+        y: 47
+        width: 35
+        height: 72
+      alignment: 9
+      pivot: {x: 0.6, y: 0.25}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -753,12 +753,12 @@ TextureImporter:
       name: male_hero-death_26
       rect:
         serializedVersion: 2
-        x: 2739
-        y: 64
-        width: 145
-        height: 55
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 2733
+        y: 47
+        width: 35
+        height: 72
+      alignment: 9
+      pivot: {x: 0.6, y: 0.25}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -775,7 +775,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: f096eabbe59056e44b39b9359f04234e
     internalID: 0
     vertices: []
     indices: 

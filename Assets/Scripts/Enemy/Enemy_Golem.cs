@@ -10,6 +10,7 @@ public class Enemy_Golem : Enemy
         moveState = new Enemy_MoveState("isMove", stateMachine, this);
         attackState = new Enemy_AttackState("isAttack", stateMachine, this);
         playerDetectedState = new Enemy_PlayerDetectedState("isPlayerDetected", stateMachine, this);
+        deathState = new Enemy_DeathState("isDeath", stateMachine, this);
     }
 
     protected override void Start()

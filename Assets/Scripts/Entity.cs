@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public abstract class Entity : MonoBehaviour
@@ -17,6 +18,15 @@ public abstract class Entity : MonoBehaviour
     public bool wallDetect { get; private set; }
     protected Vector3 primaryWallCheckPosition;
     protected Vector3 secondaryWallCheckPosition;
+
+
+    [Header("Knockback")]
+    [SerializeField] private float normalKnockBackDuration;
+    [SerializeField] private Vector2 normalKnockBackPosition;
+    [SerializeField] private float heavyKnockBackDuration;
+    [SerializeField] private Vector2 heavyKnockBackPosition;
+    private Coroutine knockBackCoroutine;
+    public bool isKnocked;
 
 
     // State machine
@@ -61,6 +71,9 @@ public abstract class Entity : MonoBehaviour
 
     public void SetVelocity(float x, float y)
     {
+        if (isKnocked)
+            return;
+
         rb.linearVelocity = new Vector2(x, y);
 
         // Hanlde Flip if backmovement
@@ -78,6 +91,32 @@ public abstract class Entity : MonoBehaviour
     {
         transform.Rotate(0, 180, 0);
         faceDir *= -1;
+    }
+
+    public void ReceiveKnockBack(bool isHeavyAttack, int knockBackDir)
+    {
+        if (knockBackCoroutine != null)
+            StopCoroutine(knockBackCoroutine);
+
+        Vector2 knockBackPosition = (isHeavyAttack ? heavyKnockBackPosition : normalKnockBackPosition) * new Vector2(knockBackDir, 1);
+        float knockBackDuration = isHeavyAttack ? heavyKnockBackDuration : normalKnockBackDuration;
+
+        knockBackCoroutine = StartCoroutine(KnockBackCO(knockBackPosition, knockBackDuration));
+    }
+
+    private IEnumerator KnockBackCO(Vector2 knockBackPosition, float knockBackDuration)
+    {
+        isKnocked = true;
+        rb.linearVelocity = knockBackPosition;
+
+        yield return new WaitForSeconds(knockBackDuration);
+
+        isKnocked = false;
+        rb.linearVelocity = new Vector2(0, 0);
+    }
+
+    public virtual void OnDead()
+    {
     }
 
     public void CallTriggerCurrentState()

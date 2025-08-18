@@ -1,20 +1,28 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class Entity_Health : MonoBehaviour
 {
-    [SerializeField] private float maxHealth;
-    [SerializeField] private float currentHealth;
+    private Entity entity;
+
+    [Header("Health")]
+    [SerializeField] protected float maxHealth;
+    [SerializeField] protected float currentHealth;
+    [Range(0, 1)]
+    [SerializeField] public float heavyDamagePercent;
 
     public bool isDead;
 
     void Start()
     {
+        entity = GetComponent<Entity>();
+
         currentHealth = maxHealth;
         isDead = false;
     }
 
-    public virtual void ReduceHealth(float damage, Transform damageTransform)
+    public virtual void ReduceHealth(float damage, Transform damageDealer)
     {
         if (isDead) return;
 
@@ -24,11 +32,23 @@ public class Entity_Health : MonoBehaviour
         {
             Die();
         }
+
+        if (!isDead)
+            entity.ReceiveKnockBack(isHeavyAttack(damage), CalculateKnockBackDir(damageDealer.position.x));
     }
 
-    private void Die()
+    private int CalculateKnockBackDir(float positionX)
+    {
+        return positionX > transform.position.x ? -1 : 1;
+    }
+
+    protected bool isHeavyAttack(float damage)
+    {
+        return damage / maxHealth > heavyDamagePercent;
+    }
+
+    protected virtual void Die()
     {
         isDead = true;
-        Debug.Log("Die");
     }
 }
