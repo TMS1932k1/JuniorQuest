@@ -12,8 +12,10 @@ public class Player : Entity
     public float jumpForce;
     public float dashDuration;
     public float dashSpeed;
+    public float dashColdown;
     public float slideDuration;
     public float slideSpeed;
+    public float slideColdown;
     [Range(0, 1)]
     public float airMoveMultiplier;
     [Range(0, 1)]

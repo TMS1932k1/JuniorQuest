@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Entity_Combat : MonoBehaviour
 {
-    private Entity_VFX entityVFX;
+    protected Entity_VFX entityVFX;
 
     [Header("Attack Circles Check")]
     [SerializeField] private AttackCircle[] attackCircles;

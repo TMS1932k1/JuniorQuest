@@ -3,13 +3,14 @@ using UnityEngine;
 public class Player_Combat : Entity_Combat
 {
     private Player player;
-    Collider2D[] counterTarget;
+
 
     [Header("Counter details")]
     [SerializeField] LayerMask whatIsCounter;
     public float counterDuration;
     public Transform counterCheckVelocity;
     public float counterCheckRadius;
+    Collider2D[] counterTarget;
 
     void Awake()
     {
@@ -31,6 +32,7 @@ public class Player_Combat : Entity_Combat
             if (canCounter != null && canCounter.GetCanCounter)
             {
                 canCounter.HandleCounter();
+                entityVFX.CreateHitVFX(canCounter.GetTransform.position);
                 haveCounterTarget = true;
             }
         }

@@ -62,7 +62,9 @@ public class Enemy : Entity, IsCanCounter
         }
     }
 
-    public bool GetCanCounter { get => canStunned; }
+    public bool GetCanCounter => canStunned;
+
+    public Transform GetTransform => transform;
 
     public void HandlePlayerDeath()
     {

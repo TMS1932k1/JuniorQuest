@@ -5,4 +5,6 @@ public interface IsCanCounter
     public void HandleCounter();
 
     public bool GetCanCounter { get; }
+
+    public Transform GetTransform { get; }
 }

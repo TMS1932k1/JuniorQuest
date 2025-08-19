@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using UnityEngine;
 
 public class Entity_Health : MonoBehaviour
@@ -7,8 +6,8 @@ public class Entity_Health : MonoBehaviour
     private Entity entity;
 
     [Header("Health")]
-    [SerializeField] protected float maxHealth;
-    [SerializeField] protected float currentHealth;
+    [SerializeField] public float maxHealth;
+    [SerializeField] public float currentHealth;
     [Range(0, 1)]
     [SerializeField] public float heavyDamagePercent;
 

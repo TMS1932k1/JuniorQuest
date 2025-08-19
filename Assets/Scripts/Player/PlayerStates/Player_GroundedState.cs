@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Player_GroundedState : PlayerState
 {
+    private float lastSlidePress;
+
     public Player_GroundedState(string nameState, StateMachine stateMachine, Player player) : base(nameState, stateMachine, player)
     {
     }
@@ -29,9 +31,10 @@ public class Player_GroundedState : PlayerState
         }
 
         // Change SlideState
-        if (Input.GetKeyDown(KeyCode.Z) && !player.wallDetect)
+        if (Input.GetKeyDown(KeyCode.Z) && !player.wallDetect && CanSlide())
         {
             stateMachine.ChangeState(player.slideState);
+            lastSlidePress = Time.time;
         }
 
         // Change CounterState
@@ -39,5 +42,10 @@ public class Player_GroundedState : PlayerState
         {
             stateMachine.ChangeState(player.counterState);
         }
+    }
+
+    private bool CanSlide()
+    {
+        return Time.time > lastSlidePress + player.slideColdown;
     }
 }
