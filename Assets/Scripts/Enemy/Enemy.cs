@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Enemy : Entity
+public class Enemy : Entity, IsCanCounter
 {
     [Header("Move details")]
     public float moveSpeed;
@@ -16,12 +16,19 @@ public class Enemy : Entity
     public float durationDetect;
 
 
+    [Header("Stun details")]
+    public Vector2 stunnedVelocity;
+    public float stunnedDuration;
+    public bool canStunned;
+
+
     // States
     public Enemy_IdleState idleState;
     public Enemy_MoveState moveState;
     public Enemy_AttackState attackState;
     public Enemy_PlayerDetectedState playerDetectedState;
     public Enemy_DeathState deathState;
+    public Enemy_StunnedState stunnedState;
 
 
     private void OnEnable()
@@ -32,16 +39,6 @@ public class Enemy : Entity
     private void OnDisable()
     {
         Player.OnPlayerDeath -= HandlePlayerDeath;
-    }
-
-    public void HandlePlayerDeath()
-    {
-        stateMachine.ChangeState(idleState);
-    }
-
-    public float GetAnimSpeedMutiplier()
-    {
-        return moveDetectedSpeed / moveSpeed;
     }
 
     public override void OnDead()
@@ -55,6 +52,26 @@ public class Enemy : Entity
         base.HandleCollisions();
 
         isAttack = Physics2D.Raycast(transform.position, Vector2.right * faceDir, distanceToAttack, whatIsPlayer);
+    }
+
+    public void HandleCounter()
+    {
+        if (canStunned)
+        {
+            stateMachine.ChangeState(stunnedState);
+        }
+    }
+
+    public bool GetCanCounter { get => canStunned; }
+
+    public void HandlePlayerDeath()
+    {
+        stateMachine.ChangeState(idleState);
+    }
+
+    public float GetAnimSpeedMutiplier()
+    {
+        return moveDetectedSpeed / moveSpeed;
     }
 
     /// <summary>

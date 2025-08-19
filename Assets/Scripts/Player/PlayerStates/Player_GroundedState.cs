@@ -33,5 +33,11 @@ public class Player_GroundedState : PlayerState
         {
             stateMachine.ChangeState(player.slideState);
         }
+
+        // Change CounterState
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            stateMachine.ChangeState(player.counterState);
+        }
     }
 }

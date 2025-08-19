@@ -38,6 +38,7 @@ public class Player : Entity
     public Player_SlideState slideState { get; private set; }
     public Player_HurtState hurtState { get; private set; }
     public Player_DeathState deathState { get; private set; }
+    public Player_CounterState counterState { get; private set; }
 
     public bool isDead;
 
@@ -56,6 +57,7 @@ public class Player : Entity
         slideState = new Player_SlideState("isSlide", stateMachine, this);
         hurtState = new Player_HurtState("isHurt", stateMachine, this);
         deathState = new Player_DeathState("isDeath", stateMachine, this);
+        counterState = new Player_CounterState("isCounter", stateMachine, this);
     }
 
     protected override void Start()

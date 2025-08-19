@@ -2,12 +2,20 @@ using UnityEngine;
 
 public class Entity_Combat : MonoBehaviour
 {
+    private Entity_VFX entityVFX;
+
+    [Header("Attack Circles Check")]
     [SerializeField] private AttackCircle[] attackCircles;
     [SerializeField] private LayerMask whatIsTarget;
 
     private int attackCircleIndex;
     private float damage;
     private AttackCircle currentAttackCircle;
+
+    void Start()
+    {
+        entityVFX = GetComponent<Entity_VFX>();
+    }
 
     public void PerformAttack()
     {
@@ -16,6 +24,7 @@ public class Entity_Combat : MonoBehaviour
             damage = attackCircles[attackCircleIndex].damage;
 
             target.gameObject.GetComponent<Entity_Health>().ReduceHealth(damage, transform);
+            entityVFX.CreateHitVFX(target.transform.position);
         }
     }
 
