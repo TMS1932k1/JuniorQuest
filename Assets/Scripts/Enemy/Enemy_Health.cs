@@ -15,9 +15,9 @@ public class Enemy_Health : Entity_Health
         entityVFX = GetComponent<Entity_VFX>();
     }
 
-    public override void ReduceHealth(float damage, Transform damageDealer)
+    public override void ReduceHealth(float damage, out bool isMissed, Transform damageDealer)
     {
-        base.ReduceHealth(damage, damageDealer);
+        base.ReduceHealth(damage, out isMissed, damageDealer);
 
         if (!isDead)
         {

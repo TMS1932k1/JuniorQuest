@@ -105,6 +105,7 @@ GameObject:
   - component: {fileID: 1347198271122742812}
   - component: {fileID: 1858725005158546782}
   - component: {fileID: 5764850687380161354}
+  - component: {fileID: 3415418134285850101}
   - component: {fileID: 7323507153641018668}
   - component: {fileID: 6898644766248132865}
   - component: {fileID: 1374482801827282004}
@@ -243,6 +244,39 @@ MonoBehaviour:
   - {x: 0, y: 0.5}
   - {x: 0, y: 0.75}
   isDead: 0
+--- !u!114 &3415418134285850101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5863859148460643105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3def490411070e42b79613d1594a78c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  major:
+    strength:
+      value: 5
+    agility:
+      value: 5
+    vitality:
+      value: 5
+  offensive:
+    damage:
+      value: 10
+    critPower:
+      value: 50
+    critChance:
+      value: 10
+  defence:
+    maxHealth:
+      value: 100
+    evasion:
+      value: 10
+    armor:
+      value: 10
 --- !u!114 &7323507153641018668
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -257,7 +291,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onDamageMaterial: {fileID: 2100000, guid: 61592dfadd422d14596187f0b0806ac4, type: 2}
   onDamageDuration: 0.1
-  hitVFX: {fileID: 6974240877589126994, guid: f7e5ecb6e9d8e7742b0ff78c4936ecfd, type: 3}
+  hitVFX: {fileID: 6974240877589126994, guid: 5248e9c1345e3a14faed8a5223286cc8, type: 3}
+  critHitVFX: {fileID: 6974240877589126994, guid: 33f84b5feb113f447a2b77815642247c, type: 3}
+  hitVFXColor: {r: 1, g: 0.90502363, b: 0, a: 1}
   timeDestroy: 1
   minRandomX: -1
   maxRandomX: 1
@@ -275,7 +311,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 070cd439117660949879bf94640f7055, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
   currentHealth: 0
   heavyDamagePercent: 0.3
   isDead: 0
@@ -294,13 +329,10 @@ MonoBehaviour:
   attackCircles:
   - transform: {fileID: 7398836877951928539}
     radius: 1
-    damage: 10
   - transform: {fileID: 8661699378682126908}
     radius: 1.1
-    damage: 10
   - transform: {fileID: 3130701104992807745}
     radius: 1.6
-    damage: 10
   whatIsTarget:
     serializedVersion: 2
     m_Bits: 512

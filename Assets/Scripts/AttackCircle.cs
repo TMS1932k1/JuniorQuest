@@ -5,5 +5,4 @@ public class AttackCircle
 {
     public Transform transform;
     public float radius;
-    public float damage;
 }

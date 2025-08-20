@@ -11,9 +11,9 @@ public class Player_Health : Entity_Health
         player = GetComponent<Player>();
     }
 
-    public override void ReduceHealth(float damage, Transform damageDealer)
+    public override void ReduceHealth(float damage, out bool isMissed, Transform damageDealer)
     {
-        base.ReduceHealth(damage, damageDealer);
+        base.ReduceHealth(damage, out isMissed, damageDealer);
 
         if (!isDead)
             player.stateMachine.ChangeState(player.hurtState);

@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 4784145615636706254}
   - component: {fileID: 8470681890311194234}
   - component: {fileID: 3254873654715564095}
+  - component: {fileID: 6370846892647976421}
   - component: {fileID: 3334297689824821700}
   - component: {fileID: 6462828778765364432}
   - component: {fileID: 5494908459611367330}
@@ -176,6 +177,39 @@ MonoBehaviour:
   stunnedVelocity: {x: 7, y: 6}
   stunnedDuration: 0.5
   canStunned: 0
+--- !u!114 &6370846892647976421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1636976980505424432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3def490411070e42b79613d1594a78c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  major:
+    strength:
+      value: 0
+    agility:
+      value: 0
+    vitality:
+      value: 0
+  offensive:
+    damage:
+      value: 20
+    critPower:
+      value: 0
+    critChance:
+      value: 0
+  defence:
+    maxHealth:
+      value: 100
+    evasion:
+      value: 0
+    armor:
+      value: 20
 --- !u!114 &3334297689824821700
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,6 +225,8 @@ MonoBehaviour:
   onDamageMaterial: {fileID: 2100000, guid: 61592dfadd422d14596187f0b0806ac4, type: 2}
   onDamageDuration: 0.1
   hitVFX: {fileID: 6974240877589126994, guid: 5248e9c1345e3a14faed8a5223286cc8, type: 3}
+  critHitVFX: {fileID: 6974240877589126994, guid: 33f84b5feb113f447a2b77815642247c, type: 3}
+  hitVFXColor: {r: 0.6603774, g: 0.6603774, b: 0.6603774, a: 1}
   timeDestroy: 1
   minRandomX: -1
   maxRandomX: 1
@@ -209,7 +245,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d04e6acf0b03ef540abe3540fb052880, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
   currentHealth: 0
   heavyDamagePercent: 0.3
   isDead: 0
@@ -228,7 +263,6 @@ MonoBehaviour:
   attackCircles:
   - transform: {fileID: 176187635692013539}
     radius: 1
-    damage: 20
   whatIsTarget:
     serializedVersion: 2
     m_Bits: 128

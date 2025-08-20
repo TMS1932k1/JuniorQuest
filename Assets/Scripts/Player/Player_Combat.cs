@@ -34,7 +34,6 @@ public class Player_Combat : Entity_Combat
             if (canCounter != null && canCounter.GetCanCounter)
             {
                 canCounter.HandleCounter();
-                entityVFX.CreateHitVFX(canCounter.GetTransform.position);
                 haveCounterTarget = true;
             }
         }

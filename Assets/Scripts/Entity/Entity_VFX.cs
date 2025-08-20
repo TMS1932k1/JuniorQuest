@@ -11,6 +11,8 @@ public class Entity_VFX : MonoBehaviour
 
     [Header("Hit VFX")]
     [SerializeField] GameObject hitVFX;
+    [SerializeField] GameObject critHitVFX;
+    [SerializeField] Color hitVFXColor;
     [SerializeField] float timeDestroy = 1f;
     [SerializeField] float minRandomX;
     [SerializeField] float maxRandomX;
@@ -19,22 +21,29 @@ public class Entity_VFX : MonoBehaviour
 
 
     //Component
-    private Material originMaterial;
     private SpriteRenderer sr;
 
 
+    private Material originMaterial;
     private Coroutine onDamageVFXCoroutine;
 
 
     void Awake()
     {
         sr = GetComponentInChildren<SpriteRenderer>();
+    }
+
+    void Start()
+    {
         originMaterial = sr.material;
     }
 
-    public void CreateHitVFX(Vector3 position)
+    public void CreateHitVFX(Vector3 position, bool isCrit)
     {
-        GameObject hit = Instantiate(hitVFX, RandomInstantiatePosition(position), RandomRotate());
+        hitVFX.GetComponentInChildren<SpriteRenderer>().color = hitVFXColor;
+        critHitVFX.GetComponentInChildren<SpriteRenderer>().color = hitVFXColor;
+
+        GameObject hit = Instantiate(isCrit ? critHitVFX : hitVFX, RandomInstantiatePosition(position), RandomRotate());
         Destroy(hit, timeDestroy);
     }
 

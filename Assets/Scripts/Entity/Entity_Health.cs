@@ -1,12 +1,11 @@
-using System;
 using UnityEngine;
 
 public class Entity_Health : MonoBehaviour
 {
     private Entity entity;
+    private Entity_Stat stat;
 
     [Header("Health")]
-    [SerializeField] public float maxHealth;
     [SerializeField] public float currentHealth;
     [Range(0, 1)]
     [SerializeField] public float heavyDamagePercent;
@@ -16,27 +15,48 @@ public class Entity_Health : MonoBehaviour
     protected virtual void Awake()
     {
         entity = GetComponent<Entity>();
+        stat = GetComponent<Entity_Stat>();
     }
 
     protected virtual void Start()
     {
-        currentHealth = maxHealth;
+        currentHealth = stat.GetHealth();
         isDead = false;
     }
 
-    public virtual void ReduceHealth(float damage, Transform damageDealer)
+    public virtual void ReduceHealth(float damage, out bool isMissed, Transform damageDealer)
     {
-        if (isDead) return;
+        isMissed = MissAttack();
 
-        currentHealth -= damage;
+        if (isDead)
+            return;
+        if (isMissed)
+            return;
 
+        float finalDamage = CalculateReducedDamage(damage);
+
+        currentHealth -= finalDamage;
         if (currentHealth <= 0)
-        {
             Die();
-        }
 
         if (!isDead)
-            entity.ReceiveKnockBack(isHeavyAttack(damage), CalculateKnockBackDir(damageDealer.position.x));
+            entity.ReceiveKnockBack(isHeavyAttack(finalDamage), CalculateKnockBackDir(damageDealer.position.x));
+    }
+
+    private float CalculateReducedDamage(float damage)
+    {
+        float reducePercent = stat.GetArmor() / (100 + stat.GetArmor()); // Scaling constant = 100
+        return damage * (1 - Mathf.Clamp01(reducePercent));
+    }
+
+    private bool MissAttack()
+    {
+        return Random.Range(0, 100) <= stat.GetEvasion();
+    }
+
+    public float GetHealthPercent()
+    {
+        return currentHealth / stat.GetHealth();
     }
 
     private int CalculateKnockBackDir(float positionX)
@@ -46,7 +66,7 @@ public class Entity_Health : MonoBehaviour
 
     protected bool isHeavyAttack(float damage)
     {
-        return damage / maxHealth > heavyDamagePercent;
+        return damage / stat.GetHealth() > heavyDamagePercent;
     }
 
     protected virtual void Die()

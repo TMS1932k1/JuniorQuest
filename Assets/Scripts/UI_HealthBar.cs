@@ -21,6 +21,6 @@ public class UI_HealthBar : MonoBehaviour
     public void UpdateHealthSlider()
     {
         if (healthSlider != null)
-            healthSlider.value = entityHealth.currentHealth / entityHealth.maxHealth;
+            healthSlider.value = entityHealth.GetHealthPercent();
     }
 }
