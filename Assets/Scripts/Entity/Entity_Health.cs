@@ -13,10 +13,13 @@ public class Entity_Health : MonoBehaviour
 
     public bool isDead;
 
-    void Start()
+    protected virtual void Awake()
     {
         entity = GetComponent<Entity>();
+    }
 
+    protected virtual void Start()
+    {
         currentHealth = maxHealth;
         isDead = false;
     }

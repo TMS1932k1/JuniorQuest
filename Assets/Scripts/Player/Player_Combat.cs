@@ -12,8 +12,10 @@ public class Player_Combat : Entity_Combat
     public float counterCheckRadius;
     Collider2D[] counterTarget;
 
-    void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+
         player = GetComponent<Player>();
     }
 

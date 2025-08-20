@@ -12,7 +12,7 @@ public class Entity_Combat : MonoBehaviour
     private float damage;
     private AttackCircle currentAttackCircle;
 
-    void Start()
+    protected virtual void Awake()
     {
         entityVFX = GetComponent<Entity_VFX>();
     }

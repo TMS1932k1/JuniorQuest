@@ -7,8 +7,10 @@ public class Enemy_Health : Entity_Health
 
     private Entity_VFX entityVFX;
 
-    void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+
         enemy = GetComponent<Enemy>();
         entityVFX = GetComponent<Entity_VFX>();
     }
@@ -46,3 +48,5 @@ public class Enemy_Health : Entity_Health
         }
     }
 }
+
+

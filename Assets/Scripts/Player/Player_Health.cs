@@ -4,8 +4,10 @@ public class Player_Health : Entity_Health
 {
     private Player player;
 
-    void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+
         player = GetComponent<Player>();
     }
 
@@ -23,3 +25,4 @@ public class Player_Health : Entity_Health
         player.OnDead();
     }
 }
+

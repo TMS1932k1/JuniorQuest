@@ -105,9 +105,9 @@ GameObject:
   - component: {fileID: 1347198271122742812}
   - component: {fileID: 1858725005158546782}
   - component: {fileID: 5764850687380161354}
+  - component: {fileID: 7323507153641018668}
   - component: {fileID: 6898644766248132865}
   - component: {fileID: 1374482801827282004}
-  - component: {fileID: 7323507153641018668}
   m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
@@ -243,6 +243,26 @@ MonoBehaviour:
   - {x: 0, y: 0.5}
   - {x: 0, y: 0.75}
   isDead: 0
+--- !u!114 &7323507153641018668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5863859148460643105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3cd28c9e294e7e4b889e94cb68f7711, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onDamageMaterial: {fileID: 2100000, guid: 61592dfadd422d14596187f0b0806ac4, type: 2}
+  onDamageDuration: 0.1
+  hitVFX: {fileID: 6974240877589126994, guid: f7e5ecb6e9d8e7742b0ff78c4936ecfd, type: 3}
+  timeDestroy: 1
+  minRandomX: -1
+  maxRandomX: 1
+  minRandomY: -1
+  maxRandomY: 1
 --- !u!114 &6898644766248132865
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -290,26 +310,6 @@ MonoBehaviour:
   counterDuration: 0.2
   counterCheckVelocity: {fileID: 5420862609794858518}
   counterCheckRadius: 1.3
---- !u!114 &7323507153641018668
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5863859148460643105}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3cd28c9e294e7e4b889e94cb68f7711, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  onDamageMaterial: {fileID: 2100000, guid: 61592dfadd422d14596187f0b0806ac4, type: 2}
-  onDamageDuration: 0.1
-  hitVFX: {fileID: 6974240877589126994, guid: f7e5ecb6e9d8e7742b0ff78c4936ecfd, type: 3}
-  timeDestroy: 1
-  minRandomX: -1
-  maxRandomX: 1
-  minRandomY: -1
-  maxRandomY: 1
 --- !u!1 &6439078275457930091
 GameObject:
   m_ObjectHideFlags: 0
