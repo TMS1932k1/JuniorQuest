@@ -1,9 +1,19 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Player_SlideState : PlayerState
 {
+    private CapsuleCollider2D col;
+    private Vector2 originSizeCol;
+    private Vector2 originOffsetCol;
+
+
     public Player_SlideState(string nameState, StateMachine stateMachine, Player player) : base(nameState, stateMachine, player)
     {
+        col = player.GetComponent<CapsuleCollider2D>();
+
+        originSizeCol = col.size;
+        originOffsetCol = col.offset;
     }
 
     public override void Enter()
@@ -11,6 +21,10 @@ public class Player_SlideState : PlayerState
         base.Enter();
 
         stateTimer = player.slideDuration;
+
+        // Set size Collider of SlideState
+        col.size = new Vector2(originSizeCol.x, originSizeCol.y / 2);
+        col.offset = new Vector2(originOffsetCol.x, originOffsetCol.y - 0.2f);
     }
 
     public override void Update()
@@ -37,6 +51,10 @@ public class Player_SlideState : PlayerState
         base.Exit();
 
         StopMoving();
+
+        // Set origin size Collider of IdleState
+        col.size = originSizeCol;
+        col.offset = originOffsetCol;
     }
 
     private bool CancleIfNeed()

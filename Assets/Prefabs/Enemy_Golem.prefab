@@ -172,7 +172,7 @@ MonoBehaviour:
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 128
-  moveDetectedSpeed: 1.5
+  moveDetectedSpeed: 2
   durationDetect: 3
   stunnedVelocity: {x: 7, y: 6}
   stunnedDuration: 0.5
@@ -189,27 +189,46 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3def490411070e42b79613d1594a78c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: e3e03cdf5409b0f49a43a68445eb3b0f, type: 2}
   major:
     strength:
-      value: 0
+      baseValue: 0
+      finalValue: 0
+      modifiers: []
     agility:
-      value: 0
+      baseValue: 0
+      finalValue: 0
+      modifiers: []
     vitality:
-      value: 0
+      baseValue: 5
+      finalValue: 0
+      modifiers: []
   offensive:
     damage:
-      value: 20
+      baseValue: 10
+      finalValue: 0
+      modifiers: []
     critPower:
-      value: 0
+      baseValue: 0
+      finalValue: 0
+      modifiers: []
     critChance:
-      value: 0
+      baseValue: 0
+      finalValue: 0
+      modifiers: []
   defence:
     maxHealth:
-      value: 100
+      baseValue: 100
+      finalValue: 0
+      modifiers: []
     evasion:
-      value: 0
+      baseValue: 0
+      finalValue: 0
+      modifiers: []
     armor:
-      value: 20
+      baseValue: 50
+      finalValue: 0
+      modifiers: []
 --- !u!114 &3334297689824821700
 MonoBehaviour:
   m_ObjectHideFlags: 0

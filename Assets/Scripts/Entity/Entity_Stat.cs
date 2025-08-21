@@ -2,11 +2,26 @@ using UnityEngine;
 
 public class Entity_Stat : MonoBehaviour
 {
+    [SerializeField] private DefaultStatsSO data;
     [SerializeField] private Stat_MajorGroup major;
     [SerializeField] private Stat_OffensiveGroup offensive;
     [SerializeField] private Stat_DefenceGroup defence;
 
     private float limitEvasion = 85f;
+
+    [ContextMenu("Set up default stats")]
+    private void SetUpDefaultStats()
+    {
+        major.strength.SetValue(data.strength);
+        major.agility.SetValue(data.agility);
+        major.vitality.SetValue(data.vitality);
+        offensive.damage.SetValue(data.damage);
+        offensive.critChance.SetValue(data.critChance);
+        offensive.critPower.SetValue(data.critPower);
+        defence.maxHealth.SetValue(data.maxHealth);
+        defence.evasion.SetValue(data.evasion);
+        defence.armor.SetValue(data.armor);
+    }
 
     public float GetHealth()
     {
@@ -24,12 +39,19 @@ public class Entity_Stat : MonoBehaviour
         return Mathf.Clamp(evasion + agility * 0.5f, 0, limitEvasion); // Per point of agility = 0.5 evasion, result not bigger limit
     }
 
-    public float GetDamage()
+    public float GetDamage(out bool isCrit)
     {
         float damage = offensive.damage.GetValue();
         float strength = major.strength.GetValue();
+        float sumDamage = damage + strength; // Per point of strength = 1 damage
 
-        return damage + strength; // Per point of strength = 1 damage
+        isCrit = IsCrit();
+        return sumDamage * (isCrit ? (1 + GetCritPower() / 100) : 1);
+    }
+
+    private bool IsCrit()
+    {
+        return Random.Range(0, 100) <= GetCritChange();
     }
 
     public float GetCritPower()
@@ -54,5 +76,30 @@ public class Entity_Stat : MonoBehaviour
         float vitality = major.vitality.GetValue();
 
         return armor + vitality; // Per point of vitality = 1 armor
+    }
+
+    public Stat GetStatWithType(StatType type)
+    {
+        switch (type)
+        {
+            // Major Group
+            case StatType.Strength: return major.strength;
+            case StatType.Agility: return major.agility;
+            case StatType.Vitality: return major.vitality;
+            // Offensive Group
+            case StatType.Damage: return offensive.damage;
+            case StatType.CritChance: return offensive.critChance;
+            case StatType.CritPower: return offensive.critPower;
+            // Defence Group
+            case StatType.MaxHealth: return defence.maxHealth;
+            case StatType.Evasion: return defence.evasion;
+            case StatType.Armor: return defence.armor;
+
+            default:
+                {
+                    Debug.Log("Don't have this stat");
+                    return null;
+                }
+        }
     }
 }

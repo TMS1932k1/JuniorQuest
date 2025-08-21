@@ -15,7 +15,7 @@ TagManager:
   - Player
   - Background
   - Enemy
-  - 
+  - Interatable
   - 
   - 
   - 
@@ -47,7 +47,7 @@ TagManager:
   - name: Platform
     uniqueID: 1206362489
     locked: 0
-  - name: Interface
+  - name: Interatable
     uniqueID: 1586549049
     locked: 0
   - name: Enemy
