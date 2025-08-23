@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Entity_Health : MonoBehaviour
@@ -10,7 +11,15 @@ public class Entity_Health : MonoBehaviour
     [Range(0, 1)]
     [SerializeField] public float heavyDamagePercent;
 
+
+    [Header("Auto Restore Health")]
+    [SerializeField] public float timeAutoRestoreHp;
+    [SerializeField] public float restorePerSecond;
+    private Coroutine restoreHpCoroutine;
+
+
     public bool isDead;
+    private float lastTimeTakeDamage;
 
     protected virtual void Awake()
     {
@@ -24,23 +33,71 @@ public class Entity_Health : MonoBehaviour
         isDead = false;
     }
 
+    protected virtual void Update()
+    {
+        AutoRestoreHealth();
+    }
+
     public virtual void ReduceHealth(float damage, out bool isMissed, Transform damageDealer)
     {
+        // Cancle take damage
         isMissed = MissAttack();
-
         if (isDead)
             return;
         if (isMissed)
             return;
 
-        float finalDamage = CalculateReducedDamage(damage);
+        // Stop restore HP
+        StopAutoRestoreHP();
 
+        // Reduce damage
+        float finalDamage = CalculateReducedDamage(damage);
         currentHealth -= finalDamage;
+
+        // Change state
         if (currentHealth <= 0)
             Die();
 
+        // Knock back
         if (!isDead)
             entity.ReceiveKnockBack(isHeavyAttack(finalDamage), CalculateKnockBackDir(damageDealer.position.x));
+    }
+
+    /// <summary>
+    /// When player not take damage during time (timeAutoRestoreHp)
+    /// Then player auto restore health per 1 second (restorePerSecond)
+    /// </summary>
+    private void AutoRestoreHealth()
+    {
+        // Don't take damage 
+        // Isn't in retsore HP status 
+        // CurrentHp isn't full
+        if (Time.time > lastTimeTakeDamage + timeAutoRestoreHp
+            && restoreHpCoroutine == null
+            && currentHealth < stat.GetHealth())
+        {
+            // Perform restore HP
+            restoreHpCoroutine = StartCoroutine(AutoRestoreHealthCo());
+        }
+    }
+
+    private IEnumerator AutoRestoreHealthCo()
+    {
+        while (currentHealth < stat.GetHealth())
+        {
+            currentHealth = Mathf.Min(currentHealth + restorePerSecond, stat.GetHealth()); // Don't over max health
+            yield return new WaitForSeconds(1f);
+        }
+    }
+
+    private void StopAutoRestoreHP()
+    {
+        lastTimeTakeDamage = Time.time;
+        if (restoreHpCoroutine != null)
+        {
+            StopCoroutine(restoreHpCoroutine);
+            restoreHpCoroutine = null;
+        }
     }
 
     private float CalculateReducedDamage(float damage)

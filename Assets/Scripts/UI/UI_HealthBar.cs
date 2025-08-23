@@ -3,16 +3,16 @@ using UnityEngine.UI;
 
 public class UI_HealthBar : MonoBehaviour
 {
-    private Entity_Health entityHealth;
-    private Slider healthSlider;
+    protected Entity_Health entityHealth;
+    protected Slider healthSlider;
 
-    void Awake()
+    protected virtual void Awake()
     {
         entityHealth = GetComponentInParent<Entity_Health>();
         healthSlider = GetComponentInChildren<Slider>();
     }
 
-    void Update()
+    protected virtual void Update()
     {
         transform.rotation = Quaternion.identity;
         UpdateHealthSlider();
@@ -22,7 +22,7 @@ public class UI_HealthBar : MonoBehaviour
             gameObject.SetActive(false);
     }
 
-    public void UpdateHealthSlider()
+    protected void UpdateHealthSlider()
     {
         if (healthSlider != null)
             healthSlider.value = entityHealth.GetHealthPercent();

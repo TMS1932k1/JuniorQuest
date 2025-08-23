@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Player_GroundedState : PlayerState
 {
@@ -25,7 +26,8 @@ public class Player_GroundedState : PlayerState
         }
 
         // Change AttackState
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKeyDown(KeyCode.Mouse0)
+            && !(EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())) // Don't click UI
         {
             stateMachine.ChangeState(player.basicAttackState);
         }

@@ -266,6 +266,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 0
   heavyDamagePercent: 0.3
+  timeAutoRestoreHp: 30
+  restorePerSecond: 20
   isDead: 0
 --- !u!114 &5494908459611367330
 MonoBehaviour:
