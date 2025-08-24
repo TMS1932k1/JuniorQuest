@@ -32,7 +32,7 @@ public class UI_Window : MonoBehaviour
         if (displayCoroutine != null)
             StopCoroutine(displayCoroutine);
 
-        displayCoroutine = StartCoroutine(HideWidowCo());
+        displayCoroutine = StartCoroutine(HideWindowCo());
     }
 
     private IEnumerator ShowWindowCo()
@@ -48,7 +48,7 @@ public class UI_Window : MonoBehaviour
         }
     }
 
-    private IEnumerator HideWidowCo()
+    private IEnumerator HideWindowCo()
     {
         while (currentScale > 0)
         {
