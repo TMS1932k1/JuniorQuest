@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad0bd5619ff0b34498cdfadcf4bc443a, type: 3}
+  m_Name: SkillData_Infeno
+  m_EditorClassIdentifier: 
+  skillImage: {fileID: 4884337891824352890, guid: 7380195adbf2b8c46b07715a1ed2c8bb, type: 3}
+  skillName: Infeno
+  description: Creates a blazing area that deals damage to enemies within (100% base
+    + 100)
+  unlockLevel: 15
+  cooldown: 20
+  duration: 5
+  damage: 100
+  effectPercent: 1

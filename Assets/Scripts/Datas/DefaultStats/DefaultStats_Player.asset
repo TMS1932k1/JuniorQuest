@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9b2b4b84a3f463542bbaa67698ba824d, type: 3}
-  m_Name: DefaultStats_Data_Player
+  m_Name: DefaultStats_Player
   m_EditorClassIdentifier: 
   strength: 0
   agility: 0
@@ -21,3 +21,4 @@ MonoBehaviour:
   maxHealth: 100
   evasion: 0
   armor: 0
+  xp: 0

@@ -2,15 +2,18 @@ using UnityEngine;
 
 public class Entity_Stat : MonoBehaviour
 {
-    [SerializeField] private DefaultStatsSO data;
-    [SerializeField] private Stat_MajorGroup major;
-    [SerializeField] private Stat_OffensiveGroup offensive;
-    [SerializeField] private Stat_DefenceGroup defence;
+    [SerializeField] DefaultStatsSO data;
+
+
+    [SerializeField] Stat_MajorGroup major;
+    [SerializeField] Stat_OffensiveGroup offensive;
+    [SerializeField] Stat_DefenceGroup defence;
+    [SerializeField] float xp;
 
     private float limitEvasion = 85f;
 
     [ContextMenu("Set up default stats")]
-    private void SetUpDefaultStats()
+    protected virtual void SetUpDefaultStats()
     {
         major.strength.SetValue(data.strength);
         major.agility.SetValue(data.agility);
@@ -21,6 +24,7 @@ public class Entity_Stat : MonoBehaviour
         defence.maxHealth.SetValue(data.maxHealth);
         defence.evasion.SetValue(data.evasion);
         defence.armor.SetValue(data.armor);
+        xp = data.xp;
     }
 
     public float GetHealth()
@@ -101,5 +105,10 @@ public class Entity_Stat : MonoBehaviour
                     return null;
                 }
         }
+    }
+
+    public float GetXp()
+    {
+        return xp;
     }
 }

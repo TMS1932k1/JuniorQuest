@@ -1,7 +1,11 @@
+using System;
 using UnityEngine;
 
 public class Enemy : Entity, IsCanCounter
 {
+    public static event Action<float> OnEnemyDeath;
+
+
     [Header("Move details")]
     public float moveSpeed;
 
@@ -31,6 +35,15 @@ public class Enemy : Entity, IsCanCounter
     public Enemy_StunnedState stunnedState;
 
 
+    private Entity_Stat stat;
+
+
+    protected override void Awake()
+    {
+        base.Awake();
+        stat = GetComponent<Entity_Stat>();
+    }
+
     private void OnEnable()
     {
         Player.OnPlayerDeath += HandlePlayerDeath;
@@ -44,7 +57,9 @@ public class Enemy : Entity, IsCanCounter
     public override void OnDead()
     {
         base.OnDead();
+
         stateMachine.ChangeState(deathState);
+        OnEnemyDeath.Invoke(stat.GetXp());
     }
 
     protected override void HandleCollisions()

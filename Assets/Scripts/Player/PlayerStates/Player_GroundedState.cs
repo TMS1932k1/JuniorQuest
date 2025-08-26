@@ -48,6 +48,6 @@ public class Player_GroundedState : PlayerState
 
     private bool CanSlide()
     {
-        return Time.time > lastSlidePress + player.slideColdown;
+        return Time.time > lastSlidePress + player.slideCooldown;
     }
 }

@@ -28,12 +28,12 @@ public class Entity_VFX : MonoBehaviour
     private Coroutine onDamageVFXCoroutine;
 
 
-    void Awake()
+    protected virtual void Awake()
     {
         sr = GetComponentInChildren<SpriteRenderer>();
     }
 
-    void Start()
+    protected virtual void Start()
     {
         originMaterial = sr.material;
     }

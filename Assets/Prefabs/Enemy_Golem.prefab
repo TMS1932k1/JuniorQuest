@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 4784145615636706254}
   - component: {fileID: 8470681890311194234}
   - component: {fileID: 3254873654715564095}
-  - component: {fileID: 6370846892647976421}
+  - component: {fileID: 7882730401774720932}
   - component: {fileID: 3334297689824821700}
   - component: {fileID: 6462828778765364432}
   - component: {fileID: 5494908459611367330}
@@ -177,7 +177,7 @@ MonoBehaviour:
   stunnedVelocity: {x: 7, y: 6}
   stunnedDuration: 0.5
   canStunned: 0
---- !u!114 &6370846892647976421
+--- !u!114 &7882730401774720932
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -189,7 +189,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3def490411070e42b79613d1594a78c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 11400000, guid: e3e03cdf5409b0f49a43a68445eb3b0f, type: 2}
+  data: {fileID: 11400000, guid: ca059d36a2574d7439b3cbd53f7e10f3, type: 2}
   major:
     strength:
       baseValue: 0
@@ -200,7 +200,7 @@ MonoBehaviour:
       finalValue: 0
       modifiers: []
     vitality:
-      baseValue: 5
+      baseValue: 0
       finalValue: 0
       modifiers: []
   offensive:
@@ -226,9 +226,10 @@ MonoBehaviour:
       finalValue: 0
       modifiers: []
     armor:
-      baseValue: 50
+      baseValue: 20
       finalValue: 0
       modifiers: []
+  xp: 50
 --- !u!114 &3334297689824821700
 MonoBehaviour:
   m_ObjectHideFlags: 0

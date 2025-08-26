@@ -28,7 +28,7 @@ public class PlayerState : EntityState
 
     private bool CanDash()
     {
-        return Time.time > lastDashPress + player.dashColdown
+        return Time.time > lastDashPress + player.dashCooldown
             && stateMachine.currentState != player.counterState;
     }
 }

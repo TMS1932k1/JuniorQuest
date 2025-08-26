@@ -7,14 +7,14 @@ public class Entity_Health : MonoBehaviour
     private Entity_Stat stat;
 
     [Header("Health")]
-    [SerializeField] public float currentHealth;
+    public float currentHealth;
     [Range(0, 1)]
-    [SerializeField] public float heavyDamagePercent;
+    public float heavyDamagePercent;
 
 
     [Header("Auto Restore Health")]
-    [SerializeField] public float timeAutoRestoreHp;
-    [SerializeField] public float restorePerSecond;
+    public float timeAutoRestoreHp;
+    public float restorePerSecond;
     private Coroutine restoreHpCoroutine;
 
 

@@ -12,10 +12,10 @@ public class Player : Entity
     public float jumpForce;
     public float dashDuration;
     public float dashSpeed;
-    public float dashColdown;
+    public float dashCooldown;
     public float slideDuration;
     public float slideSpeed;
-    public float slideColdown;
+    public float slideCooldown;
     [Range(0, 1)]
     public float airMoveMultiplier;
     [Range(0, 1)]
@@ -44,6 +44,18 @@ public class Player : Entity
 
     public bool isDead;
 
+    private Player_XP playerXP;
+
+    void OnEnable()
+    {
+        Enemy.OnEnemyDeath += HandleXPReceive;
+    }
+
+    void OnDisable()
+    {
+        Enemy.OnEnemyDeath -= HandleXPReceive;
+    }
+
     protected override void Awake()
     {
         base.Awake();
@@ -60,12 +72,19 @@ public class Player : Entity
         hurtState = new Player_HurtState("isHurt", stateMachine, this);
         deathState = new Player_DeathState("isDeath", stateMachine, this);
         counterState = new Player_CounterState("isCounter", stateMachine, this);
+
+        playerXP = GetComponent<Player_XP>();
     }
 
     protected override void Start()
     {
         base.Start();
         stateMachine.Initialize(idleState);
+    }
+
+    private void HandleXPReceive(float xp)
+    {
+        playerXP.IncrementXP(xp);
     }
 
     public override void OnDead()
