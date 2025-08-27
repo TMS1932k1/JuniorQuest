@@ -16,8 +16,10 @@ public class UI_SkillNode : MonoBehaviour, IPointerDownHandler
     [SerializeField] Image installedBorder;
 
 
-    [SerializeField] Player_XP playerXP;
+    [SerializeField] Player player;
     [SerializeField] UI_SkillNode conflictSkillUI;
+    private Player_XP playerXP;
+    private Player_SkillsManager playerSkillsManager;
 
 
     [SerializeField] Color lockColor;
@@ -26,6 +28,11 @@ public class UI_SkillNode : MonoBehaviour, IPointerDownHandler
     [SerializeField] bool isInstalled;
     public bool needUpdate;
 
+    void Awake()
+    {
+        playerXP = player.GetComponent<Player_XP>();
+        playerSkillsManager = player.GetComponent<Player_SkillsManager>();
+    }
 
     void OnEnable()
     {
@@ -49,24 +56,32 @@ public class UI_SkillNode : MonoBehaviour, IPointerDownHandler
 
     public void InstallSkill()
     {
-        isInstalled = true;
+        // Install to Player_SkillManager
+        playerSkillsManager.InstallSkill(skillData.skillType, out bool success);
 
-        // Add to Player_SkillManager
-
-        UpdateDisplaySkillInfo();
-        UpdateConflictSkillUI(false);
-        needUpdate = true;
+        // Update display
+        if (success)
+        {
+            isInstalled = true;
+            UpdateDisplaySkillInfo();
+            UpdateConflictSkillUI(false);
+            needUpdate = true;
+        }
     }
 
     public void UninstallSkill()
     {
-        isInstalled = false;
+        // Uninstall to Player_SkillManager
+        playerSkillsManager.UnnstallSkill(skillData.skillType, out bool success);
 
-        // Remove to Player_SkillManager
-
-        UpdateDisplaySkillInfo();
-        UpdateConflictSkillUI(true);
-        needUpdate = true;
+        // Update display
+        if (success)
+        {
+            isInstalled = false;
+            UpdateDisplaySkillInfo();
+            UpdateConflictSkillUI(false);
+            needUpdate = true;
+        }
     }
 
     public void CheckEnoughLevel()

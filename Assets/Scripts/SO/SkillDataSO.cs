@@ -4,6 +4,7 @@ using UnityEngine;
 public class SkillDataSO : ScriptableObject
 {
     [Header("Skill details")]
+    public SkillType skillType;
     public Sprite skillImage;
     public string skillName;
     public string description;
