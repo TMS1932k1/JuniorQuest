@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public interface IsCanCounter
+public interface ICanCounter
 {
     public void HandleCounter();
 

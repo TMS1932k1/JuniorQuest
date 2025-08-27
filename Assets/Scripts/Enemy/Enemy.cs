@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class Enemy : Entity, IsCanCounter
+public class Enemy : Entity, ICanCounter
 {
     public static event Action<float> OnEnemyDeath;
 

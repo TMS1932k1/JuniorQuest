@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class UI_SkillNode : MonoBehaviour, IPointerDownHandler
+public class UI_SkillNode : MonoBehaviour, IPointerDownHandler, ISkillInfoEvent
 {
     [Header("Skill Data")]
     [SerializeField] SkillDataSO skillData;
@@ -26,7 +26,9 @@ public class UI_SkillNode : MonoBehaviour, IPointerDownHandler
     [SerializeField] bool isLocked;
     [SerializeField] bool isUnlocked;
     [SerializeField] bool isInstalled;
+    [SerializeField] bool isFullSlot;
     public bool needUpdate;
+
 
     void Awake()
     {
@@ -37,7 +39,7 @@ public class UI_SkillNode : MonoBehaviour, IPointerDownHandler
     void OnEnable()
     {
         CheckEnoughLevel();
-        // Check installed
+        CheckInstall();
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -62,7 +64,7 @@ public class UI_SkillNode : MonoBehaviour, IPointerDownHandler
         // Update display
         if (success)
         {
-            isInstalled = true;
+            CheckInstall();
             UpdateDisplaySkillInfo();
             UpdateConflictSkillUI(false);
             needUpdate = true;
@@ -72,22 +74,32 @@ public class UI_SkillNode : MonoBehaviour, IPointerDownHandler
     public void UninstallSkill()
     {
         // Uninstall to Player_SkillManager
-        playerSkillsManager.UnnstallSkill(skillData.skillType, out bool success);
+        playerSkillsManager.UninstallSkill(skillData.skillType, out bool success);
 
         // Update display
         if (success)
         {
-            isInstalled = false;
+            CheckInstall();
             UpdateDisplaySkillInfo();
-            UpdateConflictSkillUI(false);
+            UpdateConflictSkillUI(true);
             needUpdate = true;
         }
     }
 
-    public void CheckEnoughLevel()
+    private void CheckEnoughLevel()
     {
         isUnlocked = playerXP.GetLevel() >= skillData.unlockLevel;
         needUpdate = true;
+    }
+
+    private void CheckInstall()
+    {
+        isInstalled = playerSkillsManager.IsInstalled(skillData.skillType);
+    }
+
+    private bool CheckFullSlot()
+    {
+        return playerSkillsManager.IsFullSlot();
     }
 
     /// <summary>
@@ -123,6 +135,13 @@ public class UI_SkillNode : MonoBehaviour, IPointerDownHandler
             return SkillStatus.Installed;
         }
 
+        // Full slot
+        if (CheckFullSlot())
+        {
+            mes = $"Full slots to install";
+            return SkillStatus.Locked;
+        }
+
         return SkillStatus.Unlocked;
     }
 
@@ -131,7 +150,7 @@ public class UI_SkillNode : MonoBehaviour, IPointerDownHandler
     /// </summary>
     private void UpdateDisplaySkillInfo()
     {
-        skillInfoUI.DisplayInfo(skillData, GetSkillStatus(out string mes), mes, InstallSkill, UninstallSkill);
+        skillInfoUI.DisplayInfo(skillData, GetSkillStatus(out string mes), mes, this);
     }
 
     /// <summary>

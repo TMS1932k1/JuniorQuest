@@ -5031,53 +5031,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4613991796448538523}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2367573668785002627
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1694660437569611938}
-  - component: {fileID: 1036645363627773368}
-  m_Layer: 7
-  m_Name: Comeback
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1694660437569611938
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2367573668785002627}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 7382290580018075658}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1036645363627773368
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2367573668785002627}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 529715741f5298c43a3a5b6ddf32e18e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skillData: {fileID: 11400000, guid: 1eb81376a7d596b4d92d7726741a499a, type: 2}
-  isInstall: 0
-  lastTimeUsed: 0
 --- !u!1 &4064398693897804363
 GameObject:
   m_ObjectHideFlags: 0
@@ -5153,8 +5106,8 @@ Transform:
   - {fileID: 3130701104992807745}
   - {fileID: 5420862609794858518}
   - {fileID: 3875665921418247156}
-  - {fileID: 4172983462627407600}
   - {fileID: 7382290580018075658}
+  - {fileID: 4172983462627407600}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &1347198271122742812
@@ -5413,8 +5366,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6946b2da3e091324cb627939a5055db0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  windBlade: {fileID: 3869205304069619509}
-  comeback: {fileID: 1036645363627773368}
+  countLimit: 4
+  windBlade: {fileID: 0}
+  comeback: {fileID: 0}
+  shieldBarrier: {fileID: 0}
+  infeno: {fileID: 0}
+  icePrison: {fileID: 0}
+  battleCry: {fileID: 0}
+  invisibility: {fileID: 0}
 --- !u!1 &6439078275457930091
 GameObject:
   m_ObjectHideFlags: 0
@@ -5547,6 +5506,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7382290580018075658}
+  - component: {fileID: 8318672137188306956}
+  - component: {fileID: 7265485542584615057}
+  - component: {fileID: 3140036289012711216}
+  - component: {fileID: 100644680130723320}
+  - component: {fileID: 1274129501066013373}
+  - component: {fileID: 8778725186295740532}
+  - component: {fileID: 8130495309750188429}
   m_Layer: 7
   m_Name: SkillsHolder
   m_TagString: Untagged
@@ -5566,11 +5532,114 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 6648332313297235017}
-  - {fileID: 1694660437569611938}
+  m_Children: []
   m_Father: {fileID: 4613991796448538523}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8318672137188306956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7606095397829615758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ffb6b12d2ef9de4ba54591fa60ede89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillData: {fileID: 0}
+  isInstall: 0
+  lastTimeUsed: 0
+--- !u!114 &7265485542584615057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7606095397829615758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 529715741f5298c43a3a5b6ddf32e18e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillData: {fileID: 0}
+  isInstall: 0
+  lastTimeUsed: 0
+--- !u!114 &3140036289012711216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7606095397829615758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0307ce6de6bf7894ca756b410efb908c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillData: {fileID: 0}
+  isInstall: 0
+  lastTimeUsed: 0
+--- !u!114 &100644680130723320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7606095397829615758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bedb8ee12bf04f04cb078b1bc49f0772, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillData: {fileID: 0}
+  isInstall: 0
+  lastTimeUsed: 0
+--- !u!114 &1274129501066013373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7606095397829615758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1fdaa13cb392d441ae45ba3d3013829, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillData: {fileID: 0}
+  isInstall: 0
+  lastTimeUsed: 0
+--- !u!114 &8778725186295740532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7606095397829615758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea2c532611e34894f9db9778be5a6b5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillData: {fileID: 0}
+  isInstall: 0
+  lastTimeUsed: 0
+--- !u!114 &8130495309750188429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7606095397829615758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95c79e6144ad4fc4f996da561931d614, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillData: {fileID: 0}
+  isInstall: 0
+  lastTimeUsed: 0
 --- !u!1 &8007264731095697440
 GameObject:
   m_ObjectHideFlags: 0
@@ -5602,53 +5671,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4613991796448538523}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &8763686927613217593
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6648332313297235017}
-  - component: {fileID: 3869205304069619509}
-  m_Layer: 7
-  m_Name: WindBlade
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6648332313297235017
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8763686927613217593}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 7382290580018075658}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3869205304069619509
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8763686927613217593}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ffb6b12d2ef9de4ba54591fa60ede89, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skillData: {fileID: 11400000, guid: 3cda8e0cef9b2bd429e0b56779901975, type: 2}
-  isInstall: 0
-  lastTimeUsed: 0
 --- !u!1 &9184971393479641712
 GameObject:
   m_ObjectHideFlags: 0

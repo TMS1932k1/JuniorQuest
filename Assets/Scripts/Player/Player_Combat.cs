@@ -30,7 +30,7 @@ public class Player_Combat : Entity_Combat
         counterTarget = Physics2D.OverlapCircleAll(counterCheckVelocity.position, counterCheckRadius, whatIsCounter);
         foreach (Collider2D target in counterTarget)
         {
-            IsCanCounter canCounter = target.GetComponent<IsCanCounter>();
+            ICanCounter canCounter = target.GetComponent<ICanCounter>();
             if (canCounter != null && canCounter.GetCanCounter)
             {
                 canCounter.HandleCounter();

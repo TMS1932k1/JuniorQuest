@@ -12,10 +12,10 @@ public class UI_SkillInfo : MonoBehaviour
 
 
     private SkillDataSO skillData;
-    private Action InstallMethod;
-    private Action UninstallMethod;
+    private ISkillInfoEvent infoEvent;
     private SkillStatus status;
     private bool needUpdate;
+
 
     void Update()
     {
@@ -31,41 +31,36 @@ public class UI_SkillInfo : MonoBehaviour
     private void UpdateSize()
     {
         if (skillData == null)
-        {
             transform.localScale = Vector3.zero;
-        }
         else
-        {
             transform.localScale = Vector3.one;
-        }
     }
 
-    public void DisplayInfo(SkillDataSO skillData, SkillStatus status, string statusMes, Action installMethod, Action uninstallMethod)
+    public void DisplayInfo(SkillDataSO skillData, SkillStatus status, string statusMes, ISkillInfoEvent infoEvent)
     {
         this.skillData = skillData;
         this.status = status;
         statusText.text = statusMes;
 
-        InstallMethod = installMethod;
-        UninstallMethod = uninstallMethod;
+        this.infoEvent = infoEvent;
 
         needUpdate = true;
     }
 
     public void InstallSkill()
     {
-        if (InstallMethod == null)
+        if (infoEvent == null)
             return;
 
-        InstallMethod();
+        infoEvent.InstallSkill();
     }
 
     public void UninstallSkill()
     {
-        if (UninstallMethod == null)
+        if (infoEvent == null)
             return;
 
-        UninstallMethod();
+        infoEvent.UninstallSkill();
     }
 
     private void UpdateInfo()
