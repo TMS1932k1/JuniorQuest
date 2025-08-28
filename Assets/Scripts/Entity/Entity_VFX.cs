@@ -21,7 +21,7 @@ public class Entity_VFX : MonoBehaviour
 
 
     //Component
-    private SpriteRenderer sr;
+    protected SpriteRenderer sr;
 
 
     private Material originMaterial;

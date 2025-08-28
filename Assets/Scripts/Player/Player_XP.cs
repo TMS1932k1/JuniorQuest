@@ -7,9 +7,15 @@ public class Player_XP : MonoBehaviour
     [SerializeField] int level;
     [SerializeField] float currentXP;
     [SerializeField] float expMutiplier = 100f;
-    [SerializeField] UI_LevelUp lvUpUI;
     private float maxXP;
 
+    private Player_VFX playVFX;
+
+
+    void Awake()
+    {
+        playVFX = GetComponent<Player_VFX>();
+    }
 
     void Start()
     {
@@ -37,7 +43,7 @@ public class Player_XP : MonoBehaviour
         level++;
         maxXP = level * expMutiplier;
 
-        lvUpUI.ShowText(level);
+        playVFX.ShowLevelUpVFX(level);
     }
 
     public int GetLevel() => level;

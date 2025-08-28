@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class UI_SkillNode : MonoBehaviour, IPointerDownHandler, ISkillInfoEvent
+public class UI_SkillNode : MonoBehaviour, ISkillInfoEvent, IPointerDownHandler
 {
     [Header("Skill Data")]
     [SerializeField] SkillDataSO skillData;
@@ -14,14 +14,15 @@ public class UI_SkillNode : MonoBehaviour, IPointerDownHandler, ISkillInfoEvent
     [SerializeField] Image skillImage;
     [SerializeField] UI_SkillInfo skillInfoUI;
     [SerializeField] Image installedBorder;
+    [SerializeField] UI_SkillNode conflictSkillUI;
 
 
     [SerializeField] Player player;
-    [SerializeField] UI_SkillNode conflictSkillUI;
     private Player_XP playerXP;
     private Player_SkillsManager playerSkillsManager;
 
 
+    [Header("Status")]
     [SerializeField] Color lockColor;
     [SerializeField] bool isLocked;
     [SerializeField] bool isUnlocked;
@@ -38,13 +39,9 @@ public class UI_SkillNode : MonoBehaviour, IPointerDownHandler, ISkillInfoEvent
 
     void OnEnable()
     {
+        // Update display when off window
         CheckEnoughLevel();
         CheckInstall();
-    }
-
-    public void OnPointerDown(PointerEventData eventData)
-    {
-        UpdateDisplaySkillInfo();
     }
 
     void Update()
@@ -56,12 +53,17 @@ public class UI_SkillNode : MonoBehaviour, IPointerDownHandler, ISkillInfoEvent
         }
     }
 
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        UpdateDisplaySkillInfo();
+    }
+
     public void InstallSkill()
     {
         // Install to Player_SkillManager
         playerSkillsManager.InstallSkill(skillData.skillType, out bool success);
 
-        // Update display
+        // Update display when success install
         if (success)
         {
             CheckInstall();
@@ -76,7 +78,7 @@ public class UI_SkillNode : MonoBehaviour, IPointerDownHandler, ISkillInfoEvent
         // Uninstall to Player_SkillManager
         playerSkillsManager.UninstallSkill(skillData.skillType, out bool success);
 
-        // Update display
+        // Update display when success uninstall
         if (success)
         {
             CheckInstall();
@@ -179,8 +181,10 @@ public class UI_SkillNode : MonoBehaviour, IPointerDownHandler, ISkillInfoEvent
         conflictSkillUI.needUpdate = true;
     }
 
+
     void OnValidate()
     {
+        // Auto update image, name and name of gameobject
         if (skillData == null)
             return;
 

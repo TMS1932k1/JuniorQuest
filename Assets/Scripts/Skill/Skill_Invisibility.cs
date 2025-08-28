@@ -1,6 +1,57 @@
+using System.Collections;
 using UnityEngine;
 
 public class Skill_Invisibility : Skill_Base
 {
+    [Header("Details")]
+    [Range(0, 1)]
+    [SerializeField] float fadePercent;
 
+    private Player player;
+    private Player_VFX playerVFX;
+
+    private Coroutine ChangeLayerMaskCoroutine;
+
+
+    protected override void Awake()
+    {
+        base.Awake();
+
+        player = GetComponentInParent<Player>();
+        playerVFX = GetComponentInParent<Player_VFX>();
+    }
+
+    public override void PerformSkill()
+    {
+        base.PerformSkill();
+
+        SetLastTimeUsed(); // Cooldowntimer
+        playerVFX.ShowInvisibilityVFX(); // VFX
+        Invisibility();
+    }
+
+    private void Invisibility()
+    {
+        if (ChangeLayerMaskCoroutine != null)
+            StopCoroutine(ChangeLayerMaskCoroutine);
+
+        ChangeLayerMaskCoroutine = StartCoroutine(ChangeLayerMaskCo());
+    }
+
+    /// <summary>
+    /// While duration:
+    ///     - Change Layer = "Invisibility"
+    ///     - Set fade = (fadePercent)
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator ChangeLayerMaskCo()
+    {
+        player.gameObject.layer = LayerMask.NameToLayer("Invisibility");
+        playerVFX.SetFadePlayer(fadePercent);
+
+        yield return new WaitForSeconds(skillData.duration);
+
+        player.gameObject.layer = LayerMask.NameToLayer("Player"); ;
+        playerVFX.SetFadePlayer(1);
+    }
 }

@@ -3,10 +3,12 @@ using UnityEngine.EventSystems;
 
 public class Player_GroundedState : PlayerState
 {
+    private Player_SkillsManager skillsManager;
     private float lastSlidePress;
 
     public Player_GroundedState(string nameState, StateMachine stateMachine, Player player) : base(nameState, stateMachine, player)
     {
+        skillsManager = player.GetComponent<Player_SkillsManager>();
     }
 
     public override void Update()
@@ -43,6 +45,47 @@ public class Player_GroundedState : PlayerState
         if (Input.GetKeyDown(KeyCode.Q))
         {
             stateMachine.ChangeState(player.counterState);
+        }
+
+        HandleUseSkills();
+    }
+
+    private void HandleUseSkills()
+    {
+        switch (skillsManager.HanldeInputUseSkill())
+        {
+            case SkillType.WindBlade:
+                {
+                    if (skillsManager.windBlade.CanBeUse())
+                    {
+                        skillsManager.windBlade.SetLastTimeUsed();
+                        Debug.Log("Use " + skillsManager.windBlade.skillData.skillName);
+                    }
+                    break;
+                }
+
+            case SkillType.Infeno:
+                {
+                    if (skillsManager.infeno.CanBeUse())
+                    {
+                        skillsManager.infeno.SetLastTimeUsed();
+                        Debug.Log("Use " + skillsManager.infeno.skillData.skillName);
+                    }
+                    break;
+                }
+
+            case SkillType.IcePrison:
+                {
+                    if (skillsManager.icePrison.CanBeUse())
+                    {
+                        skillsManager.icePrison.SetLastTimeUsed();
+                        Debug.Log("Use " + skillsManager.icePrison.skillData.skillName);
+                    }
+                    break;
+                }
+
+            default:
+                break;
         }
     }
 

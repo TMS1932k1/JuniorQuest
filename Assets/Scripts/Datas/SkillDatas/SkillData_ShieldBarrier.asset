@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad0bd5619ff0b34498cdfadcf4bc443a, type: 3}
   m_Name: SkillData_ShieldBarrier
   m_EditorClassIdentifier: 
-  skillType: 6
+  skillType: 7
   skillImage: {fileID: 8013616204054527717, guid: 7380195adbf2b8c46b07715a1ed2c8bb, type: 3}
   skillName: Shield Barrier
   description: Generates a protective barrier absorbing incoming damage (reduce 50%

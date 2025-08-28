@@ -63,6 +63,16 @@ public class Entity_Health : MonoBehaviour
             entity.ReceiveKnockBack(isHeavyAttack(finalDamage), CalculateKnockBackDir(damageDealer.position.x));
     }
 
+    public float GetLostHealth()
+    {
+        return stat.GetHealth() - currentHealth;
+    }
+
+    public void Heal(float health)
+    {
+        currentHealth = Mathf.Min(currentHealth + health, stat.GetHealth()); // Don't over max health
+    }
+
     /// <summary>
     /// When player not take damage during time (timeAutoRestoreHp)
     /// Then player auto restore health per 1 second (restorePerSecond)
@@ -85,7 +95,7 @@ public class Entity_Health : MonoBehaviour
     {
         while (currentHealth < stat.GetHealth())
         {
-            currentHealth = Mathf.Min(currentHealth + restorePerSecond, stat.GetHealth()); // Don't over max health
+            Heal(restorePerSecond);
             yield return new WaitForSeconds(1f);
         }
     }

@@ -15,10 +15,10 @@ MonoBehaviour:
   strength: 0
   agility: 0
   vitality: 0
-  damage: 10
+  damage: 15
   critChance: 0
   critPower: 0
   maxHealth: 100
   evasion: 0
-  armor: 20
+  armor: 30
   xp: 50

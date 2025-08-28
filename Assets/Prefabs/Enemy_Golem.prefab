@@ -205,7 +205,7 @@ MonoBehaviour:
       modifiers: []
   offensive:
     damage:
-      baseValue: 10
+      baseValue: 15
       finalValue: 0
       modifiers: []
     critPower:
@@ -226,7 +226,7 @@ MonoBehaviour:
       finalValue: 0
       modifiers: []
     armor:
-      baseValue: 20
+      baseValue: 30
       finalValue: 0
       modifiers: []
   xp: 50

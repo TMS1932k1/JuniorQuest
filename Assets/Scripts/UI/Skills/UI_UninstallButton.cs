@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class UI_SkillInstall : MonoBehaviour, IPointerDownHandler
+public class UI_UninstallButton : MonoBehaviour, IPointerDownHandler
 {
     private UI_SkillInfo skillInfoUI;
 
@@ -12,6 +12,6 @@ public class UI_SkillInstall : MonoBehaviour, IPointerDownHandler
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        skillInfoUI.InstallSkill();
+        skillInfoUI.UninstallSkill();
     }
 }

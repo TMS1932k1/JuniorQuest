@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 4576624404964478530}
   - component: {fileID: 356783883871805820}
   m_Layer: 7
-  m_Name: Buff_Effect
+  m_Name: Effect_Buff
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5293,6 +5293,11 @@ MonoBehaviour:
   maxRandomX: 1
   minRandomY: -1
   maxRandomY: 1
+  lvUpUI: {fileID: 4615305014458187849}
+  durationShow: 2
+  showSpeed: 1.6
+  comebackVFX: {fileID: 1613524328510837019, guid: e1a659342687d914b9603bc06bf64ba6, type: 3}
+  invisibilityVFX: {fileID: 7297240911189589711, guid: 318dc90890517e34d9f683c15e8a1c8b, type: 3}
 --- !u!114 &6898644766248132865
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5307,8 +5312,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 0
   heavyDamagePercent: 0.3
-  timeAutoRestoreHp: 20
-  restorePerSecond: 5
+  timeAutoRestoreHp: 30
+  restorePerSecond: 3
   isDead: 0
 --- !u!114 &1374482801827282004
 MonoBehaviour:
@@ -5353,7 +5358,6 @@ MonoBehaviour:
   level: 1
   currentXP: 0
   expMutiplier: 100
-  lvUpUI: {fileID: 4615305014458187849}
 --- !u!114 &5410002999280293278
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5367,13 +5371,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   countLimit: 4
-  windBlade: {fileID: 0}
-  comeback: {fileID: 0}
-  shieldBarrier: {fileID: 0}
-  infeno: {fileID: 0}
-  icePrison: {fileID: 0}
-  battleCry: {fileID: 0}
-  invisibility: {fileID: 0}
 --- !u!1 &6439078275457930091
 GameObject:
   m_ObjectHideFlags: 0
@@ -5547,7 +5544,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ffb6b12d2ef9de4ba54591fa60ede89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillData: {fileID: 0}
+  skillData: {fileID: 11400000, guid: 3cda8e0cef9b2bd429e0b56779901975, type: 2}
   isInstall: 0
   lastTimeUsed: 0
 --- !u!114 &7265485542584615057
@@ -5562,7 +5559,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 529715741f5298c43a3a5b6ddf32e18e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillData: {fileID: 0}
+  skillData: {fileID: 11400000, guid: 1eb81376a7d596b4d92d7726741a499a, type: 2}
   isInstall: 0
   lastTimeUsed: 0
 --- !u!114 &3140036289012711216
@@ -5577,9 +5574,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0307ce6de6bf7894ca756b410efb908c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillData: {fileID: 0}
+  skillData: {fileID: 11400000, guid: fbec277b50057d5438761a27fef4c617, type: 2}
   isInstall: 0
   lastTimeUsed: 0
+  invisibilityLayer:
+    serializedVersion: 2
+    m_Bits: 2048
+  fadePercent: 0.25
 --- !u!114 &100644680130723320
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5592,7 +5593,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bedb8ee12bf04f04cb078b1bc49f0772, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillData: {fileID: 0}
+  skillData: {fileID: 11400000, guid: 31b2a456445e76e4990c0791b7e95838, type: 2}
   isInstall: 0
   lastTimeUsed: 0
 --- !u!114 &1274129501066013373
@@ -5607,7 +5608,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1fdaa13cb392d441ae45ba3d3013829, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillData: {fileID: 0}
+  skillData: {fileID: 11400000, guid: c976cdd35dba3064aa3276a060996328, type: 2}
   isInstall: 0
   lastTimeUsed: 0
 --- !u!114 &8778725186295740532
@@ -5622,7 +5623,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea2c532611e34894f9db9778be5a6b5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillData: {fileID: 0}
+  skillData: {fileID: 11400000, guid: 590bd5039f5e992409017c51a97a4ef1, type: 2}
   isInstall: 0
   lastTimeUsed: 0
 --- !u!114 &8130495309750188429
@@ -5637,7 +5638,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95c79e6144ad4fc4f996da561931d614, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillData: {fileID: 0}
+  skillData: {fileID: 11400000, guid: 3b460a16e4f6ed54ba89c0eae3648bc1, type: 2}
   isInstall: 0
   lastTimeUsed: 0
 --- !u!1 &8007264731095697440
@@ -5799,5 +5800,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b2d29fb7f284ce419a0eda156c174ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  durationShow: 2
-  showSpeed: 1.6

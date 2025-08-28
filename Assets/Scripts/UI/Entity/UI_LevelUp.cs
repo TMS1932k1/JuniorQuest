@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class UI_LevelUp : MonoBehaviour
 {
-    [SerializeField] float durationShow;
-    [SerializeField] float showSpeed = 1f;
-
-
     //Component
     private CanvasGroup canvasGroup;
     private TextMeshProUGUI levelText;
@@ -34,7 +30,7 @@ public class UI_LevelUp : MonoBehaviour
         transform.rotation = Quaternion.identity;
     }
 
-    public void ShowText(float level)
+    public void ShowText(float level, float durationShow, float showSpeed)
     {
         gameObject.SetActive(true);
         SetText(level);
@@ -42,10 +38,10 @@ public class UI_LevelUp : MonoBehaviour
         if (displayCoroutine != null)
             StopCoroutine(displayCoroutine);
 
-        displayCoroutine = StartCoroutine(ShowTextCo());
+        displayCoroutine = StartCoroutine(ShowTextCo(durationShow, showSpeed));
     }
 
-    private IEnumerator ShowTextCo()
+    private IEnumerator ShowTextCo(float durationShow, float showSpeed)
     {
         while (currentScale < 1)
         {
@@ -63,7 +59,7 @@ public class UI_LevelUp : MonoBehaviour
 
     private void SetText(float level)
     {
-        levelText.text = $"UP Level{level}";
+        levelText.text = $"UP Level {level}";
     }
 
     private void HideText()

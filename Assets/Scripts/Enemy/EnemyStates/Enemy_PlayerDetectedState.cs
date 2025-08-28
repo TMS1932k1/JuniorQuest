@@ -49,7 +49,9 @@ public class Enemy_PlayerDetectedState : EnemyState
     public override void Exit()
     {
         base.Exit();
-        playerTransform = null;
+
+        if (!enemy.isAttack)
+            playerTransform = null;
     }
 
     /// <summary>
