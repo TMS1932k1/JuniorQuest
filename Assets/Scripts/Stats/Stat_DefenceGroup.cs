@@ -6,4 +6,18 @@ public class Stat_DefenceGroup
     public Stat maxHealth;
     public Stat evasion;
     public Stat armor;
+
+    public void AddAllModifierWithPercent(string source, float percent)
+    {
+        armor.AddModifier(source, armor.GetValue() * percent);
+        maxHealth.AddModifier(source, maxHealth.GetValue() * percent);
+        evasion.AddModifier(source, evasion.GetValue() * percent);
+    }
+
+    public void RemoveAllModifierWithPercent(string source)
+    {
+        armor.RemoveModifier(source);
+        maxHealth.RemoveModifier(source);
+        evasion.RemoveModifier(source);
+    }
 }

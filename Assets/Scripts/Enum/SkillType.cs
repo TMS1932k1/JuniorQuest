@@ -3,7 +3,7 @@ using UnityEngine;
 public enum SkillType
 {
     None,
-    WindBlade,
+    FireBlade,
     Comeback,
     Invisibility,
     Infeno,

@@ -8,7 +8,6 @@ public class Skill_Invisibility : Skill_Base
     [SerializeField] float fadePercent;
 
     private Player player;
-    private Player_VFX playerVFX;
 
     private Coroutine ChangeLayerMaskCoroutine;
 
@@ -18,7 +17,6 @@ public class Skill_Invisibility : Skill_Base
         base.Awake();
 
         player = GetComponentInParent<Player>();
-        playerVFX = GetComponentInParent<Player_VFX>();
     }
 
     public override void PerformSkill()

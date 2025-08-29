@@ -12,7 +12,7 @@ public class Player_SkillsManager : MonoBehaviour
 
 
     // Skills
-    public Skill_WindBlade windBlade { get; private set; }
+    public Skill_FireBlade windBlade { get; private set; }
     public Skill_Comeback comeback { get; private set; }
     public Skill_ShieldBarrier shieldBarrier { get; private set; }
     public Skill_Infeno infeno { get; private set; }
@@ -23,7 +23,7 @@ public class Player_SkillsManager : MonoBehaviour
 
     void Awake()
     {
-        windBlade = GetComponentInChildren<Skill_WindBlade>();
+        windBlade = GetComponentInChildren<Skill_FireBlade>();
         comeback = GetComponentInChildren<Skill_Comeback>();
         shieldBarrier = GetComponentInChildren<Skill_ShieldBarrier>();
         infeno = GetComponentInChildren<Skill_Infeno>();
@@ -75,7 +75,7 @@ public class Player_SkillsManager : MonoBehaviour
     {
         switch (type)
         {
-            case SkillType.WindBlade:
+            case SkillType.FireBlade:
                 return windBlade;
 
             case SkillType.Comeback:

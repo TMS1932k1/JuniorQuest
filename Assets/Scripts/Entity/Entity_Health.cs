@@ -11,6 +11,10 @@ public class Entity_Health : MonoBehaviour
     [Range(0, 1)]
     public float heavyDamagePercent;
 
+    [Header("Reduce Damage")]
+    [Range(0, 1)]
+    [SerializeField] float reduceDamagePercent;
+
 
     [Header("Auto Restore Health")]
     public float timeAutoRestoreHp;
@@ -73,6 +77,11 @@ public class Entity_Health : MonoBehaviour
         currentHealth = Mathf.Min(currentHealth + health, stat.GetHealth()); // Don't over max health
     }
 
+    public void SetReduceDamagePercent(float percent)
+    {
+        reduceDamagePercent = percent;
+    }
+
     /// <summary>
     /// When player not take damage during time (timeAutoRestoreHp)
     /// Then player auto restore health per 1 second (restorePerSecond)
@@ -112,8 +121,8 @@ public class Entity_Health : MonoBehaviour
 
     private float CalculateReducedDamage(float damage)
     {
-        float reducePercent = stat.GetArmor() / (100 + stat.GetArmor()); // Scaling constant = 100
-        return damage * (1 - Mathf.Clamp01(reducePercent));
+        float finalReducePercent = stat.GetArmor() / (100 + stat.GetArmor()); // Scaling constant = 100
+        return damage * (1 - Mathf.Clamp01(finalReducePercent + reduceDamagePercent));
     }
 
     private bool MissAttack()

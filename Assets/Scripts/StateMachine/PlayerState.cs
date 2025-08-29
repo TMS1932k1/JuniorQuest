@@ -37,10 +37,8 @@ public class PlayerState : EntityState
             case SkillType.ShieldBarrier:
                 {
                     if (skillsManager.shieldBarrier.CanBeUse())
-                    {
-                        skillsManager.shieldBarrier.SetLastTimeUsed();
-                        Debug.Log("Use " + skillsManager.shieldBarrier.skillData.skillName);
-                    }
+                        skillsManager.shieldBarrier.PerformSkill();
+
                     break;
                 }
 

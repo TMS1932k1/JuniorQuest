@@ -54,7 +54,7 @@ public class Player_GroundedState : PlayerState
     {
         switch (skillsManager.HanldeInputUseSkill())
         {
-            case SkillType.WindBlade:
+            case SkillType.FireBlade:
                 {
                     if (skillsManager.windBlade.CanBeUse())
                     {

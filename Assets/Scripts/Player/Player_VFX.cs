@@ -12,9 +12,11 @@ public class Player_VFX : Entity_VFX
     [Header("Comeback skill")]
     [SerializeField] GameObject comebackVFX;
 
-
     [Header("Invisibility skill")]
     [SerializeField] GameObject invisibilityVFX;
+
+    [Header("Shield Barrier skill")]
+    [SerializeField] GameObject shieldBarrierVFX;
 
 
     public void ShowLevelUpVFX(int level)
@@ -24,14 +26,35 @@ public class Player_VFX : Entity_VFX
 
     public void ShowComebackVFX()
     {
-        GameObject vfx = Instantiate(comebackVFX, transform);
-        Destroy(vfx, 1f);
+        comebackVFX.SetActive(true);
+        Invoke(nameof(HideComebackVFX), 1f);
+    }
+
+    private void HideComebackVFX()
+    {
+        comebackVFX.SetActive(false);
     }
 
     public void ShowInvisibilityVFX()
     {
-        GameObject vfx = Instantiate(invisibilityVFX, transform);
-        Destroy(vfx, 1f);
+        invisibilityVFX.SetActive(true);
+        Invoke(nameof(HideInvisibilityVFX), 1f);
+    }
+
+    private void HideInvisibilityVFX()
+    {
+        invisibilityVFX.SetActive(false);
+    }
+
+    public void ShowShieldBarrierVFX(float durationShow)
+    {
+        shieldBarrierVFX.SetActive(true);
+        Invoke(nameof(HideShieldBarrierVFX), durationShow);
+    }
+
+    private void HideShieldBarrierVFX()
+    {
+        shieldBarrierVFX.SetActive(false);
     }
 
     public void SetFadePlayer(float fadePercent)

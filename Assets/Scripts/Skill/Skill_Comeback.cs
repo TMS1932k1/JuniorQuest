@@ -2,14 +2,12 @@ using UnityEngine;
 
 public class Skill_Comeback : Skill_Base
 {
-    private Player_VFX playerVFX;
     private Player_Health playerHealth;
 
     protected override void Awake()
     {
         base.Awake();
 
-        playerVFX = GetComponentInParent<Player_VFX>();
         playerHealth = GetComponentInParent<Player_Health>();
     }
 

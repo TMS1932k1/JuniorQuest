@@ -12,6 +12,7 @@ public class Entity_Stat : MonoBehaviour
 
     private float limitEvasion = 85f;
 
+
     [ContextMenu("Set up default stats")]
     protected virtual void SetUpDefaultStats()
     {
@@ -105,6 +106,18 @@ public class Entity_Stat : MonoBehaviour
                     return null;
                 }
         }
+    }
+
+    public void AddAllModifierWithPercent(string source, float percent)
+    {
+        offensive.AddAllModifierWithPercent(source, percent);
+        defence.AddAllModifierWithPercent(source, percent);
+    }
+
+    public void RemoveAllModifierWithPercent(string source)
+    {
+        offensive.RemoveAllModifierWithPercent(source);
+        defence.RemoveAllModifierWithPercent(source);
     }
 
     public float GetXp()

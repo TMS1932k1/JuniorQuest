@@ -4,11 +4,15 @@ public class Skill_Base : MonoBehaviour
 {
     public SkillDataSO skillData;
 
+    protected Player_VFX playerVFX;
+
     public bool isInstall;
     public float lastTimeUsed;
 
     protected virtual void Awake()
     {
+        playerVFX = GetComponentInParent<Player_VFX>();
+
         // Avoid cooldown when start (Time.time = 0)
         lastTimeUsed = -skillData.cooldown;
     }
