@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: SkillData_ShieldBarrier
   m_EditorClassIdentifier: 
   skillType: 7
-  skillImage: {fileID: 8013616204054527717, guid: 7380195adbf2b8c46b07715a1ed2c8bb, type: 3}
+  skillImage: {fileID: 8244745962220302406, guid: 7380195adbf2b8c46b07715a1ed2c8bb, type: 3}
   skillName: Shield Barrier
   description: Generates a protective barrier absorbing incoming damage (reduce 50%
     damage in 3s)
   unlockLevel: 20
-  cooldown: 20
-  duration: 3
+  cooldown: 25
+  duration: 5
   damage: 0
-  effectPercent: 0.5
+  effectPercent: 50

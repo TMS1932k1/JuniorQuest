@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public abstract class Entity : MonoBehaviour
+public abstract class Entity : MonoBehaviour, ICanFreeze
 {
     [Header("Ground detection")]
     [SerializeField] protected Transform groundCheckTransform;
@@ -38,7 +38,9 @@ public abstract class Entity : MonoBehaviour
     public Rigidbody2D rb { get; private set; }
 
 
-    public int faceDir { get; private set; } = 1;
+
+    public int faceDir
+    { get; private set; } = 1;
 
     protected virtual void Awake()
     {
@@ -50,7 +52,6 @@ public abstract class Entity : MonoBehaviour
 
     protected virtual void Start()
     {
-
     }
 
     protected virtual void Update()
@@ -128,6 +129,21 @@ public abstract class Entity : MonoBehaviour
     {
         return stateMachine.currentState;
     }
+
+    /// <summary>
+    /// Change to freezedstate 
+    /// </summary>
+    /// <param name="duration">Time freeze</param>
+    public virtual void BeFreezed(float duration)
+    {
+        // Need override in child class when have freezed state
+    }
+
+    public virtual void ExitFreezed()
+    {
+        // Need override in child class when have freezed state
+    }
+
 
     protected virtual void OnDrawGizmos()
     {

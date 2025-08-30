@@ -28,9 +28,18 @@ public class Entity_VFX : MonoBehaviour
     private Coroutine onDamageVFXCoroutine;
 
 
+    // Burn
+    private Color originalColor;
+    [SerializeField] Color burnColor = Color.red;
+    [SerializeField] Color burnDarkColor = Color.red;
+    private Coroutine burnCoroutine;
+
+
     protected virtual void Awake()
     {
         sr = GetComponentInChildren<SpriteRenderer>();
+
+        originalColor = sr.color;
     }
 
     protected virtual void Start()
@@ -70,5 +79,31 @@ public class Entity_VFX : MonoBehaviour
         sr.material = onDamageMaterial;
         yield return new WaitForSeconds(onDamageDuration);
         sr.material = originMaterial;
+    }
+
+    public void PlayBurnVFXCo(float interval)
+    {
+        if (burnCoroutine != null)
+            StopCoroutine(burnCoroutine);
+
+        burnCoroutine = StartCoroutine(BurnCo(interval));
+    }
+
+    public void StopBurnVFXCo()
+    {
+        if (burnCoroutine != null)
+            StopCoroutine(burnCoroutine);
+
+        sr.color = originalColor;
+    }
+
+    private IEnumerator BurnCo(float interval)
+    {
+        while (true)
+        {
+            sr.color = sr.color == burnColor ? burnDarkColor : burnColor;
+
+            yield return new WaitForSeconds(interval);
+        }
     }
 }

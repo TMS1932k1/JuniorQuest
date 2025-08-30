@@ -12,4 +12,5 @@ public enum StatType
     MaxHealth,
     Evasion,
     Armor,
+    Mitigation,
 }

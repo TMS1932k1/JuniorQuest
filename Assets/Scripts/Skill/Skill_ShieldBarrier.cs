@@ -3,22 +3,21 @@ using UnityEngine;
 
 public class Skill_ShieldBarrier : Skill_Base
 {
-    private Player_Health playerHealth;
-
+    private Entity_Stat stat;
     private Coroutine CreateShieldCoroutine;
+
 
     protected override void Awake()
     {
         base.Awake();
 
-        playerHealth = GetComponentInParent<Player_Health>();
+        stat = GetComponentInParent<Entity_Stat>();
     }
 
     public override void PerformSkill()
     {
         base.PerformSkill();
 
-        SetLastTimeUsed(); // Cooldowntimer
         playerVFX.ShowShieldBarrierVFX(skillData.duration); // VFX
         ReduceTakeDamge();
     }
@@ -28,13 +27,13 @@ public class Skill_ShieldBarrier : Skill_Base
         if (CreateShieldCoroutine != null)
             StopCoroutine(CreateShieldCoroutine);
 
-        CreateShieldCoroutine = StartCoroutine(CreateShieldCo());
+        CreateShieldCoroutine = StartCoroutine(IncrementStatCo());
     }
 
-    private IEnumerator CreateShieldCo()
+    private IEnumerator IncrementStatCo()
     {
-        playerHealth.SetReduceDamagePercent(skillData.effectPercent);
+        stat.GetStatWithType(StatType.Mitigation).AddModifier(skillData.skillType.ToString(), skillData.effectPercent);
         yield return new WaitForSeconds(skillData.duration);
-        playerHealth.SetReduceDamagePercent(0);
+        stat.GetStatWithType(StatType.Mitigation).RemoveModifier(skillData.skillType.ToString());
     }
 }

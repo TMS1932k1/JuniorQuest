@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class Enemy : Entity, ICanCounter
@@ -33,6 +34,7 @@ public class Enemy : Entity, ICanCounter
     public Enemy_PlayerDetectedState playerDetectedState;
     public Enemy_DeathState deathState;
     public Enemy_StunnedState stunnedState;
+    public Enemy_FreezedState freezedState;
 
 
     private Entity_Stat stat;
@@ -41,6 +43,7 @@ public class Enemy : Entity, ICanCounter
     protected override void Awake()
     {
         base.Awake();
+
         stat = GetComponent<Entity_Stat>();
     }
 
@@ -52,6 +55,11 @@ public class Enemy : Entity, ICanCounter
     private void OnDisable()
     {
         Player.OnPlayerDeath -= HandlePlayerDeath;
+    }
+
+    protected override void Update()
+    {
+        base.Update();
     }
 
     public override void OnDead()
@@ -104,6 +112,21 @@ public class Enemy : Entity, ICanCounter
             return default;
 
         return playerDetect;
+    }
+
+    public override void BeFreezed(float duration)
+    {
+        base.BeFreezed(duration);
+
+        stateMachine.ChangeState(freezedState);
+        Invoke(nameof(ExitFreezed), duration); // Exit freezed after duration
+    }
+
+    public override void ExitFreezed()
+    {
+        base.ExitFreezed();
+
+        stateMachine.ChangeState(playerDetectedState);
     }
 
     protected override void OnDrawGizmos()

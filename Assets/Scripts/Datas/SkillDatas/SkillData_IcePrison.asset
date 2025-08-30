@@ -13,12 +13,17 @@ MonoBehaviour:
   m_Name: SkillData_IcePrison
   m_EditorClassIdentifier: 
   skillType: 5
+  unlockLevel: 15
+  cooldown: 25
+  duration: 0
+  damage: 0
+  effectPercent: 0
+  effectDuration: 5
+  countDamage: 0
   skillImage: {fileID: 3378112070155288112, guid: 7380195adbf2b8c46b07715a1ed2c8bb, type: 3}
   skillName: Ice Prison
   description: Freezes all enemies within the area, rendering them immobile for a
     certain duration (5s)
-  unlockLevel: 15
-  cooldown: 15
-  duration: 5
-  damage: 0
-  effectPercent: 0
+  radiusArena: 0
+  widthArena: 13
+  heightArena: 2.4

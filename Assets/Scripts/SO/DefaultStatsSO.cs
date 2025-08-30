@@ -11,14 +11,18 @@ public class DefaultStatsSO : ScriptableObject
 
     [Header("Offensive Stats")]
     public float damage;
+    [Range(0, 100)]
     public float critChance;
     public float critPower;
 
 
     [Header("Defence Stats")]
     public float maxHealth;
+    [Range(0, 100)]
     public float evasion;
     public float armor;
+    [Range(0, 100)]
+    public float mitigation;
 
 
     [Header("XP")]

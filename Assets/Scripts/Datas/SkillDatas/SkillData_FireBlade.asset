@@ -16,9 +16,9 @@ MonoBehaviour:
   skillImage: {fileID: 8469456256804645828, guid: 7380195adbf2b8c46b07715a1ed2c8bb, type: 3}
   skillName: Fire Blade
   description: Unleash a slash that sends out energy, dealing ranged damage (100%
-    base + 20)
+    base + 50)
   unlockLevel: 2
-  cooldown: 3
+  cooldown: 5
   duration: 0
-  damage: 20
-  effectPercent: 1
+  damage: 50
+  effectPercent: 100

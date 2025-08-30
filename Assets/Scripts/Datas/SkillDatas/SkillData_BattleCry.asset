@@ -17,7 +17,7 @@ MonoBehaviour:
   skillName: Battle Cry
   description: Increases personal stats for a duration (50% in 8s)
   unlockLevel: 25
-  cooldown: 15
+  cooldown: 36
   duration: 8
   damage: 0
-  effectPercent: 0.5
+  effectPercent: 50

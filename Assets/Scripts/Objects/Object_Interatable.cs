@@ -12,7 +12,7 @@ public class Object_Interatable : MonoBehaviour
     [SerializeField] private float buffDuration = 1f;
     [SerializeField] private Color defenceEffectColor = Color.yellow;
     [SerializeField] private Color damageEffectColor = Color.red;
-    [SerializeField] private Color hpEffectColor = Color.green;
+    [SerializeField] private Color healthEffectColor = Color.green;
     [SerializeField] private StatType statType;
     [SerializeField] private string buffSource;
     [SerializeField] private float buffValue;
@@ -128,7 +128,7 @@ public class Object_Interatable : MonoBehaviour
         {
             case StatType.MaxHealth:
             case StatType.Vitality:
-                return hpEffectColor;
+                return healthEffectColor;
 
             case StatType.Strength:
             case StatType.CritChance:

@@ -5006,10 +5006,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 2
   moveRange: 0.2
-  buffDuration: 5
+  buffDuration: 180
   defenceEffectColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   damageEffectColor: {r: 1, g: 0, b: 0, a: 1}
   hpEffectColor: {r: 0, g: 1, b: 0, a: 1}
   statType: 6
   buffSource: appleHP
-  buffValue: 5
+  buffValue: 20

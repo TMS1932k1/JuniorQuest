@@ -5,12 +5,24 @@ public class SkillDataSO : ScriptableObject
 {
     [Header("Skill details")]
     public SkillType skillType;
-    public Sprite skillImage;
-    public string skillName;
-    public string description;
     public int unlockLevel;
     public float cooldown;
     public float duration;
     public float damage;
+    [Range(0, 100)]
     public float effectPercent;
+    public float effectDuration;
+    public int countHit;
+
+
+    [Header("Display")]
+    public Sprite skillImage;
+    public string skillName;
+    public string description;
+
+
+    [Header("Arena details")]
+    public float radiusArena;
+    public float widthArena;
+    public float heightArena;
 }

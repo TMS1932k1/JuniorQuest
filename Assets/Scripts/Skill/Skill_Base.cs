@@ -47,6 +47,6 @@ public class Skill_Base : MonoBehaviour
 
     public virtual void PerformSkill()
     {
-
+        SetLastTimeUsed(); // Cooldowntimer
     }
 }

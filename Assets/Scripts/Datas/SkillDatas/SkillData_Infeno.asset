@@ -13,12 +13,16 @@ MonoBehaviour:
   m_Name: SkillData_Infeno
   m_EditorClassIdentifier: 
   skillType: 4
+  unlockLevel: 15
+  cooldown: 35
+  duration: 5
+  damage: 25
+  effectPercent: 100
+  effectDuration: 5
+  countHit: 4
   skillImage: {fileID: 4884337891824352890, guid: 7380195adbf2b8c46b07715a1ed2c8bb, type: 3}
   skillName: Infeno
-  description: Creates a blazing area that deals damage to enemies within (100% base
-    + 100)
-  unlockLevel: 15
-  cooldown: 20
-  duration: 5
-  damage: 100
-  effectPercent: 1
+  description: Creates a blazing area that deals damage to enemies within (4 burn))
+  radiusArena: 0
+  widthArena: 8
+  heightArena: 2.5

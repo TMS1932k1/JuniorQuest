@@ -13,6 +13,11 @@ public class Entity_Stat : MonoBehaviour
     private float limitEvasion = 85f;
 
 
+    void Start()
+    {
+        SetUpDefaultStats();
+    }
+
     [ContextMenu("Set up default stats")]
     protected virtual void SetUpDefaultStats()
     {
@@ -25,6 +30,7 @@ public class Entity_Stat : MonoBehaviour
         defence.maxHealth.SetValue(data.maxHealth);
         defence.evasion.SetValue(data.evasion);
         defence.armor.SetValue(data.armor);
+        defence.mitigation.SetValue(data.mitigation);
         xp = data.xp;
     }
 
@@ -42,6 +48,14 @@ public class Entity_Stat : MonoBehaviour
         float agility = major.agility.GetValue();
 
         return Mathf.Clamp(evasion + agility * 0.5f, 0, limitEvasion); // Per point of agility = 0.5 evasion, result not bigger limit
+    }
+
+    public float GetBaseDamageNoCrit()
+    {
+        float damage = offensive.damage.GetValue();
+        float strength = major.strength.GetValue();
+
+        return damage + strength; // Per point of strength = 1 damage
     }
 
     public float GetDamage(out bool isCrit)
@@ -83,6 +97,11 @@ public class Entity_Stat : MonoBehaviour
         return armor + vitality; // Per point of vitality = 1 armor
     }
 
+    public float GetMitigation()
+    {
+        return Mathf.Clamp01(defence.mitigation.GetValue() / 100f);
+    }
+
     public Stat GetStatWithType(StatType type)
     {
         switch (type)
@@ -99,6 +118,7 @@ public class Entity_Stat : MonoBehaviour
             case StatType.MaxHealth: return defence.maxHealth;
             case StatType.Evasion: return defence.evasion;
             case StatType.Armor: return defence.armor;
+            case StatType.Mitigation: return defence.mitigation;
 
             default:
                 {

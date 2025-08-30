@@ -21,4 +21,5 @@ MonoBehaviour:
   maxHealth: 100
   evasion: 0
   armor: 0
+  mitigation: 0
   xp: 0

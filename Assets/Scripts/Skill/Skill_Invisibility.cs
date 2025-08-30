@@ -8,7 +8,6 @@ public class Skill_Invisibility : Skill_Base
     [SerializeField] float fadePercent;
 
     private Player player;
-
     private Coroutine ChangeLayerMaskCoroutine;
 
 
@@ -23,7 +22,6 @@ public class Skill_Invisibility : Skill_Base
     {
         base.PerformSkill();
 
-        SetLastTimeUsed(); // Cooldowntimer
         playerVFX.ShowInvisibilityVFX(); // VFX
         Invisibility();
     }

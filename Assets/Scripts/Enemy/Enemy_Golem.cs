@@ -12,6 +12,7 @@ public class Enemy_Golem : Enemy
         playerDetectedState = new Enemy_PlayerDetectedState("isPlayerDetected", stateMachine, this);
         deathState = new Enemy_DeathState("isDeath", stateMachine, this);
         stunnedState = new Enemy_StunnedState("isStunned", stateMachine, this);
+        freezedState = new Enemy_FreezedState("isFreezed", stateMachine, this);
     }
 
     protected override void Start()

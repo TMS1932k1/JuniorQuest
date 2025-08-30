@@ -225,11 +225,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2993810922328829930, guid: 5d615c28979c09d46bf18d531f461ed0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -14.130001
+      value: -15.63
       objectReference: {fileID: 0}
     - target: {fileID: 2993810922328829930, guid: 5d615c28979c09d46bf18d531f461ed0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 13
+      value: 13.04
       objectReference: {fileID: 0}
     - target: {fileID: 2993810922328829930, guid: 5d615c28979c09d46bf18d531f461ed0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3207,7 +3207,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 8013616204054527717, guid: 7380195adbf2b8c46b07715a1ed2c8bb, type: 3}
+  m_Sprite: {fileID: 8244745962220302406, guid: 7380195adbf2b8c46b07715a1ed2c8bb, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5091,11 +5091,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2993810922328829930, guid: 5d615c28979c09d46bf18d531f461ed0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -26.58
+      value: -28.86
       objectReference: {fileID: 0}
     - target: {fileID: 2993810922328829930, guid: 5d615c28979c09d46bf18d531f461ed0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.0800004
+      value: 9.95
       objectReference: {fileID: 0}
     - target: {fileID: 2993810922328829930, guid: 5d615c28979c09d46bf18d531f461ed0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -59473,7 +59473,7 @@ GameObject:
   - component: {fileID: 1730152763}
   - component: {fileID: 1730152764}
   m_Layer: 5
-  m_Name: Skill_WindBlade
+  m_Name: Skill_FireBlade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -61180,7 +61180,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Wind Blade
+  m_text: Fire Blade
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0202ccca5fd2a0a4294eb4aec04d19be, type: 2}
   m_sharedMaterial: {fileID: -7892674398380464661, guid: 0202ccca5fd2a0a4294eb4aec04d19be, type: 2}

@@ -8,6 +8,7 @@ public class Player_Combat : Entity_Combat
     [Header("Counter details")]
     [SerializeField] LayerMask whatIsCounter;
     public float counterDuration;
+    public float counterCooldown;
     public Transform counterCheckVelocity;
     public float counterCheckRadius;
     Collider2D[] counterTarget;

@@ -6,14 +6,11 @@ public class Entity_Health : MonoBehaviour
     private Entity entity;
     private Entity_Stat stat;
 
+
     [Header("Health")]
     public float currentHealth;
     [Range(0, 1)]
     public float heavyDamagePercent;
-
-    [Header("Reduce Damage")]
-    [Range(0, 1)]
-    [SerializeField] float reduceDamagePercent;
 
 
     [Header("Auto Restore Health")]
@@ -24,6 +21,7 @@ public class Entity_Health : MonoBehaviour
 
     public bool isDead;
     private float lastTimeTakeDamage;
+
 
     protected virtual void Awake()
     {
@@ -39,7 +37,31 @@ public class Entity_Health : MonoBehaviour
 
     protected virtual void Update()
     {
+        if (currentHealth > stat.GetHealth())
+            currentHealth = stat.GetHealth();
+
         AutoRestoreHealth();
+    }
+
+    /// <summary>
+    /// Reduce Health by skill effect, not have damage dealer
+    /// </summary>
+    /// <param name="damage"></param>
+    public virtual void ReduceHealth(float damage)
+    {
+        if (isDead)
+            return;
+
+        // Stop restore HP
+        StopAutoRestoreHP();
+
+        // Reduce damage
+        float finalDamage = CalculateReducedDamage(damage);
+        currentHealth -= finalDamage;
+
+        // Change state
+        if (currentHealth <= 0)
+            Die();
     }
 
     public virtual void ReduceHealth(float damage, out bool isMissed, Transform damageDealer)
@@ -77,11 +99,6 @@ public class Entity_Health : MonoBehaviour
         currentHealth = Mathf.Min(currentHealth + health, stat.GetHealth()); // Don't over max health
     }
 
-    public void SetReduceDamagePercent(float percent)
-    {
-        reduceDamagePercent = percent;
-    }
-
     /// <summary>
     /// When player not take damage during time (timeAutoRestoreHp)
     /// Then player auto restore health per 1 second (restorePerSecond)
@@ -109,7 +126,7 @@ public class Entity_Health : MonoBehaviour
         }
     }
 
-    private void StopAutoRestoreHP()
+    protected void StopAutoRestoreHP()
     {
         lastTimeTakeDamage = Time.time;
         if (restoreHpCoroutine != null)
@@ -119,10 +136,10 @@ public class Entity_Health : MonoBehaviour
         }
     }
 
-    private float CalculateReducedDamage(float damage)
+    protected float CalculateReducedDamage(float damage)
     {
         float finalReducePercent = stat.GetArmor() / (100 + stat.GetArmor()); // Scaling constant = 100
-        return damage * (1 - Mathf.Clamp01(finalReducePercent + reduceDamagePercent));
+        return damage * (1 - Mathf.Clamp01(finalReducePercent + stat.GetMitigation()));
     }
 
     private bool MissAttack()

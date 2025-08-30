@@ -18,6 +18,12 @@ public class Player_VFX : Entity_VFX
     [Header("Shield Barrier skill")]
     [SerializeField] GameObject shieldBarrierVFX;
 
+    [Header("Battle Cry skill")]
+    [SerializeField] GameObject battleCryVFX;
+
+    [Header("Ice Prison skill")]
+    [SerializeField] GameObject icePrisonVFX;
+
 
     public void ShowLevelUpVFX(int level)
     {
@@ -33,6 +39,17 @@ public class Player_VFX : Entity_VFX
     private void HideComebackVFX()
     {
         comebackVFX.SetActive(false);
+    }
+
+    public void ShowIcePrisonVFX()
+    {
+        icePrisonVFX.SetActive(true);
+        Invoke(nameof(HideIcePrisonVFX), 1f);
+    }
+
+    private void HideIcePrisonVFX()
+    {
+        icePrisonVFX.SetActive(false);
     }
 
     public void ShowInvisibilityVFX()
@@ -55,6 +72,17 @@ public class Player_VFX : Entity_VFX
     private void HideShieldBarrierVFX()
     {
         shieldBarrierVFX.SetActive(false);
+    }
+
+    public void ShowBattleCryVFX(float durationShow)
+    {
+        battleCryVFX.SetActive(true);
+        Invoke(nameof(HideBattleCryVFX), durationShow);
+    }
+
+    private void HideBattleCryVFX()
+    {
+        battleCryVFX.SetActive(false);
     }
 
     public void SetFadePlayer(float fadePercent)

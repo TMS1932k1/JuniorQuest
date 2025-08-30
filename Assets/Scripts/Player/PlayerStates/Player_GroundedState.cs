@@ -4,11 +4,15 @@ using UnityEngine.EventSystems;
 public class Player_GroundedState : PlayerState
 {
     private Player_SkillsManager skillsManager;
+    private Player_Combat playerCombat;
+
     private float lastSlidePress;
+    private float lastCounterPress;
 
     public Player_GroundedState(string nameState, StateMachine stateMachine, Player player) : base(nameState, stateMachine, player)
     {
         skillsManager = player.GetComponent<Player_SkillsManager>();
+        playerCombat = player.GetComponent<Player_Combat>();
     }
 
     public override void Update()
@@ -42,9 +46,10 @@ public class Player_GroundedState : PlayerState
         }
 
         // Change CounterState
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Q) && CanCounter())
         {
             stateMachine.ChangeState(player.counterState);
+            lastCounterPress = Time.time;
         }
 
         HandleUseSkills();
@@ -67,20 +72,16 @@ public class Player_GroundedState : PlayerState
             case SkillType.Infeno:
                 {
                     if (skillsManager.infeno.CanBeUse())
-                    {
-                        skillsManager.infeno.SetLastTimeUsed();
-                        Debug.Log("Use " + skillsManager.infeno.skillData.skillName);
-                    }
+                        skillsManager.infeno.PerformSkill();
+
                     break;
                 }
 
             case SkillType.IcePrison:
                 {
                     if (skillsManager.icePrison.CanBeUse())
-                    {
-                        skillsManager.icePrison.SetLastTimeUsed();
-                        Debug.Log("Use " + skillsManager.icePrison.skillData.skillName);
-                    }
+                        skillsManager.icePrison.PerformSkill();
+
                     break;
                 }
 
@@ -92,5 +93,10 @@ public class Player_GroundedState : PlayerState
     private bool CanSlide()
     {
         return Time.time > lastSlidePress + player.slideCooldown;
+    }
+
+    private bool CanCounter()
+    {
+        return Time.time > lastCounterPress + playerCombat.counterCooldown;
     }
 }

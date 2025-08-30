@@ -4,6 +4,7 @@ public class Skill_Comeback : Skill_Base
 {
     private Player_Health playerHealth;
 
+
     protected override void Awake()
     {
         base.Awake();
@@ -15,7 +16,6 @@ public class Skill_Comeback : Skill_Base
     {
         base.PerformSkill();
 
-        SetLastTimeUsed(); // Cooldowntimer
         playerVFX.ShowComebackVFX(); // VFX
         RestoreHealth(); // Restore HP
     }
@@ -26,6 +26,6 @@ public class Skill_Comeback : Skill_Base
     private void RestoreHealth()
     {
         float lostHp = playerHealth.GetLostHealth();
-        playerHealth.Heal(lostHp * skillData.effectPercent);
+        playerHealth.Heal(lostHp * skillData.effectPercent / 100f);
     }
 }

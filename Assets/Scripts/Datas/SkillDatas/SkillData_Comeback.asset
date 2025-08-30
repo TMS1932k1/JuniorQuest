@@ -20,4 +20,4 @@ MonoBehaviour:
   cooldown: 25
   duration: 0
   damage: 0
-  effectPercent: 0.5
+  effectPercent: 50

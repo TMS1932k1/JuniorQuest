@@ -61,10 +61,8 @@ public class PlayerState : EntityState
             case SkillType.BattleCry:
                 {
                     if (skillsManager.battleCry.CanBeUse())
-                    {
-                        skillsManager.battleCry.SetLastTimeUsed();
-                        Debug.Log("Use " + skillsManager.battleCry.skillData.skillName);
-                    }
+                        skillsManager.battleCry.PerformSkill();
+
                     break;
                 }
 
