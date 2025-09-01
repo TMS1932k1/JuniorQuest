@@ -41,10 +41,12 @@ public class Player : Entity
     public Player_HurtState hurtState { get; private set; }
     public Player_DeathState deathState { get; private set; }
     public Player_CounterState counterState { get; private set; }
+    public Player_FireBladeState fireBladeState { get; private set; }
+
 
     public bool isDead;
-
     private Player_XP playerXP;
+
 
     void OnEnable()
     {
@@ -72,6 +74,7 @@ public class Player : Entity
         hurtState = new Player_HurtState("isHurt", stateMachine, this);
         deathState = new Player_DeathState("isDeath", stateMachine, this);
         counterState = new Player_CounterState("isCounter", stateMachine, this);
+        fireBladeState = new Player_FireBladeState("isFireBlade", stateMachine, this);
 
         playerXP = GetComponent<Player_XP>();
     }

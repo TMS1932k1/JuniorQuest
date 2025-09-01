@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerState : EntityState
 {
     public Player player;
-    private Player_SkillsManager skillsManager;
+    protected Player_SkillsManager skillsManager;
 
     private float lastDashPress;
 

@@ -7,7 +7,8 @@ public class Skill_Infeno_Arena : MonoBehaviour
     private float height;
     private Vector2 position;
 
-    [Header("Effect Details")]
+
+    [Header("Details")]
     private float damage;
     private float effectDuration;
     private int countHit;

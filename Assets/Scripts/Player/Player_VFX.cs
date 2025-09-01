@@ -24,6 +24,12 @@ public class Player_VFX : Entity_VFX
     [Header("Ice Prison skill")]
     [SerializeField] GameObject icePrisonVFX;
 
+    [Header("Fire Blade skill")]
+    [SerializeField] GameObject fireBladeVFX;
+
+    [Header("Line Arm skill")]
+    [SerializeField] RectTransform lineArmUI;
+
 
     public void ShowLevelUpVFX(int level)
     {
@@ -83,6 +89,30 @@ public class Player_VFX : Entity_VFX
     private void HideBattleCryVFX()
     {
         battleCryVFX.SetActive(false);
+    }
+
+    public void ShowFireBladeVFX()
+    {
+        fireBladeVFX.SetActive(true);
+        lineArmUI.gameObject.SetActive(true);
+    }
+
+    public void HideFireBladeVFX()
+    {
+        fireBladeVFX.SetActive(false);
+        lineArmUI.gameObject.SetActive(false);
+    }
+
+    public void SetLineArmRotate(out float angleZ)
+    {
+        // Get position of mouse
+        Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mouseWorldPos.z = 0;
+
+        Vector3 dir = mouseWorldPos - lineArmUI.position;
+
+        angleZ = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        lineArmUI.rotation = Quaternion.Euler(0, 0, angleZ);
     }
 
     public void SetFadePlayer(float fadePercent)

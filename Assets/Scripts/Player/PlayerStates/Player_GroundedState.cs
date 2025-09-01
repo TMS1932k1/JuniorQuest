@@ -3,7 +3,6 @@ using UnityEngine.EventSystems;
 
 public class Player_GroundedState : PlayerState
 {
-    private Player_SkillsManager skillsManager;
     private Player_Combat playerCombat;
 
     private float lastSlidePress;
@@ -11,7 +10,6 @@ public class Player_GroundedState : PlayerState
 
     public Player_GroundedState(string nameState, StateMachine stateMachine, Player player) : base(nameState, stateMachine, player)
     {
-        skillsManager = player.GetComponent<Player_SkillsManager>();
         playerCombat = player.GetComponent<Player_Combat>();
     }
 
@@ -61,10 +59,9 @@ public class Player_GroundedState : PlayerState
         {
             case SkillType.FireBlade:
                 {
-                    if (skillsManager.windBlade.CanBeUse())
+                    if (skillsManager.fireBlade.CanBeUse())
                     {
-                        skillsManager.windBlade.SetLastTimeUsed();
-                        Debug.Log("Use " + skillsManager.windBlade.skillData.skillName);
+                        skillsManager.fireBlade.PerformSkill();
                     }
                     break;
                 }

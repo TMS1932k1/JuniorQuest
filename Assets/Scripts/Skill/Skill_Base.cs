@@ -49,4 +49,9 @@ public class Skill_Base : MonoBehaviour
     {
         SetLastTimeUsed(); // Cooldowntimer
     }
+
+    protected virtual void CalcullateDamage(out float finalDamage)
+    {
+        finalDamage = 0;
+    }
 }

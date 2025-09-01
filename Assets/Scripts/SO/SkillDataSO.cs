@@ -9,7 +9,6 @@ public class SkillDataSO : ScriptableObject
     public float cooldown;
     public float duration;
     public float damage;
-    [Range(0, 100)]
     public float effectPercent;
     public float effectDuration;
     public int countHit;

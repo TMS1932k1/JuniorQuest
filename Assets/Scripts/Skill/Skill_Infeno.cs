@@ -23,9 +23,10 @@ public class Skill_Infeno : Skill_Base
         infenoArena.gameObject.SetActive(true);
 
         // Set arena details
+        CalcullateDamage(out float finalDamage);
         infenoArena.SetArenaDetails(
             skillData,
-            CalcullateDamageBurn(),
+            finalDamage,
             transform.position,
             whatIsBurn);
 
@@ -38,9 +39,11 @@ public class Skill_Infeno : Skill_Base
         infenoArena.gameObject.SetActive(false);
     }
 
-    private float CalcullateDamageBurn()
+    protected override void CalcullateDamage(out float finalDamage)
     {
+        base.CalcullateDamage(out finalDamage);
+
         // Damage burn = damage of skill + base damage no crit
-        return skillData.damage + skillData.effectPercent / 100 * stat.GetBaseDamageNoCrit();
+        finalDamage = skillData.damage + skillData.effectPercent / 100 * stat.GetBaseDamageNoCrit();
     }
 }
