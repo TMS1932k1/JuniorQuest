@@ -32,8 +32,8 @@ public class Skill_ShieldBarrier : Skill_Base
 
     private IEnumerator IncrementStatCo()
     {
-        stat.GetStatWithType(StatType.Mitigation).AddModifier(skillData.skillType.ToString(), skillData.effectPercent);
+        stat.AddModifierWithType(StatType.Mitigation, skillData.skillName, skillData.effectPercent);
         yield return new WaitForSeconds(skillData.duration);
-        stat.GetStatWithType(StatType.Mitigation).RemoveModifier(skillData.skillType.ToString());
+        stat.RemoveModifierWithType(StatType.Mitigation, skillData.skillName);
     }
 }

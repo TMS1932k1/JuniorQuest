@@ -32,8 +32,8 @@ public class Skill_BattleCry : Skill_Base
 
     private IEnumerator IncrementStatCo()
     {
-        stat.AddAllModifierWithPercent(skillData.skillType.ToString(), skillData.effectPercent / 100f);
+        stat.AddAllModifierWithPercent(skillData.skillName, skillData.effectPercent / 100f);
         yield return new WaitForSeconds(skillData.duration);
-        stat.RemoveAllModifierWithPercent(skillData.skillType.ToString());
+        stat.RemoveAllModifierWithPercent(skillData.skillName);
     }
 }

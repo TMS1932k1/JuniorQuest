@@ -7,7 +7,9 @@ public class Player_XP : MonoBehaviour
     [SerializeField] int level;
     [SerializeField] float currentXP;
     [SerializeField] float expMutiplier = 100f;
+
     private float maxXP;
+    public bool newLevelUp = true;
 
     private Player_VFX playVFX;
 
@@ -44,6 +46,7 @@ public class Player_XP : MonoBehaviour
         maxXP = level * expMutiplier;
 
         playVFX.ShowLevelUpVFX(level);
+        newLevelUp = true;
     }
 
     public int GetLevel() => level;

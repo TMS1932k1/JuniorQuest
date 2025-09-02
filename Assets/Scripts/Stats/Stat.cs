@@ -19,7 +19,7 @@ public class Stat
 {
     [SerializeField] private float baseValue;
     [SerializeField] private float finalValue;
-    [SerializeField] private List<ModifierStat> modifiers = new List<ModifierStat>();
+    [SerializeField] public List<ModifierStat> modifiers { get; private set; } = new();
 
     private bool isNeedUpdate = true;
 

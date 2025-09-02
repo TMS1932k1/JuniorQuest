@@ -86,13 +86,13 @@ public class Object_Interatable : MonoBehaviour
             // Modifier Stats
             stat = col.GetComponent<Entity_Stat>();
             if (stat)
-                stat.GetStatWithType(statType).AddModifier(buffSource, buffValue);
+                stat.AddModifierWithType(statType, buffSource, buffValue);
         }
         else
         {
             // Remove Modifier Stats
             if (stat)
-                stat.GetStatWithType(statType).RemoveModifier(buffSource);
+                stat.RemoveModifierWithType(statType, buffSource);
 
             Debug.Log("Overtime buff");
             Destroy(gameObject);

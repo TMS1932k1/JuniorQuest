@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Entity_Stat : MonoBehaviour
@@ -11,6 +12,8 @@ public class Entity_Stat : MonoBehaviour
     [SerializeField] float xp;
 
     private float limitEvasion = 85f;
+
+    public bool haveChange = true;
 
 
     void Start()
@@ -70,7 +73,7 @@ public class Entity_Stat : MonoBehaviour
 
     private bool IsCrit()
     {
-        return Random.Range(0, 100) <= GetCritChange();
+        return UnityEngine.Random.Range(0, 100) <= GetCritChange();
     }
 
     public float GetCritPower()
@@ -110,10 +113,12 @@ public class Entity_Stat : MonoBehaviour
             case StatType.Strength: return major.strength;
             case StatType.Agility: return major.agility;
             case StatType.Vitality: return major.vitality;
+
             // Offensive Group
             case StatType.Damage: return offensive.damage;
             case StatType.CritChance: return offensive.critChance;
             case StatType.CritPower: return offensive.critPower;
+
             // Defence Group
             case StatType.MaxHealth: return defence.maxHealth;
             case StatType.Evasion: return defence.evasion;
@@ -128,16 +133,30 @@ public class Entity_Stat : MonoBehaviour
         }
     }
 
+    public void AddModifierWithType(StatType type, string source, float value)
+    {
+        GetStatWithType(type).AddModifier(source, value);
+        haveChange = true;
+    }
+
+    public void RemoveModifierWithType(StatType type, string source)
+    {
+        GetStatWithType(type).RemoveModifier(source);
+        haveChange = true;
+    }
+
     public void AddAllModifierWithPercent(string source, float percent)
     {
         offensive.AddAllModifierWithPercent(source, percent);
         defence.AddAllModifierWithPercent(source, percent);
+        haveChange = true;
     }
 
     public void RemoveAllModifierWithPercent(string source)
     {
         offensive.RemoveAllModifierWithPercent(source);
         defence.RemoveAllModifierWithPercent(source);
+        haveChange = true;
     }
 
     public float GetXp()
