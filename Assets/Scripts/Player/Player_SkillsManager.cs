@@ -32,7 +32,7 @@ public class Player_SkillsManager : MonoBehaviour
         invisibility = GetComponentInChildren<Skill_Invisibility>();
     }
 
-    public void InstallSkill(SkillType type, out bool success)
+    public void InstallSkill(Skill_Type type, out bool success)
     {
         Skill_Base skill = GetSkillWithType(type);
 
@@ -49,7 +49,7 @@ public class Player_SkillsManager : MonoBehaviour
         }
     }
 
-    public void UninstallSkill(SkillType type, out bool success)
+    public void UninstallSkill(Skill_Type type, out bool success)
     {
         Skill_Base skill = GetSkillWithType(type);
 
@@ -71,32 +71,32 @@ public class Player_SkillsManager : MonoBehaviour
     /// </summary>
     /// <param name="type">Enum skill type to found</param>
     /// <returns>Skill need get</returns>
-    public Skill_Base GetSkillWithType(SkillType type)
+    public Skill_Base GetSkillWithType(Skill_Type type)
     {
         switch (type)
         {
-            case SkillType.FireBlade:
+            case Skill_Type.FireBlade:
                 return fireBlade;
 
-            case SkillType.Comeback:
+            case Skill_Type.Comeback:
                 return comeback;
 
-            case SkillType.ShieldBarrier:
+            case Skill_Type.ShieldBarrier:
                 return shieldBarrier;
 
-            case SkillType.IcePrison:
+            case Skill_Type.IcePrison:
                 return icePrison;
 
-            case SkillType.Infeno:
+            case Skill_Type.Infeno:
                 return infeno;
 
-            case SkillType.BattleCry:
+            case Skill_Type.BattleCry:
                 return battleCry;
 
-            case SkillType.Invisibility:
+            case Skill_Type.Invisibility:
                 return invisibility;
 
-            case SkillType.None:
+            case Skill_Type.None:
             default:
                 {
                     Debug.Log("Skill type isn't enable");
@@ -113,9 +113,9 @@ public class Player_SkillsManager : MonoBehaviour
     ///     - Slot 4 = Alpha number 4
     /// </summary>
     /// <returns></returns>
-    public SkillType HanldeInputUseSkill()
+    public Skill_Type HanldeInputUseSkill()
     {
-        SkillType type = SkillType.None;
+        Skill_Type type = Skill_Type.None;
 
         for (int i = 0; i < installedList.Count; i++)
         {
@@ -129,15 +129,15 @@ public class Player_SkillsManager : MonoBehaviour
         return type;
     }
 
-    private SkillType GetInstalledSkillType(int index)
+    private Skill_Type GetInstalledSkillType(int index)
     {
         if (index >= installedList.Count)
-            return SkillType.None;
+            return Skill_Type.None;
 
         return installedList[index].skillData.skillType;
     }
 
-    public bool IsInstalled(SkillType type)
+    public bool IsInstalled(Skill_Type type)
     {
         return GetSkillWithType(type)?.isInstall ?? false;
     }

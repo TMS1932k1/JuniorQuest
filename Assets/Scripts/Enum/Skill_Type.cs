@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public enum SkillType
+public enum Skill_Type
 {
     None,
     FireBlade,

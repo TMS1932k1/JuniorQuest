@@ -113,7 +113,7 @@ public class UI_SkillNode : MonoBehaviour, ISkillInfoEvent, IPointerDownHandler
     /// </summary>
     /// <param name="mes">String to set (statusText) in (UI_SkillInfo)</param>
     /// <returns></returns>
-    private SkillStatus GetSkillStatus(out string mes)
+    private Skill_Status GetSkillStatus(out string mes)
     {
         mes = null;
 
@@ -121,30 +121,30 @@ public class UI_SkillNode : MonoBehaviour, ISkillInfoEvent, IPointerDownHandler
         if (!isUnlocked)
         {
             mes = $"At level {skillData.unlockLevel}";
-            return SkillStatus.Locked;
+            return Skill_Status.Locked;
         }
 
         // Installed conflict skills
         if (isLocked)
         {
             mes = $"Installed conflict skills";
-            return SkillStatus.Locked;
+            return Skill_Status.Locked;
         }
 
         // Already installed
         if (isInstalled)
         {
-            return SkillStatus.Installed;
+            return Skill_Status.Installed;
         }
 
         // Full slot
         if (CheckFullSlot())
         {
             mes = $"Full slots to install";
-            return SkillStatus.Locked;
+            return Skill_Status.Locked;
         }
 
-        return SkillStatus.Unlocked;
+        return Skill_Status.Unlocked;
     }
 
     /// <summary>

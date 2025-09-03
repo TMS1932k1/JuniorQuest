@@ -26,7 +26,7 @@ public class Player_CounterState : PlayerState
 
         if (haveTargers && !isCountered)
         {
-            anim.SetBool("isSuccessCounter", true);
+            anim.SetBool(Paramenter_Player.isSuccessCounter.ToString(), true);
             isCountered = true;
         }
 
@@ -37,7 +37,7 @@ public class Player_CounterState : PlayerState
 
         if (isTrigger)
         {
-            anim.SetBool("isSuccessCounter", false);
+            anim.SetBool(Paramenter_Player.isSuccessCounter.ToString(), false);
             stateMachine.ChangeState(player.idleState);
         }
     }

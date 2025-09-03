@@ -102,25 +102,25 @@ public class Entity_Stat : MonoBehaviour
         return UnityEngine.Random.Range(0, 100) <= GetCritChange();
     }
 
-    public Stat GetStatWithType(StatType type)
+    public Stat GetStatWithType(Stat_Type type)
     {
         switch (type)
         {
             // Major Group
-            case StatType.Strength: return major.strength;
-            case StatType.Agility: return major.agility;
-            case StatType.Vitality: return major.vitality;
+            case Stat_Type.Strength: return major.strength;
+            case Stat_Type.Agility: return major.agility;
+            case Stat_Type.Vitality: return major.vitality;
 
             // Offensive Group
-            case StatType.Damage: return offensive.damage;
-            case StatType.CritChance: return offensive.critChance;
-            case StatType.CritPower: return offensive.critPower;
+            case Stat_Type.Damage: return offensive.damage;
+            case Stat_Type.CritChance: return offensive.critChance;
+            case Stat_Type.CritPower: return offensive.critPower;
 
             // Defence Group
-            case StatType.MaxHealth: return defence.maxHealth;
-            case StatType.Evasion: return defence.evasion;
-            case StatType.Armor: return defence.armor;
-            case StatType.Mitigation: return defence.mitigation;
+            case Stat_Type.MaxHealth: return defence.maxHealth;
+            case Stat_Type.Evasion: return defence.evasion;
+            case Stat_Type.Armor: return defence.armor;
+            case Stat_Type.Mitigation: return defence.mitigation;
 
             default:
                 {
@@ -130,13 +130,13 @@ public class Entity_Stat : MonoBehaviour
         }
     }
 
-    public void AddModifierWithType(StatType type, string source, float value)
+    public void AddModifierWithType(Stat_Type type, string source, float value)
     {
         GetStatWithType(type).AddModifier(source, value);
         haveChange = true;
     }
 
-    public void RemoveModifierWithType(StatType type, string source)
+    public void RemoveModifierWithType(Stat_Type type, string source)
     {
         GetStatWithType(type).RemoveModifier(source);
         haveChange = true;

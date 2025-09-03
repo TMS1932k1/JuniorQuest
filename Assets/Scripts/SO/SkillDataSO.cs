@@ -4,7 +4,7 @@ using UnityEngine;
 public class SkillDataSO : ScriptableObject
 {
     [Header("Skill details")]
-    public SkillType skillType;
+    public Skill_Type skillType;
     public int unlockLevel;
     public float cooldown;
     public float duration;

@@ -122,17 +122,17 @@ public class ObjectBuff : MonoBehaviour
     {
         switch (data.statType)
         {
-            case StatType.MaxHealth:
-            case StatType.Vitality:
+            case Stat_Type.MaxHealth:
+            case Stat_Type.Vitality:
                 return healthEffectColor;
 
-            case StatType.Strength:
-            case StatType.CritChance:
-            case StatType.CritPower:
+            case Stat_Type.Strength:
+            case Stat_Type.CritChance:
+            case Stat_Type.CritPower:
                 return damageEffectColor;
 
-            case StatType.Agility:
-            case StatType.Armor:
+            case Stat_Type.Agility:
+            case Stat_Type.Armor:
                 return defenceEffectColor;
 
             default:
