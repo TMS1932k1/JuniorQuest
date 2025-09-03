@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Player_FallState : Player_AiredState
 {
+    private bool isJumpTwo;
+
     public Player_FallState(string nameState, StateMachine stateMachine, Player player) : base(nameState, stateMachine, player)
     {
     }
@@ -12,17 +14,23 @@ public class Player_FallState : Player_AiredState
 
         if (player.wallDetect && !player.groundDetect)
         {
+            isJumpTwo = false;
             stateMachine.ChangeState(player.wallSlideState);
         }
 
         if (player.groundDetect)
         {
+            isJumpTwo = false;
             stateMachine.ChangeState(player.idleState);
         }
-    }
 
-    public override void Exit()
-    {
-        base.Exit();
+        // Change JumpState (Jump Two)
+        if (Input.GetKeyDown(KeyCode.Space) && !isJumpTwo)
+        {
+            isJumpTwo = true;
+            anim.SetTrigger("jumpTwo");
+
+            stateMachine.ChangeState(player.jumpState);
+        }
     }
 }

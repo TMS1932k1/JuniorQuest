@@ -46,7 +46,7 @@ public class UI_StatInfo : MonoBehaviour
         vitalityText.text = $"{StatType.Vitality}:\t{stat.GetStatWithType(StatType.Vitality).GetValue()}";
 
         // Offensive
-        damageText.text = stat.GetBaseDamageNoCrit().ToString();
+        damageText.text = stat.GetDamage().ToString();
         critChanceText.text = stat.GetCritChange().ToString();
         critPowerText.text = stat.GetCritPower().ToString();
 

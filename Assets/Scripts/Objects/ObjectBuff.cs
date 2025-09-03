@@ -1,21 +1,17 @@
 using System.Collections;
 using UnityEngine;
 
-public class Object_Interatable : MonoBehaviour
+public class ObjectBuff : MonoBehaviour
 {
-    [Header("Move deteils")]
+    [SerializeField] ObjectBuffDataSO data;
+
+
+    [Header("Display")]
     [SerializeField] private float moveSpeed;
     [SerializeField] private float moveRange;
-
-
-    [Header("Buff details")]
-    [SerializeField] private float buffDuration = 1f;
     [SerializeField] private Color defenceEffectColor = Color.yellow;
     [SerializeField] private Color damageEffectColor = Color.red;
     [SerializeField] private Color healthEffectColor = Color.green;
-    [SerializeField] private StatType statType;
-    [SerializeField] private string buffSource;
-    [SerializeField] private float buffValue;
 
 
     // Components
@@ -70,7 +66,7 @@ public class Object_Interatable : MonoBehaviour
         HideObject();
 
         ApplyBuff(true, col);
-        yield return new WaitForSeconds(buffDuration);
+        yield return new WaitForSeconds(data.duration);
         ApplyBuff(false, col);
     }
 
@@ -86,13 +82,13 @@ public class Object_Interatable : MonoBehaviour
             // Modifier Stats
             stat = col.GetComponent<Entity_Stat>();
             if (stat)
-                stat.AddModifierWithType(statType, buffSource, buffValue);
+                stat.AddModifierWithType(data.statType, data.source, data.value);
         }
         else
         {
             // Remove Modifier Stats
             if (stat)
-                stat.RemoveModifierWithType(statType, buffSource);
+                stat.RemoveModifierWithType(data.statType, data.source);
 
             Debug.Log("Overtime buff");
             Destroy(gameObject);
@@ -124,7 +120,7 @@ public class Object_Interatable : MonoBehaviour
 
     private Color GetColorOfBuff()
     {
-        switch (statType)
+        switch (data.statType)
         {
             case StatType.MaxHealth:
             case StatType.Vitality:
@@ -142,6 +138,17 @@ public class Object_Interatable : MonoBehaviour
             default:
                 return Color.white;
         }
+    }
+
+    void OnValidate()
+    {
+        if (data == null)
+            return;
+
+        sr = GetComponentInChildren<SpriteRenderer>();
+        sr.sprite = data.image;
+
+        gameObject.name = "ObjectBuff_" + data.source.Replace(" ", "");
     }
 }
 

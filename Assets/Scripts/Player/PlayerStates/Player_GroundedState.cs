@@ -37,7 +37,7 @@ public class Player_GroundedState : PlayerState
         }
 
         // Change SlideState
-        if (Input.GetKeyDown(KeyCode.Z) && !player.wallDetect && CanSlide())
+        if (Input.GetKeyDown(KeyCode.LeftShift) && !player.wallDetect && CanSlide())
         {
             stateMachine.ChangeState(player.slideState);
             lastSlidePress = Time.time;

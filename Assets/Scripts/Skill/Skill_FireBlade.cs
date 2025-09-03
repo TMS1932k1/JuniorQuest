@@ -40,6 +40,6 @@ public class Skill_FireBlade : Skill_Base
         base.CalcullateDamage(out finalDamage);
 
         // Slash damage = 200% base damage
-        finalDamage = stat.GetDamage(out bool isCrit) * skillData.effectPercent / 100;
+        finalDamage = stat.GetDamageWithCrit(out bool isCrit) * skillData.effectPercent / 100;
     }
 }

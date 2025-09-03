@@ -5,7 +5,6 @@ public class PlayerState : EntityState
     public Player player;
     protected Player_SkillsManager skillsManager;
 
-    private float lastDashPress;
 
     public PlayerState(string nameState, StateMachine stateMachine, Player player) : base(nameState, stateMachine, player)
     {
@@ -19,13 +18,6 @@ public class PlayerState : EntityState
     public override void Update()
     {
         base.Update();
-
-        // Change DashState
-        if (Input.GetKeyDown(KeyCode.LeftShift) && !player.wallDetect && !player.isDead && CanDash())
-        {
-            stateMachine.ChangeState(player.dashState);
-            lastDashPress = Time.time;
-        }
 
         HandleUseSkills();
     }
@@ -69,11 +61,5 @@ public class PlayerState : EntityState
             default:
                 break;
         }
-    }
-
-    private bool CanDash()
-    {
-        return Time.time > lastDashPress + player.dashCooldown
-            && stateMachine.currentState != player.counterState;
     }
 }

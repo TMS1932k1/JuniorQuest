@@ -36,7 +36,7 @@ public class Entity_Combat : MonoBehaviour
 
     private void PerformDamage(Collider2D target)
     {
-        damage = stat.GetDamage(out bool isCrit);
+        damage = stat.GetDamageWithCrit(out bool isCrit);
 
         target.gameObject.GetComponent<Entity_Health>().ReduceHealth(damage, out bool isMissed, transform);
 

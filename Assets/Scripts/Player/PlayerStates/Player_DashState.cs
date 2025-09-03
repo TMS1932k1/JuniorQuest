@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Player_DashState : PlayerState
+public class Player_DashState : Player_AiredState
 {
     private float originGravity;
 
@@ -26,14 +26,7 @@ public class Player_DashState : PlayerState
 
         if (stateTimer < 0 || CancleIfNeed())
         {
-            if (player.groundDetect)
-            {
-                stateMachine.ChangeState(player.idleState);
-            }
-            else
-            {
-                stateMachine.ChangeState(player.fallState);
-            }
+            stateMachine.ChangeState(player.fallState);
         }
     }
 
@@ -43,6 +36,8 @@ public class Player_DashState : PlayerState
 
         StopMoving();
         rb.gravityScale = originGravity;
+
+        lastDashPress = Time.time;
     }
 
     private bool CancleIfNeed()

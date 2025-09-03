@@ -44,6 +44,6 @@ public class Skill_Infeno : Skill_Base
         base.CalcullateDamage(out finalDamage);
 
         // Damage burn = damage of skill + base damage no crit
-        finalDamage = skillData.damage + skillData.effectPercent / 100 * stat.GetBaseDamageNoCrit();
+        finalDamage = skillData.damage + skillData.effectPercent / 100 * stat.GetDamage();
     }
 }

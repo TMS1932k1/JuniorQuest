@@ -5,11 +5,12 @@ public class Entity_Stat : MonoBehaviour
 {
     [SerializeField] DefaultStatsSO data;
 
-
+    [Header("Stat Groups")]
     [SerializeField] Stat_MajorGroup major;
     [SerializeField] Stat_OffensiveGroup offensive;
     [SerializeField] Stat_DefenceGroup defence;
     [SerializeField] float xp;
+
 
     private float limitEvasion = 85f;
 
@@ -50,30 +51,21 @@ public class Entity_Stat : MonoBehaviour
         float evasion = defence.evasion.GetValue();
         float agility = major.agility.GetValue();
 
-        return Mathf.Clamp(evasion + agility * 0.5f, 0, limitEvasion); // Per point of agility = 0.5 evasion, result not bigger limit
+        return Mathf.Clamp(evasion + agility * 1f, 0, limitEvasion); // Per point of agility = 1 evasion, result not bigger limit
     }
 
-    public float GetBaseDamageNoCrit()
+    public float GetDamage()
     {
         float damage = offensive.damage.GetValue();
         float strength = major.strength.GetValue();
 
-        return damage + strength; // Per point of strength = 1 damage
+        return damage + strength * 2f; // Per point of strength = 2 damage
     }
 
-    public float GetDamage(out bool isCrit)
+    public float GetDamageWithCrit(out bool isCrit)
     {
-        float damage = offensive.damage.GetValue();
-        float strength = major.strength.GetValue();
-        float sumDamage = damage + strength; // Per point of strength = 1 damage
-
         isCrit = IsCrit();
-        return sumDamage * (isCrit ? (1 + GetCritPower() / 100) : 1);
-    }
-
-    private bool IsCrit()
-    {
-        return UnityEngine.Random.Range(0, 100) <= GetCritChange();
+        return GetDamage() * (isCrit ? (1 + GetCritPower() / 100) : 1);
     }
 
     public float GetCritPower()
@@ -81,7 +73,7 @@ public class Entity_Stat : MonoBehaviour
         float critPower = offensive.critPower.GetValue();
         float strength = major.strength.GetValue();
 
-        return critPower + strength * 0.5f; // Per point of strength = 0.5 crit power
+        return critPower + strength * 10f; // Per point of strength = 10 crit power
     }
 
     public float GetCritChange()
@@ -89,7 +81,7 @@ public class Entity_Stat : MonoBehaviour
         float critChance = offensive.critChance.GetValue();
         float agility = major.agility.GetValue();
 
-        return critChance + agility * 0.3f; // Per point of agility = 0.3 crit chance
+        return critChance + agility * 5f; // Per point of agility = 5 crit chance
     }
 
     public float GetArmor()
@@ -97,12 +89,17 @@ public class Entity_Stat : MonoBehaviour
         float armor = defence.armor.GetValue();
         float vitality = major.vitality.GetValue();
 
-        return armor + vitality; // Per point of vitality = 1 armor
+        return armor + vitality * 3f; // Per point of vitality = 2 armor
     }
 
     public float GetMitigation()
     {
         return Mathf.Clamp01(defence.mitigation.GetValue() / 100f);
+    }
+
+    private bool IsCrit()
+    {
+        return UnityEngine.Random.Range(0, 100) <= GetCritChange();
     }
 
     public Stat GetStatWithType(StatType type)
