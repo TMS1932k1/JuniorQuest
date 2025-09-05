@@ -1,43 +1,49 @@
+using System.Collections;
 using UnityEngine;
 
 public class Skill_Infeno : Skill_Base
 {
     [Header("Infeno Arena")]
-    [SerializeField] Skill_Infeno_Arena infenoArena;
-    [SerializeField] LayerMask whatIsBurn;
+    public LayerMask whatIsBurn;
+
 
     private Entity_Stat stat;
+    private ObjectPool_SkillInfeno pool;
+    private Coroutine CreateArenaCoroutine;
+
 
     protected override void Awake()
     {
         base.Awake();
 
         stat = GetComponentInParent<Entity_Stat>();
+        pool = GetComponent<ObjectPool_SkillInfeno>();
     }
 
     public override void PerformSkill()
     {
         base.PerformSkill();
 
+        if (CreateArenaCoroutine != null)
+            StopCoroutine(CreateArenaCoroutine);
+
+        CreateArenaCoroutine = StartCoroutine(CreateArenaCo());
+    }
+
+    private IEnumerator CreateArenaCo()
+    {
         // Show Infeno arena
-        infenoArena.gameObject.SetActive(true);
+        Skill_Infeno_Arena infenoArena = pool.GetObject();
 
         // Set arena details
         CalcullateDamage(out float finalDamage);
-        infenoArena.SetArenaDetails(
-            skillData,
-            finalDamage,
-            transform.position,
-            whatIsBurn);
+        infenoArena.SetArenaDetails(finalDamage, transform.position);
 
-        // Hide arena after duration
-        Invoke(nameof(HideInfenoArena), skillData.duration);
+        // Hide then duration
+        yield return new WaitForSeconds(skillData.duration);
+        pool.ReturnObject(infenoArena);
     }
 
-    private void HideInfenoArena()
-    {
-        infenoArena.gameObject.SetActive(false);
-    }
 
     protected override void CalcullateDamage(out float finalDamage)
     {

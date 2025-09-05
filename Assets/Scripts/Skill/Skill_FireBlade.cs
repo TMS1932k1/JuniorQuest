@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Skill_FireBlade : Skill_Base
 {
-    [SerializeField] Skill_FireBlade_Slash slash;
+    private ObjectPool_FireBlade pool;
 
     private Entity_Stat stat;
 
@@ -14,6 +14,7 @@ public class Skill_FireBlade : Skill_Base
 
         player = GetComponentInParent<Player>();
         stat = GetComponentInParent<Entity_Stat>();
+        pool = GetComponent<ObjectPool_FireBlade>();
     }
 
     public override void PerformSkill()
@@ -25,14 +26,14 @@ public class Skill_FireBlade : Skill_Base
 
     public void CreateFireBlade(float angleZ)
     {
-        slash.gameObject.SetActive(true);
+        Skill_FireBlade_Slash slash = pool.GetObject();
 
-        // Set Damage
         CalcullateDamage(out float finalDamage);
         slash.SetBladeDetails(finalDamage, skillData.effectDuration);
-
-        // Set Rotate
         slash.transform.rotation = Quaternion.Euler(0, 0, angleZ);
+
+        slash.SetMove();
+
     }
 
     protected override void CalcullateDamage(out float finalDamage)

@@ -2,18 +2,20 @@ using UnityEngine;
 
 public class Skill_Infeno_Arena : MonoBehaviour
 {
-    [Header("Display")]
-    private float width;
-    private float height;
+    private Skill_Infeno infeno;
+
     private Vector2 position;
-
-
-    [Header("Details")]
+    private float height;
+    private float width;
     private float damage;
-    private float effectDuration;
-    private int countHit;
-    private LayerMask whatIsBurn;
 
+
+    void Awake()
+    {
+        infeno = GetComponentInParent<Skill_Infeno>();
+        width = infeno.skillData.widthArena;
+        height = infeno.skillData.heightArena;
+    }
 
     void Update()
     {
@@ -25,29 +27,27 @@ public class Skill_Infeno_Arena : MonoBehaviour
 
     private void Burn()
     {
-        Collider2D[] burnTargets = Physics2D.OverlapBoxAll(transform.position, new Vector2(width, height), 0, whatIsBurn);
+        // Get all targets in arena
+        Collider2D[] burnTargets = Physics2D.OverlapBoxAll(transform.position, new Vector2(width, height), 0, infeno.whatIsBurn);
 
+        // Burn effect to targets
         foreach (Collider2D target in burnTargets)
         {
             ICanBurn canBurnTarget = target.GetComponent<ICanBurn>();
-
             if (canBurnTarget != null && canBurnTarget.GetCanBurn())
             {
-                canBurnTarget.BeBurn(damage, effectDuration, countHit);
+                float duration = infeno.skillData.effectDuration;
+                int countHit = infeno.skillData.countHit;
+
+                canBurnTarget.BeBurn(damage, duration, countHit);
             }
         }
     }
 
-    public void SetArenaDetails(SkillDataSO data, float damage, Vector2 position, LayerMask whatIsBurn)
+    public void SetArenaDetails(float damage, Vector2 position)
     {
-        height = data.heightArena;
-        width = data.widthArena;
-        effectDuration = data.effectDuration;
-        countHit = data.countHit;
-
         this.damage = damage;
         this.position = position;
-        this.whatIsBurn = whatIsBurn;
     }
 
     private void OnDrawGizmos()

@@ -4,19 +4,21 @@ public class Skill_FireBlade_Slash : MonoBehaviour
 {
     [Header("Details")]
     [SerializeField] float speed;
-    [SerializeField] Transform playerTransform;
-
-
-    private Animator anim;
-
     private float timer;
     private bool isHit;
     private float damage;
 
 
+    private Animator anim;
+    private Rigidbody2D rb;
+    private ObjectPool_FireBlade pool;
+
+
     void Awake()
     {
         anim = GetComponentInChildren<Animator>();
+        rb = GetComponent<Rigidbody2D>();
+        pool = GetComponentInParent<ObjectPool_FireBlade>();
     }
 
     void OnEnable()
@@ -29,36 +31,31 @@ public class Skill_FireBlade_Slash : MonoBehaviour
     {
         timer -= Time.deltaTime;
 
-        if (!isHit)
-            MoveSlash();
-
         if (timer <= 0 && !isHit)
             HideSlash();
     }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
+        rb.linearVelocity = Vector2.zero; // Stop moving
         anim.SetTrigger("hit");
         isHit = true;
 
         if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
-            collision.gameObject.GetComponent<Entity_Health>().ReduceHealth(damage, out bool isMissed, playerTransform);
+            collision.gameObject.GetComponent<Entity_Health>().ReduceHealth(damage, out bool isMissed, pool.transform);
         }
     }
 
-    private void MoveSlash()
+    public void SetMove()
     {
-        // Slash move straight
-        transform.position += transform.right * speed * Time.deltaTime;
+        rb.linearVelocity = transform.right * speed;
     }
 
     public void HideSlash()
     {
-        transform.position = playerTransform.position;
-        transform.rotation = Quaternion.identity;
-
-        gameObject.SetActive(false);
+        transform.rotation = Quaternion.identity; // Reset rotate
+        pool.ReturnObject(this);
     }
 
     public void SetBladeDetails(float damage, float duration)

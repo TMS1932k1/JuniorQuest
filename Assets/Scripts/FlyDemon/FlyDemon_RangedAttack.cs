@@ -3,7 +3,7 @@ using UnityEngine;
 public class FlyDemon_RangedAttack : MonoBehaviour
 {
     [Header("Details")]
-    [SerializeField] float speedMove;
+    [SerializeField] float speed;
     private float damage;
     private bool isCrit;
 
@@ -40,6 +40,6 @@ public class FlyDemon_RangedAttack : MonoBehaviour
 
     public void SetMove()
     {
-        rb.linearVelocity = transform.right * speedMove;
+        rb.linearVelocity = transform.right * speed;
     }
 }
