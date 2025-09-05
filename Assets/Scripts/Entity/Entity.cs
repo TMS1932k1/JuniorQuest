@@ -38,9 +38,9 @@ public abstract class Entity : MonoBehaviour, ICanFreeze
     public Rigidbody2D rb { get; private set; }
 
 
-
     public int faceDir
-    { get; private set; } = 1;
+    { get; protected set; } = 1;
+
 
     protected virtual void Awake()
     {

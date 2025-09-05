@@ -5,7 +5,7 @@ public enum Paramenter_Enemy
     isIdle,
     isMove,
     isAttack,
-    isPlayerDetected,
+    isDetected,
     speedMutiplier,
     xVelocity,
     isDeath,

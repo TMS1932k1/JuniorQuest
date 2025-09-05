@@ -21,10 +21,9 @@ public class Enemy_AttackState : EnemyState
     {
         base.Update();
 
-
         if (isTrigger)
         {
-            stateMachine.ChangeState(enemy.playerDetectedState);
+            stateMachine.ChangeState(enemy.detectedState);
         }
     }
 
@@ -34,13 +33,8 @@ public class Enemy_AttackState : EnemyState
 
         if (enemy.canStunned)
         {
-            enemyVFX.EnableCounterAlert(false);
+            enemyVFX?.EnableCounterAlert(false);
             enemy.canStunned = false;
         }
-    }
-
-    public override void CallTrigger()
-    {
-        base.CallTrigger();
     }
 }

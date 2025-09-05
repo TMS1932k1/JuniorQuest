@@ -203,7 +203,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: jump/fall
+  m_Name: Blend_Jump/Fall
   m_Speed: 0.7
   m_CycleOffset: 0
   m_Transitions:
@@ -1688,7 +1688,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: jump/fall 2
+  m_Name: Blend_Jump/Fall 2
   m_Speed: 0.7
   m_CycleOffset: 0
   m_Transitions:

@@ -10,15 +10,18 @@ public class AttackCircle
 public class Entity_Combat : MonoBehaviour
 {
     protected Entity_VFX entityVFX;
-    private Entity_Stat stat;
+    protected Entity_Stat stat;
+
 
     [Header("Attack Circles Check")]
-    [SerializeField] private AttackCircle[] attackCircles;
-    [SerializeField] private LayerMask whatIsTarget;
+    [SerializeField] protected AttackCircle[] attackCircles;
+    [SerializeField] protected LayerMask whatIsTarget;
 
-    private int attackCircleIndex;
-    private float damage;
-    private AttackCircle currentAttackCircle;
+
+    protected int attackCircleIndex;
+    protected float damage;
+    protected AttackCircle currentAttackCircle;
+
 
     protected virtual void Awake()
     {
@@ -26,7 +29,7 @@ public class Entity_Combat : MonoBehaviour
         stat = GetComponent<Entity_Stat>();
     }
 
-    public void PerformAttack()
+    public virtual void PerformAttack()
     {
         foreach (Collider2D target in GetTargetColliders())
         {
@@ -42,7 +45,6 @@ public class Entity_Combat : MonoBehaviour
 
         if (!isMissed)
             entityVFX.CreateHitVFX(target.transform.position, isCrit);
-
     }
 
     /// <summary>

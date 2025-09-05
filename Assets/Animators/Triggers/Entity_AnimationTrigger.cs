@@ -5,6 +5,7 @@ public class Entity_AnimationTrigger : MonoBehaviour
     protected Entity entity;
     protected Entity_Combat entityCombat;
 
+
     protected virtual void Awake()
     {
         entity = GetComponentInParent<Entity>();

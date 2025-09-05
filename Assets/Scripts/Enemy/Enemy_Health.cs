@@ -32,7 +32,7 @@ public class Enemy_Health : Entity_Health
             entityVFX.PlayOnDamageVFXCO();
 
             // Detect Player
-            ChangePlayerDectectedState(damageDealer);
+            ChangeDectectedState(damageDealer);
         }
     }
 
@@ -43,17 +43,17 @@ public class Enemy_Health : Entity_Health
     }
 
     /// <summary>
-    /// Change to (PlayerDetectedState) when player damage behind enemy
+    /// Change to (DetectedState) when player damage behind enemy
     /// </summary>
-    /// <param name="damageTransform">Transform of player to reference in (PlayerDetectedState)</param>
-    private void ChangePlayerDectectedState(Transform damageTransform)
+    /// <param name="damageTransform">Transform of player to reference in (DetectedState)</param>
+    private void ChangeDectectedState(Transform damageTransform)
     {
         if (enemy.GetCurrentState() != enemy.attackState
-            && enemy.GetCurrentState() != enemy.playerDetectedState
+            && enemy.GetCurrentState() != enemy.detectedState
             && enemy.GetCurrentState() != enemy.freezedState)
         {
             this.damageTransform = damageTransform;
-            enemy.stateMachine.ChangeState(enemy.playerDetectedState);
+            enemy.stateMachine.ChangeState(enemy.detectedState);
         }
     }
 }

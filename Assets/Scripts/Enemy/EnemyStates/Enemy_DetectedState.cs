@@ -1,12 +1,13 @@
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Enemy_PlayerDetectedState : EnemyState
+public class Enemy_DetectedState : EnemyState
 {
-    private Transform playerTransform;
-    private float lastPlayerDetectTime;
+    protected Transform playerTransform;
+    private float lastDetectTime;
 
-    public Enemy_PlayerDetectedState(string nameState, StateMachine stateMachine, Enemy enemy) : base(nameState, stateMachine, enemy)
+
+    public Enemy_DetectedState(string nameState, StateMachine stateMachine, Enemy enemy) : base(nameState, stateMachine, enemy)
     {
     }
 
@@ -16,12 +17,12 @@ public class Enemy_PlayerDetectedState : EnemyState
 
         // Get continuously transform of player
         if (playerTransform == null)
-            playerTransform = enemy.DetectPlayer().transform;
+            playerTransform = enemy.DetectPlayer()?.transform;
 
         if (playerTransform == null)
         {
             playerTransform = enemy.GetComponent<Enemy_Health>().damageTransform;
-            lastPlayerDetectTime = Time.time;
+            lastDetectTime = Time.time;
         }
     }
 
@@ -29,20 +30,14 @@ public class Enemy_PlayerDetectedState : EnemyState
     {
         base.Update();
 
-        UpdateTimeout();
+        anim.SetFloat(Paramenter_Enemy.xVelocity.ToString(), rb.linearVelocityX);
 
-        if (enemy.isAttack)
-        {
-            stateMachine.ChangeState(enemy.attackState);
-        }
-        else
-        {
-            enemy.SetVelocity(enemy.moveDetectedSpeed * GetDirectToPlayer(), rb.linearVelocityY);
-        }
+        UpdateTimeout();
 
         if (OvertimeDetect() || enemy.wallDetect)
         {
             stateMachine.ChangeState(enemy.idleState);
+            return;
         }
     }
 
@@ -61,16 +56,16 @@ public class Enemy_PlayerDetectedState : EnemyState
     {
         if (enemy.DetectPlayer())
         {
-            lastPlayerDetectTime = Time.time;
+            lastDetectTime = Time.time;
         }
     }
 
     private bool OvertimeDetect()
     {
-        return Time.time - lastPlayerDetectTime > enemy.durationDetect;
+        return Time.time - lastDetectTime > enemy.durationDetect;
     }
 
-    private int GetDirectToPlayer()
+    protected int GetDirectToPlayer()
     {
         if (playerTransform == null)
             return 0;
