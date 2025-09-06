@@ -4,14 +4,14 @@ using UnityEngine;
 public class SkillDataSO : ScriptableObject
 {
     [Header("Skill details")]
-    public Skill_Type skillType;
+    public ESkill_Type skillType;
     public int unlockLevel;
     public float cooldown;
     public float duration;
     public float damage;
     public float effectPercent;
     public float effectDuration;
-    public int countHit;
+    public int hitCount;
 
 
     [Header("Display")]

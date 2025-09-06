@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public enum Paramenter_Enemy
+public enum EParamenter_Enemy
 {
     isIdle,
     isMove,
@@ -11,4 +11,5 @@ public enum Paramenter_Enemy
     isDeath,
     isStunned,
     isFreezed,
+    hit,
 }

@@ -18,7 +18,7 @@ public class Skill_FireBlade_Slash : MonoBehaviour
     {
         anim = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody2D>();
-        pool = GetComponentInParent<ObjectPool_FireBlade>();
+        pool = FindFirstObjectByType<ObjectPool_FireBlade>();
     }
 
     void OnEnable()
@@ -37,13 +37,16 @@ public class Skill_FireBlade_Slash : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        rb.linearVelocity = Vector2.zero; // Stop moving
-        anim.SetTrigger("hit");
-        isHit = true;
-
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+        if (!isHit)
         {
-            collision.gameObject.GetComponent<Entity_Health>().ReduceHealth(damage, out bool isMissed, pool.transform);
+            isHit = true;
+            rb.linearVelocity = Vector2.zero; // Stop moving
+            anim.SetTrigger(EParamenter_Player.hit.ToString());
+
+            if (collision.gameObject.layer == LayerMask.NameToLayer(ELayer.Enemy.ToString()))
+            {
+                collision.gameObject.GetComponent<Entity_Health>().ReduceHealth(damage, out bool isMissed, pool.transform);
+            }
         }
     }
 
@@ -54,7 +57,6 @@ public class Skill_FireBlade_Slash : MonoBehaviour
 
     public void HideSlash()
     {
-        transform.rotation = Quaternion.identity; // Reset rotate
         pool.ReturnObject(this);
     }
 
@@ -62,5 +64,6 @@ public class Skill_FireBlade_Slash : MonoBehaviour
     {
         this.damage = damage;
         timer = duration;
+        transform.position = pool.transform.position;
     }
 }

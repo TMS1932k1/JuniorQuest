@@ -29,11 +29,12 @@ public class Player_FireBladeState : PlayerState
 
         // Set rect transform of line arm and get positon of mouse
         playerVFX.SetLineArmRotate(out float angleZ);
+        HanldeFlip(angleZ);
 
         // Perform Attack with dir to mouse
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            anim.SetTrigger(Paramenter_Player.fireBlade.ToString());
+            anim.SetTrigger(EParamenter_Player.fireBlade.ToString());
 
             // Create Fire Blade to target
             skillsManager.fireBlade.CreateFireBlade(angleZ);
@@ -50,5 +51,17 @@ public class Player_FireBladeState : PlayerState
         // Off VFX
         if (!isArming)
             playerVFX.HideFireBladeVFX();
+    }
+
+    private void HanldeFlip(float angleZ)
+    {
+        if (angleZ <= 90 && player.faceDir == -1)
+        {
+            player.Flip();
+        }
+        else if (angleZ > 90 && player.faceDir == 1)
+        {
+            player.Flip();
+        }
     }
 }

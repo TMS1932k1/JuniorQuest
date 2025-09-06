@@ -59,6 +59,11 @@ public class Entity_Combat : MonoBehaviour
         return Physics2D.OverlapCircleAll(currentAttackCircle.transform.position, currentAttackCircle.radius, whatIsTarget);
     }
 
+    public void SetAttackCircleIndex(int index)
+    {
+        attackCircleIndex = index;
+    }
+
     private void OnDrawGizmos()
     {
         foreach (AttackCircle attackCircle in attackCircles)
@@ -66,10 +71,5 @@ public class Entity_Combat : MonoBehaviour
             Gizmos.color = Color.blue;
             Gizmos.DrawWireSphere(attackCircle.transform.position, attackCircle.radius);
         }
-    }
-
-    public void SetAttackCircleIndex(int index)
-    {
-        attackCircleIndex = index;
     }
 }

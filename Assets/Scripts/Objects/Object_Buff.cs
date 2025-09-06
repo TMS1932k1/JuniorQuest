@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class ObjectBuff : MonoBehaviour
+public class Object_Buff : MonoBehaviour
 {
     [SerializeField] ObjectBuffDataSO data;
 
@@ -122,17 +122,17 @@ public class ObjectBuff : MonoBehaviour
     {
         switch (data.statType)
         {
-            case Stat_Type.MaxHealth:
-            case Stat_Type.Vitality:
+            case EStat_Type.MaxHealth:
+            case EStat_Type.Vitality:
                 return healthEffectColor;
 
-            case Stat_Type.Strength:
-            case Stat_Type.CritChance:
-            case Stat_Type.CritPower:
+            case EStat_Type.Strength:
+            case EStat_Type.CritChance:
+            case EStat_Type.CritPower:
                 return damageEffectColor;
 
-            case Stat_Type.Agility:
-            case Stat_Type.Armor:
+            case EStat_Type.Agility:
+            case EStat_Type.Armor:
                 return defenceEffectColor;
 
             default:

@@ -4,11 +4,10 @@ using UnityEngine;
 public class Entity_RangedCombat : Entity_Combat
 {
     [Header("Ranged Attack")]
-    [SerializeField] ObjectPool<FlyDemon_RangedAttack> objectPool;
     [SerializeField] float cooldownRangedAttack = 1f;
+    [SerializeField] ObjectPool<FlyDemon_RangedAttack> objectPool;
+
     public bool isRangdAttack;
-
-
     private Coroutine RangdAttackCoroutine;
 
 
@@ -44,7 +43,7 @@ public class Entity_RangedCombat : Entity_Combat
         FlyDemon_RangedAttack attack = objectPool.GetObject();
         damage = stat.GetDamageWithCrit(out bool isCrit);
 
-        attack.SetDetails(transform.position, CalculateAngleZ(target.transform), damage, isCrit);
+        attack.SetDetails(transform.position, CalculateAngleZ(target.transform), damage);
         attack.SetMove();
     }
 

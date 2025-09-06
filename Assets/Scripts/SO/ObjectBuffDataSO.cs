@@ -5,7 +5,7 @@ public class ObjectBuffDataSO : ScriptableObject
 {
     [Header("Buff details")]
     public float duration;
-    public Stat_Type statType;
+    public EStat_Type statType;
     public string source;
     public float value;
     public Sprite image;

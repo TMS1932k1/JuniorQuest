@@ -62,19 +62,19 @@ public class Player : Entity
     {
         base.Awake();
 
-        idleState = new Player_IdleState(Paramenter_Player.isIdle.ToString(), stateMachine, this);
-        moveState = new Player_MoveState(Paramenter_Player.isMove.ToString(), stateMachine, this);
-        jumpState = new Player_JumpState(Paramenter_Player.isJumpFall.ToString(), stateMachine, this);
-        fallState = new Player_FallState(Paramenter_Player.isJumpFall.ToString(), stateMachine, this);
-        wallSlideState = new Player_WallSlideState(Paramenter_Player.isWallSlide.ToString(), stateMachine, this);
-        wallJumpState = new Player_WallJumpState(Paramenter_Player.isWallJump.ToString(), stateMachine, this);
-        dashState = new Player_DashState(Paramenter_Player.isDash.ToString(), stateMachine, this);
-        basicAttackState = new Player_BasicAttackState(Paramenter_Player.isAttack.ToString(), stateMachine, this);
-        slideState = new Player_SlideState(Paramenter_Player.isSlide.ToString(), stateMachine, this);
-        hurtState = new Player_HurtState(Paramenter_Player.isHurt.ToString(), stateMachine, this);
-        deathState = new Player_DeathState(Paramenter_Player.isDeath.ToString(), stateMachine, this);
-        counterState = new Player_CounterState(Paramenter_Player.isCounter.ToString(), stateMachine, this);
-        fireBladeState = new Player_FireBladeState(Paramenter_Player.isFireBlade.ToString(), stateMachine, this);
+        idleState = new Player_IdleState(EParamenter_Player.isIdle.ToString(), stateMachine, this);
+        moveState = new Player_MoveState(EParamenter_Player.isMove.ToString(), stateMachine, this);
+        jumpState = new Player_JumpState(EParamenter_Player.isJumpFall.ToString(), stateMachine, this);
+        fallState = new Player_FallState(EParamenter_Player.isJumpFall.ToString(), stateMachine, this);
+        wallSlideState = new Player_WallSlideState(EParamenter_Player.isWallSlide.ToString(), stateMachine, this);
+        wallJumpState = new Player_WallJumpState(EParamenter_Player.isWallJump.ToString(), stateMachine, this);
+        dashState = new Player_DashState(EParamenter_Player.isDash.ToString(), stateMachine, this);
+        basicAttackState = new Player_BasicAttackState(EParamenter_Player.isAttack.ToString(), stateMachine, this);
+        slideState = new Player_SlideState(EParamenter_Player.isSlide.ToString(), stateMachine, this);
+        hurtState = new Player_HurtState(EParamenter_Player.isHurt.ToString(), stateMachine, this);
+        deathState = new Player_DeathState(EParamenter_Player.isDeath.ToString(), stateMachine, this);
+        counterState = new Player_CounterState(EParamenter_Player.isCounter.ToString(), stateMachine, this);
+        fireBladeState = new Player_FireBladeState(EParamenter_Player.isFireBlade.ToString(), stateMachine, this);
 
         playerXP = GetComponent<Player_XP>();
     }

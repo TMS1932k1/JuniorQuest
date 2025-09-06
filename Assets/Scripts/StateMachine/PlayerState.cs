@@ -26,7 +26,7 @@ public class PlayerState : EntityState
     {
         switch (skillsManager.HanldeInputUseSkill())
         {
-            case Skill_Type.ShieldBarrier:
+            case ESkill_Type.ShieldBarrier:
                 {
                     if (skillsManager.shieldBarrier.CanBeUse())
                         skillsManager.shieldBarrier.PerformSkill();
@@ -34,7 +34,7 @@ public class PlayerState : EntityState
                     break;
                 }
 
-            case Skill_Type.Comeback:
+            case ESkill_Type.Comeback:
                 {
                     if (skillsManager.comeback.CanBeUse())
                         skillsManager.comeback.PerformSkill();
@@ -42,7 +42,7 @@ public class PlayerState : EntityState
                     break;
                 }
 
-            case Skill_Type.Invisibility:
+            case ESkill_Type.Invisibility:
                 {
                     if (skillsManager.invisibility.CanBeUse())
                         skillsManager.invisibility.PerformSkill();
@@ -50,7 +50,7 @@ public class PlayerState : EntityState
                     break;
                 }
 
-            case Skill_Type.BattleCry:
+            case ESkill_Type.BattleCry:
                 {
                     if (skillsManager.battleCry.CanBeUse())
                         skillsManager.battleCry.PerformSkill();

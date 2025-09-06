@@ -13,7 +13,7 @@ public class UI_SkillInfo : MonoBehaviour
 
     private SkillDataSO skillData;
     private ISkillInfoEvent infoEvent;
-    private Skill_Status status;
+    private ESkill_Status status;
     private bool needUpdate;
 
 
@@ -36,7 +36,7 @@ public class UI_SkillInfo : MonoBehaviour
             transform.localScale = Vector3.one;
     }
 
-    public void DisplayInfo(SkillDataSO skillData, Skill_Status status, string statusMes, ISkillInfoEvent infoEvent)
+    public void DisplayInfo(SkillDataSO skillData, ESkill_Status status, string statusMes, ISkillInfoEvent infoEvent)
     {
         this.skillData = skillData;
         this.status = status;
@@ -71,8 +71,8 @@ public class UI_SkillInfo : MonoBehaviour
         nameText.text = skillData.skillName;
         descriptionText.text = skillData.description;
 
-        installText.enabled = status == Skill_Status.Unlocked;
-        uninstallText.enabled = status == Skill_Status.Installed;
-        statusText.enabled = status == Skill_Status.Locked;
+        installText.enabled = status == ESkill_Status.Unlocked;
+        uninstallText.enabled = status == ESkill_Status.Installed;
+        statusText.enabled = status == ESkill_Status.Locked;
     }
 }

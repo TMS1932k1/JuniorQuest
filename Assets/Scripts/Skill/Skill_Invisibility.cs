@@ -42,12 +42,12 @@ public class Skill_Invisibility : Skill_Base
     /// <returns></returns>
     private IEnumerator ChangeLayerMaskCo()
     {
-        player.gameObject.layer = LayerMask.NameToLayer("Invisibility");
+        player.gameObject.layer = LayerMask.NameToLayer(ELayer.Invisibility.ToString());
         playerVFX.SetFadePlayer(fadePercent);
 
         yield return new WaitForSeconds(skillData.duration);
 
-        player.gameObject.layer = LayerMask.NameToLayer("Player"); ;
+        player.gameObject.layer = LayerMask.NameToLayer(ELayer.Player.ToString()); ;
         playerVFX.SetFadePlayer(1);
     }
 }

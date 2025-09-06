@@ -4,24 +4,13 @@ public class Skill_Infeno_Arena : MonoBehaviour
 {
     private Skill_Infeno infeno;
 
-    private Vector2 position;
     private float height;
     private float width;
     private float damage;
 
 
-    void Awake()
-    {
-        infeno = GetComponentInParent<Skill_Infeno>();
-        width = infeno.skillData.widthArena;
-        height = infeno.skillData.heightArena;
-    }
-
     void Update()
     {
-        // Keep position, not follow player
-        transform.position = position;
-
         Burn();
     }
 
@@ -37,17 +26,22 @@ public class Skill_Infeno_Arena : MonoBehaviour
             if (canBurnTarget != null && canBurnTarget.GetCanBurn())
             {
                 float duration = infeno.skillData.effectDuration;
-                int countHit = infeno.skillData.countHit;
+                int countHit = infeno.skillData.hitCount;
 
                 canBurnTarget.BeBurn(damage, duration, countHit);
             }
         }
     }
 
-    public void SetArenaDetails(float damage, Vector2 position)
+    public void SetArenaDetails(float damage, Vector2 position, Skill_Infeno infeno)
     {
+        this.infeno = infeno;
         this.damage = damage;
-        this.position = position;
+
+        transform.position = position;
+
+        width = infeno.skillData.widthArena;
+        height = infeno.skillData.heightArena;
     }
 
     private void OnDrawGizmos()

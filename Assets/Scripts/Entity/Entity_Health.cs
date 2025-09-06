@@ -44,33 +44,12 @@ public class Entity_Health : MonoBehaviour
     }
 
     /// <summary>
-    /// Reduce Health by skill effect, not have damage dealer
+    /// Reduce Health, isn't missed
     /// </summary>
     /// <param name="damage"></param>
-    public virtual void ReduceHealth(float damage)
+    public virtual void ReduceHealthNotMiss(float damage, Transform damageDealer)
     {
         if (isDead)
-            return;
-
-        // Stop restore HP
-        StopAutoRestoreHP();
-
-        // Reduce damage
-        float finalDamage = CalculateReducedDamage(damage);
-        currentHealth -= finalDamage;
-
-        // Change state
-        if (currentHealth <= 0)
-            Die();
-    }
-
-    public virtual void ReduceHealth(float damage, out bool isMissed, Transform damageDealer)
-    {
-        // Cancle take damage
-        isMissed = MissAttack();
-        if (isDead)
-            return;
-        if (isMissed)
             return;
 
         // Stop restore HP
@@ -85,8 +64,18 @@ public class Entity_Health : MonoBehaviour
             Die();
 
         // Knock back
-        if (!isDead)
+        if (!isDead && damageDealer != null)
             entity.ReceiveKnockBack(isHeavyAttack(finalDamage), CalculateKnockBackDir(damageDealer.position.x));
+    }
+
+    public virtual void ReduceHealth(float damage, out bool isMissed, Transform damageDealer)
+    {
+        // Cancle take damage
+        isMissed = MissAttack();
+        if (isMissed)
+            return;
+
+        ReduceHealthNotMiss(damage, damageDealer);
     }
 
     public float GetLostHealth()
@@ -162,7 +151,7 @@ public class Entity_Health : MonoBehaviour
         return damage / stat.GetHealth() > heavyDamagePercent;
     }
 
-    protected virtual void Die()
+    public virtual void Die()
     {
         isDead = true;
     }

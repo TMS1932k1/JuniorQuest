@@ -38,7 +38,7 @@ public class UI_PointManager : MonoBehaviour
         return xp.GetLevel() - usedPoint > 0;
     }
 
-    public void IncrementStatWithType(Stat_Type type)
+    public void IncrementStatWithType(EStat_Type type)
     {
         stat.AddModifierWithType(type, "Point", 1);
         usedPoint++;
@@ -57,9 +57,9 @@ public class UI_PointManager : MonoBehaviour
         usedPoint = 0;
 
         // Remove Modifer from Point
-        stat.RemoveModifierWithType(Stat_Type.Strength, "Point");
-        stat.RemoveModifierWithType(Stat_Type.Agility, "Point");
-        stat.RemoveModifierWithType(Stat_Type.Vitality, "Point");
+        stat.RemoveModifierWithType(EStat_Type.Strength, "Point");
+        stat.RemoveModifierWithType(EStat_Type.Agility, "Point");
+        stat.RemoveModifierWithType(EStat_Type.Vitality, "Point");
 
         needUpdate = true;
     }

@@ -41,9 +41,9 @@ public class UI_StatInfo : MonoBehaviour
     private void SetStatsDisplay()
     {
         // Major
-        strengthText.text = $"{Stat_Type.Strength}:\t{stat.GetStatWithType(Stat_Type.Strength).GetValue()}";
-        agilityText.text = $"{Stat_Type.Agility}:\t{stat.GetStatWithType(Stat_Type.Agility).GetValue()}";
-        vitalityText.text = $"{Stat_Type.Vitality}:\t{stat.GetStatWithType(Stat_Type.Vitality).GetValue()}";
+        strengthText.text = $"{EStat_Type.Strength}:\t{stat.GetStatWithType(EStat_Type.Strength).GetValue()}";
+        agilityText.text = $"{EStat_Type.Agility}:\t{stat.GetStatWithType(EStat_Type.Agility).GetValue()}";
+        vitalityText.text = $"{EStat_Type.Vitality}:\t{stat.GetStatWithType(EStat_Type.Vitality).GetValue()}";
 
         // Offensive
         damageText.text = stat.GetDamage().ToString();
@@ -64,13 +64,13 @@ public class UI_StatInfo : MonoBehaviour
         SetHeightBuffsUI(0);
 
         // Add buffs
-        DisplayBuffsWithType(Stat_Type.Damage);
-        DisplayBuffsWithType(Stat_Type.CritChance);
-        DisplayBuffsWithType(Stat_Type.CritPower);
-        DisplayBuffsWithType(Stat_Type.MaxHealth);
-        DisplayBuffsWithType(Stat_Type.Armor);
-        DisplayBuffsWithType(Stat_Type.Evasion);
-        DisplayBuffsWithType(Stat_Type.Mitigation);
+        DisplayBuffsWithType(EStat_Type.Damage);
+        DisplayBuffsWithType(EStat_Type.CritChance);
+        DisplayBuffsWithType(EStat_Type.CritPower);
+        DisplayBuffsWithType(EStat_Type.MaxHealth);
+        DisplayBuffsWithType(EStat_Type.Armor);
+        DisplayBuffsWithType(EStat_Type.Evasion);
+        DisplayBuffsWithType(EStat_Type.Mitigation);
     }
 
     /// <summary>
@@ -78,7 +78,7 @@ public class UI_StatInfo : MonoBehaviour
     /// Add this to (buffsText)
     /// </summary>
     /// <param name="type">Stat type which need get modifiers</param>
-    private void DisplayBuffsWithType(Stat_Type type)
+    private void DisplayBuffsWithType(EStat_Type type)
     {
         foreach (ModifierStat modifier in stat.GetStatWithType(type).modifiers)
         {
@@ -94,25 +94,25 @@ public class UI_StatInfo : MonoBehaviour
         }
     }
 
-    private string GetTextWithType(Stat_Type type)
+    private string GetTextWithType(EStat_Type type)
     {
         switch (type)
         {
             // Major Group
-            case Stat_Type.Strength: return "Strength";
-            case Stat_Type.Agility: return "Agility";
-            case Stat_Type.Vitality: return "Vitality";
+            case EStat_Type.Strength: return "Strength";
+            case EStat_Type.Agility: return "Agility";
+            case EStat_Type.Vitality: return "Vitality";
 
             // Offensive Group
-            case Stat_Type.Damage: return "Damage";
-            case Stat_Type.CritChance: return "Crit Chance";
-            case Stat_Type.CritPower: return "Crit Power";
+            case EStat_Type.Damage: return "Damage";
+            case EStat_Type.CritChance: return "Crit Chance";
+            case EStat_Type.CritPower: return "Crit Power";
 
             // Defence Group
-            case Stat_Type.MaxHealth: return "Max Health";
-            case Stat_Type.Evasion: return "Evasion";
-            case Stat_Type.Armor: return "Armor";
-            case Stat_Type.Mitigation: return "Mitigation";
+            case EStat_Type.MaxHealth: return "Max Health";
+            case EStat_Type.Evasion: return "Evasion";
+            case EStat_Type.Armor: return "Armor";
+            case EStat_Type.Mitigation: return "Mitigation";
 
             default:
                 return "";

@@ -80,8 +80,6 @@ public class Enemy : Entity, ICanCounter
 
     public bool GetCanCounter => canStunned;
 
-    public Transform GetTransform => transform;
-
     public void HandlePlayerDeath()
     {
         stateMachine.ChangeState(idleState);
@@ -102,7 +100,7 @@ public class Enemy : Entity, ICanCounter
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.right * faceDir, distanceToDetectPlayer, whatIsPlayer | whatIsWall);
 
         playerDetect = hit.collider;
-        if (playerDetect == null || playerDetect.gameObject.layer != LayerMask.NameToLayer("Player"))
+        if (playerDetect == null || playerDetect.gameObject.layer != LayerMask.NameToLayer(ELayer.Player.ToString()))
             return null;
 
         return playerDetect;

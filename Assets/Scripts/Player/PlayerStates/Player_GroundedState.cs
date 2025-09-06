@@ -57,7 +57,7 @@ public class Player_GroundedState : PlayerState
     {
         switch (skillsManager.HanldeInputUseSkill())
         {
-            case Skill_Type.FireBlade:
+            case ESkill_Type.FireBlade:
                 {
                     if (skillsManager.fireBlade.CanBeUse())
                     {
@@ -66,7 +66,7 @@ public class Player_GroundedState : PlayerState
                     break;
                 }
 
-            case Skill_Type.Infeno:
+            case ESkill_Type.Infeno:
                 {
                     if (skillsManager.infeno.CanBeUse())
                         skillsManager.infeno.PerformSkill();
@@ -74,7 +74,7 @@ public class Player_GroundedState : PlayerState
                     break;
                 }
 
-            case Skill_Type.IcePrison:
+            case ESkill_Type.IcePrison:
                 {
                     if (skillsManager.icePrison.CanBeUse())
                         skillsManager.icePrison.PerformSkill();

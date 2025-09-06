@@ -37,7 +37,7 @@ public class Skill_Infeno : Skill_Base
 
         // Set arena details
         CalcullateDamage(out float finalDamage);
-        infenoArena.SetArenaDetails(finalDamage, transform.position);
+        infenoArena.SetArenaDetails(finalDamage, transform.position, this);
 
         // Hide then duration
         yield return new WaitForSeconds(skillData.duration);

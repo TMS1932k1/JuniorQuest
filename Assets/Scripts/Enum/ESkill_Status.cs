@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public enum Skill_Status
+public enum ESkill_Status
 {
     Unlocked,
     Locked,

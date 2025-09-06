@@ -41,7 +41,7 @@ public class Entity_HandleEffect : MonoBehaviour, ICanBurn
         // Damage
         while (durationTimer > 0)
         {
-            entityHealth.ReduceHealth(damage);
+            entityHealth.ReduceHealthNotMiss(damage, null);
 
             yield return new WaitForSeconds(hitInterval);
             durationTimer -= hitInterval;

@@ -19,7 +19,7 @@ public class Player_Health : Entity_Health
             player.stateMachine.ChangeState(player.hurtState);
     }
 
-    protected override void Die()
+    public override void Die()
     {
         base.Die();
         player.OnDead();

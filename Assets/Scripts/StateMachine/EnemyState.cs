@@ -16,6 +16,6 @@ public class EnemyState : EntityState
     {
         base.Update();
 
-        anim.SetFloat(Paramenter_Enemy.speedMutiplier.ToString(), enemy.GetAnimSpeedMutiplier());
+        anim.SetFloat(EParamenter_Enemy.speedMutiplier.ToString(), enemy.GetAnimSpeedMutiplier());
     }
 }

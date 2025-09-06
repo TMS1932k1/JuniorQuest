@@ -89,14 +89,6 @@ public class Entity_VFX : MonoBehaviour
         burnCoroutine = StartCoroutine(BurnCo(interval));
     }
 
-    public void StopBurnVFXCo()
-    {
-        if (burnCoroutine != null)
-            StopCoroutine(burnCoroutine);
-
-        sr.color = originalColor;
-    }
-
     private IEnumerator BurnCo(float interval)
     {
         while (true)
@@ -105,5 +97,13 @@ public class Entity_VFX : MonoBehaviour
 
             yield return new WaitForSeconds(interval);
         }
+    }
+
+    public void StopBurnVFXCo()
+    {
+        if (burnCoroutine != null)
+            StopCoroutine(burnCoroutine);
+
+        sr.color = originalColor;
     }
 }

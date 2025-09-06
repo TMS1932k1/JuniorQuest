@@ -6375,11 +6375,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   groundCheckTransform: {fileID: 4613991796448538523}
-  groundCheckDistance: 1.3
+  groundCheckDistance: 1.5
   whatIsGround:
     serializedVersion: 2
     m_Bits: 64
-  wallCheckDistance: 0.55
+  wallCheckDistance: 0.6
   primaryWallCheckVelocityY: 0.5
   secondaryWallCheckVelocityY: -0.7
   whatIsWall:
@@ -6529,7 +6529,7 @@ MonoBehaviour:
     m_Bits: 512
   whatIsCounter:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 8704
   counterDuration: 0.2
   counterCooldown: 3
   counterCheckVelocity: {fileID: 5420862609794858518}
@@ -6971,7 +6971,6 @@ MonoBehaviour:
   skillData: {fileID: 11400000, guid: 3cda8e0cef9b2bd429e0b56779901975, type: 2}
   isInstall: 0
   lastTimeUsed: 0
-  slash: {fileID: 0}
 --- !u!114 &7265485542584615057
 MonoBehaviour:
   m_ObjectHideFlags: 0

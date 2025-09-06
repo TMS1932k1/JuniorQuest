@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public enum Paramenter_Player
+public enum EParamenter_Player
 {
     isIdle,
     isMove,
@@ -20,4 +20,5 @@ public enum Paramenter_Player
     isFireBlade,
     fireBlade,
     jumpTwo,
+    hit
 }

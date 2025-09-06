@@ -4,6 +4,7 @@ using UnityEngine;
 public class ObjectPool<T> : MonoBehaviour where T : Component
 {
     [SerializeField] T prefabObj;
+    [SerializeField] Transform poolHolder;
     [SerializeField] int size;
     private Queue<T> poolQueue;
 
@@ -14,7 +15,7 @@ public class ObjectPool<T> : MonoBehaviour where T : Component
         poolQueue = new();
         for (int i = 0; i < size; i++)
         {
-            T obj = Instantiate(prefabObj, transform);
+            T obj = Instantiate(prefabObj, poolHolder);
             obj.gameObject.SetActive(false);
             poolQueue.Enqueue(obj);
         }
@@ -30,7 +31,7 @@ public class ObjectPool<T> : MonoBehaviour where T : Component
         }
         else
         {
-            return Instantiate(prefabObj, transform);
+            return Instantiate(prefabObj);
         }
     }
 

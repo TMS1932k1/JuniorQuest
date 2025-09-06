@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 public class UI_PointAdd : MonoBehaviour, IPointerClickHandler
 {
     [SerializeField] UI_PointManager pointManager;
-    [SerializeField] Stat_Type type;
+    [SerializeField] EStat_Type type;
 
     public void OnPointerClick(PointerEventData eventData)
     {

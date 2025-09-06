@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public enum Stat_Type
+public enum EStat_Type
 {
     Strength,
     Agility,
