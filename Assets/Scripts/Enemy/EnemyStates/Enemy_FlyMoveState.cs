@@ -49,7 +49,10 @@ public class Enemy_FlyMoveState : Enemy_MoveState
 
     private void HandleFlip()
     {
-        if ((isBackMove && enemyFly.faceDir != -1) || (!isBackMove && enemyFly.faceDir != 1))
+        if (enemyFly.transform.position.x < enemyFly.flyLine[currentPoint].position.x && enemyFly.faceDir != 1)
+            enemyFly.Flip();
+
+        if (enemyFly.transform.position.x > enemyFly.flyLine[currentPoint].position.x && enemyFly.faceDir != -1)
             enemyFly.Flip();
     }
 }

@@ -53,6 +53,14 @@ public class Player_FireBladeState : PlayerState
             playerVFX.HideFireBladeVFX();
     }
 
+    public override void Exit()
+    {
+        base.Exit();
+
+        if (isArming)
+            playerVFX.HideFireBladeVFX();
+    }
+
     private void HanldeFlip(float angleZ)
     {
         if (angleZ <= 90 && player.faceDir == -1)

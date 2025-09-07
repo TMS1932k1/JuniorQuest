@@ -2,22 +2,26 @@ using UnityEngine;
 
 public class Enemy_DeathState : EnemyState
 {
-    // private Collider2D col;
+    private Enemy_VFX enemyVFX;
     private float timeDestroy = 1f;
+
 
     public Enemy_DeathState(string nameState, StateMachine stateMachine, Enemy enemy) : base(nameState, stateMachine, enemy)
     {
-        // col = enemy.GetComponent<Collider2D>();
+        enemyVFX = enemy.GetComponent<Enemy_VFX>();
     }
 
     public override void Enter()
     {
         base.Enter();
 
-        // rb.linearVelocity = new Vector2(5 * -enemy.faceDir, 15);
-        // rb.gravityScale = 10;
-        // col.enabled = false;
-
+        OffCanCounter();
         Object.Destroy(enemy, timeDestroy);
+    }
+
+    private void OffCanCounter()
+    {
+        enemy.canStunned = false;
+        enemyVFX.EnableCounterAlert(false);
     }
 }

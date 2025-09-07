@@ -1,19 +1,22 @@
 fileFormatVersion: 2
-guid: ec4deefc00dff7e478804c0e602c8601
+guid: 023ec6f2c711f49408170172e9b06ef3
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2421214779870465741
-    second: male_hero-wall_slide_0
+      213: -4707698567282657342
+    second: Bat-Hurt_0
   - first:
-      213: -171393298272897048
-    second: male_hero-wall_slide_1
+      213: 8954069028433373776
+    second: Bat-Hurt_1
   - first:
-      213: -7653999384897489960
-    second: male_hero-wall_slide_2
+      213: -3182077731557891935
+    second: Bat-Hurt_2
   - first:
-      213: 4299865854803085097
-    second: male_hero-wall_slide_3
+      213: -4262820519508893310
+    second: Bat-Hurt_3
+  - first:
+      213: 4066643789057198174
+    second: Bat-Hurt_4
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -109,89 +112,111 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: male_hero-wall_slide_0
+      name: Bat-Hurt_0
       rect:
         serializedVersion: 2
-        x: 57
-        y: 52
-        width: 23
-        height: 51
-      alignment: 9
-      pivot: {x: 0.35, y: 0.35}
+        x: 0
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: dceca1f9302e99120800000000000000
-      internalID: 2421214779870465741
+      spriteID: 2c770837815eaaeb0800000000000000
+      internalID: -4707698567282657342
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: male_hero-wall_slide_1
+      name: Bat-Hurt_1
       rect:
         serializedVersion: 2
-        x: 185
-        y: 52
-        width: 23
-        height: 51
-      alignment: 9
-      pivot: {x: 0.35, y: 0.35}
+        x: 64
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8e7bf8b04b61f9df0800000000000000
-      internalID: -171393298272897048
+      spriteID: 05a2916375e334c70800000000000000
+      internalID: 8954069028433373776
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: male_hero-wall_slide_2
+      name: Bat-Hurt_2
       rect:
         serializedVersion: 2
-        x: 313
-        y: 52
-        width: 23
-        height: 51
-      alignment: 9
-      pivot: {x: 0.35, y: 0.35}
+        x: 128
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8d37020bc1887c590800000000000000
-      internalID: -7653999384897489960
+      spriteID: 1a0afca992df6d3d0800000000000000
+      internalID: -3182077731557891935
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: male_hero-wall_slide_3
+      name: Bat-Hurt_3
       rect:
         serializedVersion: 2
-        x: 441
-        y: 52
-        width: 23
-        height: 51
-      alignment: 9
-      pivot: {x: 0.35, y: 0.35}
+        x: 192
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9278e5996313cab30800000000000000
-      internalID: 4299865854803085097
+      spriteID: 2812d69a25b67d4c0800000000000000
+      internalID: -4262820519508893310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bat-Hurt_4
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e588dcaeafe9f6830800000000000000
+      internalID: 4066643789057198174
       vertices: []
       indices: 
       edges: []
@@ -200,7 +225,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 2f1e8d11ba3a2434e8d5f72beef15881
+    spriteID: 2fd9719ac37d83248b224c45e5dca66d
     internalID: 0
     vertices: []
     indices: 
@@ -208,12 +233,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      male_hero-wall_slide_0: 2421214779870465741
-      male_hero-wall_slide_1: -171393298272897048
-      male_hero-wall_slide_2: -7653999384897489960
-      male_hero-wall_slide_3: 4299865854803085097
+      Bat-Hurt_0: -4707698567282657342
+      Bat-Hurt_1: 8954069028433373776
+      Bat-Hurt_2: -3182077731557891935
+      Bat-Hurt_3: -4262820519508893310
+      Bat-Hurt_4: 4066643789057198174
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

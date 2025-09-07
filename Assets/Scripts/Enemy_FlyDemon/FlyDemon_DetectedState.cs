@@ -13,11 +13,6 @@ public class FlyDemon_DetectedState : Enemy_DetectedState
         entityRangedCombat = flyDemon.GetComponent<Entity_RangedCombat>();
     }
 
-    public override void Enter()
-    {
-        base.Enter();
-    }
-
     public override void Update()
     {
         base.Update();

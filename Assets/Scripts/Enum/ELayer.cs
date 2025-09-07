@@ -6,8 +6,9 @@ public enum ELayer
     Player,
     Background,
     Enemy,
-    Interatable,
+    Interactable,
     Invisibility,
     EnemyAttack,
     PlayerAttack,
+    Hazard,
 }

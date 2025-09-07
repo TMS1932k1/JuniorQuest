@@ -11,5 +11,7 @@ public enum EParamenter_Enemy
     isDeath,
     isStunned,
     isFreezed,
-    hit,
+    hit, // Ranged Attack
+    isSleep, // Bat
+    wakeUp, // Bat
 }
