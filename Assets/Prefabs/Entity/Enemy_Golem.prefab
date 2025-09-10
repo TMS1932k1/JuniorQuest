@@ -155,7 +155,7 @@ MonoBehaviour:
   groundCheckDistance: 0.2
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 32832
   wallCheckDistance: 1.1
   primaryWallCheckVelocityY: 0
   secondaryWallCheckVelocityY: 0
@@ -553,11 +553,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5350160720314158524, guid: 3e5a477065ae6ec4ab77f963309204ae, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5350160720314158524, guid: 3e5a477065ae6ec4ab77f963309204ae, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7256503489022369972, guid: 3e5a477065ae6ec4ab77f963309204ae, type: 3}
       propertyPath: m_Pivot.x

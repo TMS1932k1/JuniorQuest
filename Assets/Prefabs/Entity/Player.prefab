@@ -6360,8 +6360,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.02223444, y: -0.08198297}
-  m_Size: {x: 0.8647852, y: 2.161142}
+  m_Offset: {x: 0.026205778, y: -0.08198297}
+  m_Size: {x: 0.82507086, y: 2.161142}
   m_Direction: 0
 --- !u!114 &5764850687380161354
 MonoBehaviour:
@@ -6376,11 +6376,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   groundCheckTransform: {fileID: 4613991796448538523}
-  groundCheckDistance: 1.5
+  groundCheckDistance: 1.35
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 64
-  wallCheckDistance: 0.6
+    m_Bits: 32832
+  wallCheckDistance: 0.5
   primaryWallCheckVelocityY: 0.5
   secondaryWallCheckVelocityY: -0.7
   whatIsWall:
@@ -6527,7 +6527,7 @@ MonoBehaviour:
     radius: 1.6
   whatIsTarget:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 66048
   whatIsCounter:
     serializedVersion: 2
     m_Bits: 8704

@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 
 [System.Serializable]
@@ -33,8 +34,21 @@ public class Entity_Combat : MonoBehaviour
     {
         foreach (Collider2D target in GetTargetColliders())
         {
+            // If break obj then destroy it
+            if (target.GetComponent<IBreakable>() != null)
+            {
+                Break(target.GetComponent<IBreakable>());
+                continue;
+            }
+
+            // Other damage
             PerformDamage(target);
         }
+    }
+
+    private void Break(IBreakable target)
+    {
+        target.Break();
     }
 
     private void PerformDamage(Collider2D target)

@@ -11,4 +11,6 @@ public enum ELayer
     EnemyAttack,
     PlayerAttack,
     Hazard,
+    Elevator,
+    Breakable,
 }

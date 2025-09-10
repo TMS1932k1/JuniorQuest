@@ -2,12 +2,14 @@ using UnityEngine;
 
 public class Object_Hazard : MonoBehaviour
 {
-    private void OnCollisionEnter2D(Collision2D other)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (other.gameObject.layer != LayerMask.NameToLayer(ELayer.Player.ToString()))
+        if (collision.gameObject.layer != LayerMask.NameToLayer(ELayer.Player.ToString())
+            && collision.gameObject.layer != LayerMask.NameToLayer(ELayer.Enemy.ToString())
+            && collision.gameObject.layer != LayerMask.NameToLayer(ELayer.Invisibility.ToString()))
             return;
 
-        Player_Health playerHealth = other.gameObject.GetComponent<Player_Health>();
-        playerHealth.Die();
+        Entity_Health entityHealth = collision.gameObject.GetComponent<Entity_Health>();
+        entityHealth.Die();
     }
 }

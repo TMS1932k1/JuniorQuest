@@ -43,9 +43,13 @@ public class Skill_FireBlade_Slash : MonoBehaviour
             rb.linearVelocity = Vector2.zero; // Stop moving
             anim.SetTrigger(EParamenter_Player.hit.ToString());
 
-            if (collision.gameObject.layer == LayerMask.NameToLayer(ELayer.Enemy.ToString()))
+            if (collision.gameObject.layer == LayerMask.NameToLayer(ELayer.Enemy.ToString())) // Hit Enemy
             {
                 collision.gameObject.GetComponent<Entity_Health>().ReduceHealth(damage, out bool isMissed, pool.transform);
+            }
+            else if (collision.gameObject.layer == LayerMask.NameToLayer(ELayer.Breakable.ToString())) // Hit IBreakable
+            {
+                collision.gameObject.GetComponent<IBreakable>().Break();
             }
         }
     }

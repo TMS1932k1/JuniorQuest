@@ -153,6 +153,7 @@ public class Entity_Health : MonoBehaviour
 
     public virtual void Die()
     {
+        currentHealth = 0;
         isDead = true;
     }
 }

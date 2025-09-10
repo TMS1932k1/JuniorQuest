@@ -18,7 +18,7 @@ public class UI_HealthBar : MonoBehaviour
         UpdateHealthSlider();
 
         // Hide when die
-        if (healthSlider.value == 0)
+        if (entityHealth.isDead)
             gameObject.SetActive(false);
     }
 

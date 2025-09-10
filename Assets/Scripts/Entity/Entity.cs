@@ -33,7 +33,7 @@ public abstract class Entity : MonoBehaviour, ICanFreeze
     public StateMachine stateMachine { get; private set; }
 
 
-    // Compoments
+    // Components
     public Animator anim { get; private set; }
     public Rigidbody2D rb { get; private set; }
 
