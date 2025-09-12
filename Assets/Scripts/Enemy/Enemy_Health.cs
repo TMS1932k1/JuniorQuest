@@ -29,7 +29,8 @@ public class Enemy_Health : Entity_Health
         if (!isDead)
         {
             // Damage VFX
-            entityVFX.PlayOnDamageVFXCO();
+            if (!isMissed)
+                entityVFX.PlayOnDamageVFXCO();
 
             // Detect Player
             ChangeDectectedState(damageDealer);

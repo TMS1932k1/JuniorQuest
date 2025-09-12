@@ -141,7 +141,7 @@ public class Entity_Health : MonoBehaviour
         return currentHealth / stat.GetHealth();
     }
 
-    private int CalculateKnockBackDir(float positionX)
+    protected int CalculateKnockBackDir(float positionX)
     {
         return positionX > transform.position.x ? -1 : 1;
     }

@@ -9,13 +9,13 @@ public class Player_IdleState : Player_GroundedState
     public override void Enter()
     {
         base.Enter();
-
-        StopMoving();
     }
 
     public override void Update()
     {
         base.Update();
+
+        StopMoving();
 
         // Not allow move when detect wall before face
         if (player.wallDetect && player.faceDir == Input.GetAxisRaw("Horizontal"))

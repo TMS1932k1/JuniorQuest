@@ -80,7 +80,7 @@ public class FlyDemon_RangedAttack : MonoBehaviour, ICanCounter
         transform.rotation = Quaternion.Euler(0, 0, angleZ);
     }
 
-    public void HideSlash()
+    public void Hide()
     {
         pool.ReturnObject(this);
     }

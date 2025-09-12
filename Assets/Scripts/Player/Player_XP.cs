@@ -41,12 +41,16 @@ public class Player_XP : MonoBehaviour
 
     private void LevelUP()
     {
-        currentXP -= maxXP;
-        level++;
-        maxXP = level * expMutiplier;
+        while (currentXP >= maxXP)
+        {
+            currentXP -= maxXP;
+            level++;
+            maxXP = level * expMutiplier;
+
+            newLevelUp = true;
+        }
 
         playVFX.ShowLevelUpVFX(level);
-        newLevelUp = true;
     }
 
     public int GetLevel() => level;

@@ -51,11 +51,13 @@ public class Player : Entity
     void OnEnable()
     {
         Enemy.OnEnemyDeath += HandleXPReceive;
+        Boss.OnBossDeath += HandleXPReceive;
     }
 
     void OnDisable()
     {
         Enemy.OnEnemyDeath -= HandleXPReceive;
+        Boss.OnBossDeath -= HandleXPReceive;
     }
 
     protected override void Awake()

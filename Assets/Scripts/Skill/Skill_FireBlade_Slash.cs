@@ -32,7 +32,7 @@ public class Skill_FireBlade_Slash : MonoBehaviour
         timer -= Time.deltaTime;
 
         if (timer <= 0 && !isHit)
-            HideSlash();
+            Hide();
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -59,7 +59,7 @@ public class Skill_FireBlade_Slash : MonoBehaviour
         rb.linearVelocity = transform.right * speed;
     }
 
-    public void HideSlash()
+    public void Hide()
     {
         pool.ReturnObject(this);
     }

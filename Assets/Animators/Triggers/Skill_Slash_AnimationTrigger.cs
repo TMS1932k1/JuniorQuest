@@ -9,8 +9,8 @@ public class Skill_Slash_AnimationTrigger : MonoBehaviour
         slash = GetComponentInParent<Skill_FireBlade_Slash>();
     }
 
-    public void HideSlash()
+    public void Hide()
     {
-        slash.HideSlash();
+        slash.Hide();
     }
 }
