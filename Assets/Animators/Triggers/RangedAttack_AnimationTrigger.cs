@@ -9,7 +9,7 @@ public class RangedAttack_AnimationTrigger : MonoBehaviour
         rangedAttack = GetComponentInParent<FlyDemon_RangedAttack>();
     }
 
-    public void Hide()
+    private void Hide()
     {
         rangedAttack.Hide();
     }

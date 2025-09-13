@@ -5,10 +5,10 @@ using UnityEngine;
 [System.Serializable]
 public class WeightedCommand
 {
-    public ICommand command;
+    public Boss_Command command;
     public float weight;
 
-    public WeightedCommand(ICommand command, float weight)
+    public WeightedCommand(Boss_Command command, float weight)
     {
         this.command = command;
         this.weight = weight;
@@ -23,6 +23,8 @@ public abstract class Boss_Controller : MonoBehaviour
 
     protected Boss_CommandManager commandManager;
 
+    protected bool canDecide = true;
+
 
     protected virtual void Awake()
     {
@@ -34,13 +36,19 @@ public abstract class Boss_Controller : MonoBehaviour
         InvokeRepeating(nameof(DecideNextAction), 1, delayDecide);
     }
 
-    protected abstract void DecideNextAction(); // Need override at child class to selbst decide next action
+    // Need override at child class to selbst decide next action
+    protected abstract void DecideNextAction();
+
+    public void OffDecideAction()
+    {
+        canDecide = false;
+    }
 
     /// <summary>
     /// Random command to perform with (Weight)
     /// </summary>
     /// <returns></returns>
-    protected ICommand GetRandomCommand(List<WeightedCommand> commands)
+    protected Boss_Command GetRandomCommand(List<WeightedCommand> commands)
     {
         float totalWeight = 0f;
         foreach (var wc in commands)

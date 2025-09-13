@@ -4,16 +4,15 @@ using UnityEngine;
 
 public class Boss_CommandManager : MonoBehaviour
 {
-    [Header("Details")]
-    [SerializeField] float delayExecute = 2f;
-    private Queue<ICommand> commands;
+    private Queue<Boss_Command> commands;
     private bool isExecuting;
+    private bool isTrigger;
     private Coroutine executeCoroutine;
 
 
     private void Awake()
     {
-        commands = new Queue<ICommand>();
+        commands = new Queue<Boss_Command>();
     }
 
     private void Start()
@@ -21,16 +20,11 @@ public class Boss_CommandManager : MonoBehaviour
         isExecuting = false;
     }
 
-    public void AddCommand(ICommand command)
-    {
-        commands.Enqueue(command);
-    }
-
     private void Update()
     {
         if (commands.Count > 0 && !isExecuting)
         {
-            ICommand nextCommand = commands.Dequeue();
+            Boss_Command nextCommand = commands.Dequeue();
 
             if (executeCoroutine != null)
                 StopCoroutine(executeCoroutine);
@@ -39,14 +33,36 @@ public class Boss_CommandManager : MonoBehaviour
         }
     }
 
-    private IEnumerator ExecuteCommand(ICommand command)
+    public void AddCommand(Boss_Command command)
+    {
+        commands.Enqueue(command);
+    }
+
+    public void ClearCommands()
+    {
+        commands.Clear();
+    }
+
+    private IEnumerator ExecuteCommand(Boss_Command command)
     {
         isExecuting = true;
+        isTrigger = false;
         command.Execute();
 
-        yield return new WaitForSeconds(delayExecute);
+        // Wait for execute time
+        yield return new WaitForSeconds(command.executeTime);
+
+        // If have not executeTime => wait end animation
+        while (command.executeTime <= 0 && !isTrigger)
+            yield return null;
 
         command.Undo();
         isExecuting = false;
+    }
+
+    public void CallTrigger()
+    {
+        Debug.Log("Call Trigger");
+        isTrigger = true;
     }
 }

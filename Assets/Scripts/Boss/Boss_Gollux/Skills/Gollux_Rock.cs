@@ -27,11 +27,16 @@ public class Gollux_Rock : MonoBehaviour
         ResetState();
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (!isHit)
         {
             isHit = true;
+
+            // Stop drop
+            rb.gravityScale = 0f;
+            rb.linearVelocityY = 0;
+
             anim.SetTrigger(EParamenter_Enemy.hit.ToString());
 
             if (collision.gameObject.layer == LayerMask.NameToLayer(ELayer.Player.ToString()))

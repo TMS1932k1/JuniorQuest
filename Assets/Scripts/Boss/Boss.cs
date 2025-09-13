@@ -17,6 +17,8 @@ public class Boss : Entity
 
 
     private Entity_Stat stat;
+    private Boss_CommandManager commandManager;
+    private Boss_Controller controller;
 
 
     protected override void Awake()
@@ -24,6 +26,18 @@ public class Boss : Entity
         base.Awake();
 
         stat = GetComponent<Entity_Stat>();
+        commandManager = GetComponent<Boss_CommandManager>();
+        controller = GetComponent<Boss_Controller>();
+    }
+
+    private void OnEnable()
+    {
+        Player.OnPlayerDeath += HandlePlayerDeath;
+    }
+
+    private void OnDisable()
+    {
+        Player.OnPlayerDeath -= HandlePlayerDeath;
     }
 
     protected override void Update()
@@ -41,6 +55,12 @@ public class Boss : Entity
         base.OnDead();
 
         OnBossDeath.Invoke(stat.GetXp());
+    }
+
+    public void HandlePlayerDeath()
+    {
+        controller.OffDecideAction();
+        commandManager.ClearCommands();
     }
 
     private void DetectTarget()

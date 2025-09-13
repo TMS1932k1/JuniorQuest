@@ -44,7 +44,7 @@ public class Gollux : Boss
 
     private IEnumerator MoveCo()
     {
-        while (GetDisToTarget() > 0.1f)
+        while (GetDisToTarget() > 0.5f)
         {
             rb.linearVelocityX = moveSpeed * GetDirToTarget();
             yield return null;
@@ -65,13 +65,14 @@ public class Gollux : Boss
             StopCoroutine(moveCoroutine);
     }
 
-    public void SkillAttack1()
+    public void SkillRockDrop()
     {
-        // Animation
-        anim.Play(EAnim_Gollux.Gollux_Attack1.ToString());
+        skillManager.PerformRockDrop();
+    }
 
-        // Logic Attack 1
-        skillManager.PerformSkillAttack1();
+    public void SkillNormalAttack()
+    {
+        skillManager.PerformNormalAttack();
     }
 
     /// <summary>
