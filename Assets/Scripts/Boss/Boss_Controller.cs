@@ -36,13 +36,7 @@ public abstract class Boss_Controller : MonoBehaviour
         InvokeRepeating(nameof(DecideNextAction), 1, delayDecide);
     }
 
-    // Need override at child class to selbst decide next action
-    protected abstract void DecideNextAction();
-
-    public void OffDecideAction()
-    {
-        canDecide = false;
-    }
+    public void EnableDecideAction(bool enable) => canDecide = enable;
 
     /// <summary>
     /// Random command to perform with (Weight)
@@ -66,4 +60,8 @@ public abstract class Boss_Controller : MonoBehaviour
 
         return null;
     }
+
+    protected abstract void DecideNextAction(); // Need override at child class to selbst decide next action
+
+    public abstract void AddFreezedCommand(float duration);
 }

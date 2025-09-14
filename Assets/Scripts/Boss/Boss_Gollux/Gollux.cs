@@ -12,6 +12,12 @@ public class Gollux : Boss
     public float closeAttackDistance;
 
 
+    // Commands
+    public Boss_Command moveCommand { get; private set; }
+    public Boss_Command rockDropCommand { get; private set; }
+    public Boss_Command normalAttackCommand { get; private set; }
+
+
     // Components
     private Gollux_SkillManager skillManager;
 
@@ -19,6 +25,10 @@ public class Gollux : Boss
     protected override void Awake()
     {
         base.Awake();
+
+        moveCommand = new Gollux_MoveCommand(this, EParamenter_Boss.isMove.ToString(), 2f);
+        rockDropCommand = new Gollux_RockDropCommand(this, EParamenter_Boss.isRockDrop.ToString());
+        normalAttackCommand = new Gollux_NormalAttackCommand(this, EParamenter_Boss.isNormalAttack.ToString());
 
         skillManager = GetComponent<Gollux_SkillManager>();
     }
@@ -32,10 +42,6 @@ public class Gollux : Boss
 
     public void Move()
     {
-        // Animation
-        anim.Play(EAnim_Gollux.Gollux_Move.ToString());
-
-        // Logic Move
         if (moveCoroutine != null)
             StopCoroutine(moveCoroutine);
 
@@ -51,16 +57,8 @@ public class Gollux : Boss
         }
     }
 
-    /// <summary>
-    /// That is basic state to wait new command
-    ///  - Need stop (moveCoroutine) of (MoveCommand)
-    /// </summary>
-    public void Idle()
+    public void StopMove()
     {
-        // Animation
-        anim.Play(EAnim_Gollux.Gollux_Idle.ToString());
-
-        // Stop Move
         if (moveCoroutine != null)
             StopCoroutine(moveCoroutine);
     }
@@ -70,9 +68,19 @@ public class Gollux : Boss
         skillManager.PerformRockDrop();
     }
 
-    public void SkillNormalAttack()
+    public void Idle()
     {
-        skillManager.PerformNormalAttack();
+        rb.linearVelocityX = 0;
+    }
+
+    public void BeFreezed()
+    {
+        sr.color = Color.blue;
+    }
+
+    public void OutFreezed()
+    {
+        sr.color = Color.white;
     }
 
     /// <summary>

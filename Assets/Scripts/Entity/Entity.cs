@@ -129,20 +129,9 @@ public abstract class Entity : MonoBehaviour, ICanFreeze
         return stateMachine.currentState;
     }
 
-    /// <summary>
-    /// Change to freezedstate 
-    /// </summary>
-    /// <param name="duration">Time freeze</param>
-    public virtual void BeFreezed(float duration)
-    {
-        // Need override in child class when have freezed state
-    }
+    public abstract void BeFreezed(float duration);
 
-    public virtual void ExitFreezed()
-    {
-        // Need override in child class when have freezed state
-    }
-
+    public abstract void ExitFreezed();
 
     protected virtual void OnDrawGizmos()
     {

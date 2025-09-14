@@ -1,17 +1,31 @@
 using UnityEngine;
 
-public abstract class Boss_Command : ICommand
+public class Boss_Command : ICommand
 {
     public Boss boss { get; private set; }
     public float executeTime { get; private set; }
+    private string nameCommand;
 
-    public Boss_Command(Boss boss, float executeTime)
+
+    private Animator anim;
+
+
+    public Boss_Command(Boss boss, string nameCommand, float executeTime)
     {
         this.boss = boss;
         this.executeTime = executeTime;
+        this.nameCommand = nameCommand;
+
+        anim = boss.GetComponentInChildren<Animator>();
     }
 
-    public abstract void Execute();
+    public virtual void Execute()
+    {
+        anim.SetBool(nameCommand, true);
+    }
 
-    public abstract void Undo();
+    public virtual void Undo()
+    {
+        anim.SetBool(nameCommand, false);
+    }
 }

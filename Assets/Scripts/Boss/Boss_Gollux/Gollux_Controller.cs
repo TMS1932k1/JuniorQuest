@@ -26,12 +26,13 @@ public class Gollux_Controller : Boss_Controller
         if (!gollux.isActivity || health.isDead || !canDecide)
             return;
 
-
         Boss_Command nextCommand = null;
         if (health.GetHealthPercent() <= 0.5f && canSummon)
         {
             canSummon = false;
-            // Add command of Skill Summon Golem
+
+            // Code command of Skill Summon Golem
+            // ...
         }
         else
         {
@@ -47,11 +48,16 @@ public class Gollux_Controller : Boss_Controller
     private void SetRandomCommands()
     {
         // Long range commands
-        longRangeRandoms.Add(new WeightedCommand(new Gollux_MoveCommand(gollux, 2f), 30f));
-        longRangeRandoms.Add(new WeightedCommand(new Gollux_RockDropCommand(gollux), 70f));
+        longRangeRandoms.Add(new WeightedCommand(gollux.moveCommand, 30f));
+        longRangeRandoms.Add(new WeightedCommand(gollux.rockDropCommand, 70f));
 
         // Close range commands
-        closeRangeRandoms.Add(new WeightedCommand(new Gollux_NormalAttackCommand(gollux), 70f));
-        longRangeRandoms.Add(new WeightedCommand(new Gollux_RockDropCommand(gollux), 30f));
+        closeRangeRandoms.Add(new WeightedCommand(gollux.normalAttackCommand, 70f));
+        longRangeRandoms.Add(new WeightedCommand(gollux.rockDropCommand, 30f));
+    }
+
+    public override void AddFreezedCommand(float duration)
+    {
+        commandManager.AddCommand(new Gollux_FreezedCommand(gollux, "isFreezed", duration));
     }
 }

@@ -5,9 +5,11 @@ using UnityEngine;
 public class Boss_CommandManager : MonoBehaviour
 {
     private Queue<Boss_Command> commands;
-    private bool isExecuting;
+    private Boss_Command currentCommand;
+
+
     private bool isTrigger;
-    private Coroutine executeCoroutine;
+    private float commandTimer;
 
 
     private void Awake()
@@ -15,22 +17,25 @@ public class Boss_CommandManager : MonoBehaviour
         commands = new Queue<Boss_Command>();
     }
 
-    private void Start()
-    {
-        isExecuting = false;
-    }
-
     private void Update()
     {
-        if (commands.Count > 0 && !isExecuting)
+        commandTimer -= Time.deltaTime;
+
+        if (commands.Count > 0 && currentCommand == null)
         {
-            Boss_Command nextCommand = commands.Dequeue();
+            currentCommand = commands.Dequeue();
 
-            if (executeCoroutine != null)
-                StopCoroutine(executeCoroutine);
+            if (currentCommand != null)
+            {
+                isTrigger = false;
+                commandTimer = currentCommand.executeTime <= 0 ? float.MaxValue : currentCommand.executeTime;
 
-            executeCoroutine = StartCoroutine(ExecuteCommand(nextCommand));
+                currentCommand.Execute();
+            }
         }
+
+        if (currentCommand != null && CanStopCommand())
+            StopCurrentCommand();
     }
 
     public void AddCommand(Boss_Command command)
@@ -43,26 +48,15 @@ public class Boss_CommandManager : MonoBehaviour
         commands.Clear();
     }
 
-    private IEnumerator ExecuteCommand(Boss_Command command)
+    public void StopCurrentCommand()
     {
-        isExecuting = true;
-        isTrigger = false;
-        command.Execute();
-
-        // Wait for execute time
-        yield return new WaitForSeconds(command.executeTime);
-
-        // If have not executeTime => wait end animation
-        while (command.executeTime <= 0 && !isTrigger)
-            yield return null;
-
-        command.Undo();
-        isExecuting = false;
+        currentCommand.Undo();
+        currentCommand = null;
     }
+    private bool CanStopCommand() => commandTimer <= 0 || isTrigger;
 
     public void CallTrigger()
     {
-        Debug.Log("Call Trigger");
         isTrigger = true;
     }
 }

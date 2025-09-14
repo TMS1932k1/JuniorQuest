@@ -106,18 +106,18 @@ public class Enemy : Entity, ICanCounter
         return playerDetect;
     }
 
+    /// <summary>
+    /// Change to freezedstate 
+    /// </summary>
+    /// <param name="duration">Time freeze</param>
     public override void BeFreezed(float duration)
     {
-        base.BeFreezed(duration);
-
         stateMachine.ChangeState(freezedState);
         Invoke(nameof(ExitFreezed), duration); // Exit freezed after duration
     }
 
     public override void ExitFreezed()
     {
-        base.ExitFreezed();
-
         stateMachine.ChangeState(detectedState);
     }
 

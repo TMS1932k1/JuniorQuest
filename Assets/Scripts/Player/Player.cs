@@ -120,4 +120,14 @@ public class Player : Entity
         yield return new WaitForEndOfFrame();
         stateMachine.ChangeState(state);
     }
+
+    public override void BeFreezed(float duration)
+    {
+
+    }
+
+    public override void ExitFreezed()
+    {
+
+    }
 }

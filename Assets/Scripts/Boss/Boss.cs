@@ -16,9 +16,11 @@ public class Boss : Entity
     public bool isActivity { get; private set; }
 
 
+    // Components
     private Entity_Stat stat;
     private Boss_CommandManager commandManager;
     private Boss_Controller controller;
+    protected SpriteRenderer sr;
 
 
     protected override void Awake()
@@ -26,18 +28,19 @@ public class Boss : Entity
         base.Awake();
 
         stat = GetComponent<Entity_Stat>();
+        sr = GetComponentInChildren<SpriteRenderer>();
         commandManager = GetComponent<Boss_CommandManager>();
         controller = GetComponent<Boss_Controller>();
     }
 
     private void OnEnable()
     {
-        Player.OnPlayerDeath += HandlePlayerDeath;
+        Player.OnPlayerDeath += StopCommandSystem;
     }
 
     private void OnDisable()
     {
-        Player.OnPlayerDeath -= HandlePlayerDeath;
+        Player.OnPlayerDeath -= StopCommandSystem;
     }
 
     protected override void Update()
@@ -57,10 +60,26 @@ public class Boss : Entity
         OnBossDeath.Invoke(stat.GetXp());
     }
 
-    public void HandlePlayerDeath()
+    public override void BeFreezed(float duration)
     {
-        controller.OffDecideAction();
+        // Stop all commands, then add (FreezedCommand) to execute
+        StopCommandSystem();
+
+        controller.AddFreezedCommand(duration);
+        Invoke(nameof(ExitFreezed), duration); // Exit freezed after duration
+    }
+
+    public override void ExitFreezed()
+    {
+        controller.EnableDecideAction(true);
+    }
+
+    private void StopCommandSystem()
+    {
+        controller.EnableDecideAction(false);
+
         commandManager.ClearCommands();
+        commandManager.StopCurrentCommand();
     }
 
     private void DetectTarget()
