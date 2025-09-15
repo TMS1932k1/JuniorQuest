@@ -19,11 +19,10 @@ public abstract class Boss_Controller : MonoBehaviour
 {
     [Header("Details")]
     [SerializeField] protected float delayDecide = 3f;
+    protected bool canDecide = true;
 
 
     protected Boss_CommandManager commandManager;
-
-    protected bool canDecide = true;
 
 
     protected virtual void Awake()

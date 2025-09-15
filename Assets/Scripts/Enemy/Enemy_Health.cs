@@ -30,7 +30,7 @@ public class Enemy_Health : Entity_Health
         {
             // Damage VFX
             if (!isMissed)
-                entityVFX.PlayOnDamageVFXCO();
+                entityVFX.PlayOnDamageVFXCo();
 
             // Detect Player
             ChangeDectectedState(damageDealer);

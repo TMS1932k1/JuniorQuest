@@ -1,14 +1,18 @@
 using System.Collections.Generic;
+using UnityEngine;
 
 public class Gollux_Controller : Boss_Controller
 {
+    // Components
     private Gollux gollux;
     private Boss_Health health;
+    private Gollux_SkillManager skillManager;
 
 
+    // Combos
     private List<WeightedCommand> longRangeRandoms = new(); // Long range commands to random
     private List<WeightedCommand> closeRangeRandoms = new(); // Close range commands to random
-    private bool canSummon = true;
+
 
 
     protected override void Awake()
@@ -17,6 +21,7 @@ public class Gollux_Controller : Boss_Controller
 
         gollux = GetComponent<Gollux>();
         health = GetComponent<Boss_Health>();
+        skillManager = GetComponent<Gollux_SkillManager>();
 
         SetRandomCommands();
     }
@@ -27,12 +32,12 @@ public class Gollux_Controller : Boss_Controller
             return;
 
         Boss_Command nextCommand = null;
-        if (health.GetHealthPercent() <= 0.5f && canSummon)
+        if (health.GetHealthPercent() <= 0.5f && skillManager.summon.canSummon)
         {
-            canSummon = false;
+            nextCommand = gollux.summonCommand;
 
-            // Code command of Skill Summon Golem
-            // ...
+            // After timer can add HealCommand
+            Invoke(nameof(AddHealCommand), skillManager.summon.GetHealTimer());
         }
         else
         {
@@ -56,8 +61,19 @@ public class Gollux_Controller : Boss_Controller
         longRangeRandoms.Add(new WeightedCommand(gollux.rockDropCommand, 30f));
     }
 
+    /// <summary>
+    /// Can add HealCommand if have Enemy_Summon (canHeal)
+    /// </summary>
+    private void AddHealCommand()
+    {
+        if (skillManager.summon.CanHeal())
+        {
+            commandManager.AddCommand(gollux.healCommand);
+        }
+    }
+
     public override void AddFreezedCommand(float duration)
     {
-        commandManager.AddCommand(new Gollux_FreezedCommand(gollux, "isFreezed", duration));
+        commandManager.AddCommand(new Gollux_FreezedCommand(gollux, EParamenter_Boss.isFreezed.ToString(), duration));
     }
 }

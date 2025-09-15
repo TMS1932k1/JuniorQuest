@@ -66,7 +66,7 @@ public class Entity_VFX : MonoBehaviour
 
     public Quaternion RandomRotate() => Quaternion.Euler(0, 0, Random.Range(0, 360));
 
-    public void PlayOnDamageVFXCO()
+    public void PlayOnDamageVFXCo()
     {
         if (onDamageVFXCoroutine != null)
             StopCoroutine(onDamageVFXCoroutine);
@@ -103,6 +103,17 @@ public class Entity_VFX : MonoBehaviour
     {
         if (burnCoroutine != null)
             StopCoroutine(burnCoroutine);
+
+        sr.color = originalColor;
+    }
+
+    public virtual void ResetVFX()
+    {
+        if (burnCoroutine != null)
+            StopCoroutine(burnCoroutine);
+
+        if (onDamageVFXCoroutine != null)
+            StopCoroutine(onDamageVFXCoroutine);
 
         sr.color = originalColor;
     }

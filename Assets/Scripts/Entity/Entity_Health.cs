@@ -31,8 +31,7 @@ public class Entity_Health : MonoBehaviour
 
     protected virtual void Start()
     {
-        currentHealth = stat.GetHealth();
-        isDead = false;
+        ResetHealth();
     }
 
     protected virtual void Update()
@@ -41,6 +40,12 @@ public class Entity_Health : MonoBehaviour
             currentHealth = stat.GetHealth();
 
         AutoRestoreHealth();
+    }
+
+    public void ResetHealth()
+    {
+        currentHealth = stat.GetHealth();
+        isDead = false;
     }
 
     /// <summary>
@@ -99,7 +104,8 @@ public class Entity_Health : MonoBehaviour
         // CurrentHp isn't full
         if (Time.time > lastTimeTakeDamage + timeAutoRestoreHp
             && restoreHpCoroutine == null
-            && currentHealth < stat.GetHealth())
+            && currentHealth < stat.GetHealth()
+            && !isDead)
         {
             // Perform restore HP
             restoreHpCoroutine = StartCoroutine(AutoRestoreHealthCo());

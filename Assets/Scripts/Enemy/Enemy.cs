@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using UnityEngine;
 
 public class Enemy : Entity, ICanCounter
@@ -47,12 +46,12 @@ public class Enemy : Entity, ICanCounter
         stat = GetComponent<Entity_Stat>();
     }
 
-    private void OnEnable()
+    protected virtual void OnEnable()
     {
         Player.OnPlayerDeath += HandlePlayerDeath;
     }
 
-    private void OnDisable()
+    protected virtual void OnDisable()
     {
         Player.OnPlayerDeath -= HandlePlayerDeath;
     }

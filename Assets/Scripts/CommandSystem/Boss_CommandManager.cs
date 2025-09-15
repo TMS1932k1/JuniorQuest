@@ -50,8 +50,11 @@ public class Boss_CommandManager : MonoBehaviour
 
     public void StopCurrentCommand()
     {
-        currentCommand.Undo();
-        currentCommand = null;
+        if (currentCommand != null)
+        {
+            currentCommand.Undo();
+            currentCommand = null;
+        }
     }
     private bool CanStopCommand() => commandTimer <= 0 || isTrigger;
 

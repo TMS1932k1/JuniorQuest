@@ -7,7 +7,7 @@ public class Gollux_SkillRockDrop : MonoBehaviour
 
 
     private Entity_Stat stat;
-    private Boss boss;
+    private Gollux gollux;
 
 
     private float damage;
@@ -16,7 +16,7 @@ public class Gollux_SkillRockDrop : MonoBehaviour
     private void Awake()
     {
         stat = GetComponentInParent<Entity_Stat>();
-        boss = GetComponentInParent<Boss>();
+        gollux = GetComponentInParent<Gollux>();
     }
 
     public void Perform()
@@ -26,7 +26,7 @@ public class Gollux_SkillRockDrop : MonoBehaviour
 
         // Set trans and damage
         damage = stat.GetDamageWithCrit(out bool isCrit);
-        Vector3 pos = boss.detectTarget.transform.position + new Vector3(0, heightDis);
+        Vector3 pos = new Vector3(gollux.detectTarget.transform.position.x, transform.position.y + heightDis);
         rock.SetDetails(pos, damage);
     }
 }

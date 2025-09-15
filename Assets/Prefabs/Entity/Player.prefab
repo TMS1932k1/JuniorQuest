@@ -6549,7 +6549,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   level: 1
   currentXP: 0
-  expMutiplier: 100
+  expMutiplier: 50
   newLevelUp: 1
 --- !u!114 &5410002999280293278
 MonoBehaviour:

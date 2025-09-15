@@ -9,4 +9,11 @@ public class Enemy_VFX : Entity_VFX
     {
         CounterAlert.SetActive(enable);
     }
+
+    public override void ResetVFX()
+    {
+        base.ResetVFX();
+
+        EnableCounterAlert(false);
+    }
 }

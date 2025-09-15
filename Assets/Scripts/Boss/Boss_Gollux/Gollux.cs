@@ -13,9 +13,11 @@ public class Gollux : Boss
 
 
     // Commands
-    public Boss_Command moveCommand { get; private set; }
-    public Boss_Command rockDropCommand { get; private set; }
-    public Boss_Command normalAttackCommand { get; private set; }
+    public Gollux_MoveCommand moveCommand { get; private set; }
+    public Gollux_RockDropCommand rockDropCommand { get; private set; }
+    public Gollux_NormalAttackCommand normalAttackCommand { get; private set; }
+    public Gollux_SummonCommand summonCommand { get; private set; }
+    public Gollux_HealCommand healCommand { get; private set; }
 
 
     // Components
@@ -29,6 +31,8 @@ public class Gollux : Boss
         moveCommand = new Gollux_MoveCommand(this, EParamenter_Boss.isMove.ToString(), 2f);
         rockDropCommand = new Gollux_RockDropCommand(this, EParamenter_Boss.isRockDrop.ToString());
         normalAttackCommand = new Gollux_NormalAttackCommand(this, EParamenter_Boss.isNormalAttack.ToString());
+        summonCommand = new Gollux_SummonCommand(this, EParamenter_Boss.isSummon.ToString());
+        healCommand = new Gollux_HealCommand(this, EParamenter_Boss.isHeal.ToString());
 
         skillManager = GetComponent<Gollux_SkillManager>();
     }
@@ -65,7 +69,22 @@ public class Gollux : Boss
 
     public void SkillRockDrop()
     {
-        skillManager.PerformRockDrop();
+        skillManager.rockDrop.Perform();
+    }
+
+    public void SkillSummon()
+    {
+        skillManager.summon.Perform();
+    }
+
+    public void SkillSummonDetroy()
+    {
+        skillManager.summon.DismissAllSummon();
+    }
+
+    public void SkillSummonHeal()
+    {
+        skillManager.summon.Heal();
     }
 
     public void Idle()

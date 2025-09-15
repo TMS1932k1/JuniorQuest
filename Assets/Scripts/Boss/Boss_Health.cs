@@ -16,7 +16,6 @@ public class Boss_Health : Entity_Health
 
     /// <summary>
     /// Reduce Health by player
-    ///     - Need change to player detect state
     /// </summary>
     /// <param name="damage"></param>
     /// <param name="isMissed"></param>
@@ -29,7 +28,7 @@ public class Boss_Health : Entity_Health
         {
             // Damage VFX
             if (!isMissed)
-                entityVFX.PlayOnDamageVFXCO();
+                entityVFX.PlayOnDamageVFXCo();
         }
     }
 

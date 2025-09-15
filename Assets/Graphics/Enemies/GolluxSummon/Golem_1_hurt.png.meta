@@ -1,19 +1,19 @@
 fileFormatVersion: 2
-guid: 248d14f1832801742bc5f344edfe1850
+guid: b411a63fc18bf674885d436b3e9c51a5
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6842999660662438955
-    second: gollux_hit_0
+      213: 6067257785549436332
+    second: Golem_1_hurt_0
   - first:
-      213: -851919428366089902
-    second: gollux_hit_1
+      213: -5985867677779041342
+    second: Golem_1_hurt_1
   - first:
-      213: 819154530856422853
-    second: gollux_hit_2
+      213: -3894228756597921260
+    second: Golem_1_hurt_2
   - first:
-      213: 7722796769736215483
-    second: gollux_hit_3
+      213: 4544515124871229537
+    second: Golem_1_hurt_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -109,13 +109,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: gollux_hit_0
+      name: Golem_1_hurt_0
       rect:
         serializedVersion: 2
-        x: 128
+        x: 0
         y: 0
-        width: 128
-        height: 64
+        width: 90
+        height: 39
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b2c37e38fe737fe50800000000000000
-      internalID: 6842999660662438955
+      spriteID: ca5b56c6fca333450800000000000000
+      internalID: 6067257785549436332
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gollux_hit_1
+      name: Golem_1_hurt_1
       rect:
         serializedVersion: 2
-        x: 512
+        x: 90
         y: 0
-        width: 128
-        height: 64
+        width: 90
+        height: 39
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -146,20 +146,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2514cf62bcf5d24f0800000000000000
-      internalID: -851919428366089902
+      spriteID: 2c3ec71cf0dedeca0800000000000000
+      internalID: -5985867677779041342
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gollux_hit_2
+      name: Golem_1_hurt_2
       rect:
         serializedVersion: 2
-        x: 896
+        x: 180
         y: 0
-        width: 128
-        height: 64
+        width: 90
+        height: 39
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -168,20 +168,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5cd49dba4b83e5b00800000000000000
-      internalID: 819154530856422853
+      spriteID: 41aaed0149be4f9c0800000000000000
+      internalID: -3894228756597921260
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gollux_hit_3
+      name: Golem_1_hurt_3
       rect:
         serializedVersion: 2
-        x: 1280
+        x: 270
         y: 0
-        width: 128
-        height: 64
+        width: 90
+        height: 39
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -190,8 +190,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: bbb49a4beb2ec2b60800000000000000
-      internalID: 7722796769736215483
+      spriteID: 160f65e9d6c511f30800000000000000
+      internalID: 4544515124871229537
       vertices: []
       indices: 
       edges: []
@@ -200,7 +200,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: cd154ba359018e9419679c06f61682e0
+    spriteID: 7dcd00883fac50c42aa5b80158446c3e
     internalID: 0
     vertices: []
     indices: 
@@ -210,12 +210,12 @@ TextureImporter:
     spriteCustomMetadata:
       entries:
       - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":128.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":90.0,"y":39.0},"gridSpriteOffset":{"x":0.0,"y":25.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      gollux_hit_0: 6842999660662438955
-      gollux_hit_1: -851919428366089902
-      gollux_hit_2: 819154530856422853
-      gollux_hit_3: 7722796769736215483
+      Golem_1_hurt_0: 6067257785549436332
+      Golem_1_hurt_1: -5985867677779041342
+      Golem_1_hurt_2: -3894228756597921260
+      Golem_1_hurt_3: 4544515124871229537
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

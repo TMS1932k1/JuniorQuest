@@ -15,13 +15,13 @@ public class Enemy_DeathState : EnemyState
     {
         base.Enter();
 
-        OffCanCounter();
+        ResetVFX();
         Object.Destroy(enemy, timeDestroy);
     }
 
-    private void OffCanCounter()
+    private void ResetVFX()
     {
         enemy.canStunned = false;
-        enemyVFX.EnableCounterAlert(false);
+        enemyVFX.ResetVFX();
     }
 }

@@ -1411,6 +1411,7 @@ GameObject:
   m_Component:
   - component: {fileID: 143478354}
   - component: {fileID: 143478355}
+  - component: {fileID: 143478356}
   m_Layer: 0
   m_Name: Pool_Skills
   m_TagString: Untagged
@@ -1446,6 +1447,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabObj: {fileID: 2968558401146353683, guid: 47fa945a1c41b144dad652ad41dd7779, type: 3}
+  poolHolder: {fileID: 143478354}
+  size: 2
+--- !u!114 &143478356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 143478353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9eeee827296b93246afc64239a04ec58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabObj: {fileID: 7914276917539679583, guid: f5bb83d32eafe35489243a34b0301ed3, type: 3}
   poolHolder: {fileID: 143478354}
   size: 2
 --- !u!1 &154893719
@@ -1887,7 +1903,7 @@ MonoBehaviour:
       finalValue: 0
   offensive:
     damage:
-      baseValue: 30
+      baseValue: 5
       finalValue: 0
     critPower:
       baseValue: 0
@@ -138897,6 +138913,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1365937051}
   - component: {fileID: 1365937053}
+  - component: {fileID: 1365937054}
   m_Layer: 9
   m_Name: SkillsHolder
   m_TagString: Untagged
@@ -138933,6 +138950,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   heightDis: 5
   objectPool: {fileID: 143478355}
+--- !u!114 &1365937054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1365937050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ee81d1f439d54f4caea9a22908ee47b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healTimer: 15
+  enemyCount: 2
+  objectPool: {fileID: 143478356}
 --- !u!1001 &1366243094
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -146948,10 +146980,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1071831784901894012, guid: 9df9644e3aa2ead43b42d9ca6909a3d3, type: 3}
-      propertyPath: newLevelUp
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4613991796448538523, guid: 9df9644e3aa2ead43b42d9ca6909a3d3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 121.12
