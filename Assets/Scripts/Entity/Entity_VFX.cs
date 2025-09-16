@@ -18,21 +18,21 @@ public class Entity_VFX : MonoBehaviour
     [SerializeField] float maxRandomX;
     [SerializeField] float minRandomY;
     [SerializeField] float maxRandomY;
-
-
-    //Component
-    protected SpriteRenderer sr;
-
-
     private Material originMaterial;
     private Coroutine onDamageVFXCoroutine;
 
 
-    // Burn
-    private Color originalColor;
+    [Header("Effects VFX")]
     [SerializeField] Color burnColor = Color.red;
     [SerializeField] Color burnDarkColor = Color.red;
+    [SerializeField] Color freezeColor = Color.blue;
+    private Color originalColor;
     private Coroutine burnCoroutine;
+    private Coroutine freezedCoroutine;
+
+
+    //Component
+    protected SpriteRenderer sr;
 
 
     protected virtual void Awake()
@@ -104,6 +104,21 @@ public class Entity_VFX : MonoBehaviour
         if (burnCoroutine != null)
             StopCoroutine(burnCoroutine);
 
+        sr.color = originalColor;
+    }
+
+    public void PlayFreezedVFX(float duration)
+    {
+        if (freezedCoroutine != null)
+            StopCoroutine(freezedCoroutine);
+
+        freezedCoroutine = StartCoroutine(FreezedCo(duration));
+    }
+
+    private IEnumerator FreezedCo(float duration)
+    {
+        sr.color = freezeColor;
+        yield return new WaitForSeconds(duration);
         sr.color = originalColor;
     }
 

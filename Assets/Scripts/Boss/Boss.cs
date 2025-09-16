@@ -62,11 +62,8 @@ public class Boss : Entity
 
     public override void BeFreezed(float duration)
     {
-        // Stop all commands, then add (FreezedCommand) to execute
-        StopCommandSystem();
-
+        StopCommandSystem(); // Stop all commands, then add (FreezedCommand) to execute
         controller.AddFreezedCommand(duration);
-        Invoke(nameof(ExitFreezed), duration); // Exit freezed after duration
     }
 
     public override void ExitFreezed()

@@ -74,6 +74,6 @@ public class Gollux_Controller : Boss_Controller
 
     public override void AddFreezedCommand(float duration)
     {
-        commandManager.AddCommand(new Gollux_FreezedCommand(gollux, EParamenter_Boss.isFreezed.ToString(), duration));
+        commandManager.AddCommand(new Boss_FreezedCommand(gollux, EParamenter_Boss.isFreezed.ToString(), duration));
     }
 }

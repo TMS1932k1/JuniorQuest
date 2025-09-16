@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public abstract class Entity : MonoBehaviour, ICanFreeze
+public abstract class Entity : MonoBehaviour
 {
     [Header("Ground detection")]
     [SerializeField] protected Transform groundCheckTransform;
@@ -129,10 +129,6 @@ public abstract class Entity : MonoBehaviour, ICanFreeze
         return stateMachine.currentState;
     }
 
-    public abstract void BeFreezed(float duration);
-
-    public abstract void ExitFreezed();
-
     protected virtual void OnDrawGizmos()
     {
         Gizmos.color = Color.green;
@@ -148,4 +144,7 @@ public abstract class Entity : MonoBehaviour, ICanFreeze
         Vector3 WallCheck2 = transform.position + new Vector3(0, secondaryWallCheckVelocityY, 0);
         Gizmos.DrawLine(WallCheck2, WallCheck2 + new Vector3(wallCheckDistance * faceDir, 0, 0));
     }
+
+    public abstract void BeFreezed(float duration);
+    public abstract void ExitFreezed();
 }

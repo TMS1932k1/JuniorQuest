@@ -92,16 +92,6 @@ public class Gollux : Boss
         rb.linearVelocityX = 0;
     }
 
-    public void BeFreezed()
-    {
-        sr.color = Color.blue;
-    }
-
-    public void OutFreezed()
-    {
-        sr.color = Color.white;
-    }
-
     /// <summary>
     /// Get distance to target (-1 = no target)
     /// </summary>

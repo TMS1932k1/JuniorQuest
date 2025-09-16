@@ -112,7 +112,6 @@ public class Enemy : Entity, ICanCounter
     public override void BeFreezed(float duration)
     {
         stateMachine.ChangeState(freezedState);
-        Invoke(nameof(ExitFreezed), duration); // Exit freezed after duration
     }
 
     public override void ExitFreezed()

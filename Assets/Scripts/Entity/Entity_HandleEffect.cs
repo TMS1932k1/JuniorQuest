@@ -1,19 +1,21 @@
 using System.Collections;
 using UnityEngine;
 
-public class Entity_HandleEffect : MonoBehaviour, ICanBurn
+public class Entity_HandleEffect : MonoBehaviour, ICanBurn, ICanFreeze
 {
     // Burn
     private bool canBurn;
     private Coroutine burnCoroutine;
 
 
+    private Entity entity;
     private Entity_Health entityHealth;
     private Entity_VFX entityVFX;
 
 
     void Awake()
     {
+        entity = GetComponent<Entity>();
         entityHealth = GetComponent<Entity_Health>();
         entityVFX = GetComponent<Entity_VFX>();
     }
@@ -50,4 +52,15 @@ public class Entity_HandleEffect : MonoBehaviour, ICanBurn
         canBurn = true;
         entityVFX.StopBurnVFXCo(); // Off VFX
     }
+
+    public void BeFreezed(float duration)
+    {
+        entity.BeFreezed(duration);
+        entityVFX.PlayFreezedVFX(duration);
+
+        Invoke(nameof(ExitFreezed), duration); // Exit freezed after duration
+    }
+
+    public void ExitFreezed() => entity.ExitFreezed();
+
 }
