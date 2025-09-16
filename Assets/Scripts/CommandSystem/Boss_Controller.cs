@@ -5,12 +5,12 @@ using UnityEngine;
 [System.Serializable]
 public class WeightedCommand
 {
-    public Boss_Command command;
+    public Boss_Command bossCommand;
     public float weight;
 
     public WeightedCommand(Boss_Command command, float weight)
     {
-        this.command = command;
+        this.bossCommand = command;
         this.weight = weight;
     }
 }
@@ -22,12 +22,12 @@ public abstract class Boss_Controller : MonoBehaviour
     protected bool canDecide = true;
 
 
-    protected Boss_CommandManager commandManager;
+    protected Boss_CommandManager bossCommandManager;
 
 
     protected virtual void Awake()
     {
-        commandManager = GetComponent<Boss_CommandManager>();
+        bossCommandManager = GetComponent<Boss_CommandManager>();
     }
 
     protected virtual void Start()
@@ -52,7 +52,7 @@ public abstract class Boss_Controller : MonoBehaviour
         foreach (var wc in commands)
         {
             if (randomValue < wc.weight)
-                return wc.command;
+                return wc.bossCommand;
 
             randomValue -= wc.weight;
         }
@@ -63,4 +63,5 @@ public abstract class Boss_Controller : MonoBehaviour
     protected abstract void DecideNextAction(); // Need override at child class to selbst decide next action
 
     public abstract void AddFreezedCommand(float duration);
+    public abstract void AddDeathCommand();
 }

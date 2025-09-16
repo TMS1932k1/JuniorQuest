@@ -3,6 +3,7 @@ using UnityEngine;
 public class Enemy_DeathState : EnemyState
 {
     private Enemy_VFX enemyVFX;
+
     private float timeDestroy = 1f;
 
 
@@ -16,12 +17,12 @@ public class Enemy_DeathState : EnemyState
         base.Enter();
 
         ResetVFX();
-        Object.Destroy(enemy, timeDestroy);
+        Object.Destroy(enemy.gameObject, timeDestroy);
     }
 
     private void ResetVFX()
     {
-        enemy.canStunned = false;
         enemyVFX.ResetVFX();
+        enemy.canStunned = false;
     }
 }

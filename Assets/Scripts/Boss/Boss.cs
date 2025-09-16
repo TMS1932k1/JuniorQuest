@@ -18,8 +18,10 @@ public class Boss : Entity
 
     // Components
     private Entity_Stat stat;
-    private Boss_CommandManager commandManager;
-    private Boss_Controller controller;
+    private Boss_CommandManager bossCommandManager;
+    private Boss_Health bossHealth;
+    private Boss_Controller bossController;
+    private Boss_Inventory bossInventory;
     protected SpriteRenderer sr;
 
 
@@ -29,8 +31,10 @@ public class Boss : Entity
 
         stat = GetComponent<Entity_Stat>();
         sr = GetComponentInChildren<SpriteRenderer>();
-        commandManager = GetComponent<Boss_CommandManager>();
-        controller = GetComponent<Boss_Controller>();
+        bossCommandManager = GetComponent<Boss_CommandManager>();
+        bossController = GetComponent<Boss_Controller>();
+        bossHealth = GetComponent<Boss_Health>();
+        bossInventory = GetComponent<Boss_Inventory>();
     }
 
     private void OnEnable()
@@ -49,6 +53,7 @@ public class Boss : Entity
         // base.Update();
 
         DetectTarget();
+        HandleFlip();
 
         isActivity = detectTarget != null; // Activity when player in arena
     }
@@ -57,31 +62,47 @@ public class Boss : Entity
     {
         base.OnDead();
 
+        StopCommandSystem();
+        bossController.AddDeathCommand();
+        bossInventory.DropAllInventory();
+
         OnBossDeath.Invoke(stat.GetXp());
     }
 
     public override void BeFreezed(float duration)
     {
         StopCommandSystem(); // Stop all commands, then add (FreezedCommand) to execute
-        controller.AddFreezedCommand(duration);
+        bossController.AddFreezedCommand(duration);
     }
 
     public override void ExitFreezed()
     {
-        controller.EnableDecideAction(true);
+        bossController.EnableDecideAction(true);
     }
 
     private void StopCommandSystem()
     {
-        controller.EnableDecideAction(false);
+        bossController.EnableDecideAction(false);
 
-        commandManager.ClearCommands();
-        commandManager.StopCurrentCommand();
+        bossCommandManager.ClearCommands();
+        bossCommandManager.StopCurrentCommand();
     }
 
     private void DetectTarget()
     {
-        detectTarget = GetTargetInArena();
+        detectTarget = !bossHealth.isDead ? GetTargetInArena() : null;
+    }
+
+    private void HandleFlip()
+    {
+        if (detectTarget == null)
+            return;
+
+        if (transform.position.x < detectTarget.transform.position.x && faceDir != 1)
+            Flip();
+
+        if (transform.position.x > detectTarget.transform.position.x && faceDir != -1)
+            Flip();
     }
 
     private Collider2D GetTargetInArena()

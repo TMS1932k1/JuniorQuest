@@ -7,7 +7,8 @@ public class Enemy_VFX : Entity_VFX
 
     public void EnableCounterAlert(bool enable)
     {
-        CounterAlert.SetActive(enable);
+        if (CounterAlert != null)
+            CounterAlert.SetActive(enable);
     }
 
     public override void ResetVFX()

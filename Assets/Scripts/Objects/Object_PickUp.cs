@@ -18,12 +18,11 @@ public class Object_PickUp : Object_Interactable
 
         Entity_Inventory inventory = collision.GetComponent<Entity_Inventory>();
 
-        if (inventory && !inventory.isFull())
+        if (inventory && !inventory.IsFull())
         {
             inventory.AddToInventory(data);
             base.OnTriggerEnter2D(collision);
         }
-
     }
 
     protected override void HideObject()

@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class UI_Inventory : MonoBehaviour
 {
-    [SerializeField] Entity_Inventory entityInventory;
+    [SerializeField] Player_Inventory playerInventory;
     [SerializeField] UI_PickUp pickUpPrefab;
 
     private List<UI_PickUp> pickUpList = new();
@@ -11,31 +11,32 @@ public class UI_Inventory : MonoBehaviour
 
     void Awake()
     {
-        for (int i = 0; i < entityInventory.GetSlotCount(); i++)
+        Player_Inventory.OnUpdateInventory += SetDisplay;
+    }
+
+    void Start()
+    {
+        // Instantiate empty pickUp UI
+        for (int i = 0; i < playerInventory.GetSlotCount(); i++)
         {
             UI_PickUp pickUpUI = Instantiate(pickUpPrefab, transform);
             pickUpList.Add(pickUpUI);
         }
 
-        Entity_Inventory.OnUpdateInventory += SetDisplay;
-    }
-
-    void Start()
-    {
         SetDisplay();
     }
 
     void OnDestroy()
     {
-        Entity_Inventory.OnUpdateInventory -= SetDisplay;
+        Player_Inventory.OnUpdateInventory += SetDisplay;
     }
 
     private void SetDisplay()
     {
         for (int i = 0; i < pickUpList.Count; i++)
         {
-            if (i < entityInventory.inventory.Count)
-                pickUpList[i].SetDisplay(entityInventory.inventory[i]);
+            if (i < playerInventory.GetInventory().Count)
+                pickUpList[i].SetDisplay(playerInventory.GetInventory()[i]);
             else
                 pickUpList[i].SetEmpty();
         }

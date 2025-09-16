@@ -121,4 +121,16 @@ public class Player_VFX : Entity_VFX
         c.a = fadePercent;
         sr.color = c;
     }
+
+    public override void ResetVFX()
+    {
+        base.ResetVFX();
+
+        HideComebackVFX();
+        HideInvisibilityVFX();
+        HideShieldBarrierVFX();
+        HideBattleCryVFX();
+        HideIcePrisonVFX();
+        HideFireBladeVFX();
+    }
 }

@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -18,21 +17,18 @@ public class Slot
 
 public class Entity_Inventory : MonoBehaviour
 {
-    public static event Action OnUpdateInventory;
-
-
     [Header("Details")]
-    public List<Slot> inventory { get; private set; } = new();
+    [SerializeField] protected List<Slot> inventory = new();
     [SerializeField] int slotCount;
 
 
-    public bool isFull() => inventory.Count >= slotCount;
-
+    public bool IsFull() => inventory.Count >= slotCount;
+    public List<Slot> GetInventory() => inventory;
     public int GetSlotCount() => slotCount;
 
-    public void AddToInventory(ObjectPickUpSO pickUpData)
+    public virtual void AddToInventory(ObjectPickUpSO pickUpData)
     {
-        if (isFull())
+        if (IsFull())
             return;
 
         Slot slot = FindPickUp(pickUpData.pickUpName);
@@ -40,11 +36,9 @@ public class Entity_Inventory : MonoBehaviour
             slot.stack++;
         else
             inventory.Add(new Slot(pickUpData));
-
-        OnUpdateInventory?.Invoke();
     }
 
-    public ObjectPickUpSO GetOutInventory(string pickUpName)
+    public virtual ObjectPickUpSO GetOutInventory(string pickUpName)
     {
         Slot slot = FindPickUp(pickUpName);
 
@@ -56,7 +50,6 @@ public class Entity_Inventory : MonoBehaviour
         else
             inventory.Remove(slot); // Remove this slot
 
-        OnUpdateInventory?.Invoke();
         return slot.data;
     }
 

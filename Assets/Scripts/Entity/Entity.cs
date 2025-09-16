@@ -36,6 +36,7 @@ public abstract class Entity : MonoBehaviour
     // Components
     public Animator anim { get; private set; }
     public Rigidbody2D rb { get; private set; }
+    private Entity_HandleEffect entityHandleEffect;
 
 
     public int faceDir { get; protected set; } = 1;
@@ -45,6 +46,7 @@ public abstract class Entity : MonoBehaviour
     {
         anim = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody2D>();
+        entityHandleEffect = GetComponent<Entity_HandleEffect>();
 
         stateMachine = new StateMachine();
     }
@@ -117,6 +119,7 @@ public abstract class Entity : MonoBehaviour
 
     public virtual void OnDead()
     {
+        entityHandleEffect.ResetHandleEffect();
     }
 
     public void CallTriggerCurrentState()

@@ -14,4 +14,5 @@ public enum EParamenter_Enemy
     hit, // Ranged Attack
     isSleep, // Bat
     wakeUp, // Bat
+    isSummon, // GolluxSummon
 }

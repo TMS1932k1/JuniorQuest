@@ -55,10 +55,15 @@ public class Entity_Combat : MonoBehaviour
     {
         damage = stat.GetDamageWithCrit(out bool isCrit);
 
-        target.gameObject.GetComponent<Entity_Health>().ReduceHealth(damage, out bool isMissed, transform);
+        Entity_Health targetHealth = target.gameObject.GetComponent<Entity_Health>();
 
-        if (!isMissed)
-            entityVFX.CreateHitVFX(target.transform.position, isCrit);
+        if (!targetHealth.isDead)
+        {
+            targetHealth.ReduceHealth(damage, out bool isMissed, transform);
+
+            if (!isMissed)
+                entityVFX.CreateHitVFX(target.transform.position, isCrit);
+        }
     }
 
     /// <summary>

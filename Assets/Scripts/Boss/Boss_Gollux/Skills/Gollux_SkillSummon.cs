@@ -52,9 +52,7 @@ public class Gollux_SkillSummon : MonoBehaviour
     /// <summary>
     /// Dismmiss all summoned enemies
     /// Calculate total HP of all
-    ///  - if healValue == 0 is all summon enemies were death => can't heal
     /// </summary>
-    /// <returns>Heal value</returns>
     public void DismissAllSummon()
     {
         canSummon = true;
@@ -73,7 +71,6 @@ public class Gollux_SkillSummon : MonoBehaviour
 
     public void Heal()
     {
-        Debug.Log("Heal");
         health.Heal(healValue);
     }
 

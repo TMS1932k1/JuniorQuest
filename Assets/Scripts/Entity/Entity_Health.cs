@@ -159,6 +159,8 @@ public class Entity_Health : MonoBehaviour
 
     public virtual void Die()
     {
+        StopAutoRestoreHP();
+
         currentHealth = 0;
         isDead = true;
     }

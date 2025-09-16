@@ -9,10 +9,9 @@ public class Gollux_SummonCommand : Boss_Command
         this.gollux = gollux;
     }
 
-    public override void Execute()
+    public override void Undo()
     {
-        base.Execute();
-
+        base.Undo();
         gollux.SkillSummon();
     }
 }

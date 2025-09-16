@@ -63,4 +63,9 @@ public class Entity_HandleEffect : MonoBehaviour, ICanBurn, ICanFreeze
 
     public void ExitFreezed() => entity.ExitFreezed();
 
+    public void ResetHandleEffect()
+    {
+        if (burnCoroutine != null)
+            StopCoroutine(burnCoroutine);
+    }
 }

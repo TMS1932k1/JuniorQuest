@@ -18,10 +18,12 @@ public class Gollux : Boss
     public Gollux_NormalAttackCommand normalAttackCommand { get; private set; }
     public Gollux_SummonCommand summonCommand { get; private set; }
     public Gollux_HealCommand healCommand { get; private set; }
+    public Gollux_DeathCommand deathCommand { get; private set; }
 
 
     // Components
-    private Gollux_SkillManager skillManager;
+    private Gollux_SkillManager golluxSkillManager;
+    private Boss_VFX bossVFX;
 
 
     protected override void Awake()
@@ -33,15 +35,10 @@ public class Gollux : Boss
         normalAttackCommand = new Gollux_NormalAttackCommand(this, EParamenter_Boss.isNormalAttack.ToString());
         summonCommand = new Gollux_SummonCommand(this, EParamenter_Boss.isSummon.ToString());
         healCommand = new Gollux_HealCommand(this, EParamenter_Boss.isHeal.ToString());
+        deathCommand = new Gollux_DeathCommand(this, EParamenter_Boss.isDeath.ToString(), 0f);
 
-        skillManager = GetComponent<Gollux_SkillManager>();
-    }
-
-    protected override void Update()
-    {
-        base.Update();
-
-        HandleFlip();
+        golluxSkillManager = GetComponent<Gollux_SkillManager>();
+        bossVFX = GetComponent<Boss_VFX>();
     }
 
     public void Move()
@@ -69,27 +66,35 @@ public class Gollux : Boss
 
     public void SkillRockDrop()
     {
-        skillManager.rockDrop.Perform();
+        golluxSkillManager.rockDrop.Perform();
     }
 
     public void SkillSummon()
     {
-        skillManager.summon.Perform();
+        golluxSkillManager.summon.Perform();
     }
 
     public void SkillSummonDetroy()
     {
-        skillManager.summon.DismissAllSummon();
+        golluxSkillManager.summon.DismissAllSummon();
     }
 
     public void SkillSummonHeal()
     {
-        skillManager.summon.Heal();
+        golluxSkillManager.summon.Heal();
     }
 
     public void Idle()
     {
         rb.linearVelocityX = 0;
+    }
+
+    public void Death()
+    {
+        bossVFX.ResetVFX();
+        bossVFX.PlayDeathVFX();
+
+        golluxSkillManager.summon.DismissAllSummon();
     }
 
     /// <summary>
@@ -110,18 +115,6 @@ public class Gollux : Boss
             return 0;
 
         return transform.position.x > detectTarget.transform.position.x ? -1 : 1;
-    }
-
-    private void HandleFlip()
-    {
-        if (detectTarget == null)
-            return;
-
-        if (transform.position.x < detectTarget.transform.position.x && faceDir != 1)
-            Flip();
-
-        if (transform.position.x > detectTarget.transform.position.x && faceDir != -1)
-            Flip();
     }
 
     protected override void OnDrawGizmos()

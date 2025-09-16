@@ -119,6 +119,7 @@ public class Enemy : Entity, ICanCounter
         stateMachine.ChangeState(detectedState);
     }
 
+
     protected override void OnDrawGizmos()
     {
         base.OnDrawGizmos();
