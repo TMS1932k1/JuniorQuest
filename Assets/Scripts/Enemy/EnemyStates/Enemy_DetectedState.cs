@@ -30,7 +30,7 @@ public class Enemy_DetectedState : EnemyState
     {
         base.Update();
 
-        anim.SetFloat(EnemyAnimationStrings.xVelocityParam, rb.linearVelocityX);
+        anim.SetFloat(EnemyAnimationStrings.X_VELOCITY_PARAM, rb.linearVelocityX);
 
         UpdateTimeout();
 

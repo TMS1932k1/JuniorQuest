@@ -50,10 +50,10 @@ public class Object_Elevator : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer(LayerStrings.GroundLayer))
+        if (collision.gameObject.layer == LayerMask.NameToLayer(LayerStrings.GROUND_LAYER))
             dirMove = 1;
 
-        if (collision.gameObject.layer == LayerMask.NameToLayer(LayerStrings.PlayerLayer) && !isActivity)
+        if (collision.gameObject.layer == LayerMask.NameToLayer(LayerStrings.PLAYER_LAYER) && !isActivity)
         {
             ActiveText.gameObject.SetActive(true);
             inventory = collision.gameObject.GetComponent<Entity_Inventory>();
@@ -65,7 +65,7 @@ public class Object_Elevator : MonoBehaviour
 
     void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer(LayerStrings.PlayerLayer))
+        if (collision.gameObject.layer == LayerMask.NameToLayer(LayerStrings.PLAYER_LAYER))
         {
             inventory = null;
             ActiveText.gameObject.SetActive(false);

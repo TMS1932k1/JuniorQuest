@@ -6,7 +6,7 @@ public class Entity_Stat : MonoBehaviour
     [SerializeField] DefaultStatsSO data;
 
     [Header("Stat Groups")]
-    [SerializeField] Stat_MajorGroup major;
+    [SerializeField] protected Stat_MajorGroup major;
     [SerializeField] Stat_OffensiveGroup offensive;
     [SerializeField] Stat_DefenceGroup defence;
     [SerializeField] float xp;
@@ -159,5 +159,10 @@ public class Entity_Stat : MonoBehaviour
     public float GetXp()
     {
         return xp;
+    }
+
+    public float GetSumMajorPoint()
+    {
+        return major.strength.GetValue() + major.agility.GetValue() + major.vitality.GetValue();
     }
 }

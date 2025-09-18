@@ -8,14 +8,14 @@ public class Bat : Enemy_Fly
     {
         base.Awake();
 
-        idleState = new Enemy_IdleState(EnemyAnimationStrings.idleAnim, stateMachine, this);
-        moveState = new Enemy_FlyMoveState(EnemyAnimationStrings.moveAnim, stateMachine, this);
-        detectedState = new Bat_DetectedState(EnemyAnimationStrings.detectedAnim, stateMachine, this);
-        attackState = new Enemy_AttackState(EnemyAnimationStrings.attackAnim, stateMachine, this);
-        deathState = new Enemy_DeathState(EnemyAnimationStrings.deathAnim, stateMachine, this);
-        freezedState = new Enemy_FreezedState(EnemyAnimationStrings.freezedAnim, stateMachine, this);
-        stunnedState = new Enemy_StunnedState(EnemyAnimationStrings.stunnedAnim, stateMachine, this);
-        sleepState = new Bat_SleepState(BatAnimationStrings.sleepAnim, stateMachine, this);
+        idleState = new Enemy_IdleState(EnemyAnimationStrings.IDLE_ANIM, stateMachine, this);
+        moveState = new Enemy_FlyMoveState(EnemyAnimationStrings.MOVE_ANIM, stateMachine, this);
+        detectedState = new Bat_DetectedState(EnemyAnimationStrings.DETECTED_ANIM, stateMachine, this);
+        attackState = new Enemy_AttackState(EnemyAnimationStrings.ATTACK_ANIM, stateMachine, this);
+        deathState = new Enemy_DeathState(EnemyAnimationStrings.DEATH_ANIM, stateMachine, this);
+        freezedState = new Enemy_FreezedState(EnemyAnimationStrings.FREEZED_ANIM, stateMachine, this);
+        stunnedState = new Enemy_StunnedState(EnemyAnimationStrings.STUNNED_ANIM, stateMachine, this);
+        sleepState = new Bat_SleepState(BatAnimationStrings.SLEEP_ANIM, stateMachine, this);
     }
 
     protected override void Start()

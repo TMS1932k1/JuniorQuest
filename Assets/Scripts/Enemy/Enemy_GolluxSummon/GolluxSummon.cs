@@ -17,8 +17,8 @@ public class GolluxSummon : Golem
 
         enemyHealth = GetComponent<Enemy_Health>();
 
-        summonState = new GolluxSummon_SummonState(SummonAnimationStrings.summonAnim, stateMachine, this);
-        dismissState = new GolluxSummon_DismissState(SummonAnimationStrings.dismissAnim, stateMachine, this);
+        summonState = new GolluxSummon_SummonState(SummonAnimationStrings.SUMMON_ANIM, stateMachine, this);
+        dismissState = new GolluxSummon_DismissState(SummonAnimationStrings.DISMISS_ANIM, stateMachine, this);
     }
 
     protected override void OnEnable()

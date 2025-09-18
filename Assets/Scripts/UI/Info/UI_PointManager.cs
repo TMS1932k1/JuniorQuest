@@ -25,7 +25,7 @@ public class UI_PointManager : MonoBehaviour
 
     void Update()
     {
-        // When update point or level up
+        // When update point, level up
         if (needUpdate || xp.newLevelUp)
         {
             SetPointDisplay();
@@ -40,14 +40,14 @@ public class UI_PointManager : MonoBehaviour
 
     public void IncrementStatWithType(EStat_Type type)
     {
-        stat.AddModifierWithType(type, "Point", 1);
-        usedPoint++;
+        stat.AddModifierWithType(type, SourceStatStrings.POINT_SOURCE, 1);
 
         needUpdate = true;
     }
 
     private void SetPointDisplay()
     {
+        usedPoint = (int)stat.GetSumMajorPoint();
         pointText.text = $"Point:\t{xp.GetLevel() - usedPoint}";
     }
 
@@ -57,9 +57,9 @@ public class UI_PointManager : MonoBehaviour
         usedPoint = 0;
 
         // Remove Modifer from Point
-        stat.RemoveModifierWithType(EStat_Type.Strength, "Point");
-        stat.RemoveModifierWithType(EStat_Type.Agility, "Point");
-        stat.RemoveModifierWithType(EStat_Type.Vitality, "Point");
+        stat.RemoveModifierWithType(EStat_Type.Strength, SourceStatStrings.POINT_SOURCE);
+        stat.RemoveModifierWithType(EStat_Type.Agility, SourceStatStrings.POINT_SOURCE);
+        stat.RemoveModifierWithType(EStat_Type.Vitality, SourceStatStrings.POINT_SOURCE);
 
         needUpdate = true;
     }

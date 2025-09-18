@@ -6260,7 +6260,7 @@ GameObject:
   - component: {fileID: 1347198271122742812}
   - component: {fileID: 1858725005158546782}
   - component: {fileID: 5764850687380161354}
-  - component: {fileID: 3415418134285850101}
+  - component: {fileID: 8125529641081405041}
   - component: {fileID: 1902728546289516432}
   - component: {fileID: 6898644766248132865}
   - component: {fileID: 1374482801827282004}
@@ -6407,7 +6407,7 @@ MonoBehaviour:
   - {x: 0, y: 0.5}
   - {x: 0, y: 0.75}
   isDead: 0
---- !u!114 &3415418134285850101
+--- !u!114 &8125529641081405041
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6416,7 +6416,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5863859148460643105}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3def490411070e42b79613d1594a78c, type: 3}
+  m_Script: {fileID: 11500000, guid: 4882ed8c9c9c16e4fb7af4a2bc1c9897, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: 6287d073be6cbad4bbc734a146c91cb1, type: 2}
@@ -6432,17 +6432,17 @@ MonoBehaviour:
       finalValue: 0
   offensive:
     damage:
-      baseValue: 10
+      baseValue: 0
       finalValue: 0
     critPower:
-      baseValue: 50
+      baseValue: 0
       finalValue: 0
     critChance:
-      baseValue: 10
+      baseValue: 0
       finalValue: 0
   defence:
     maxHealth:
-      baseValue: 100
+      baseValue: 0
       finalValue: 0
     evasion:
       baseValue: 0

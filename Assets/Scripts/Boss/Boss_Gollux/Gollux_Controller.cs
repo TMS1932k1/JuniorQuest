@@ -73,11 +73,11 @@ public class Gollux_Controller : Boss_Controller
 
     public override void AddFreezedCommand(float duration)
     {
-        bossCommandManager.AddCommand(new Gollux_FreezedCommand(gollux, BossAnimationStrings.freezedAnim, duration));
+        bossCommandManager.AddCommand(new Gollux_FreezedCommand(gollux, BossAnimationStrings.FREEZED_ANIM, duration));
     }
 
     public override void AddDeathCommand()
     {
-        bossCommandManager.AddCommand(new Gollux_DeathCommand(gollux, BossAnimationStrings.deathAnim));
+        bossCommandManager.AddCommand(new Gollux_DeathCommand(gollux, BossAnimationStrings.DEATH_ANIM));
     }
 }

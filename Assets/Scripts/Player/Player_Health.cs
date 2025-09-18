@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Player_Health : Entity_Health
+public class Player_Health : Entity_Health, ISaveable
 {
     private Player player;
 
@@ -23,6 +23,16 @@ public class Player_Health : Entity_Health
     {
         base.Die();
         player.OnDead();
+    }
+
+    public void SaveDate(ref GameData gameData)
+    {
+        gameData.playerHealth = currentHealth;
+    }
+
+    public void LoadData(GameData gameData)
+    {
+        currentHealth = gameData.playerHealth;
     }
 }
 

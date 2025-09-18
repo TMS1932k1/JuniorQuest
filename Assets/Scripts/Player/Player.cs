@@ -64,19 +64,19 @@ public class Player : Entity
     {
         base.Awake();
 
-        idleState = new Player_IdleState(PlayerAnimationStrings.idleAnim, stateMachine, this);
-        moveState = new Player_MoveState(PlayerAnimationStrings.moveAnim, stateMachine, this);
-        jumpState = new Player_JumpState(PlayerAnimationStrings.jumpFallAnim, stateMachine, this);
-        fallState = new Player_FallState(PlayerAnimationStrings.jumpFallAnim, stateMachine, this);
-        wallSlideState = new Player_WallSlideState(PlayerAnimationStrings.wallSlideAnim, stateMachine, this);
-        wallJumpState = new Player_WallJumpState(PlayerAnimationStrings.wallJumpAnim, stateMachine, this);
-        dashState = new Player_DashState(PlayerAnimationStrings.dashAnim, stateMachine, this);
-        basicAttackState = new Player_BasicAttackState(PlayerAnimationStrings.attackAnim, stateMachine, this);
-        slideState = new Player_SlideState(PlayerAnimationStrings.slideAnim, stateMachine, this);
-        hurtState = new Player_HurtState(PlayerAnimationStrings.hurtAnim, stateMachine, this);
-        deathState = new Player_DeathState(PlayerAnimationStrings.deathAnim, stateMachine, this);
-        counterState = new Player_CounterState(PlayerAnimationStrings.counterAnim, stateMachine, this);
-        fireBladeState = new Player_FireBladeState(PlayerAnimationStrings.fireBladeAnim, stateMachine, this);
+        idleState = new Player_IdleState(PlayerAnimationStrings.IDLE_ANIM, stateMachine, this);
+        moveState = new Player_MoveState(PlayerAnimationStrings.MOVE_ANIM, stateMachine, this);
+        jumpState = new Player_JumpState(PlayerAnimationStrings.JUMP_FALL_ANIM, stateMachine, this);
+        fallState = new Player_FallState(PlayerAnimationStrings.JUMP_FALL_ANIM, stateMachine, this);
+        wallSlideState = new Player_WallSlideState(PlayerAnimationStrings.WALL_SLIDE_ANIM, stateMachine, this);
+        wallJumpState = new Player_WallJumpState(PlayerAnimationStrings.WALL_JUMP_ANIM, stateMachine, this);
+        dashState = new Player_DashState(PlayerAnimationStrings.DASH_ANIM, stateMachine, this);
+        basicAttackState = new Player_BasicAttackState(PlayerAnimationStrings.ATTACK_ANIM, stateMachine, this);
+        slideState = new Player_SlideState(PlayerAnimationStrings.SLIDE_ANIM, stateMachine, this);
+        hurtState = new Player_HurtState(PlayerAnimationStrings.HURT_ANIM, stateMachine, this);
+        deathState = new Player_DeathState(PlayerAnimationStrings.DEATH_ANIM, stateMachine, this);
+        counterState = new Player_CounterState(PlayerAnimationStrings.COUNTER_ANIM, stateMachine, this);
+        fireBladeState = new Player_FireBladeState(PlayerAnimationStrings.FIRE_BLADE_ANIM, stateMachine, this);
 
         playerXP = GetComponent<Player_XP>();
     }

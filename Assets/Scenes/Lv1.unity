@@ -2824,6 +2824,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7102027948601425792, guid: f6ef5b00993dc7a4489a800818758291, type: 3}
+      propertyPath: m_Name
+      value: FlyDemon
+      objectReference: {fileID: 0}
     - target: {fileID: 8582352249562683466, guid: f6ef5b00993dc7a4489a800818758291, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.24
@@ -2856,10 +2860,6 @@ PrefabInstance:
     - target: {fileID: 1636976980505424432, guid: 5d615c28979c09d46bf18d531f461ed0, type: 3}
       propertyPath: m_Name
       value: Enemy_Golem (4)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1636976980505424432, guid: 5d615c28979c09d46bf18d531f461ed0, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2993810922328829930, guid: 5d615c28979c09d46bf18d531f461ed0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2925,10 +2925,6 @@ PrefabInstance:
     - target: {fileID: 1636976980505424432, guid: 5d615c28979c09d46bf18d531f461ed0, type: 3}
       propertyPath: m_Name
       value: Enemy_Golem (3)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1636976980505424432, guid: 5d615c28979c09d46bf18d531f461ed0, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2993810922328829930, guid: 5d615c28979c09d46bf18d531f461ed0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3866,7 +3862,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a84b6f5cef7823c4a95633a0422a91fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stat: {fileID: 6993719844498395254}
+  stat: {fileID: 0}
   strengthText: {fileID: 1315033612}
   agilityText: {fileID: 1401262735}
   vitalityText: {fileID: 261417519}
@@ -4817,6 +4813,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 446549920}
+  - component: {fileID: 446549921}
   m_Layer: 0
   m_Name: SAVE_MANAGER
   m_TagString: Untagged
@@ -4839,6 +4836,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &446549921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 446549919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9127eca151e3a944ad725e6af31cc39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fileName: filesave.json
+  isEncryptDecrypt: 0
 --- !u!1 &450995653
 GameObject:
   m_ObjectHideFlags: 0
@@ -7864,10 +7875,6 @@ PrefabInstance:
     - target: {fileID: 1636976980505424432, guid: 5d615c28979c09d46bf18d531f461ed0, type: 3}
       propertyPath: m_Name
       value: Enemy_Golem (2)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1636976980505424432, guid: 5d615c28979c09d46bf18d531f461ed0, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2993810922328829930, guid: 5d615c28979c09d46bf18d531f461ed0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -138863,10 +138870,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy_Golem (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 1636976980505424432, guid: 5d615c28979c09d46bf18d531f461ed0, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2993810922328829930, guid: 5d615c28979c09d46bf18d531f461ed0, type: 3}
       propertyPath: m_LocalPosition.x
       value: -28.68
@@ -144783,6 +144786,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7102027948601425792, guid: f6ef5b00993dc7a4489a800818758291, type: 3}
+      propertyPath: m_Name
+      value: FlyDemon
+      objectReference: {fileID: 0}
     - target: {fileID: 9171416907993698582, guid: f6ef5b00993dc7a4489a800818758291, type: 3}
       propertyPath: m_Name
       value: Enemy_FlyDemon
@@ -146294,6 +146301,14 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 1.9
       objectReference: {fileID: 0}
+    - target: {fileID: 5144499220387027815, guid: 9bd2a3170d1a0574d9eef8a46fc038e2, type: 3}
+      propertyPath: normalKnockBackPosition.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5144499220387027815, guid: 9bd2a3170d1a0574d9eef8a46fc038e2, type: 3}
+      propertyPath: normalKnockBackPosition.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5900960913684062583, guid: 9bd2a3170d1a0574d9eef8a46fc038e2, type: 3}
       propertyPath: m_LocalPosition.x
       value: -26.14
@@ -146388,17 +146403,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9df9644e3aa2ead43b42d9ca6909a3d3, type: 3}
---- !u!114 &6993719844498395254 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3415418134285850101, guid: 9df9644e3aa2ead43b42d9ca6909a3d3, type: 3}
-  m_PrefabInstance: {fileID: 6993719844498395253}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3def490411070e42b79613d1594a78c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &6993719844498395255 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7279033366093361075, guid: 9df9644e3aa2ead43b42d9ca6909a3d3, type: 3}

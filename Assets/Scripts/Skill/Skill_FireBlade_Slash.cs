@@ -41,13 +41,13 @@ public class Skill_FireBlade_Slash : MonoBehaviour
         {
             isHit = true;
             rb.linearVelocity = Vector2.zero; // Stop moving
-            anim.SetTrigger(PlayerAnimationStrings.hitTrigger);
+            anim.SetTrigger(PlayerAnimationStrings.HIT_TRIGGER);
 
-            if (collision.gameObject.layer == LayerMask.NameToLayer(LayerStrings.EnemyLayer)) // Hit Enemy
+            if (collision.gameObject.layer == LayerMask.NameToLayer(LayerStrings.ENEMY_LAYER)) // Hit Enemy
             {
                 collision.gameObject.GetComponent<Entity_Health>().ReduceHealth(damage, out bool isMissed, pool.transform);
             }
-            else if (collision.gameObject.layer == LayerMask.NameToLayer(LayerStrings.BreakableLayer)) // Hit IBreakable
+            else if (collision.gameObject.layer == LayerMask.NameToLayer(LayerStrings.BREAKABLE_LAYER)) // Hit IBreakable
             {
                 collision.gameObject.GetComponent<IBreakable>().Break();
             }

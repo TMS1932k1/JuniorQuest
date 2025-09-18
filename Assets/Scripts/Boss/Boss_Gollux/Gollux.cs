@@ -29,11 +29,11 @@ public class Gollux : Boss
     {
         base.Awake();
 
-        moveCommand = new Gollux_MoveCommand(this, BossAnimationStrings.moveAnim, 2f);
-        rockDropCommand = new Gollux_RockDropCommand(this, GolluxAnimationStrings.rockDropAnim);
-        normalAttackCommand = new Gollux_NormalAttackCommand(this, GolluxAnimationStrings.normalAttackAnim);
-        summonCommand = new Gollux_SummonCommand(this, GolluxAnimationStrings.summonAnim);
-        healCommand = new Gollux_HealCommand(this, GolluxAnimationStrings.healAnim);
+        moveCommand = new Gollux_MoveCommand(this, BossAnimationStrings.MOVE_ANIM, 2f);
+        rockDropCommand = new Gollux_RockDropCommand(this, GolluxAnimationStrings.ROCK_DROP_ANIM);
+        normalAttackCommand = new Gollux_NormalAttackCommand(this, GolluxAnimationStrings.NORMAL_ATTACK_ANIM);
+        summonCommand = new Gollux_SummonCommand(this, GolluxAnimationStrings.SUMMON_ANIM);
+        healCommand = new Gollux_HealCommand(this, GolluxAnimationStrings.HEAL_ANIM);
 
         golluxSkillManager = GetComponent<Gollux_SkillManager>();
         bossVFX = GetComponent<Boss_VFX>();

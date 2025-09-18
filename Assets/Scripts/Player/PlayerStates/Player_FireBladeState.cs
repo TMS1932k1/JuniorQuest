@@ -34,7 +34,7 @@ public class Player_FireBladeState : PlayerState
         // Perform Attack with dir to mouse
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            anim.SetTrigger(PlayerAnimationStrings.fireBladeTrigger);
+            anim.SetTrigger(PlayerAnimationStrings.FIRE_BLADE_TRIGGER);
 
             // Create Fire Blade to target
             skillsManager.fireBlade.CreateFireBlade(angleZ);

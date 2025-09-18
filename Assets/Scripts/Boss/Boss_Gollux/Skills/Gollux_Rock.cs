@@ -37,9 +37,9 @@ public class Gollux_Rock : MonoBehaviour
             rb.gravityScale = 0f;
             rb.linearVelocityY = 0;
 
-            anim.SetTrigger(EnemyAnimationStrings.hitTrigger);
+            anim.SetTrigger(EnemyAnimationStrings.HIT_TRIGGER);
 
-            if (collision.gameObject.layer == LayerMask.NameToLayer(LayerStrings.PlayerLayer))
+            if (collision.gameObject.layer == LayerMask.NameToLayer(LayerStrings.PLAYER_LAYER))
             {
                 collision.gameObject.GetComponent<Entity_Health>().ReduceHealth(damage, out bool isMissed, transform);
             }

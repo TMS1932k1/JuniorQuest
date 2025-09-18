@@ -1,15 +1,16 @@
 using System;
 using UnityEngine;
 
-public class Player_XP : MonoBehaviour
+public class Player_XP : MonoBehaviour, ISaveable
 {
     [Range(1, 100)]
     [SerializeField] int level;
     [SerializeField] float currentXP;
-    [SerializeField] float expMutiplier = 100f;
+    [SerializeField] float expMutiplier = 50f;
 
     private float maxXP;
     public bool newLevelUp = true;
+
 
     private Player_VFX playVFX;
 
@@ -31,7 +32,10 @@ public class Player_XP : MonoBehaviour
         currentXP += amount;
 
         if (currentXP >= maxXP)
-            LevelUP();
+        {
+            HandleLevelUP();
+            newLevelUp = true;
+        }
     }
 
     public float GetXPPercent()
@@ -39,19 +43,32 @@ public class Player_XP : MonoBehaviour
         return currentXP / maxXP;
     }
 
-    private void LevelUP()
+    private void HandleLevelUP()
     {
         while (currentXP >= maxXP)
         {
             currentXP -= maxXP;
             level++;
             maxXP = level * expMutiplier;
-
-            newLevelUp = true;
         }
 
         playVFX.ShowLevelUpVFX(level);
     }
 
     public int GetLevel() => level;
+
+    public void SaveDate(ref GameData gameData)
+    {
+        gameData.playerLevel = level;
+        gameData.playerXP = currentXP;
+    }
+
+    public void LoadData(GameData gameData)
+    {
+        level = gameData.playerLevel;
+        maxXP = level * expMutiplier;
+        currentXP = gameData.playerXP;
+
+        newLevelUp = true;
+    }
 }
