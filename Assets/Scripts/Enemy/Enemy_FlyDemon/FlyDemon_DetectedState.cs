@@ -3,14 +3,14 @@ using UnityEngine;
 public class FlyDemon_DetectedState : Enemy_DetectedState
 {
     private FlyDemon flyDemon;
-    private Entity_RangedCombat entityRangedCombat;
+    private FlyDemon_Combat flyDemonCombat;
     private Transform targetPoint;
 
 
     public FlyDemon_DetectedState(string nameState, StateMachine stateMachine, FlyDemon flyDemon) : base(nameState, stateMachine, flyDemon)
     {
         this.flyDemon = flyDemon;
-        entityRangedCombat = flyDemon.GetComponent<Entity_RangedCombat>();
+        flyDemonCombat = flyDemon.GetComponent<FlyDemon_Combat>();
     }
 
     public override void Update()
@@ -21,7 +21,7 @@ public class FlyDemon_DetectedState : Enemy_DetectedState
         if (GetDirectToPlayer() != flyDemon.faceDir)
             flyDemon.Flip();
 
-        if (enemy.isAttack && !entityRangedCombat.isRangdAttack)
+        if (enemy.isAttack && !flyDemonCombat.isRangdAttack)
         {
             //Change attack state
             stateMachine.ChangeState(flyDemon.attackState);

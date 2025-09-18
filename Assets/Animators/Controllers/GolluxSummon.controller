@@ -226,7 +226,7 @@ AnimatorTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: isDeath
+    m_ConditionEvent: isDismiss
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 4061860908678331498}
@@ -306,7 +306,7 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
-  - m_Name: isDeath
+  - m_Name: isDismiss
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -419,7 +419,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: GolluxSummon_Death
+  m_Name: GolluxSummon_Dismiss
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -546,7 +546,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: isDeath
+    m_ConditionEvent: isDismiss
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 0}

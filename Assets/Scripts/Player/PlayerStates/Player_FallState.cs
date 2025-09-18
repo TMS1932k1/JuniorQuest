@@ -28,7 +28,7 @@ public class Player_FallState : Player_AiredState
         if (Input.GetKeyDown(KeyCode.Space) && !isJumpTwo)
         {
             isJumpTwo = true;
-            anim.SetTrigger(EParamenter_Player.jumpTwo.ToString());
+            anim.SetTrigger(PlayerAnimationStrings.jumpTwoTrigger);
 
             stateMachine.ChangeState(player.jumpState);
         }

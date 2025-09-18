@@ -1,17 +1,29 @@
 using System.Collections;
 using UnityEngine;
 
-public class Entity_RangedCombat : Entity_Combat
+public abstract class Enemy_RangedCombat<T> : MonoBehaviour, ICombat where T : Component
 {
     [Header("Ranged Attack")]
     [SerializeField] float cooldownRangedAttack = 1f;
-    [SerializeField] ObjectPool<FlyDemon_RangedAttack> objectPool;
+    [SerializeField] LayerMask whatIsTarget;
+    [SerializeField] float rangeRadius;
+    [SerializeField] protected ObjectPool<T> objectPool;
+
 
     public bool isRangdAttack;
     private Coroutine RangdAttackCoroutine;
+    protected float damage;
 
 
-    public override void PerformAttack()
+    protected Entity_Stat stat;
+
+
+    private void Awake()
+    {
+        stat = GetComponent<Entity_Stat>();
+    }
+
+    public void PerformAttack()
     {
         GameObject target = GetTargetCollider()?.gameObject;
 
@@ -38,25 +50,16 @@ public class Entity_RangedCombat : Entity_Combat
         isRangdAttack = false;
     }
 
-    private void CreateRangedAttack(GameObject target)
-    {
-        FlyDemon_RangedAttack attack = objectPool.GetObject();
-        damage = stat.GetDamageWithCrit(out bool isCrit);
-
-        attack.SetDetails(transform.position, CalculateAngleZ(target.transform), damage);
-        attack.SetMove();
-    }
+    protected abstract void CreateRangedAttack(GameObject target);
 
     private Collider2D GetTargetCollider()
     {
-        currentAttackCircle = attackCircles[attackCircleIndex];
-        return Physics2D.OverlapCircle(currentAttackCircle.transform.position, currentAttackCircle.radius, whatIsTarget);
+        return Physics2D.OverlapCircle(transform.position, rangeRadius, whatIsTarget);
     }
 
-    private float CalculateAngleZ(Transform targetTrans)
+    private void OnDrawGizmos()
     {
-        Vector3 dir = targetTrans.position - transform.position;
-
-        return Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position, rangeRadius);
     }
 }

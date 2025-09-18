@@ -3,7 +3,7 @@ using UnityEngine.EventSystems;
 
 public class UI_MenuButton : MonoBehaviour, IPointerClickHandler
 {
-    private UI_Menu MenuUI;
+    private UI_Menu menuUI;
 
     [SerializeField] private UI_Window windowUI;
 
@@ -12,12 +12,12 @@ public class UI_MenuButton : MonoBehaviour, IPointerClickHandler
     private Vector2 originScale;
 
 
-    void Awake()
+    private void Awake()
     {
-        MenuUI = GetComponentInParent<UI_Menu>();
+        menuUI = GetComponentInParent<UI_Menu>();
     }
 
-    void Start()
+    private void Start()
     {
         originScale = transform.localScale;
     }
@@ -27,7 +27,7 @@ public class UI_MenuButton : MonoBehaviour, IPointerClickHandler
         if (!isOpen)
         {
             // Close orther icon
-            MenuUI.CloseOrtherIconOpen(this);
+            menuUI.CloseOrtherIconOpen(this);
 
             // Open this icon
             isOpen = !isOpen;

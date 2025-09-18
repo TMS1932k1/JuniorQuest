@@ -6,13 +6,13 @@ public class Golem : Enemy
     {
         base.Awake();
 
-        idleState = new Enemy_IdleState(EParamenter_Enemy.isIdle.ToString(), stateMachine, this);
-        moveState = new Enemy_GroundMoveState(EParamenter_Enemy.isMove.ToString(), stateMachine, this);
-        attackState = new Enemy_AttackState(EParamenter_Enemy.isAttack.ToString(), stateMachine, this);
-        detectedState = new Golem_DetectedState(EParamenter_Enemy.isDetected.ToString(), stateMachine, this);
-        deathState = new Enemy_DeathState(EParamenter_Enemy.isDeath.ToString(), stateMachine, this);
-        stunnedState = new Enemy_StunnedState(EParamenter_Enemy.isStunned.ToString(), stateMachine, this);
-        freezedState = new Enemy_FreezedState(EParamenter_Enemy.isFreezed.ToString(), stateMachine, this);
+        idleState = new Enemy_IdleState(EnemyAnimationStrings.idleAnim, stateMachine, this);
+        moveState = new Enemy_GroundMoveState(EnemyAnimationStrings.moveAnim, stateMachine, this);
+        attackState = new Enemy_AttackState(EnemyAnimationStrings.attackAnim, stateMachine, this);
+        detectedState = new Golem_DetectedState(EnemyAnimationStrings.detectedAnim, stateMachine, this);
+        deathState = new Enemy_DeathState(EnemyAnimationStrings.deathAnim, stateMachine, this);
+        stunnedState = new Enemy_StunnedState(EnemyAnimationStrings.stunnedAnim, stateMachine, this);
+        freezedState = new Enemy_FreezedState(EnemyAnimationStrings.freezedAnim, stateMachine, this);
     }
 
     protected override void Start()

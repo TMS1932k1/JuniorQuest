@@ -3,14 +3,14 @@ using UnityEngine.UI;
 
 public class UI_HealthPlayer : UI_HealthBar
 {
-    [SerializeField] private Player player;
+    [SerializeField] private Player_Health playerHealth;
     [SerializeField] private Color safeColor = Color.green;
     [SerializeField] private Color mediumColor = Color.yellow;
     [SerializeField] private Color dangerColor = Color.red;
 
     protected override void Awake()
     {
-        entityHealth = player.GetComponentInParent<Entity_Health>();
+        entityHealth = playerHealth;
         healthSlider = GetComponentInChildren<Slider>();
     }
 

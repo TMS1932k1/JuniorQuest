@@ -16,7 +16,7 @@ public class Bat_SleepState : EnemyState
 
         isWaked = false;
         healthBarUI.gameObject.SetActive(false);
-        enemy.gameObject.layer = LayerMask.NameToLayer(ELayer.Invisibility.ToString());
+        enemy.gameObject.layer = LayerMask.NameToLayer(LayerStrings.InvisibilityLayer);
     }
 
     public override void Update()
@@ -31,7 +31,7 @@ public class Bat_SleepState : EnemyState
 
         if (enemy.DetectPlayer() && !isWaked)
         {
-            anim.SetTrigger(EParamenter_Enemy.wakeUp.ToString());
+            anim.SetTrigger(BatAnimationStrings.wakeUpTrigger);
             isWaked = true;
         }
     }
@@ -41,6 +41,6 @@ public class Bat_SleepState : EnemyState
         base.Exit();
 
         healthBarUI.gameObject.SetActive(true);
-        enemy.gameObject.layer = LayerMask.NameToLayer(ELayer.Enemy.ToString());
+        enemy.gameObject.layer = LayerMask.NameToLayer(LayerStrings.EnemyLayer);
     }
 }

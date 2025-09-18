@@ -40,7 +40,7 @@ public class FlyDemon_RangedAttack : MonoBehaviour, ICanCounter
         rb.linearVelocity = transform.right * -speed;
 
         // Change layer
-        gameObject.layer = LayerMask.NameToLayer(ELayer.PlayerAttack.ToString());
+        gameObject.layer = LayerMask.NameToLayer(LayerStrings.PlayerAttackLayer);
     }
 
     public bool GetCanCounter => canCounter;
@@ -51,9 +51,9 @@ public class FlyDemon_RangedAttack : MonoBehaviour, ICanCounter
         {
             isHit = true;
             rb.linearVelocity = Vector2.zero; // Stop moving
-            anim.SetTrigger(EParamenter_Enemy.hit.ToString());
+            anim.SetTrigger(EnemyAnimationStrings.hitTrigger);
 
-            if (collision.gameObject.layer == LayerMask.NameToLayer(!canCounter ? ELayer.Enemy.ToString() : ELayer.Player.ToString()))
+            if (collision.gameObject.layer == LayerMask.NameToLayer(!canCounter ? LayerStrings.EnemyLayer : LayerStrings.PlayerLayer))
             {
                 collision.gameObject.GetComponent<Entity_Health>().ReduceHealth(damage, out bool isMissed, transform);
 
@@ -95,6 +95,6 @@ public class FlyDemon_RangedAttack : MonoBehaviour, ICanCounter
         isHit = false;
         canCounter = true;
         transform.localScale = new Vector3(1, 1, 1);
-        gameObject.layer = LayerMask.NameToLayer(ELayer.EnemyAttack.ToString());
+        gameObject.layer = LayerMask.NameToLayer(LayerStrings.EnemyAttackLayer);
     }
 }

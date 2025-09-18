@@ -3,13 +3,13 @@ using UnityEngine;
 public class Entity_AnimationTrigger : MonoBehaviour
 {
     protected Entity entity;
-    protected Entity_Combat entityCombat;
+    protected ICombat entityCombat;
 
 
     protected virtual void Awake()
     {
         entity = GetComponentInParent<Entity>();
-        entityCombat = GetComponentInParent<Entity_Combat>();
+        entityCombat = GetComponentInParent<ICombat>();
     }
 
     protected void CurrentStateTrigger()

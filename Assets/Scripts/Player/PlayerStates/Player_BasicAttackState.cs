@@ -43,7 +43,7 @@ public class Player_BasicAttackState : PlayerState
         if (isAttackEnd && !isAllAnimAttack)
         {
             isAllAnimAttack = true;
-            anim.SetTrigger(EParamenter_Player.attackEnd.ToString());
+            anim.SetTrigger(PlayerAnimationStrings.attackEndTrigger);
         }
 
         if (isTrigger)
@@ -62,7 +62,7 @@ public class Player_BasicAttackState : PlayerState
         }
         else
         {
-            anim.SetInteger(EParamenter_Player.attackIndex.ToString(), currentAttackIndex);
+            anim.SetInteger(PlayerAnimationStrings.attackIndexParam, currentAttackIndex);
             GenerateAttackVelocity();
         }
     }

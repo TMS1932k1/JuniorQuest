@@ -18,7 +18,6 @@ public class Gollux : Boss
     public Gollux_NormalAttackCommand normalAttackCommand { get; private set; }
     public Gollux_SummonCommand summonCommand { get; private set; }
     public Gollux_HealCommand healCommand { get; private set; }
-    public Gollux_DeathCommand deathCommand { get; private set; }
 
 
     // Components
@@ -30,12 +29,11 @@ public class Gollux : Boss
     {
         base.Awake();
 
-        moveCommand = new Gollux_MoveCommand(this, EParamenter_Boss.isMove.ToString(), 2f);
-        rockDropCommand = new Gollux_RockDropCommand(this, EParamenter_Boss.isRockDrop.ToString());
-        normalAttackCommand = new Gollux_NormalAttackCommand(this, EParamenter_Boss.isNormalAttack.ToString());
-        summonCommand = new Gollux_SummonCommand(this, EParamenter_Boss.isSummon.ToString());
-        healCommand = new Gollux_HealCommand(this, EParamenter_Boss.isHeal.ToString());
-        deathCommand = new Gollux_DeathCommand(this, EParamenter_Boss.isDeath.ToString(), 0f);
+        moveCommand = new Gollux_MoveCommand(this, BossAnimationStrings.moveAnim, 2f);
+        rockDropCommand = new Gollux_RockDropCommand(this, GolluxAnimationStrings.rockDropAnim);
+        normalAttackCommand = new Gollux_NormalAttackCommand(this, GolluxAnimationStrings.normalAttackAnim);
+        summonCommand = new Gollux_SummonCommand(this, GolluxAnimationStrings.summonAnim);
+        healCommand = new Gollux_HealCommand(this, GolluxAnimationStrings.healAnim);
 
         golluxSkillManager = GetComponent<Gollux_SkillManager>();
         bossVFX = GetComponent<Boss_VFX>();

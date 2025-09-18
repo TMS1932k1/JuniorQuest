@@ -16,7 +16,7 @@ public class Player_AiredState : PlayerState
         if (stateMachine.currentState == player.dashState)
             return;
 
-        anim.SetFloat(EParamenter_Player.yVelocity.ToString(), rb.linearVelocityY);
+        anim.SetFloat(PlayerAnimationStrings.yVelocityParam, rb.linearVelocityY);
 
         // Move on air
         if (Input.GetAxis("Horizontal") != 0)

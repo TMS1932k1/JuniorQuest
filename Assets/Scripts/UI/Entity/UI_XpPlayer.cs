@@ -3,14 +3,14 @@ using UnityEngine.UI;
 
 public class UI_XpPlayer : MonoBehaviour
 {
-    [SerializeField] Player player;
+    [SerializeField] Player_XP playerXP;
 
-    private Player_XP playerXP;
+
     private Slider xpSlider;
+
 
     protected virtual void Awake()
     {
-        playerXP = player.GetComponentInParent<Player_XP>();
         xpSlider = GetComponentInChildren<Slider>();
     }
 

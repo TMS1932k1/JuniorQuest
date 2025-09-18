@@ -99,7 +99,7 @@ public class Enemy : Entity, ICanCounter
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.right * faceDir, distanceToDetectPlayer, whatIsPlayer | whatIsWall);
 
         playerDetect = hit.collider;
-        if (playerDetect == null || playerDetect.gameObject.layer != LayerMask.NameToLayer(ELayer.Player.ToString()))
+        if (playerDetect == null || playerDetect.gameObject.layer != LayerMask.NameToLayer(LayerStrings.PlayerLayer))
             return null;
 
         return playerDetect;

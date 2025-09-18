@@ -8,7 +8,7 @@ public class AttackCircle
     public float radius;
 }
 
-public class Entity_Combat : MonoBehaviour
+public class Entity_Combat : MonoBehaviour, ICombat
 {
     protected Entity_VFX entityVFX;
     protected Entity_Stat stat;

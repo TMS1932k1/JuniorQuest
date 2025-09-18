@@ -7,22 +7,22 @@ public class UI_InstalledSkills : MonoBehaviour
 
     [SerializeField] UI_Slot[] slots;
 
-    void OnEnable()
+    private void OnEnable()
     {
         Player_SkillsManager.OnChangeInstall += SetDisplay;
     }
 
-    void OnDisable()
+    private void OnDisable()
     {
         Player_SkillsManager.OnChangeInstall -= SetDisplay;
     }
 
-    void Start()
+    private void Start()
     {
         SetDisplay();
     }
 
-    void Update()
+    private void Update()
     {
         foreach (Skill_Base skill in skillsManager.installedList)
         {

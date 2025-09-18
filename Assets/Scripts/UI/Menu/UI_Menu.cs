@@ -2,7 +2,13 @@ using UnityEngine;
 
 public class UI_Menu : MonoBehaviour
 {
-    [SerializeField] private UI_MenuButton[] buttons;
+    private UI_MenuButton[] buttons;
+
+
+    private void Awake()
+    {
+        buttons = FindObjectsByType<UI_MenuButton>(FindObjectsSortMode.None);
+    }
 
     public void CloseOrtherIconOpen(UI_MenuButton clickButton)
     {
