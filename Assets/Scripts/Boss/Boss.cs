@@ -129,6 +129,8 @@ public class Boss : Entity, ISaveable
         Debug.Log($"SAVE_MANAGER: Load {gameObject.name} ({uniqueId})");
         if (!gameData.entities.ContainsKey(uniqueId) || gameData.entities[uniqueId])
         {
+            bossHealth.isDead = true;
+
             StopCommandSystem();
             bossController.AddDeathCommand();
         }

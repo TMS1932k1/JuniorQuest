@@ -12,14 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad0bd5619ff0b34498cdfadcf4bc443a, type: 3}
   m_Name: SkillData_Infeno
   m_EditorClassIdentifier: 
+  saveID: 31b2a456445e76e4990c0791b7e95838
   skillType: 4
-  unlockLevel: 15
+  unlockLevel: 8
   cooldown: 35
   duration: 5
   damage: 10
   effectPercent: 100
   effectDuration: 5
-  countHit: 10
+  hitCount: 4
   skillImage: {fileID: 4884337891824352890, guid: 7380195adbf2b8c46b07715a1ed2c8bb, type: 3}
   skillName: Infeno
   description: Creates a blazing area that deals damage to enemies within (4 burn))

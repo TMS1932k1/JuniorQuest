@@ -151,7 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 087d755eabe09e74f93bfadba40feccf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uniqueId: e999c7cd-51c9-46e3-b1c0-7dfc1a3dc157
+  uniqueId: 2e8f6236-9863-41c5-88e8-5fe2fda5a159
   groundCheckTransform: {fileID: 1174028357303090005}
   groundCheckDistance: 0.2
   whatIsGround:
@@ -217,7 +217,7 @@ MonoBehaviour:
       baseValue: 120
       finalValue: 0
     evasion:
-      baseValue: 0
+      baseValue: 10
       finalValue: 0
     armor:
       baseValue: 30

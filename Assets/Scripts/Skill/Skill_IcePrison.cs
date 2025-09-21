@@ -11,22 +11,22 @@ public class Skill_IcePrison : Skill_Base
         base.PerformSkill();
 
         playerVFX.ShowIcePrisonVFX();
-        Freeze();
+        PerformFreeze();
     }
 
-    private void Freeze()
+    private void PerformFreeze()
     {
         Collider2D[] freezeTargets = Physics2D.OverlapBoxAll(
             transform.position,
-            new Vector2(skillData.widthArena, skillData.heightArena),
+            new Vector2(skillData.widthArena, skillData.heightArena), 0,
             whatIsFreeze);
 
         foreach (Collider2D target in freezeTargets)
         {
-            ICanFreeze canFreezed = target.GetComponent<ICanFreeze>();
-            if (canFreezed != null)
+            ICanFreeze freezedTarget = target.GetComponent<ICanFreeze>();
+            if (freezedTarget != null)
             {
-                canFreezed.BeFreezed(skillData.effectDuration);
+                freezedTarget.BeFreezed(skillData.effectDuration);
             }
         }
     }

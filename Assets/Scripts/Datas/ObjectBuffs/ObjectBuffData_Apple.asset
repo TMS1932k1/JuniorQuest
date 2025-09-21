@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e12cf62677ac76440a35f9088c5f5e6d, type: 3}
   m_Name: ObjectBuffData_Apple
   m_EditorClassIdentifier: 
-  duration: 60
+  duration: 180
   statType: 6
   source: Apple HP
   value: 10

@@ -11,6 +11,7 @@ public class SaveManager : MonoBehaviour
     [Header("Setting Options")]
     [SerializeField] string fileName = "filesave.json";
     [SerializeField] bool isEncryptDecrypt = false;
+    [SerializeField] bool isActive = true;
 
 
     private FileDataHandler fileDataHandler;
@@ -42,6 +43,9 @@ public class SaveManager : MonoBehaviour
 
     public void SaveGame()
     {
+        if (!isActive)
+            return;
+
         gameData.entities.Clear();
         gameData.interactables.Clear();
         gameData.elevators.Clear();
@@ -54,6 +58,9 @@ public class SaveManager : MonoBehaviour
 
     public void LoadGame()
     {
+        if (!isActive)
+            return;
+
         gameData = fileDataHandler.LoadData(isEncryptDecrypt);
 
         if (gameData == null)

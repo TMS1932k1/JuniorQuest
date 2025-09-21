@@ -140,6 +140,7 @@ public class Enemy : Entity, ICanCounter, ISaveable
         Debug.Log($"SAVE_MANAGER: Load {gameObject.name} ({uniqueId})");
         if (!gameData.entities.ContainsKey(uniqueId) || gameData.entities[uniqueId])
         {
+            entityHealth.Die();
             gameObject.SetActive(false);
         }
     }

@@ -1,15 +1,24 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class Object_CheckPoint : MonoBehaviour, ISaveable
 {
     [SerializeField] TextMeshProUGUI saveText;
-    [SerializeField] SpriteRenderer lightOn;
+    [SerializeField] Light2D lightOn;
 
 
-    private bool isShowText;
     private Object_CheckPoint[] checkPoints;
-    public bool isSaved;
+    private bool isShowingText;
+    public bool isActivity;
+
+
+    private Coroutine lightVFXCoroutine;
+    private float lightPercent;
+    private float lightInner;
+    private float lightOuter;
+    private bool isPlayingVFX;
 
 
     private void Awake()
@@ -19,35 +28,33 @@ public class Object_CheckPoint : MonoBehaviour, ISaveable
 
     private void Start()
     {
-        isShowText = false;
-        saveText.gameObject.SetActive(isShowText);
-        EnableSave(false);
+        isShowingText = false;
+        isPlayingVFX = false;
+        lightInner = lightOn.pointLightInnerRadius;
+        lightOuter = lightOn.pointLightOuterRadius;
+
+        EnableCheckPoint(false);
+        saveText.gameObject.SetActive(false);
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F) && isShowText)
+        if (Input.GetKeyDown(KeyCode.F) && isShowingText && !isPlayingVFX)
         {
             OffAllCheckPoint();
-
-            EnableSave(true);
-            EnableSaveText(false);
+            EnableCheckPoint(true);
+            PlayLightVFX();
 
             SaveManager.instance.SaveGame();
         }
     }
 
-    public void EnableSave(bool enable)
-    {
-        isSaved = enable;
-        lightOn.gameObject.SetActive(enable);
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer(LayerStrings.PLAYER_LAYER) && !isShowText)
+        if (collision.gameObject.layer == LayerMask.NameToLayer(LayerStrings.PLAYER_LAYER) && !isShowingText)
         {
-            EnableSaveText(true);
+            isShowingText = true;
+            saveText.gameObject.SetActive(true);
         }
     }
 
@@ -55,39 +62,82 @@ public class Object_CheckPoint : MonoBehaviour, ISaveable
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer(LayerStrings.PLAYER_LAYER))
         {
-            EnableSaveText(false);
+            isShowingText = false;
+            saveText.gameObject.SetActive(false);
         }
+    }
+
+    public void EnableCheckPoint(bool enable)
+    {
+        if (!enable)
+            lightPercent = 0f;
+
+        isActivity = enable;
+        lightOn.gameObject.SetActive(enable);
     }
 
     private void OffAllCheckPoint()
     {
         foreach (Object_CheckPoint checkPoint in checkPoints)
         {
-            checkPoint.EnableSave(false);
+            if (checkPoint != this)
+                checkPoint.EnableCheckPoint(false);
         }
     }
 
-    private void EnableSaveText(bool enable)
+    private void PlayLightVFX()
     {
-        isShowText = enable;
-        saveText.gameObject.SetActive(enable);
+        if (lightVFXCoroutine != null)
+            StopCoroutine(lightVFXCoroutine);
+
+        lightVFXCoroutine = StartCoroutine(LightVFXCo());
+    }
+
+    private IEnumerator LightVFXCo()
+    {
+        isPlayingVFX = true;
+        saveText.gameObject.SetActive(false);
+
+        while (lightPercent > 0.5f)
+        {
+            lightPercent -= Time.deltaTime;
+
+            lightOn.pointLightInnerRadius = lightInner * lightPercent;
+            lightOn.pointLightOuterRadius = lightOuter * lightPercent;
+
+            yield return null;
+        }
+
+        while (lightPercent < 1f)
+        {
+            lightPercent += Time.deltaTime;
+
+            lightOn.pointLightInnerRadius = lightInner * lightPercent;
+            lightOn.pointLightOuterRadius = lightOuter * lightPercent;
+
+            yield return null;
+        }
+
+        saveText.gameObject.SetActive(true);
+        isPlayingVFX = false;
     }
 
     public void SaveData(ref GameData gameData)
     {
         Debug.Log($"SAVE_MANAGER: Save {gameObject.name} ({transform.position})");
 
-        if (isSaved)
+        if (isActivity)
             gameData.position = transform.position;
     }
 
     public void LoadData(GameData gameData)
     {
         Debug.Log($"SAVE_MANAGER: Load {gameObject.name} ({transform.position})");
+
         if (gameData.position == transform.position)
         {
-            EnableSave(true);
-            EnableSaveText(false);
+            EnableCheckPoint(true);
+            PlayLightVFX();
         }
     }
 }

@@ -18,7 +18,7 @@ MonoBehaviour:
   damage: 10
   critChance: 0
   critPower: 0
-  maxHealth: 100
+  maxHealth: 150
   evasion: 20
   armor: 0
   mitigation: 0

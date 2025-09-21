@@ -15,4 +15,11 @@ public class Gollux_DeathCommand : Boss_Command
 
         gollux.Death();
     }
+
+    public override void Undo()
+    {
+        base.Undo();
+
+        gollux.gameObject.SetActive(false);
+    }
 }

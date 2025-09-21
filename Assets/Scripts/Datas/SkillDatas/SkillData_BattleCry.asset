@@ -12,12 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad0bd5619ff0b34498cdfadcf4bc443a, type: 3}
   m_Name: SkillData_BattleCry
   m_EditorClassIdentifier: 
+  saveID: 3b460a16e4f6ed54ba89c0eae3648bc1
   skillType: 6
-  skillImage: {fileID: 5241480379350098711, guid: 7380195adbf2b8c46b07715a1ed2c8bb, type: 3}
-  skillName: Battle Cry
-  description: Increases personal stats for a duration (50% in 8s)
-  unlockLevel: 25
+  unlockLevel: 12
   cooldown: 36
   duration: 8
   damage: 0
   effectPercent: 50
+  effectDuration: 0
+  hitCount: 0
+  skillImage: {fileID: 5241480379350098711, guid: 7380195adbf2b8c46b07715a1ed2c8bb, type: 3}
+  skillName: Battle Cry
+  description: Increases personal stats for a duration (50% in 8s)
+  radiusArena: 0
+  widthArena: 0
+  heightArena: 0

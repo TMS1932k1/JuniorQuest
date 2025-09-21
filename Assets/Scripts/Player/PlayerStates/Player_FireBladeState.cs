@@ -26,6 +26,7 @@ public class Player_FireBladeState : PlayerState
     public override void Update()
     {
         base.Update();
+        player.SetVelocity(0, 0);
 
         // Set rect transform of line arm and get positon of mouse
         playerVFX.SetLineArmRotate(out float angleZ);
