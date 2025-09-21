@@ -1,9 +1,11 @@
+using UnityEditor;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "SkillData_New", menuName = "Create new Skill Data")]
+[CreateAssetMenu(menuName = "Skill Data Setup/Create new Skill Data", fileName = "SkillData_New")]
 public class SkillDataSO : ScriptableObject
 {
     [Header("Skill details")]
+    public string saveID;
     public ESkill_Type skillType;
     public int unlockLevel;
     public float cooldown;
@@ -24,4 +26,10 @@ public class SkillDataSO : ScriptableObject
     public float radiusArena;
     public float widthArena;
     public float heightArena;
+
+    private void OnValidate()
+    {
+        string path = AssetDatabase.GetAssetPath(this);
+        saveID = AssetDatabase.AssetPathToGUID(path);
+    }
 }

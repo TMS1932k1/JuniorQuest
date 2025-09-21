@@ -1,7 +1,11 @@
+using System;
 using UnityEngine;
 
-public abstract class Object_Interactable : MonoBehaviour
+public abstract class Object_Interactable : MonoBehaviour, ISaveable
 {
+    [SerializeField] string uniqueId;
+
+    [Space]
     [SerializeField] protected float moveSpeed;
     [SerializeField] protected float moveRange;
 
@@ -13,11 +17,17 @@ public abstract class Object_Interactable : MonoBehaviour
 
     private Vector2 originPosition;
     protected Color effectColor;
-    protected bool isTaked;
+    public bool isTaked { get; protected set; }
 
 
     protected virtual void Awake()
     {
+        if (string.IsNullOrEmpty(uniqueId))
+        {
+            uniqueId = Guid.NewGuid().ToString();
+            UnityEditor.EditorUtility.SetDirty(this);
+        }
+
         sr = GetComponentInChildren<SpriteRenderer>();
         auraPs = GetComponentInChildren<ParticleSystem>();
     }
@@ -57,5 +67,38 @@ public abstract class Object_Interactable : MonoBehaviour
         isTaked = true;
         sr.color = Color.clear;
         auraPs.Stop();
+    }
+
+    public void SaveData(ref GameData gameData)
+    {
+        if (!gameData.interactables.ContainsKey(uniqueId))
+        {
+            Debug.Log($"SAVE_MANAGER: Save {gameObject.name} ({uniqueId})");
+            gameData.interactables.Add(uniqueId, isTaked);
+        }
+        else
+        {
+            Debug.Log($"SAVE_MANAGER: Update {gameObject.name} ({uniqueId})");
+            gameData.interactables[uniqueId] = isTaked;
+        }
+    }
+
+    public void LoadData(GameData gameData)
+    {
+        Debug.Log($"SAVE_MANAGER: Load {gameObject.name} ({uniqueId})");
+        if (!gameData.interactables.ContainsKey(uniqueId) || gameData.interactables[uniqueId])
+        {
+            HideObject();
+            gameObject.SetActive(false);
+        }
+    }
+
+    protected virtual void OnValidate()
+    {
+        if (string.IsNullOrEmpty(uniqueId))
+        {
+            uniqueId = Guid.NewGuid().ToString();
+            UnityEditor.EditorUtility.SetDirty(this);
+        }
     }
 }

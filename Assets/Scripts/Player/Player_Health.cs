@@ -25,13 +25,17 @@ public class Player_Health : Entity_Health, ISaveable
         player.OnDead();
     }
 
-    public void SaveDate(ref GameData gameData)
+    public void SaveData(ref GameData gameData)
     {
+        Debug.Log($"SAVE_MANAGER: Save Health of Player");
+
         gameData.playerHealth = currentHealth;
     }
 
     public void LoadData(GameData gameData)
     {
+        Debug.Log($"SAVE_MANAGER: Load Health of Player");
+
         currentHealth = gameData.playerHealth;
     }
 }

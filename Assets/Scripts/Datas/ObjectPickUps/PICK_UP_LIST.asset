@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ba29441cfbc10f459437f103c2aeddd, type: 3}
-  m_Name: ObjectPickUpData_Key1
+  m_Script: {fileID: 11500000, guid: d6ed2703447264645b0eae0c471ccf6f, type: 3}
+  m_Name: PICK_UP_LIST
   m_EditorClassIdentifier: 
-  saveID: 2a3fbfab0aebec04db8a212a986d2a72
-  image: {fileID: -9054977218535001689, guid: 2eec84a38a6eab44caec6701abe31853, type: 3}
-  pickUpName: Key 1
+  pickUpList:
+  - {fileID: 11400000, guid: ac9a2b2ba2c7dea4699705065b42df43, type: 2}
+  - {fileID: 11400000, guid: 2a3fbfab0aebec04db8a212a986d2a72, type: 2}

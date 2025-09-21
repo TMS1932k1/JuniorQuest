@@ -11,6 +11,7 @@ public class UI_SkillNode : MonoBehaviour, ISkillInfoEvent, IPointerDownHandler
 
     [Header("UI")]
     [SerializeField] TextMeshProUGUI nameText;
+    [SerializeField] TextMeshProUGUI levelText;
     [SerializeField] Image skillImage;
     [SerializeField] UI_SkillInfo skillInfoUI;
     [SerializeField] Image installedBorder;
@@ -189,6 +190,7 @@ public class UI_SkillNode : MonoBehaviour, ISkillInfoEvent, IPointerDownHandler
             return;
 
         nameText.text = skillData.skillName;
+        levelText.text = "Level " + skillData.unlockLevel;
         skillImage.sprite = skillData.skillImage;
 
         gameObject.name = "Skill_" + skillData.skillName.Replace(" ", "");

@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class Enemy : Entity, ICanCounter
+public class Enemy : Entity, ICanCounter, ISaveable
 {
     public static event Action<float> OnEnemyDeath;
 
@@ -36,14 +36,16 @@ public class Enemy : Entity, ICanCounter
     public Enemy_FreezedState freezedState;
 
 
-    private Entity_Stat stat;
+    private Entity_Stat entityStat;
+    public Entity_Health entityHealth { get; private set; }
 
 
     protected override void Awake()
     {
         base.Awake();
 
-        stat = GetComponent<Entity_Stat>();
+        entityStat = GetComponent<Entity_Stat>();
+        entityHealth = GetComponent<Entity_Health>();
     }
 
     protected virtual void OnEnable()
@@ -66,7 +68,7 @@ public class Enemy : Entity, ICanCounter
         base.OnDead();
 
         stateMachine.ChangeState(deathState);
-        OnEnemyDeath.Invoke(stat.GetXp());
+        OnEnemyDeath.Invoke(entityStat.GetXp());
     }
 
     public void HandleCounter()
@@ -119,6 +121,28 @@ public class Enemy : Entity, ICanCounter
         stateMachine.ChangeState(detectedState);
     }
 
+    public virtual void SaveData(ref GameData gameData)
+    {
+        if (!gameData.entities.ContainsKey(uniqueId))
+        {
+            Debug.Log($"SAVE_MANAGER: Save {gameObject.name} ({uniqueId})");
+            gameData.entities.Add(uniqueId, entityHealth.isDead);
+        }
+        else
+        {
+            Debug.Log($"SAVE_MANAGER: Update {gameObject.name} ({uniqueId})");
+            gameData.entities[uniqueId] = entityHealth.isDead;
+        }
+    }
+
+    public virtual void LoadData(GameData gameData)
+    {
+        Debug.Log($"SAVE_MANAGER: Load {gameObject.name} ({uniqueId})");
+        if (!gameData.entities.ContainsKey(uniqueId) || gameData.entities[uniqueId])
+        {
+            gameObject.SetActive(false);
+        }
+    }
 
     protected override void OnDrawGizmos()
     {
@@ -132,4 +156,5 @@ public class Enemy : Entity, ICanCounter
         Gizmos.color = Color.red;
         Gizmos.DrawLine(transform.position, transform.position + new Vector3(distanceToDetectPlayer * faceDir, 0, 0));
     }
+
 }

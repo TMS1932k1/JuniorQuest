@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ba29441cfbc10f459437f103c2aeddd, type: 3}
   m_Name: ObjectPickUpData_Key0
   m_EditorClassIdentifier: 
-  image: {fileID: 5594105880233148557, guid: 7380195adbf2b8c46b07715a1ed2c8bb, type: 3}
+  saveID: ac9a2b2ba2c7dea4699705065b42df43
+  image: {fileID: 6219432729193240983, guid: 2eec84a38a6eab44caec6701abe31853, type: 3}
   pickUpName: Key 0

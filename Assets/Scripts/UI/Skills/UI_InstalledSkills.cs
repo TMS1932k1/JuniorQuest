@@ -4,18 +4,8 @@ using UnityEngine.UI;
 public class UI_InstalledSkills : MonoBehaviour
 {
     [SerializeField] Player_SkillsManager skillsManager;
-
     [SerializeField] UI_Slot[] slots;
 
-    private void OnEnable()
-    {
-        Player_SkillsManager.OnChangeInstall += SetDisplay;
-    }
-
-    private void OnDisable()
-    {
-        Player_SkillsManager.OnChangeInstall -= SetDisplay;
-    }
 
     private void Start()
     {
@@ -24,6 +14,12 @@ public class UI_InstalledSkills : MonoBehaviour
 
     private void Update()
     {
+        if (skillsManager.changeInstall)
+        {
+            SetDisplay();
+            skillsManager.changeInstall = false;
+        }
+
         foreach (Skill_Base skill in skillsManager.installedList)
         {
             if (skill.GetCurrentCooldown() > 0)

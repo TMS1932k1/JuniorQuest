@@ -5,6 +5,10 @@ using UnityEngine;
 
 public class SaveManager : MonoBehaviour
 {
+    public static SaveManager instance;
+
+
+    [Header("Setting Options")]
     [SerializeField] string fileName = "filesave.json";
     [SerializeField] bool isEncryptDecrypt = false;
 
@@ -13,6 +17,18 @@ public class SaveManager : MonoBehaviour
     private GameData gameData;
     private List<ISaveable> saveables;
 
+
+    private void Awake()
+    {
+        if (instance != null && instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        instance = this;
+        DontDestroyOnLoad(gameObject);
+    }
 
     private IEnumerator Start()
     {
@@ -24,15 +40,14 @@ public class SaveManager : MonoBehaviour
         LoadGame();
     }
 
-    private void OnApplicationQuit()
-    {
-        SaveGame();
-    }
-
     public void SaveGame()
     {
+        gameData.entities.Clear();
+        gameData.interactables.Clear();
+        gameData.elevators.Clear();
+
         foreach (ISaveable saveable in saveables)
-            saveable.SaveDate(ref gameData);
+            saveable.SaveData(ref gameData);
 
         fileDataHandler.SaveData(gameData, isEncryptDecrypt);
     }

@@ -61,7 +61,7 @@ public class Object_Buff : Object_Interactable
             if (stat)
                 stat.RemoveModifierWithType(data.statType, data.source);
 
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 
@@ -97,8 +97,10 @@ public class Object_Buff : Object_Interactable
         }
     }
 
-    void OnValidate()
+    protected override void OnValidate()
     {
+        base.OnValidate();
+
         if (data == null)
             return;
 

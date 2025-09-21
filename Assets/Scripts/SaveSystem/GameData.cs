@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
@@ -10,5 +11,53 @@ public class GameData
     public float strength;
     public float agility;
     public float vitality;
+    public List<string> installedSkills = new();
+    public SerializationDictionary<string, int> inventory = new();
+    public Vector3 position;
+
+
+    // ENTITIES DATA
+    public SerializationDictionary<string, bool> entities = new();
+
+
+    // INTERACTABLE DATA
+    public SerializationDictionary<string, bool> interactables = new();
+
+
+    // ELEVATOR DATA
+    public SerializationDictionary<string, bool> elevators = new();
 }
 
+
+[System.Serializable]
+public class SerializationDictionary<T, V> : Dictionary<T, V>, ISerializationCallbackReceiver
+{
+    [SerializeField] List<T> keys = new();
+    [SerializeField] List<V> values = new();
+
+    public void OnAfterDeserialize()
+    {
+        Clear();
+
+        if (keys.Count != values.Count)
+        {
+            Debug.Log("Count of keys isn't equal count of values");
+            return;
+        }
+
+        for (int i = 0; i < keys.Count; i++)
+            Add(keys[i], values[i]);
+    }
+
+    public void OnBeforeSerialize()
+    {
+        keys.Clear();
+        values.Clear();
+
+        foreach (KeyValuePair<T, V> pair in this)
+        {
+            keys.Add(pair.Key);
+            values.Add(pair.Value);
+        }
+    }
+}

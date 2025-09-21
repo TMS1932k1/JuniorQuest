@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Create new ObjectBuff Data", fileName = "ObjectBuffData_New")]
+[CreateAssetMenu(menuName = "Buff Data Setup/Create new ObjectBuff Data", fileName = "ObjectBuffData_New")]
 public class ObjectBuffDataSO : ScriptableObject
 {
     [Header("Buff details")]

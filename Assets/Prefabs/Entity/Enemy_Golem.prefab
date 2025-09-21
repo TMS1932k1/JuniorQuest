@@ -151,6 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 087d755eabe09e74f93bfadba40feccf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uniqueId: e999c7cd-51c9-46e3-b1c0-7dfc1a3dc157
   groundCheckTransform: {fileID: 1174028357303090005}
   groundCheckDistance: 0.2
   whatIsGround:

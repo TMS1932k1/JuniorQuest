@@ -9,6 +9,7 @@ public class Skill_Base : MonoBehaviour
     public bool isInstall;
     public float lastTimeUsed;
 
+
     protected virtual void Awake()
     {
         playerVFX = GetComponentInParent<Player_VFX>();

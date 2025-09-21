@@ -4,8 +4,6 @@ public class Enemy_DeathState : EnemyState
 {
     private Enemy_VFX enemyVFX;
 
-    private float timeDestroy = 1f;
-
 
     public Enemy_DeathState(string nameState, StateMachine stateMachine, Enemy enemy) : base(nameState, stateMachine, enemy)
     {
@@ -15,14 +13,21 @@ public class Enemy_DeathState : EnemyState
     public override void Enter()
     {
         base.Enter();
+        isTrigger = false;
 
-        ResetVFX();
-        Object.Destroy(enemy.gameObject, timeDestroy);
-    }
-
-    private void ResetVFX()
-    {
+        // Reset VFX
         enemyVFX.ResetVFX();
         enemy.canStunned = false;
+    }
+
+    public override void Update()
+    {
+        base.Update();
+
+        if (isTrigger)
+        {
+            stateMachine.ChangeState(enemy.idleState);
+            enemy.gameObject.SetActive(false);
+        }
     }
 }

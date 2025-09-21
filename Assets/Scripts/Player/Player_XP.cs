@@ -57,14 +57,18 @@ public class Player_XP : MonoBehaviour, ISaveable
 
     public int GetLevel() => level;
 
-    public void SaveDate(ref GameData gameData)
+    public void SaveData(ref GameData gameData)
     {
+        Debug.Log($"SAVE_MANAGER: Save XP of Player");
+
         gameData.playerLevel = level;
         gameData.playerXP = currentXP;
     }
 
     public void LoadData(GameData gameData)
     {
+        Debug.Log($"SAVE_MANAGER: Load XP of Player");
+
         level = gameData.playerLevel;
         maxXP = level * expMutiplier;
         currentXP = gameData.playerXP;

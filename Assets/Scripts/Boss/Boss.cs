@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-public class Boss : Entity
+public class Boss : Entity, ISaveable
 {
     public static event Action<float> OnBossDeath;
 
@@ -17,9 +17,9 @@ public class Boss : Entity
 
 
     // Components
-    private Entity_Stat stat;
-    private Boss_CommandManager bossCommandManager;
+    private Entity_Stat entityStat;
     private Boss_Health bossHealth;
+    private Boss_CommandManager bossCommandManager;
     private Boss_Controller bossController;
     private Boss_Inventory bossInventory;
     protected SpriteRenderer sr;
@@ -29,7 +29,7 @@ public class Boss : Entity
     {
         base.Awake();
 
-        stat = GetComponent<Entity_Stat>();
+        entityStat = GetComponent<Entity_Stat>();
         sr = GetComponentInChildren<SpriteRenderer>();
         bossCommandManager = GetComponent<Boss_CommandManager>();
         bossController = GetComponent<Boss_Controller>();
@@ -66,7 +66,7 @@ public class Boss : Entity
         bossController.AddDeathCommand();
         bossInventory.DropAllInventory();
 
-        OnBossDeath.Invoke(stat.GetXp());
+        OnBossDeath.Invoke(entityStat.GetXp());
     }
 
     public override void BeFreezed(float duration)
@@ -108,6 +108,30 @@ public class Boss : Entity
     private Collider2D GetTargetInArena()
     {
         return Physics2D.OverlapBox(arenaTrans.position, new Vector2(widthArena, heightArena), 0, whatIsDetect);
+    }
+
+    public void SaveData(ref GameData gameData)
+    {
+        if (!gameData.entities.ContainsKey(uniqueId))
+        {
+            Debug.Log($"SAVE_MANAGER: Save {gameObject.name} ({uniqueId})");
+            gameData.entities.Add(uniqueId, bossHealth.isDead);
+        }
+        else
+        {
+            Debug.Log($"SAVE_MANAGER: Update {gameObject.name} ({uniqueId})");
+            gameData.entities[uniqueId] = bossHealth.isDead;
+        }
+    }
+
+    public void LoadData(GameData gameData)
+    {
+        Debug.Log($"SAVE_MANAGER: Load {gameObject.name} ({uniqueId})");
+        if (!gameData.entities.ContainsKey(uniqueId) || gameData.entities[uniqueId])
+        {
+            StopCommandSystem();
+            bossController.AddDeathCommand();
+        }
     }
 
     protected override void OnDrawGizmos()

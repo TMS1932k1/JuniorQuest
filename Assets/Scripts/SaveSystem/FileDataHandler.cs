@@ -38,7 +38,7 @@ public class FileDataHandler
         }
         catch (Exception e)
         {
-            Debug.Log("Error save data " + e.Message);
+            Debug.LogWarning("Error save data " + e.Message);
         }
     }
 
@@ -70,7 +70,7 @@ public class FileDataHandler
             }
             catch (Exception e)
             {
-                Debug.Log("Error load data " + e.Message);
+                Debug.LogWarning("Error load data " + e.Message);
             }
         }
 

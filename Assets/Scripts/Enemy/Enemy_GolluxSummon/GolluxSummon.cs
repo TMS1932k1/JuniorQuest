@@ -48,4 +48,8 @@ public class GolluxSummon : Golem
         isDismiss = true;
         stateMachine.ChangeState(dismissState);
     }
+
+    public override void SaveData(ref GameData gameData) { }
+
+    public override void LoadData(GameData gameData) { }
 }

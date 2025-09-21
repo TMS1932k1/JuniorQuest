@@ -1,14 +1,12 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player_SkillsManager : MonoBehaviour
+public class Player_SkillsManager : MonoBehaviour, ISaveable
 {
-    public static event Action OnChangeInstall;
-
     [Header("Installed details")]
     public int countLimit;
     public List<Skill_Base> installedList { get; private set; } = new();
+    public bool changeInstall = false;
 
 
     // Skills
@@ -38,9 +36,7 @@ public class Player_SkillsManager : MonoBehaviour
 
         if (skill && !IsFullSlot()) // Check have slot to install skill
         {
-            skill.isInstall = true;
-            installedList.Add(skill);
-            OnChangeInstall.Invoke();
+            HandleAddSkill(skill);
             success = true;
         }
         else
@@ -49,21 +45,33 @@ public class Player_SkillsManager : MonoBehaviour
         }
     }
 
+    private void HandleAddSkill(Skill_Base skill)
+    {
+        installedList.Add(skill);
+        skill.isInstall = true;
+        changeInstall = true;
+    }
+
     public void UninstallSkill(ESkill_Type type, out bool success)
     {
         Skill_Base skill = GetSkillWithType(type);
 
         if (skill)
         {
-            installedList.Remove(skill);
-            skill.isInstall = false;
-            OnChangeInstall.Invoke();
+            HandlRemoveSkill(skill);
             success = true;
         }
         else
         {
             success = false;
         }
+    }
+
+    private void HandlRemoveSkill(Skill_Base skill)
+    {
+        installedList.Remove(skill);
+        skill.isInstall = false;
+        changeInstall = true;
     }
 
     /// <summary>
@@ -145,5 +153,58 @@ public class Player_SkillsManager : MonoBehaviour
     public bool IsFullSlot()
     {
         return installedList.Count >= countLimit;
+    }
+
+    public void SaveData(ref GameData gameData)
+    {
+        Debug.Log($"SAVE_MANAGER: Save Installed Skills of Player");
+
+        gameData.installedSkills.Clear();
+
+        foreach (Skill_Base skill in installedList)
+            gameData.installedSkills.Add(skill.skillData.saveID);
+    }
+
+    public void LoadData(GameData gameData)
+    {
+        Debug.Log($"SAVE_MANAGER: Load Installed Skills of Player");
+
+        installedList.Clear();
+
+        foreach (string saveID in gameData.installedSkills)
+        {
+            Skill_Base skill = GetSkillBySaveID(saveID);
+
+            if (skill == null && IsFullSlot())
+                continue;
+
+            HandleAddSkill(skill);
+        }
+    }
+
+    private Skill_Base GetSkillBySaveID(string saveID)
+    {
+        if (saveID == fireBlade.skillData.saveID)
+            return fireBlade;
+
+        if (saveID == comeback.skillData.saveID)
+            return comeback;
+
+        if (saveID == shieldBarrier.skillData.saveID)
+            return shieldBarrier;
+
+        if (saveID == icePrison.skillData.saveID)
+            return icePrison;
+
+        if (saveID == infeno.skillData.saveID)
+            return infeno;
+
+        if (saveID == battleCry.skillData.saveID)
+            return battleCry;
+
+        if (saveID == invisibility.skillData.saveID)
+            return invisibility;
+
+        return null;
     }
 }

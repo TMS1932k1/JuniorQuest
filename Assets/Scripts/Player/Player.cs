@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-public class Player : Entity
+public class Player : Entity, ISaveable
 {
     public static event Action OnPlayerDeath;
 
@@ -123,11 +123,21 @@ public class Player : Entity
 
     public override void BeFreezed(float duration)
     {
-
+        // Code change freezed state
     }
 
     public override void ExitFreezed()
     {
+        // Code out freezed state
+    }
 
+    public void SaveData(ref GameData gameData)
+    {
+
+    }
+
+    public void LoadData(GameData gameData)
+    {
+        transform.position = gameData.position;
     }
 }

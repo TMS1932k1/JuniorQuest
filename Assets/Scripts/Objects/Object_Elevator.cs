@@ -1,8 +1,12 @@
+using System;
 using TMPro;
 using UnityEngine;
 
-public class Object_Elevator : MonoBehaviour
+public class Object_Elevator : MonoBehaviour, ISaveable
 {
+    [SerializeField] string uniqueId;
+
+    [Space]
     [SerializeField] bool isActivity;
     [SerializeField] float speed;
     [SerializeField] ObjectPickUpSO pickUpData;
@@ -14,7 +18,16 @@ public class Object_Elevator : MonoBehaviour
     private int dirMove;
 
 
-    void Start()
+    private void Awake()
+    {
+        if (string.IsNullOrEmpty(uniqueId))
+        {
+            uniqueId = Guid.NewGuid().ToString();
+            UnityEditor.EditorUtility.SetDirty(this);
+        }
+    }
+
+    private void Start()
     {
         ActiveText.text = $"Need {pickUpData.pickUpName}";
         ActiveText.gameObject.SetActive(false);
@@ -22,7 +35,7 @@ public class Object_Elevator : MonoBehaviour
         dirMove = -1;
     }
 
-    void Update()
+    private void Update()
     {
         HandleInput();
         HandleMove();
@@ -75,5 +88,34 @@ public class Object_Elevator : MonoBehaviour
     private bool canActive()
     {
         return inventory != null && inventory.FindPickUp(pickUpData.pickUpName) != null;
+    }
+
+    private void OnValidate()
+    {
+        if (string.IsNullOrEmpty(uniqueId))
+        {
+            uniqueId = Guid.NewGuid().ToString();
+            UnityEditor.EditorUtility.SetDirty(this);
+        }
+    }
+
+    public void SaveData(ref GameData gameData)
+    {
+        if (!gameData.elevators.ContainsKey(uniqueId))
+        {
+            Debug.Log($"SAVE_MANAGER: Save {gameObject.name} ({uniqueId})");
+            gameData.elevators.Add(uniqueId, isActivity);
+        }
+        else
+        {
+            Debug.Log($"SAVE_MANAGER: Update {gameObject.name} ({uniqueId})");
+            gameData.elevators[uniqueId] = isActivity;
+        }
+    }
+
+    public void LoadData(GameData gameData)
+    {
+        Debug.Log($"SAVE_MANAGER: Load {gameObject.name} ({uniqueId})");
+        isActivity = gameData.elevators[uniqueId];
     }
 }

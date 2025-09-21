@@ -5004,6 +5004,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 130d8e14141cbda44aa721b5a6890914, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uniqueId: c464e962-2b24-45ab-b28d-c48175a57dd2
   moveSpeed: 2
   moveRange: 0.2
   data: {fileID: 11400000, guid: 01d58bad6d042f94199158e6f62fd0ea, type: 2}

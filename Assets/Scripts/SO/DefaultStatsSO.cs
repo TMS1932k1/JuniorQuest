@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Create new DefaultStats", fileName = "DefaultStats_New")]
+[CreateAssetMenu(menuName = "Defautt Stats Setup/Create new DefaultStats", fileName = "DefaultStats_New")]
 public class DefaultStatsSO : ScriptableObject
 {
     [Header("Major Stats")]

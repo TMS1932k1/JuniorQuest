@@ -29,11 +29,13 @@ public class Object_PickUp : Object_Interactable
     {
         base.HideObject();
 
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 
-    void OnValidate()
+    protected override void OnValidate()
     {
+        base.OnValidate();
+
         if (data == null)
             return;
 

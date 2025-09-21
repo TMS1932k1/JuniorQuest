@@ -1,8 +1,12 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
 public abstract class Entity : MonoBehaviour
 {
+    [SerializeField] protected string uniqueId;
+
+
     [Header("Ground detection")]
     [SerializeField] protected Transform groundCheckTransform;
     [SerializeField] protected float groundCheckDistance;
@@ -44,6 +48,12 @@ public abstract class Entity : MonoBehaviour
 
     protected virtual void Awake()
     {
+        if (string.IsNullOrEmpty(uniqueId))
+        {
+            uniqueId = Guid.NewGuid().ToString();
+            UnityEditor.EditorUtility.SetDirty(this);
+        }
+
         anim = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody2D>();
         entityHandleEffect = GetComponent<Entity_HandleEffect>();
@@ -150,4 +160,13 @@ public abstract class Entity : MonoBehaviour
 
     public abstract void BeFreezed(float duration);
     public abstract void ExitFreezed();
+
+    private void OnValidate()
+    {
+        if (string.IsNullOrEmpty(uniqueId))
+        {
+            uniqueId = Guid.NewGuid().ToString();
+            UnityEditor.EditorUtility.SetDirty(this);
+        }
+    }
 }

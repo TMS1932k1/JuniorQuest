@@ -6375,6 +6375,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 543af9cd2b793d744b49527d50117a95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uniqueId: 7282f702-a892-4d63-a8f9-4ba55e0c2aba
   groundCheckTransform: {fileID: 4613991796448538523}
   groundCheckDistance: 1.35
   whatIsGround:
@@ -6565,6 +6566,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   countLimit: 4
+  changeInstall: 0
 --- !u!114 &860121727253449391
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6591,6 +6593,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventory: []
   slotCount: 5
+  listPickUpSO: {fileID: 11400000, guid: fae16b560698530429a8ea20645773b3, type: 2}
 --- !u!1 &5955074756990383278
 GameObject:
   m_ObjectHideFlags: 0
