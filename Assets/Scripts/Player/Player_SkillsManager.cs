@@ -169,7 +169,7 @@ public class Player_SkillsManager : MonoBehaviour, ISaveable
     {
         Debug.Log($"SAVE_MANAGER: Load Installed Skills of Player");
 
-        installedList.Clear();
+        HandleOldData();
 
         foreach (string saveID in gameData.installedSkills)
         {
@@ -180,6 +180,21 @@ public class Player_SkillsManager : MonoBehaviour, ISaveable
 
             HandleAddSkill(skill);
         }
+
+        changeInstall = true;
+    }
+
+    private void HandleOldData()
+    {
+        installedList.Clear();
+
+        fireBlade.isInstall = false;
+        comeback.isInstall = false;
+        shieldBarrier.isInstall = false;
+        icePrison.isInstall = false;
+        infeno.isInstall = false;
+        battleCry.isInstall = false;
+        invisibility.isInstall = false;
     }
 
     private Skill_Base GetSkillBySaveID(string saveID)

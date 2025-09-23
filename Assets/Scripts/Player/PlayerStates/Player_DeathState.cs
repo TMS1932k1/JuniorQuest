@@ -12,12 +12,29 @@ public class Player_DeathState : PlayerState
     public override void Enter()
     {
         base.Enter();
+        isTrigger = false;
 
         StopMoving();
 
         playerVFX.ResetVFX();
-
         player.isDead = true;
         rb.simulated = false;
+
+    }
+
+    public override void Update()
+    {
+        base.Update();
+
+        if (isTrigger)
+            SaveManager.instance.LoadGame();
+    }
+
+    public override void Exit()
+    {
+        base.Exit();
+
+        player.isDead = false;
+        rb.simulated = true;
     }
 }

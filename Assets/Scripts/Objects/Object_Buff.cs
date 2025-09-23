@@ -4,7 +4,7 @@ using UnityEngine;
 public class Object_Buff : Object_Interactable
 {
     [Header("Data")]
-    [SerializeField] ObjectBuffDataSO data;
+    [SerializeField] ObjectBuffSO data;
     private Entity_Stat stat;
 
 

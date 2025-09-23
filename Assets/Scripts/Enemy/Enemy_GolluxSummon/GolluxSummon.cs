@@ -8,14 +8,10 @@ public class GolluxSummon : Golem
     public bool isDismiss { get; private set; }
 
 
-    private Enemy_Health enemyHealth;
-
 
     protected override void Awake()
     {
         base.Awake();
-
-        enemyHealth = GetComponent<Enemy_Health>();
 
         summonState = new GolluxSummon_SummonState(SummonAnimationStrings.SUMMON_ANIM, stateMachine, this);
         dismissState = new GolluxSummon_DismissState(SummonAnimationStrings.DISMISS_ANIM, stateMachine, this);

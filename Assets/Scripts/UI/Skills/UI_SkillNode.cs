@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class UI_SkillNode : MonoBehaviour, ISkillInfoEvent, IPointerDownHandler
 {
     [Header("Skill Data")]
-    [SerializeField] SkillDataSO skillData;
+    [SerializeField] SkillSO skillData;
 
 
     [Header("UI")]
@@ -70,6 +70,7 @@ public class UI_SkillNode : MonoBehaviour, ISkillInfoEvent, IPointerDownHandler
             CheckInstall();
             UpdateDisplaySkillInfo();
             UpdateConflictSkillUI(false);
+
             needUpdate = true;
         }
     }
@@ -85,6 +86,7 @@ public class UI_SkillNode : MonoBehaviour, ISkillInfoEvent, IPointerDownHandler
             CheckInstall();
             UpdateDisplaySkillInfo();
             UpdateConflictSkillUI(true);
+
             needUpdate = true;
         }
     }
@@ -181,7 +183,6 @@ public class UI_SkillNode : MonoBehaviour, ISkillInfoEvent, IPointerDownHandler
         conflictSkillUI.isLocked = !enabled;
         conflictSkillUI.needUpdate = true;
     }
-
 
     void OnValidate()
     {

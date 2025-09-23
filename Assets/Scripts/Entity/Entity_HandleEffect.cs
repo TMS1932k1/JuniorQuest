@@ -6,6 +6,7 @@ public class Entity_HandleEffect : MonoBehaviour, ICanBurn, ICanFreeze
     // Burn
     private bool canBurn;
     private Coroutine burnCoroutine;
+    private Coroutine freezeCoroutine;
 
 
     private Entity entity;
@@ -29,7 +30,6 @@ public class Entity_HandleEffect : MonoBehaviour, ICanBurn, ICanFreeze
 
     public void BeBurn(float damage, float duration, int countHit)
     {
-        Debug.Log(damage + " " + duration + " " + countHit);
         if (burnCoroutine != null)
             StopCoroutine(burnCoroutine);
 
@@ -56,17 +56,37 @@ public class Entity_HandleEffect : MonoBehaviour, ICanBurn, ICanFreeze
 
     public void BeFreezed(float duration)
     {
+        if (freezeCoroutine != null)
+            StopCoroutine(freezeCoroutine);
+
+        freezeCoroutine = StartCoroutine(FreezeCo(duration));
+    }
+
+    private IEnumerator FreezeCo(float duration)
+    {
         entity.BeFreezed(duration);
         entityVFX.PlayFreezedVFX(duration);
 
-        Invoke(nameof(ExitFreezed), duration); // Exit freezed after duration
+        yield return new WaitForSeconds(duration);
+
+        ExitFreezed();
     }
 
     public void ExitFreezed() => entity.ExitFreezed();
 
     public void ResetHandleEffect()
     {
+        // Burn VFX
         if (burnCoroutine != null)
             StopCoroutine(burnCoroutine);
+
+        entityVFX.StopBurnVFXCo();
+        canBurn = true;
+
+        // Freeze VFX
+        if (freezeCoroutine != null)
+            StopCoroutine(freezeCoroutine);
+
+        ExitFreezed();
     }
 }

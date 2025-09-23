@@ -16,10 +16,6 @@ public class UI_HealthBar : MonoBehaviour
     {
         transform.rotation = Quaternion.identity;
         UpdateHealthSlider();
-
-        // Hide when die
-        if (entityHealth.isDead)
-            gameObject.SetActive(false);
     }
 
     protected void UpdateHealthSlider()

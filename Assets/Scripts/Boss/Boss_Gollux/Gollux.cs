@@ -115,6 +115,13 @@ public class Gollux : Boss
         return transform.position.x > detectTarget.transform.position.x ? -1 : 1;
     }
 
+    public override void LoadData(GameData gameData)
+    {
+        base.LoadData(gameData);
+
+        golluxSkillManager.summon.DismissAllSummon();
+    }
+
     protected override void OnDrawGizmos()
     {
         base.OnDrawGizmos();

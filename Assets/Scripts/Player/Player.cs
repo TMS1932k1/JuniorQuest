@@ -139,5 +139,6 @@ public class Player : Entity, ISaveable
     public void LoadData(GameData gameData)
     {
         transform.position = gameData.position;
+        stateMachine.ChangeState(idleState);
     }
 }

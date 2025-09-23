@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Skill_Base : MonoBehaviour
 {
-    public SkillDataSO skillData;
+    public SkillSO skillData;
 
     protected Player_VFX playerVFX;
 

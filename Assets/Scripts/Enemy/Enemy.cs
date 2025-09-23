@@ -37,7 +37,7 @@ public class Enemy : Entity, ICanCounter, ISaveable
 
 
     private Entity_Stat entityStat;
-    public Entity_Health entityHealth { get; private set; }
+    public Enemy_Health enemyHealth { get; private set; }
 
 
     protected override void Awake()
@@ -45,7 +45,7 @@ public class Enemy : Entity, ICanCounter, ISaveable
         base.Awake();
 
         entityStat = GetComponent<Entity_Stat>();
-        entityHealth = GetComponent<Entity_Health>();
+        enemyHealth = GetComponent<Enemy_Health>();
     }
 
     protected virtual void OnEnable()
@@ -126,22 +126,43 @@ public class Enemy : Entity, ICanCounter, ISaveable
         if (!gameData.entities.ContainsKey(uniqueId))
         {
             Debug.Log($"SAVE_MANAGER: Save {gameObject.name} ({uniqueId})");
-            gameData.entities.Add(uniqueId, entityHealth.isDead);
+            gameData.entities.Add(uniqueId, enemyHealth.isDead);
         }
         else
         {
             Debug.Log($"SAVE_MANAGER: Update {gameObject.name} ({uniqueId})");
-            gameData.entities[uniqueId] = entityHealth.isDead;
+            gameData.entities[uniqueId] = enemyHealth.isDead;
         }
     }
 
     public virtual void LoadData(GameData gameData)
     {
         Debug.Log($"SAVE_MANAGER: Load {gameObject.name} ({uniqueId})");
+
+        // HANDLE ENEMY DEATH
         if (!gameData.entities.ContainsKey(uniqueId) || gameData.entities[uniqueId])
         {
-            entityHealth.Die();
+            if (enemyHealth.isDead)
+                return;
+
+            enemyHealth.currentHealth = 0;
+            enemyHealth.isDead = true;
+
             gameObject.SetActive(false);
+        }
+        else //HANDLE ENEMY LIVE
+        {
+            // Reset health and effect status
+            enemyHealth.ResetHealth();
+            entityHandleEffect.ResetHandleEffect();
+
+            // Reset position
+            transform.position = originPosition;
+
+            // Reset state machine
+            stateMachine.ChangeState(idleState);
+
+            gameObject.SetActive(true);
         }
     }
 

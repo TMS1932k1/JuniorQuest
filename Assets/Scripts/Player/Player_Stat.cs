@@ -6,6 +6,10 @@ public class Player_Stat : Entity_Stat, ISaveable
     {
         Debug.Log($"SAVE_MANAGER: Load Major Point of Player");
 
+        RemoveModifierWithType(EStat_Type.Strength, SourceStatStrings.POINT_SOURCE);
+        RemoveModifierWithType(EStat_Type.Agility, SourceStatStrings.POINT_SOURCE);
+        RemoveModifierWithType(EStat_Type.Vitality, SourceStatStrings.POINT_SOURCE);
+
         AddModifierWithType(EStat_Type.Strength, SourceStatStrings.POINT_SOURCE, gameData.strength);
         AddModifierWithType(EStat_Type.Agility, SourceStatStrings.POINT_SOURCE, gameData.agility);
         AddModifierWithType(EStat_Type.Vitality, SourceStatStrings.POINT_SOURCE, gameData.vitality);

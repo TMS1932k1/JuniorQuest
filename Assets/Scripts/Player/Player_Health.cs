@@ -37,6 +37,9 @@ public class Player_Health : Entity_Health, ISaveable
         Debug.Log($"SAVE_MANAGER: Load Health of Player");
 
         currentHealth = gameData.playerHealth;
+
+        if (currentHealth > 0)
+            isDead = false;
     }
 }
 

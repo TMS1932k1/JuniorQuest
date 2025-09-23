@@ -124,15 +124,33 @@ public class Boss : Entity, ISaveable
         }
     }
 
-    public void LoadData(GameData gameData)
+    public virtual void LoadData(GameData gameData)
     {
         Debug.Log($"SAVE_MANAGER: Load {gameObject.name} ({uniqueId})");
+
+        // HANDLE BOSS DEATH
         if (!gameData.entities.ContainsKey(uniqueId) || gameData.entities[uniqueId])
         {
+            if (bossHealth.isDead)
+                return;
+
             bossHealth.isDead = true;
 
             StopCommandSystem();
             bossController.AddDeathCommand();
+        }
+        else //HANDLE BOSS LIVE
+        {
+            // Reset health and effect status
+            bossHealth.ResetHealth();
+            entityHandleEffect.ResetHandleEffect();
+
+            // Reset command manager
+            StopCommandSystem();
+            bossController.EnableDecideAction(true);
+
+            // Reset position
+            transform.position = originPosition;
         }
     }
 

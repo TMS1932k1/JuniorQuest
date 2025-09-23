@@ -12,7 +12,7 @@ public class UI_SkillInfo : MonoBehaviour
     [SerializeField] TextMeshProUGUI uninstallText;
 
 
-    private SkillDataSO skillData;
+    private SkillSO skillData;
     private ISkillInfoEvent infoEvent;
     private ESkill_Status status;
     private bool needUpdate;
@@ -37,7 +37,7 @@ public class UI_SkillInfo : MonoBehaviour
             transform.localScale = Vector3.one;
     }
 
-    public void DisplayInfo(SkillDataSO skillData, ESkill_Status status, string statusMes, ISkillInfoEvent infoEvent)
+    public void DisplayInfo(SkillSO skillData, ESkill_Status status, string statusMes, ISkillInfoEvent infoEvent)
     {
         this.skillData = skillData;
         this.status = status;

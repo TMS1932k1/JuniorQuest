@@ -40,10 +40,11 @@ public abstract class Entity : MonoBehaviour
     // Components
     public Animator anim { get; private set; }
     public Rigidbody2D rb { get; private set; }
-    private Entity_HandleEffect entityHandleEffect;
+    protected Entity_HandleEffect entityHandleEffect;
 
 
     public int faceDir { get; protected set; } = 1;
+    protected Vector3 originPosition;
 
 
     protected virtual void Awake()
@@ -63,6 +64,7 @@ public abstract class Entity : MonoBehaviour
 
     protected virtual void Start()
     {
+        originPosition = transform.position;
     }
 
     protected virtual void Update()
