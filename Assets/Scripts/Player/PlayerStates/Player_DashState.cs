@@ -14,6 +14,7 @@ public class Player_DashState : Player_AiredState
 
         stateTimer = player.dashDuration;
 
+        playerSFX.PlayDash();
         originGravity = rb.gravityScale;
         rb.gravityScale = 0;
     }

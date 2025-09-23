@@ -92,3 +92,38 @@ public class SourceStatStrings
 {
     public const string POINT_SOURCE = "Point";
 }
+
+
+public class ClipDataNameStrings
+{
+    // Player
+    public const string PLAYER_ATTACK_HIT = "player_attack_hit";
+    public const string PLAYER_ATTACK_MISS = "player_attack_miss";
+    public const string PLAYER_JUMP = "player_jump";
+    public const string PLAYER_LAND = "player_land";
+    public const string PLAYER_DASH = "player_dash";
+    public const string PLAYER_SLIDE = "player_slide";
+    public const string PLAYER_COUNTER = "player_counter";
+    public const string PLAYER_BUFF = "player_buff";
+    public const string PLAYER_FIRE_BLADE = "player_fire_blade";
+    public const string PLAYER_INVISIBILITY = "player_invisibility";
+    public const string PLAYER_COMEBACK = "player_comeback";
+    public const string PLAYER_BATTLE_CRY = "player_battle_cry";
+    public const string PLAYER_ICE_PRISON = "player_ice_prison";
+    public const string PLAYER_SHIELD_BARRIER = "player_shield_barrier";
+    public const string PLAYER_MOVE = "player_move";
+    public const string PLAYER_LEVEL_UP = "player_level_up";
+    public const string PLAYER_DEATH = "player_death";
+    public const string PLAYER_HURT = "player_hurt";
+
+
+    // Golem
+    public const string GOLEM_ATTACK_HIT = "golem_attack_hit";
+    public const string GOLEM_ATTACK_MISS = "golem_attack_miss";
+
+    public const string GOLEM_DEATH = "golem_death";
+
+
+    // Range attack
+    public const string RANGE_ATTACK_HIT = "range_attack_hit";
+}

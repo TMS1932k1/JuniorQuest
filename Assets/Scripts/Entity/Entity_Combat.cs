@@ -11,6 +11,7 @@ public class AttackCircle
 public class Entity_Combat : MonoBehaviour, ICombat
 {
     protected Entity_VFX entityVFX;
+    private Entity_SFX entitySFX;
     protected Entity_Stat stat;
 
 
@@ -27,23 +28,34 @@ public class Entity_Combat : MonoBehaviour, ICombat
     protected virtual void Awake()
     {
         entityVFX = GetComponent<Entity_VFX>();
+        entitySFX = GetComponent<Entity_SFX>();
         stat = GetComponent<Entity_Stat>();
     }
 
     public virtual void PerformAttack()
     {
+        bool isHit = false;
         foreach (Collider2D target in GetTargetColliders())
         {
             // If break obj then destroy it
             if (target.GetComponent<IBreakable>() != null)
             {
+                isHit = true;
                 Break(target.GetComponent<IBreakable>());
                 continue;
             }
 
             // Other damage
-            PerformDamage(target);
+            PerformDamage(target, ref isHit);
         }
+
+        if (isHit)
+        {
+            entitySFX?.PlayAttackHit();
+            return;
+        }
+
+        entitySFX?.PlayAttackMiss();
     }
 
     private void Break(IBreakable target)
@@ -51,7 +63,7 @@ public class Entity_Combat : MonoBehaviour, ICombat
         target.Break();
     }
 
-    private void PerformDamage(Collider2D target)
+    private void PerformDamage(Collider2D target, ref bool isHit)
     {
         damage = stat.GetDamageWithCrit(out bool isCrit);
 
@@ -60,6 +72,7 @@ public class Entity_Combat : MonoBehaviour, ICombat
         if (!targetHealth.isDead)
         {
             targetHealth.ReduceHealth(damage, out bool isMissed, transform);
+            isHit = !isMissed;
 
             if (!isMissed)
                 entityVFX.CreateHitVFX(target.transform.position, isCrit);

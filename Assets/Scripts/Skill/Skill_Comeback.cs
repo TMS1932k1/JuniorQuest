@@ -16,7 +16,9 @@ public class Skill_Comeback : Skill_Base
     {
         base.PerformSkill();
 
-        playerVFX.ShowComebackVFX(); // VFX
+        playerVFX.ShowComebackVFX();
+        playerSFX.PlayComeback();
+
         RestoreHealth(); // Restore HP
     }
 

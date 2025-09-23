@@ -4,13 +4,13 @@ public class Player_JumpState : Player_AiredState
 {
     public Player_JumpState(string nameState, StateMachine stateMachine, Player player) : base(nameState, stateMachine, player)
     {
-
     }
 
     public override void Enter()
     {
         base.Enter();
 
+        playerSFX.PlayJump();
         player.SetVelocity(rb.linearVelocityX, player.jumpForce);
     }
 

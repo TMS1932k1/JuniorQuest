@@ -12,12 +12,14 @@ public class Player_XP : MonoBehaviour, ISaveable
     public bool newLevelUp = true;
 
 
-    private Player_VFX playVFX;
+    private Player_VFX playerVFX;
+    private Player_SFX playerSFX;
 
 
     void Awake()
     {
-        playVFX = GetComponent<Player_VFX>();
+        playerVFX = GetComponent<Player_VFX>();
+        playerSFX = GetComponent<Player_SFX>();
     }
 
     void Start()
@@ -52,7 +54,8 @@ public class Player_XP : MonoBehaviour, ISaveable
             maxXP = level * expMutiplier;
         }
 
-        playVFX.ShowLevelUpVFX(level);
+        playerVFX.ShowLevelUpVFX(level);
+        playerSFX.PlayLevelUP();
     }
 
     public int GetLevel() => level;

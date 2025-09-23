@@ -18,7 +18,9 @@ public class Skill_BattleCry : Skill_Base
     {
         base.PerformSkill();
 
-        playerVFX.ShowBattleCryVFX(skillData.duration); // VFX
+        playerVFX.ShowBattleCryVFX(skillData.duration);
+        playerSFX.PlayBattleCry();
+
         IncrementStat();
     }
 

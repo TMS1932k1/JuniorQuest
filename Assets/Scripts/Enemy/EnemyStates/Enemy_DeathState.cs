@@ -2,12 +2,8 @@ using UnityEngine;
 
 public class Enemy_DeathState : EnemyState
 {
-    private Enemy_VFX enemyVFX;
-
-
     public Enemy_DeathState(string nameState, StateMachine stateMachine, Enemy enemy) : base(nameState, stateMachine, enemy)
     {
-        enemyVFX = enemy.GetComponent<Enemy_VFX>();
     }
 
     public override void Enter()
@@ -15,8 +11,9 @@ public class Enemy_DeathState : EnemyState
         base.Enter();
         isTrigger = false;
 
-        // Reset VFX
         enemyVFX.ResetVFX();
+        entitySFX?.PlayDeath();
+
         enemy.canStunned = false;
     }
 

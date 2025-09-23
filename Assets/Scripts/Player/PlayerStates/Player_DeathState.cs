@@ -17,9 +17,10 @@ public class Player_DeathState : PlayerState
         StopMoving();
 
         playerVFX.ResetVFX();
+        playerSFX.PlayDeath();
+
         player.isDead = true;
         rb.simulated = false;
-
     }
 
     public override void Update()

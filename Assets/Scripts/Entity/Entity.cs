@@ -40,7 +40,7 @@ public abstract class Entity : MonoBehaviour
     // Components
     public Animator anim { get; private set; }
     public Rigidbody2D rb { get; private set; }
-    protected Entity_HandleEffect entityHandleEffect;
+    public Entity_HandleEffect entityHandleEffect { get; private set; }
 
 
     public int faceDir { get; protected set; } = 1;

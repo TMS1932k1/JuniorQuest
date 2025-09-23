@@ -5,6 +5,7 @@ public class Skill_Base : MonoBehaviour
     public SkillSO skillData;
 
     protected Player_VFX playerVFX;
+    protected Player_SFX playerSFX;
 
     public bool isInstall;
     public float lastTimeUsed;
@@ -13,6 +14,7 @@ public class Skill_Base : MonoBehaviour
     protected virtual void Awake()
     {
         playerVFX = GetComponentInParent<Player_VFX>();
+        playerSFX = GetComponentInParent<Player_SFX>();
 
         // Avoid cooldown when start (Time.time = 0)
         lastTimeUsed = -skillData.cooldown;

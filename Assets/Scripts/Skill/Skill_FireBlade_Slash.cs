@@ -11,6 +11,7 @@ public class Skill_FireBlade_Slash : MonoBehaviour
 
     private Animator anim;
     private Rigidbody2D rb;
+    private AudioSource audioSource;
     private ObjectPool_FireBlade pool;
 
 
@@ -18,6 +19,8 @@ public class Skill_FireBlade_Slash : MonoBehaviour
     {
         anim = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody2D>();
+        audioSource = GetComponentInChildren<AudioSource>();
+
         pool = FindFirstObjectByType<ObjectPool_FireBlade>();
     }
 
@@ -40,8 +43,10 @@ public class Skill_FireBlade_Slash : MonoBehaviour
         if (!isHit)
         {
             isHit = true;
+
             rb.linearVelocity = Vector2.zero; // Stop moving
             anim.SetTrigger(PlayerAnimationStrings.HIT_TRIGGER);
+            AudioManager.instance.PlayAudioClip(audioSource, ClipDataNameStrings.RANGE_ATTACK_HIT);
 
             if (collision.gameObject.layer == LayerMask.NameToLayer(LayerStrings.ENEMY_LAYER)) // Hit Enemy
             {

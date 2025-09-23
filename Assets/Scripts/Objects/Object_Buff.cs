@@ -52,8 +52,14 @@ public class Object_Buff : Object_Interactable
 
             // Modifier Stats
             stat = col.GetComponent<Entity_Stat>();
+
             if (stat)
+            {
                 stat.AddModifierWithType(data.statType, data.source, data.value);
+
+                // Play audio if this entity is player
+                col.GetComponent<Player_SFX>()?.PlayBuff();
+            }
         }
         else
         {

@@ -28,6 +28,8 @@ public class Player_CounterState : PlayerState
         {
             anim.SetBool(PlayerAnimationStrings.SUCCESS_COUNTER_ANIM, true);
             isCountered = true;
+
+            playerSFX.PlayCounter();
         }
 
         if (stateTimer < 0 && !haveTargers && !isCountered)

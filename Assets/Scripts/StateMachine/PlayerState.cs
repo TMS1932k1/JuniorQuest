@@ -3,13 +3,15 @@ using UnityEngine;
 public class PlayerState : EntityState
 {
     public Player player;
-    protected Player_SkillsManager skillsManager;
+    protected Player_SFX playerSFX;
+    protected Player_SkillsManager playerSkillsManager;
 
 
     public PlayerState(string nameState, StateMachine stateMachine, Player player) : base(nameState, stateMachine, player)
     {
         this.player = player;
-        skillsManager = player.GetComponent<Player_SkillsManager>();
+        playerSkillsManager = player.GetComponent<Player_SkillsManager>();
+        playerSFX = player.GetComponent<Player_SFX>();
 
         rb = player.rb;
         anim = player.anim;
@@ -24,36 +26,36 @@ public class PlayerState : EntityState
 
     private void HandleUseSkills()
     {
-        switch (skillsManager.HanldeInputUseSkill())
+        switch (playerSkillsManager.HanldeInputUseSkill())
         {
             case ESkill_Type.ShieldBarrier:
                 {
-                    if (skillsManager.shieldBarrier.CanBeUse())
-                        skillsManager.shieldBarrier.PerformSkill();
+                    if (playerSkillsManager.shieldBarrier.CanBeUse())
+                        playerSkillsManager.shieldBarrier.PerformSkill();
 
                     break;
                 }
 
             case ESkill_Type.Comeback:
                 {
-                    if (skillsManager.comeback.CanBeUse())
-                        skillsManager.comeback.PerformSkill();
+                    if (playerSkillsManager.comeback.CanBeUse())
+                        playerSkillsManager.comeback.PerformSkill();
 
                     break;
                 }
 
             case ESkill_Type.Invisibility:
                 {
-                    if (skillsManager.invisibility.CanBeUse())
-                        skillsManager.invisibility.PerformSkill();
+                    if (playerSkillsManager.invisibility.CanBeUse())
+                        playerSkillsManager.invisibility.PerformSkill();
 
                     break;
                 }
 
             case ESkill_Type.BattleCry:
                 {
-                    if (skillsManager.battleCry.CanBeUse())
-                        skillsManager.battleCry.PerformSkill();
+                    if (playerSkillsManager.battleCry.CanBeUse())
+                        playerSkillsManager.battleCry.PerformSkill();
 
                     break;
                 }

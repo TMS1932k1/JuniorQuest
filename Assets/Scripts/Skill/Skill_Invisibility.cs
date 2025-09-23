@@ -22,7 +22,9 @@ public class Skill_Invisibility : Skill_Base
     {
         base.PerformSkill();
 
-        playerVFX.ShowInvisibilityVFX(); // VFX
+        playerVFX.ShowInvisibilityVFX();
+        playerSFX.PlayInvisibility();
+
         Invisibility();
     }
 

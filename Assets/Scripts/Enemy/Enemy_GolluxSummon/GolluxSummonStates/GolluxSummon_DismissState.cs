@@ -5,7 +5,6 @@ public class GolluxSummon_DismissState : EnemyState
     private GolluxSummon golluxSummon;
 
 
-    private Enemy_VFX enemyVFX;
     private Enemy_Health enemyHealth;
     private UI_HealthBar healthBar;
     private ObjectPool<GolluxSummon> objectPool;
@@ -16,7 +15,6 @@ public class GolluxSummon_DismissState : EnemyState
         this.golluxSummon = golluxSummon;
 
         enemyHealth = golluxSummon.GetComponent<Enemy_Health>();
-        enemyVFX = golluxSummon.GetComponent<Enemy_VFX>();
         healthBar = golluxSummon.GetComponentInChildren<UI_HealthBar>();
 
         objectPool = golluxSummon.GetComponentInParent<ObjectPool<GolluxSummon>>();

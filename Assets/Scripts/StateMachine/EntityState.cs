@@ -10,6 +10,7 @@ public abstract class EntityState
     protected bool isTrigger;
     protected float stateTimer;
 
+
     public EntityState(string nameState, StateMachine stateMachine, Entity entity)
     {
         this.nameState = nameState;

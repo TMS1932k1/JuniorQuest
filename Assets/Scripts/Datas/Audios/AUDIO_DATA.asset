@@ -1,0 +1,119 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e38c2c1cfa18d304d9c4fd76303bb2e3, type: 3}
+  m_Name: AUDIO_DATA
+  m_EditorClassIdentifier: 
+  player:
+  - dataName: player_attack_hit
+    volume: 0.6
+    audioClips:
+    - {fileID: 8300000, guid: 61a43ab501994574491739b413328b59, type: 3}
+    - {fileID: 8300000, guid: 2ffea4c9175c4ab4fbe410f83e11e5c2, type: 3}
+    - {fileID: 8300000, guid: 981a0480f273dfc49b8be179564fe9de, type: 3}
+  - dataName: player_attack_miss
+    volume: 0.4
+    audioClips:
+    - {fileID: 8300000, guid: fe496b32c7d1de948915bc3d88867c46, type: 3}
+    - {fileID: 8300000, guid: 860a99614e0478e44a6f96e2f803cc03, type: 3}
+    - {fileID: 8300000, guid: f5033d72049e94a459d3692d32adb712, type: 3}
+  - dataName: player_jump
+    volume: 0.7
+    audioClips:
+    - {fileID: 8300000, guid: 947cfd74f5c41ab40aacefdd833793d7, type: 3}
+    - {fileID: 8300000, guid: 9d17ecf1c10a9f6468af6694a0df8e2e, type: 3}
+    - {fileID: 8300000, guid: 5d19dc8eed70706428fcce18091dcc85, type: 3}
+  - dataName: player_counter
+    volume: 3
+    audioClips:
+    - {fileID: 8300000, guid: 4895f797c3439a14284986c487ba17b8, type: 3}
+  - dataName: player_dash
+    volume: 0.5
+    audioClips:
+    - {fileID: 8300000, guid: 1e3c45f885ceb1449af47dded91dfda5, type: 3}
+  - dataName: player_slide
+    volume: 0.5
+    audioClips:
+    - {fileID: 8300000, guid: cb90767b17a121a4abb362d9c490753c, type: 3}
+  - dataName: player_move
+    volume: 1
+    audioClips:
+    - {fileID: 8300000, guid: 57875aa20b6ba414e8c9a3da784b5066, type: 3}
+  - dataName: player_fire_blade
+    volume: 0.6
+    audioClips:
+    - {fileID: 8300000, guid: 2124321592600364881c1edb67e1f24d, type: 3}
+  - dataName: player_invisibility
+    volume: 0.8
+    audioClips:
+    - {fileID: 8300000, guid: 3fe419633a4d6a144ba89580de06e282, type: 3}
+  - dataName: player_buff
+    volume: 0.6
+    audioClips:
+    - {fileID: 8300000, guid: 3328264de9b19ec408d076461bf89dcb, type: 3}
+  - dataName: player_battle_cry
+    volume: 0.6
+    audioClips:
+    - {fileID: 8300000, guid: 43798f29c2394624fad6e140bee2add5, type: 3}
+  - dataName: player_ice_prison
+    volume: 0.6
+    audioClips:
+    - {fileID: 8300000, guid: e9ef51d46a0745b4d877d179b371b9fa, type: 3}
+  - dataName: player_comeback
+    volume: 0.6
+    audioClips:
+    - {fileID: 8300000, guid: 3b63c8ffd7a10ba43bb95bfd3d15d5fb, type: 3}
+  - dataName: player_land
+    volume: 0.6
+    audioClips:
+    - {fileID: 8300000, guid: 4b784bbe6516c8e4fbecfa4f77380338, type: 3}
+  - dataName: player_level_up
+    volume: 0.6
+    audioClips:
+    - {fileID: 8300000, guid: 2237e0093ca131c4480661240e5b8490, type: 3}
+  - dataName: player_shield_barrier
+    volume: 0.6
+    audioClips:
+    - {fileID: 8300000, guid: c8b341ee618ba494584a1de146df1cc8, type: 3}
+  - dataName: player_death
+    volume: 0.6
+    audioClips:
+    - {fileID: 8300000, guid: d41c468c1ac366f4eaab2af25201a6f6, type: 3}
+  - dataName: player_hurt
+    volume: 0.4
+    audioClips:
+    - {fileID: 8300000, guid: b45cf0b22bfc039409b743c3e0216756, type: 3}
+    - {fileID: 8300000, guid: 62cd360cecdbe804b84ac603f26ba630, type: 3}
+  rangeAttack:
+  - dataName: range_attack_hit
+    volume: 0.6
+    audioClips:
+    - {fileID: 8300000, guid: 32b03b66a6738484f99e711330c002e4, type: 3}
+  golem:
+  - dataName: golem_attack_hit
+    volume: 0.3
+    audioClips:
+    - {fileID: 8300000, guid: 875b11fb9b751b74ebfa5c003f82e857, type: 3}
+    - {fileID: 8300000, guid: a379891421b59e44c891b8f93cd60e08, type: 3}
+    - {fileID: 8300000, guid: 7f65593b553b7964bac235e9305514dd, type: 3}
+  - dataName: golem_attack_miss
+    volume: 0.3
+    audioClips:
+    - {fileID: 8300000, guid: 6d9275854925d634e851b1328f4bbf9a, type: 3}
+  - dataName: golem_death
+    volume: 0.4
+    audioClips:
+    - {fileID: 8300000, guid: 42f960cc78ca6c44881b507415bbb39e, type: 3}
+  bgm:
+  - dataName: bgm_level1
+    volume: 0.5
+    audioClips:
+    - {fileID: 8300000, guid: ddb58494cee36834dbb316fc96365b81, type: 3}

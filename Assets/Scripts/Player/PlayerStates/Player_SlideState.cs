@@ -22,6 +22,8 @@ public class Player_SlideState : PlayerState
 
         stateTimer = player.slideDuration;
 
+        playerSFX.PlaySlide();
+
         // Set size Collider of SlideState
         col.size = new Vector2(originSizeCol.x, originSizeCol.y / 2);
         col.offset = new Vector2(originOffsetCol.x, originOffsetCol.y - 0.2f);

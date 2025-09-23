@@ -2,11 +2,8 @@ using UnityEngine;
 
 public class Enemy_StunnedState : EnemyState
 {
-    private Enemy_VFX enemyVFX;
-
     public Enemy_StunnedState(string nameState, StateMachine stateMachine, Enemy enemy) : base(nameState, stateMachine, enemy)
     {
-        enemyVFX = enemy.GetComponent<Enemy_VFX>();
     }
 
     public override void Enter()

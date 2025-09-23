@@ -6,6 +6,13 @@ public class Player_HurtState : PlayerState
     {
     }
 
+    public override void Enter()
+    {
+        base.Enter();
+
+        playerSFX.PlayHurt();
+    }
+
     public override void Update()
     {
         base.Update();

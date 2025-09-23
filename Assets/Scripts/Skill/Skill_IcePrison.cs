@@ -11,6 +11,8 @@ public class Skill_IcePrison : Skill_Base
         base.PerformSkill();
 
         playerVFX.ShowIcePrisonVFX();
+        playerSFX.PlayIcePrison();
+
         PerformFreeze();
     }
 

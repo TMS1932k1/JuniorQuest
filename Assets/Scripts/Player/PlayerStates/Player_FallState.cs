@@ -20,6 +20,8 @@ public class Player_FallState : Player_AiredState
 
         if (player.groundDetect)
         {
+            playerSFX.PlayLand();
+
             isJumpTwo = false;
             stateMachine.ChangeState(player.idleState);
         }

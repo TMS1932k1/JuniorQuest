@@ -2,8 +2,17 @@ using UnityEngine;
 
 public class Player_MoveState : Player_GroundedState
 {
+    private float stepsInterval = 0.4f;
+
     public Player_MoveState(string nameState, StateMachine stateMachine, Player player) : base(nameState, stateMachine, player)
     {
+    }
+
+    public override void Enter()
+    {
+        base.Enter();
+
+        playerSFX.PlayMove(stepsInterval);
     }
 
     public override void Update()
@@ -18,5 +27,12 @@ public class Player_MoveState : Player_GroundedState
         {
             stateMachine.ChangeState(player.idleState);
         }
+    }
+
+    public override void Exit()
+    {
+        base.Exit();
+
+        playerSFX.StopMove();
     }
 }

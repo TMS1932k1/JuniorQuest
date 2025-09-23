@@ -44,21 +44,10 @@ public class Player : Entity, ISaveable
     public Player_FireBladeState fireBladeState { get; private set; }
 
 
-    public bool isDead;
     private Player_XP playerXP;
 
+    public bool isDead;
 
-    void OnEnable()
-    {
-        Enemy.OnEnemyDeath += HandleXPReceive;
-        Boss.OnBossDeath += HandleXPReceive;
-    }
-
-    void OnDisable()
-    {
-        Enemy.OnEnemyDeath -= HandleXPReceive;
-        Boss.OnBossDeath -= HandleXPReceive;
-    }
 
     protected override void Awake()
     {
@@ -79,6 +68,18 @@ public class Player : Entity, ISaveable
         fireBladeState = new Player_FireBladeState(PlayerAnimationStrings.FIRE_BLADE_ANIM, stateMachine, this);
 
         playerXP = GetComponent<Player_XP>();
+    }
+
+    void OnEnable()
+    {
+        Enemy.OnEnemyDeath += HandleXPReceive;
+        Boss.OnBossDeath += HandleXPReceive;
+    }
+
+    void OnDisable()
+    {
+        Enemy.OnEnemyDeath -= HandleXPReceive;
+        Boss.OnBossDeath -= HandleXPReceive;
     }
 
     protected override void Start()
