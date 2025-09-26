@@ -47,7 +47,7 @@ public abstract class EntityState
     /// </summary>
     protected void StopMoving()
     {
-        entity.SetVelocity(0, 0);
+        entity.StopMoving();
     }
 
     public virtual void CallTrigger()

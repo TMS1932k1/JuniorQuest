@@ -13,6 +13,7 @@ public class Gollux_DeathCommand : Boss_Command
     {
         base.Execute();
 
+        entitySFX.PlayDeath();
         gollux.Death();
     }
 

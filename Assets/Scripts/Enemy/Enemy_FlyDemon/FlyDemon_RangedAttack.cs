@@ -16,6 +16,7 @@ public class FlyDemon_RangedAttack : MonoBehaviour, ICanCounter
 
     private Animator anim;
     private Rigidbody2D rb;
+    private AudioSource audioSource;
     private ObjectPool<FlyDemon_RangedAttack> pool;
 
 
@@ -23,6 +24,8 @@ public class FlyDemon_RangedAttack : MonoBehaviour, ICanCounter
     {
         anim = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody2D>();
+        audioSource = GetComponentInChildren<AudioSource>();
+
         pool = GetComponentInParent<ObjectPool<FlyDemon_RangedAttack>>();
     }
 
@@ -51,7 +54,9 @@ public class FlyDemon_RangedAttack : MonoBehaviour, ICanCounter
         {
             isHit = true;
             rb.linearVelocity = Vector2.zero; // Stop moving
+
             anim.SetTrigger(EnemyAnimationStrings.HIT_TRIGGER);
+            AudioManager.instance.PlayAudioClip(audioSource, ClipDataNameStrings.RANGE_ATTACK_HIT);
 
             if (collision.gameObject.layer == LayerMask.NameToLayer(!canCounter ? LayerStrings.ENEMY_LAYER : LayerStrings.PLAYER_LAYER))
             {

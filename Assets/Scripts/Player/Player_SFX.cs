@@ -85,9 +85,19 @@ public class Player_SFX : Entity_SFX
         PlayAudioClip(ClipDataNameStrings.PLAYER_SHIELD_BARRIER);
     }
 
+    public void PlayInfeno()
+    {
+        PlayAudioClip(ClipDataNameStrings.PLAYER_INFENO);
+    }
+
     public void PlayHurt()
     {
         PlayAudioClip(ClipDataNameStrings.PLAYER_HURT);
+    }
+
+    public void PlayPickUp()
+    {
+        PlayAudioClip(ClipDataNameStrings.PLAYER_PICK_UP);
     }
 
     public void PlayMove(float interval)

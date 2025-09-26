@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Player_FireBladeState : PlayerState
@@ -15,6 +16,7 @@ public class Player_FireBladeState : PlayerState
     {
         base.Enter();
 
+        StopMoving();
         stateTimer = 3f; // Time out
         isTrigger = false;
 
@@ -26,11 +28,10 @@ public class Player_FireBladeState : PlayerState
     public override void Update()
     {
         base.Update();
-        player.SetVelocity(0, 0);
 
         // Set rect transform of line arm and get positon of mouse
         playerVFX.SetLineArmRotate(out float angleZ);
-        HanldeFlip(angleZ);
+        HandleFlip(angleZ);
 
         // Perform Attack with dir to mouse
         if (Input.GetKeyDown(KeyCode.Mouse0))
@@ -63,13 +64,13 @@ public class Player_FireBladeState : PlayerState
             playerVFX.HideFireBladeVFX();
     }
 
-    private void HanldeFlip(float angleZ)
+    private void HandleFlip(float angleZ)
     {
-        if (angleZ <= 90 && player.faceDir == -1)
+        if (MathF.Abs(angleZ) <= 90 && player.faceDir == -1)
         {
             player.Flip();
         }
-        else if (angleZ > 90 && player.faceDir == 1)
+        else if (MathF.Abs(angleZ) > 90 && player.faceDir == 1)
         {
             player.Flip();
         }

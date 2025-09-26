@@ -45,6 +45,7 @@ public class Skill_FireBlade_Slash : MonoBehaviour
             isHit = true;
 
             rb.linearVelocity = Vector2.zero; // Stop moving
+
             anim.SetTrigger(PlayerAnimationStrings.HIT_TRIGGER);
             AudioManager.instance.PlayAudioClip(audioSource, ClipDataNameStrings.RANGE_ATTACK_HIT);
 

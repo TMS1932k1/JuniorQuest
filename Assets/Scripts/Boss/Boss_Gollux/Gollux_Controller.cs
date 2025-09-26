@@ -78,6 +78,6 @@ public class Gollux_Controller : Boss_Controller
 
     public override void AddDeathCommand()
     {
-        bossCommandManager.AddCommand(new Gollux_DeathCommand(gollux, BossAnimationStrings.DEATH_ANIM));
+        bossCommandManager.AddCommand(new Gollux_DeathCommand(gollux, BossAnimationStrings.DEATH_ANIM, 10f));
     }
 }

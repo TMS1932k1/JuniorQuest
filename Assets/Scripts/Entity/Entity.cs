@@ -44,6 +44,7 @@ public abstract class Entity : MonoBehaviour
 
 
     public int faceDir { get; protected set; } = 1;
+    private bool isStopMoving = false;
     protected Vector3 originPosition;
 
 
@@ -73,6 +74,15 @@ public abstract class Entity : MonoBehaviour
         HandleCollisions();
     }
 
+    protected virtual void FixedUpdate()
+    {
+        if (isStopMoving)
+        {
+            SetVelocity(0, 0);
+            isStopMoving = false;
+        }
+    }
+
     protected virtual void HandleCollisions()
     {
         groundDetect = Physics2D.Raycast(groundCheckTransform.position, Vector2.down, groundCheckDistance, whatIsGround);
@@ -82,6 +92,8 @@ public abstract class Entity : MonoBehaviour
         wallDetect = Physics2D.Raycast(primaryWallCheckPosition, Vector2.right * faceDir, wallCheckDistance, whatIsWall) &&
                     Physics2D.Raycast(secondaryWallCheckPosition, Vector2.right * faceDir, wallCheckDistance, whatIsWall);
     }
+
+    public void StopMoving() => isStopMoving = true;
 
     public void SetVelocity(float x, float y)
     {

@@ -29,6 +29,14 @@ public class Bat : Enemy_Fly
         isAttack = Physics2D.Raycast(transform.position, Vector2.right * faceDir, distanceToAttack, whatIsPlayer);
     }
 
+    public override void LoadData(GameData gameData)
+    {
+        base.LoadData(gameData);
+
+        if (gameData.entities.ContainsKey(uniqueId) && !gameData.entities[uniqueId])
+            stateMachine.ChangeState(sleepState);
+    }
+
     protected override void OnDrawGizmos()
     {
         base.OnDrawGizmos();

@@ -6,6 +6,8 @@ public class Skill_Base : MonoBehaviour
 
     protected Player_VFX playerVFX;
     protected Player_SFX playerSFX;
+    protected Entity_Stat stat;
+
 
     public bool isInstall;
     public float lastTimeUsed;
@@ -15,6 +17,7 @@ public class Skill_Base : MonoBehaviour
     {
         playerVFX = GetComponentInParent<Player_VFX>();
         playerSFX = GetComponentInParent<Player_SFX>();
+        stat = GetComponentInParent<Entity_Stat>();
 
         // Avoid cooldown when start (Time.time = 0)
         lastTimeUsed = -skillData.cooldown;

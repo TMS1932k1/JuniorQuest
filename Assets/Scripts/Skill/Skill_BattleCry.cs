@@ -3,16 +3,8 @@ using UnityEngine;
 
 public class Skill_BattleCry : Skill_Base
 {
-    private Entity_Stat stat;
     private Coroutine IncrementStatCoroutine;
 
-
-    protected override void Awake()
-    {
-        base.Awake();
-
-        stat = GetComponentInParent<Entity_Stat>();
-    }
 
     public override void PerformSkill()
     {

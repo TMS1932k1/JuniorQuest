@@ -5,8 +5,12 @@ using UnityEngine;
 public class AudioSO : ScriptableObject
 {
     [SerializeField] List<AudioClipsData> player;
-    [SerializeField] List<AudioClipsData> rangeAttack;
     [SerializeField] List<AudioClipsData> golem;
+    [SerializeField] List<AudioClipsData> bat;
+    [SerializeField] List<AudioClipsData> flyDemon;
+    [SerializeField] List<AudioClipsData> gollux;
+    [SerializeField] List<AudioClipsData> rangeAttack;
+    [SerializeField] List<AudioClipsData> interactables;
     [SerializeField] List<AudioClipsData> bgm;
 
     [SerializeField] Dictionary<string, AudioClipsData> audioClipsCollection = new();
@@ -15,8 +19,12 @@ public class AudioSO : ScriptableObject
     private void OnValidate()
     {
         AddAudioCLip(player);
-        AddAudioCLip(rangeAttack);
         AddAudioCLip(golem);
+        AddAudioCLip(bat);
+        AddAudioCLip(flyDemon);
+        AddAudioCLip(gollux);
+        AddAudioCLip(rangeAttack);
+        AddAudioCLip(interactables);
         AddAudioCLip(bgm);
     }
 

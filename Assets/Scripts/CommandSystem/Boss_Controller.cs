@@ -61,7 +61,6 @@ public abstract class Boss_Controller : MonoBehaviour
     }
 
     protected abstract void DecideNextAction(); // Need override at child class to selbst decide next action
-
     public abstract void AddFreezedCommand(float duration);
     public abstract void AddDeathCommand();
 }

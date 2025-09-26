@@ -7,6 +7,7 @@ public class Object_CheckPoint : MonoBehaviour, ISaveable
 {
     [SerializeField] TextMeshProUGUI saveText;
     [SerializeField] Light2D lightOn;
+    private AudioSource audioSource;
 
 
     private Object_CheckPoint[] checkPoints;
@@ -24,6 +25,7 @@ public class Object_CheckPoint : MonoBehaviour, ISaveable
     private void Awake()
     {
         checkPoints = FindObjectsByType<Object_CheckPoint>(FindObjectsSortMode.None);
+        audioSource = GetComponentInChildren<AudioSource>();
     }
 
     private void Start()
@@ -45,6 +47,7 @@ public class Object_CheckPoint : MonoBehaviour, ISaveable
             EnableCheckPoint(true);
             PlayLightVFX();
 
+            AudioManager.instance.PlayAudioClip(audioSource, ClipDataNameStrings.CHECKPOINT_SAVE);
             SaveManager.instance.SaveGame();
         }
     }
@@ -118,7 +121,6 @@ public class Object_CheckPoint : MonoBehaviour, ISaveable
             yield return null;
         }
 
-        saveText.gameObject.SetActive(true);
         isPlayingVFX = false;
     }
 

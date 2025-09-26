@@ -2,18 +2,17 @@ using UnityEngine;
 
 public class Skill_FireBlade : Skill_Base
 {
+    private Player player;
+
+
     private ObjectPool_FireBlade pool;
 
-    private Entity_Stat stat;
-
-    private Player player;
 
     protected override void Awake()
     {
         base.Awake();
 
         player = GetComponentInParent<Player>();
-        stat = GetComponentInParent<Entity_Stat>();
         pool = GetComponent<ObjectPool_FireBlade>();
     }
 

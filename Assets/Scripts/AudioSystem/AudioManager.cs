@@ -22,7 +22,7 @@ public class AudioManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    public void PlayAudioClip(AudioSource audioSource, string dataName)
+    public void PlayAudioClip(AudioSource audioSource, string dataName, bool isLoop = false)
     {
         AudioClipsData clipsData = audioSO.GetAudioClip(dataName);
         if (clipsData == null)
@@ -32,6 +32,16 @@ public class AudioManager : MonoBehaviour
         }
 
         audioSource.volume = clipsData.volume;
-        audioSource.PlayOneShot(clipsData.GetRandomClip());
+        audioSource.loop = isLoop;
+
+        if (isLoop)
+        {
+            audioSource.resource = clipsData.GetRandomClip();
+            audioSource.Play();
+        }
+        else
+        {
+            audioSource.PlayOneShot(clipsData.GetRandomClip());
+        }
     }
 }

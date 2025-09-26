@@ -26,7 +26,7 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 860a99614e0478e44a6f96e2f803cc03, type: 3}
     - {fileID: 8300000, guid: f5033d72049e94a459d3692d32adb712, type: 3}
   - dataName: player_jump
-    volume: 0.7
+    volume: 0.5
     audioClips:
     - {fileID: 8300000, guid: 947cfd74f5c41ab40aacefdd833793d7, type: 3}
     - {fileID: 8300000, guid: 9d17ecf1c10a9f6468af6694a0df8e2e, type: 3}
@@ -56,7 +56,7 @@ MonoBehaviour:
     audioClips:
     - {fileID: 8300000, guid: 3fe419633a4d6a144ba89580de06e282, type: 3}
   - dataName: player_buff
-    volume: 0.6
+    volume: 0.5
     audioClips:
     - {fileID: 8300000, guid: 3328264de9b19ec408d076461bf89dcb, type: 3}
   - dataName: player_battle_cry
@@ -76,7 +76,7 @@ MonoBehaviour:
     audioClips:
     - {fileID: 8300000, guid: 4b784bbe6516c8e4fbecfa4f77380338, type: 3}
   - dataName: player_level_up
-    volume: 0.6
+    volume: 0.5
     audioClips:
     - {fileID: 8300000, guid: 2237e0093ca131c4480661240e5b8490, type: 3}
   - dataName: player_shield_barrier
@@ -88,30 +88,80 @@ MonoBehaviour:
     audioClips:
     - {fileID: 8300000, guid: d41c468c1ac366f4eaab2af25201a6f6, type: 3}
   - dataName: player_hurt
-    volume: 0.4
+    volume: 0.3
     audioClips:
     - {fileID: 8300000, guid: b45cf0b22bfc039409b743c3e0216756, type: 3}
     - {fileID: 8300000, guid: 62cd360cecdbe804b84ac603f26ba630, type: 3}
-  rangeAttack:
-  - dataName: range_attack_hit
-    volume: 0.6
+  - dataName: player_infeno
+    volume: 0.8
     audioClips:
-    - {fileID: 8300000, guid: 32b03b66a6738484f99e711330c002e4, type: 3}
+    - {fileID: 8300000, guid: ded475f129fa2eb4899dc8bd6975f995, type: 3}
+  - dataName: player_pick_up
+    volume: 0.8
+    audioClips:
+    - {fileID: 8300000, guid: b6966ba7c0d86aa4197b67ff40d2eb00, type: 3}
   golem:
   - dataName: golem_attack_hit
-    volume: 0.3
+    volume: 0.7
     audioClips:
     - {fileID: 8300000, guid: 875b11fb9b751b74ebfa5c003f82e857, type: 3}
     - {fileID: 8300000, guid: a379891421b59e44c891b8f93cd60e08, type: 3}
     - {fileID: 8300000, guid: 7f65593b553b7964bac235e9305514dd, type: 3}
   - dataName: golem_attack_miss
-    volume: 0.3
+    volume: 0.4
     audioClips:
     - {fileID: 8300000, guid: 6d9275854925d634e851b1328f4bbf9a, type: 3}
   - dataName: golem_death
-    volume: 0.4
+    volume: 1
     audioClips:
     - {fileID: 8300000, guid: 42f960cc78ca6c44881b507415bbb39e, type: 3}
+  bat:
+  - dataName: bat_attack_hit
+    volume: 1
+    audioClips:
+    - {fileID: 8300000, guid: 868bcc096de6df84b851b541fe281127, type: 3}
+  - dataName: bat_attack_miss
+    volume: 0.5
+    audioClips:
+    - {fileID: 8300000, guid: aa42f1e004522444fa0479e999e6c4f0, type: 3}
+  - dataName: bat_death
+    volume: 0.8
+    audioClips:
+    - {fileID: 8300000, guid: 532fb3c202949274c876581695db2857, type: 3}
+  flyDemon:
+  - dataName: fly_demon_death
+    volume: 1
+    audioClips:
+    - {fileID: 8300000, guid: 5cbcd6195357c6a47a6e9f62fd70ad72, type: 3}
+  gollux:
+  - dataName: gollux_attack_hit
+    volume: 0.7
+    audioClips:
+    - {fileID: 8300000, guid: 04b3e40cd605c6749bfa5658eae38e07, type: 3}
+    - {fileID: 8300000, guid: 160a784c1a7a1cc4a8eb76be0dde7a97, type: 3}
+    - {fileID: 8300000, guid: 3292065d84e56484698f6f140beee64c, type: 3}
+  - dataName: gollux_attack_miss
+    volume: 0.4
+    audioClips:
+    - {fileID: 8300000, guid: a8cb6c3668ae4a44ba4d91f1fc53e115, type: 3}
+  - dataName: gollux_death
+    volume: 1
+    audioClips:
+    - {fileID: 8300000, guid: 0dcdc12f7e49a734aada135168031342, type: 3}
+  rangeAttack:
+  - dataName: range_attack_hit
+    volume: 0.5
+    audioClips:
+    - {fileID: 8300000, guid: 32b03b66a6738484f99e711330c002e4, type: 3}
+  interactables:
+  - dataName: elevator_avtivity
+    volume: 0.5
+    audioClips:
+    - {fileID: 8300000, guid: bfa7b5cb9734fed41815aff5d496fa3d, type: 3}
+  - dataName: checkpoint_save
+    volume: 0.5
+    audioClips:
+    - {fileID: 8300000, guid: 824df80992d6cb547bf27110d846b179, type: 3}
   bgm:
   - dataName: bgm_level1
     volume: 0.5

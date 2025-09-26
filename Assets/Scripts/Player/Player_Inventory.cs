@@ -8,11 +8,19 @@ public class Player_Inventory : Entity_Inventory, ISaveable
 
     [SerializeField] ListPickUpSO listPickUpSO;
 
+    private Player_SFX playerSFX;
+
+
+    private void Awake()
+    {
+        playerSFX = GetComponent<Player_SFX>();
+    }
 
     public override void AddToInventory(ObjectPickUpSO pickUpData)
     {
         base.AddToInventory(pickUpData);
 
+        playerSFX.PlayPickUp();
         OnUpdateInventory?.Invoke();
     }
 

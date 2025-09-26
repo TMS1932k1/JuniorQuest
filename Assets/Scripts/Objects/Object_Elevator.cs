@@ -5,17 +5,28 @@ using UnityEngine;
 public class Object_Elevator : MonoBehaviour, ISaveable
 {
     [SerializeField] string uniqueId;
-
-    [Space]
-    [SerializeField] bool isActivity;
-    [SerializeField] float speed;
     [SerializeField] ObjectPickUpSO pickUpData;
     [SerializeField] TextMeshProUGUI ActiveText;
+
+
+    [Header("Chekc Obstacle")]
+    [SerializeField] Transform checkTransform;
+    [SerializeField] float widthCheck;
+    [SerializeField] float heightCheck;
+    [SerializeField] LayerMask whatIsCheck;
+
+
+    [Header("Details")]
+    [SerializeField] float speed;
+    [SerializeField] bool isActivity;
 
 
     private Entity_Inventory inventory;
     private Vector2 originPosition;
     private int dirMove;
+
+
+    private AudioSource audioSource;
 
 
     private void Awake()
@@ -25,6 +36,8 @@ public class Object_Elevator : MonoBehaviour, ISaveable
             uniqueId = Guid.NewGuid().ToString();
             UnityEditor.EditorUtility.SetDirty(this);
         }
+
+        audioSource = GetComponentInChildren<AudioSource>();
     }
 
     private void Start()
@@ -47,25 +60,35 @@ public class Object_Elevator : MonoBehaviour, ISaveable
         {
             inventory.GetOutInventory(pickUpData.pickUpName);
             isActivity = true;
+
+            AudioManager.instance.PlayAudioClip(audioSource, ClipDataNameStrings.ELEVATOR_ACTIVITY, true);
         }
     }
 
     private void HandleMove()
     {
-        if (isActivity)
-        {
-            if (transform.position.y >= originPosition.y && dirMove == 1)
-                dirMove = -1;
+        if (!isActivity)
+            return;
 
-            transform.position += Vector3.up * dirMove * speed * Time.deltaTime;
-        }
+        transform.position += Vector3.up * dirMove * speed * Time.deltaTime;
+
+        Collider2D[] obstacleTargets = Physics2D.OverlapBoxAll(
+            checkTransform.position,
+            new Vector2(widthCheck, heightCheck), 0,
+            whatIsCheck
+        );
+
+        // Move down
+        if (transform.position.y >= originPosition.y && dirMove == 1)
+            dirMove = -1;
+
+        // Move up
+        if (dirMove == -1 && obstacleTargets != null && obstacleTargets.Length > 0)
+            dirMove = 1;
     }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer(LayerStrings.GROUND_LAYER))
-            dirMove = 1;
-
         if (collision.gameObject.layer == LayerMask.NameToLayer(LayerStrings.PLAYER_LAYER) && !isActivity)
         {
             ActiveText.gameObject.SetActive(true);
@@ -117,5 +140,15 @@ public class Object_Elevator : MonoBehaviour, ISaveable
     {
         Debug.Log($"SAVE_MANAGER: Load {gameObject.name} ({uniqueId})");
         isActivity = gameData.elevators[uniqueId];
+
+        if (isActivity)
+            AudioManager.instance.PlayAudioClip(audioSource, ClipDataNameStrings.ELEVATOR_ACTIVITY, true);
+    }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+
+        Gizmos.DrawWireCube(checkTransform.position, new Vector2(widthCheck, heightCheck));
     }
 }

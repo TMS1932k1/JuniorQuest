@@ -11,6 +11,7 @@ public class Player_BasicAttackState : PlayerState
     private bool isAttackEnd;
     private bool isAllAnimAttack;
 
+
     public Player_BasicAttackState(string nameState, StateMachine stateMachine, Player player) : base(nameState, stateMachine, player)
     {
         attackIndex = player.attackVelocities.Count();
@@ -20,6 +21,7 @@ public class Player_BasicAttackState : PlayerState
     {
         base.Enter();
 
+        StopMoving();
         ResetCombo();
 
         isTrigger = false;
@@ -63,7 +65,8 @@ public class Player_BasicAttackState : PlayerState
         else
         {
             anim.SetInteger(PlayerAnimationStrings.ATTACK_INDEX_PARAM, currentAttackIndex);
-            GenerateAttackVelocity();
+
+            //GenerateAttackVelocity(); FIXING BUG
         }
     }
 
@@ -104,7 +107,9 @@ public class Player_BasicAttackState : PlayerState
 
     private void GenerateAttackVelocity()
     {
-        player.SetVelocity(player.attackVelocities[currentAttackIndex - 1].x * player.faceDir,
-                            player.attackVelocities[currentAttackIndex - 1].y);
+        player.SetVelocity(
+            player.attackVelocities[currentAttackIndex - 1].x * player.faceDir,
+            player.attackVelocities[currentAttackIndex - 1].y
+        );
     }
 }

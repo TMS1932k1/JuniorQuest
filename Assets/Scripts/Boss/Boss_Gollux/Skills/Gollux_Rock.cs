@@ -5,6 +5,7 @@ public class Gollux_Rock : MonoBehaviour
     // Components
     private Animator anim;
     private Rigidbody2D rb;
+    private AudioSource audioSource;
     private ObjectPool<Gollux_Rock> pool;
 
 
@@ -17,6 +18,8 @@ public class Gollux_Rock : MonoBehaviour
     {
         anim = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody2D>();
+        audioSource = GetComponentInChildren<AudioSource>();
+
         pool = GetComponentInParent<ObjectPool<Gollux_Rock>>();
 
         originGravity = rb.gravityScale;
@@ -35,9 +38,10 @@ public class Gollux_Rock : MonoBehaviour
 
             // Stop drop
             rb.gravityScale = 0f;
-            rb.linearVelocityY = 0;
+            rb.linearVelocityY = 0f;
 
             anim.SetTrigger(EnemyAnimationStrings.HIT_TRIGGER);
+            AudioManager.instance.PlayAudioClip(audioSource, ClipDataNameStrings.RANGE_ATTACK_HIT);
 
             if (collision.gameObject.layer == LayerMask.NameToLayer(LayerStrings.PLAYER_LAYER))
             {

@@ -8,6 +8,7 @@ public class Boss_Command : ICommand
 
 
     private Animator anim;
+    protected Entity_SFX entitySFX;
 
 
     public Boss_Command(Boss boss, string nameCommand, float executeTime)
@@ -17,6 +18,7 @@ public class Boss_Command : ICommand
         this.nameCommand = nameCommand;
 
         anim = boss.GetComponentInChildren<Animator>();
+        entitySFX = boss.GetComponent<Entity_SFX>();
     }
 
     public virtual void Execute()

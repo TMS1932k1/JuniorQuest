@@ -115,15 +115,40 @@ public class ClipDataNameStrings
     public const string PLAYER_LEVEL_UP = "player_level_up";
     public const string PLAYER_DEATH = "player_death";
     public const string PLAYER_HURT = "player_hurt";
+    public const string PLAYER_INFENO = "player_infeno";
+    public const string PLAYER_PICK_UP = "player_pick_up";
 
 
     // Golem
     public const string GOLEM_ATTACK_HIT = "golem_attack_hit";
     public const string GOLEM_ATTACK_MISS = "golem_attack_miss";
-
     public const string GOLEM_DEATH = "golem_death";
+
+
+    // Bat
+    public const string BAT_ATTACK_HIT = "bat_attack_hit";
+    public const string BAT_ATTACK_MISS = "bat_attack_miss";
+    public const string BAT_DEATH = "bat_death";
+
+
+    // Fly Demon
+    public const string FLY_DEMON_DEATH = "fly_demon_death";
+
+
+    // Gollux
+    public const string GOLLUX_ATTACK_HIT = "gollux_attack_hit";
+    public const string GOLLUX_ATTACK_MISS = "gollux_attack_miss";
+    public const string GOLLUX_DEATH = "gollux_death";
 
 
     // Range attack
     public const string RANGE_ATTACK_HIT = "range_attack_hit";
+
+
+    // Elevator
+    public const string ELEVATOR_ACTIVITY = "elevator_avtivity";
+
+
+    // Checkpoint
+    public const string CHECKPOINT_SAVE = "checkpoint_save";
 }

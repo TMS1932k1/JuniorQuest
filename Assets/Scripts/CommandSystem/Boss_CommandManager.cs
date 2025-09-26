@@ -34,7 +34,7 @@ public class Boss_CommandManager : MonoBehaviour
             }
         }
 
-        if (currentCommand != null && CanStopCommand())
+        if (CanStopCommand())
             StopCurrentCommand();
     }
 
@@ -56,7 +56,11 @@ public class Boss_CommandManager : MonoBehaviour
             currentCommand = null;
         }
     }
-    private bool CanStopCommand() => commandTimer <= 0 || isTrigger;
+    private bool CanStopCommand()
+    {
+        return currentCommand != null
+            && (commandTimer <= 0 || (isTrigger && currentCommand.executeTime <= 0));
+    }
 
     public void CallTrigger()
     {

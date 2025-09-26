@@ -7,7 +7,6 @@ public class Skill_Infeno : Skill_Base
     public LayerMask whatIsBurn;
 
 
-    private Entity_Stat stat;
     private ObjectPool_SkillInfeno pool;
     private Coroutine CreateArenaCoroutine;
 
@@ -16,13 +15,14 @@ public class Skill_Infeno : Skill_Base
     {
         base.Awake();
 
-        stat = GetComponentInParent<Entity_Stat>();
         pool = GetComponent<ObjectPool_SkillInfeno>();
     }
 
     public override void PerformSkill()
     {
         base.PerformSkill();
+
+        playerSFX.PlayInfeno();
 
         if (CreateArenaCoroutine != null)
             StopCoroutine(CreateArenaCoroutine);
