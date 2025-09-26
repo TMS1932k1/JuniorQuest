@@ -162,6 +162,35 @@ MonoBehaviour:
     volume: 0.5
     audioClips:
     - {fileID: 8300000, guid: 824df80992d6cb547bf27110d846b179, type: 3}
+  ui:
+  - dataName: ui_confirm
+    volume: 1
+    audioClips:
+    - {fileID: 8300000, guid: 2e8c14e283bfce546b2a3c70a60a43e1, type: 3}
+  - dataName: ui_denied
+    volume: 0.8
+    audioClips:
+    - {fileID: 8300000, guid: a755bf315c833be4ea68e356bc7483cd, type: 3}
+  - dataName: ui_equip
+    volume: 0.8
+    audioClips:
+    - {fileID: 8300000, guid: 7160399b2cf968249815302994c1a1d6, type: 3}
+  - dataName: ui_hover
+    volume: 0.6
+    audioClips:
+    - {fileID: 8300000, guid: ba47eeb51a7a8f14abc6cbd0af25c4e9, type: 3}
+  - dataName: ui_pause
+    volume: 0.8
+    audioClips:
+    - {fileID: 8300000, guid: 7300480dc2668f345ad32da2af05c62b, type: 3}
+  - dataName: ui_unequip
+    volume: 0.8
+    audioClips:
+    - {fileID: 8300000, guid: 20791b303536f9f429ff82b86295e147, type: 3}
+  - dataName: ui_unpause
+    volume: 0.8
+    audioClips:
+    - {fileID: 8300000, guid: 024e861d6ca33f349a913e51f8f03a5e, type: 3}
   bgm:
   - dataName: bgm_level1
     volume: 0.5

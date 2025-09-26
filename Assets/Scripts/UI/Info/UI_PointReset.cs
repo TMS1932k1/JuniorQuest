@@ -7,6 +7,8 @@ public class UI_PointReset : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        AudioManager.instance.PlayUIAudioClip(ClipDataNameStrings.UI_DECIDE);
+
         pointManager.ResetPoint();
     }
 }

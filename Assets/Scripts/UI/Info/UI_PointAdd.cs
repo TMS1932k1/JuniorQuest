@@ -10,10 +10,13 @@ public class UI_PointAdd : MonoBehaviour, IPointerClickHandler
     {
         if (pointManager.CanIncrementStat())
         {
+            AudioManager.instance.PlayUIAudioClip(ClipDataNameStrings.UI_CONFIRM);
+
             pointManager.IncrementStatWithType(type);
         }
         else
         {
+            AudioManager.instance.PlayUIAudioClip(ClipDataNameStrings.UI_DENIED);
             Debug.Log("Not enought point to add");
         }
     }

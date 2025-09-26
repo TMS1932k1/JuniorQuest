@@ -151,4 +151,15 @@ public class ClipDataNameStrings
 
     // Checkpoint
     public const string CHECKPOINT_SAVE = "checkpoint_save";
+
+
+    // UI
+    public const string UI_CONFIRM = "ui_confirm";
+    public const string UI_DENIED = "ui_denied";
+    public const string UI_EQUIP = "ui_equip";
+    public const string UI_HOVER = "ui_hover";
+    public const string UI_PAUSE = "ui_pause";
+    public const string UI_UNEQUIP = "ui_unequip";
+    public const string UI_UNPAUSE = "ui_unpause";
+    public const string UI_DECIDE = "ui_decide";
 }

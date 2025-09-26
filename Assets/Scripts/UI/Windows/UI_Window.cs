@@ -46,10 +46,14 @@ public class UI_Window : MonoBehaviour
 
             yield return null;
         }
+
+        Time.timeScale = 0f;
     }
 
     private IEnumerator HideWindowCo()
     {
+        Time.timeScale = 1f;
+
         while (currentScale > 0)
         {
             currentScale -= Time.deltaTime * 2f;

@@ -44,4 +44,9 @@ public class AudioManager : MonoBehaviour
             audioSource.PlayOneShot(clipsData.GetRandomClip());
         }
     }
+
+    public void PlayUIAudioClip(string dataName)
+    {
+        PlayAudioClip(sfx, dataName);
+    }
 }

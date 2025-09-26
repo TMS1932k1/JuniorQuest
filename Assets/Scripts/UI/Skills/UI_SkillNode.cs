@@ -56,6 +56,8 @@ public class UI_SkillNode : MonoBehaviour, ISkillInfoEvent, IPointerDownHandler
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        AudioManager.instance.PlayUIAudioClip(ClipDataNameStrings.UI_HOVER);
+
         UpdateDisplaySkillInfo();
     }
 
@@ -64,12 +66,14 @@ public class UI_SkillNode : MonoBehaviour, ISkillInfoEvent, IPointerDownHandler
         // Install to Player_SkillManager
         playerSkillsManager.InstallSkill(skillData.skillType, out bool success);
 
-        // Update display when success install
+        // Update display and play audio when success install
         if (success)
         {
             CheckInstall();
             UpdateDisplaySkillInfo();
             UpdateConflictSkillUI(false);
+
+            AudioManager.instance.PlayUIAudioClip(ClipDataNameStrings.UI_EQUIP);
 
             needUpdate = true;
         }
@@ -80,12 +84,14 @@ public class UI_SkillNode : MonoBehaviour, ISkillInfoEvent, IPointerDownHandler
         // Uninstall to Player_SkillManager
         playerSkillsManager.UninstallSkill(skillData.skillType, out bool success);
 
-        // Update display when success uninstall
+        // Update display and play audio when success uninstall
         if (success)
         {
             CheckInstall();
             UpdateDisplaySkillInfo();
             UpdateConflictSkillUI(true);
+
+            AudioManager.instance.PlayUIAudioClip(ClipDataNameStrings.UI_UNEQUIP);
 
             needUpdate = true;
         }

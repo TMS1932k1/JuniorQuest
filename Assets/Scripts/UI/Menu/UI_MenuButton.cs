@@ -33,12 +33,18 @@ public class UI_MenuButton : MonoBehaviour, IPointerClickHandler
             isOpen = !isOpen;
             UpdateSizeIcon();
 
-            // Handl click
+            // Handle click
             HandleClick();
+
+            // Audio
+            AudioManager.instance.PlayUIAudioClip(ClipDataNameStrings.UI_PAUSE);
         }
         else
         {
-            CloseButton();
+            HandleClose();
+
+            // Audio
+            AudioManager.instance.PlayUIAudioClip(ClipDataNameStrings.UI_UNPAUSE);
         }
     }
 
@@ -55,7 +61,7 @@ public class UI_MenuButton : MonoBehaviour, IPointerClickHandler
         windowUI.ShowWindow();
     }
 
-    public void CloseButton()
+    public void HandleClose()
     {
         isOpen = false;
         UpdateSizeIcon();

@@ -11,6 +11,8 @@ public class AudioSO : ScriptableObject
     [SerializeField] List<AudioClipsData> gollux;
     [SerializeField] List<AudioClipsData> rangeAttack;
     [SerializeField] List<AudioClipsData> interactables;
+    [Space]
+    [SerializeField] List<AudioClipsData> ui;
     [SerializeField] List<AudioClipsData> bgm;
 
     [SerializeField] Dictionary<string, AudioClipsData> audioClipsCollection = new();
@@ -25,6 +27,7 @@ public class AudioSO : ScriptableObject
         AddAudioCLip(gollux);
         AddAudioCLip(rangeAttack);
         AddAudioCLip(interactables);
+        AddAudioCLip(ui);
         AddAudioCLip(bgm);
     }
 
