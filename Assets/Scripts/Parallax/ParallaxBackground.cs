@@ -18,12 +18,12 @@ public class ParallaxBackground : MonoBehaviour
         halfWitdhCamera = mainCamera.orthographicSize * mainCamera.aspect;
     }
 
-    void Start()
+    private void Start()
     {
         CalculateWidthAllLayers();
     }
 
-    void LateUpdate()
+    private void LateUpdate()
     {
         CalculateDistanceMove();
         CalculateLeftAndRightPositionX();
