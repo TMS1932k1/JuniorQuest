@@ -139,8 +139,11 @@ public class Object_Elevator : MonoBehaviour, ISaveable
     public void LoadData(GameData gameData)
     {
         Debug.Log($"SAVE_MANAGER: Load {gameObject.name} ({uniqueId})");
-        isActivity = gameData.elevators[uniqueId];
 
+        if (!gameData.elevators.ContainsKey(uniqueId))
+            return;
+
+        isActivity = gameData.elevators[uniqueId];
         if (isActivity)
             AudioManager.instance.PlayAudioClip(audioSource, ClipDataNameStrings.ELEVATOR_ACTIVITY, true);
     }

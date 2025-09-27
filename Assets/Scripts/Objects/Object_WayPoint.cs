@@ -1,28 +1,42 @@
+using TMPro;
 using UnityEngine;
 
 public class Object_WayPoint : MonoBehaviour
 {
+    [SerializeField] string sceneName;
     [SerializeField] EWayPoint_Type type;
-    [SerializeField] EWayPoint_Type connecType;
+    [SerializeField] EWayPoint_Type connectType;
+    [SerializeField] Transform teleportPoint;
 
 
-    private bool canTeleport = true;
-
+    public EWayPoint_Type GetWayPointType() => type;
+    public EWayPoint_Type GetConnectType() => connectType;
+    public Vector3 GetTeleportPoint() => teleportPoint.position;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer(LayerStrings.PLAYER_LAYER) && canTeleport)
+        if (collision.gameObject.layer == LayerMask.NameToLayer(LayerStrings.PLAYER_LAYER))
         {
-            canTeleport = false;
-
+            GameManager.instance.ChangeToScene(sceneName, connectType);
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    private void OnValidate()
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer(LayerStrings.PLAYER_LAYER) && !canTeleport)
+        TextMeshProUGUI text = GetComponentInChildren<TextMeshProUGUI>();
+
+        if (type == EWayPoint_Type.Enter)
         {
-            canTeleport = true;
+            text.text = "Next";
+            connectType = EWayPoint_Type.Exit;
         }
+
+        if (type == EWayPoint_Type.Exit)
+        {
+            text.text = "Back";
+            connectType = EWayPoint_Type.Enter;
+        }
+
+        gameObject.name = "WayPoint_" + type.ToString() + "_" + sceneName;
     }
 }

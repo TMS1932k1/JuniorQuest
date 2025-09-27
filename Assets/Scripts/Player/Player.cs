@@ -139,7 +139,11 @@ public class Player : Entity, ISaveable
 
     public void LoadData(GameData gameData)
     {
-        transform.position = gameData.position;
+        if (gameData.position != null)
+            transform.position = gameData.position;
+        else
+            SaveManager.instance.SavePosition(transform.position);
+
         stateMachine.ChangeState(idleState);
     }
 }

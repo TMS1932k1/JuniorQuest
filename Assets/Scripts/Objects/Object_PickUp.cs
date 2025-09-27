@@ -25,13 +25,6 @@ public class Object_PickUp : Object_Interactable
         }
     }
 
-    protected override void HideObject()
-    {
-        base.HideObject();
-
-        gameObject.SetActive(false);
-    }
-
     protected override void OnValidate()
     {
         base.OnValidate();

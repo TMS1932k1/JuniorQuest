@@ -139,8 +139,11 @@ public class Enemy : Entity, ICanCounter, ISaveable
     {
         Debug.Log($"SAVE_MANAGER: Load {gameObject.name} ({uniqueId})");
 
+        if (!gameData.entities.ContainsKey(uniqueId))
+            return;
+
         // HANDLE ENEMY DEATH
-        if (!gameData.entities.ContainsKey(uniqueId) || gameData.entities[uniqueId])
+        if (gameData.entities[uniqueId])
         {
             if (enemyHealth.isDead)
                 return;

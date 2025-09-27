@@ -16,7 +16,6 @@ public class SaveManager : MonoBehaviour
 
     private FileDataHandler fileDataHandler;
     private GameData gameData;
-    private List<ISaveable> saveables;
 
 
     private void Awake()
@@ -35,7 +34,6 @@ public class SaveManager : MonoBehaviour
     {
         Debug.Log(Application.persistentDataPath);
         fileDataHandler = new FileDataHandler(Application.persistentDataPath, fileName);
-        saveables = GetAllSaveable();
 
         yield return new WaitForSeconds(0.1f);
         LoadGame();
@@ -46,13 +44,23 @@ public class SaveManager : MonoBehaviour
         if (!isActive)
             return;
 
-        gameData.entities.Clear();
-        gameData.interactables.Clear();
-        gameData.elevators.Clear();
+        // gameData.entities.Clear();
+        // gameData.interactables.Clear();
+        // gameData.elevators.Clear();
 
+        List<ISaveable> saveables = GetAllSaveable();
         foreach (ISaveable saveable in saveables)
             saveable.SaveData(ref gameData);
 
+        fileDataHandler.SaveData(gameData, isEncryptDecrypt);
+    }
+
+    public void SavePosition(Vector3 position)
+    {
+        if (!isActive)
+            return;
+
+        gameData.position = position;
         fileDataHandler.SaveData(gameData, isEncryptDecrypt);
     }
 
@@ -70,6 +78,7 @@ public class SaveManager : MonoBehaviour
             return;
         }
 
+        List<ISaveable> saveables = GetAllSaveable();
         foreach (ISaveable saveable in saveables)
             saveable.LoadData(gameData);
     }

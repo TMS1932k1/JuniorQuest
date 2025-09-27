@@ -62,11 +62,10 @@ public abstract class Object_Interactable : MonoBehaviour, ISaveable
         main.startColor = color;
     }
 
-    protected virtual void HideObject()
+    private void HideObject()
     {
         isTaked = true;
-        sr.color = Color.clear;
-        auraPs.Stop();
+        gameObject.SetActive(false);
     }
 
     public void SaveData(ref GameData gameData)
@@ -86,10 +85,18 @@ public abstract class Object_Interactable : MonoBehaviour, ISaveable
     public void LoadData(GameData gameData)
     {
         Debug.Log($"SAVE_MANAGER: Load {gameObject.name} ({uniqueId})");
-        if (!gameData.interactables.ContainsKey(uniqueId) || gameData.interactables[uniqueId])
+
+        if (!gameData.interactables.ContainsKey(uniqueId))
+            return;
+
+        if (gameData.interactables[uniqueId])
         {
             HideObject();
-            gameObject.SetActive(false);
+        }
+        else
+        {
+            isTaked = false;
+            gameObject.SetActive(true);
         }
     }
 

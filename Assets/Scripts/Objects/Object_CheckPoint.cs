@@ -136,7 +136,7 @@ public class Object_CheckPoint : MonoBehaviour, ISaveable
     {
         Debug.Log($"SAVE_MANAGER: Load {gameObject.name} ({transform.position})");
 
-        if (gameData.position == transform.position)
+        if (gameData.position != null && gameData.position == transform.position)
         {
             EnableCheckPoint(true);
             PlayLightVFX();

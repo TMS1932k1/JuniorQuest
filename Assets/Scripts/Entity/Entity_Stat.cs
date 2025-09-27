@@ -156,6 +156,19 @@ public class Entity_Stat : MonoBehaviour
         haveChange = true;
     }
 
+    public void ResetModifier()
+    {
+        offensive.damage.RemoveModifier();
+        offensive.critChance.RemoveModifier();
+        offensive.critPower.RemoveModifier();
+        defence.maxHealth.RemoveModifier();
+        defence.evasion.RemoveModifier();
+        defence.armor.RemoveModifier();
+        defence.mitigation.RemoveModifier();
+
+        haveChange = true;
+    }
+
     public float GetXp()
     {
         return xp;

@@ -128,8 +128,11 @@ public class Boss : Entity, ISaveable
     {
         Debug.Log($"SAVE_MANAGER: Load {gameObject.name} ({uniqueId})");
 
+        if (!gameData.entities.ContainsKey(uniqueId))
+            return;
+
         // HANDLE BOSS DEATH
-        if (!gameData.entities.ContainsKey(uniqueId) || gameData.entities[uniqueId])
+        if (gameData.entities[uniqueId])
         {
             if (bossHealth.isDead)
                 return;

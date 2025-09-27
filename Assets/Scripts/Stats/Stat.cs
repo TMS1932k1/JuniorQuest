@@ -46,6 +46,12 @@ public class Stat
         isNeedUpdate = true;
     }
 
+    public void RemoveModifier()
+    {
+        modifiers.Clear();
+        isNeedUpdate = true;
+    }
+
     public void RemoveModifier(string source)
     {
         modifiers.RemoveAll(m => m.source == source);
