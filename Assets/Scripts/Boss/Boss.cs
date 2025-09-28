@@ -14,6 +14,7 @@ public class Boss : Entity, ISaveable
     [SerializeField] LayerMask whatIsDetect;
     public Collider2D detectTarget { get; private set; }
     public bool isActivity { get; private set; }
+    public bool isPlayingAudio = false;
 
 
     // Components
@@ -54,6 +55,7 @@ public class Boss : Entity, ISaveable
 
         DetectTarget();
         HandleFlip();
+        HandleAudio();
 
         isActivity = detectTarget != null; // Activity when player in arena
     }
@@ -103,6 +105,21 @@ public class Boss : Entity, ISaveable
 
         if (transform.position.x > detectTarget.transform.position.x && faceDir != -1)
             Flip();
+    }
+
+    private void HandleAudio()
+    {
+        if (!isPlayingAudio && isActivity)
+        {
+            isPlayingAudio = true;
+            GameManager.instance.PlayBgmAudio(true);
+        }
+
+        if (isPlayingAudio && !isActivity)
+        {
+            isPlayingAudio = false;
+            GameManager.instance.PlayBgmAudio();
+        }
     }
 
     private Collider2D GetTargetInArena()

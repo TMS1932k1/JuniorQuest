@@ -108,7 +108,7 @@ MonoBehaviour:
     - {fileID: 8300000, guid: a379891421b59e44c891b8f93cd60e08, type: 3}
     - {fileID: 8300000, guid: 7f65593b553b7964bac235e9305514dd, type: 3}
   - dataName: golem_attack_miss
-    volume: 0.4
+    volume: 0.6
     audioClips:
     - {fileID: 8300000, guid: 6d9275854925d634e851b1328f4bbf9a, type: 3}
   - dataName: golem_death
@@ -141,7 +141,7 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 160a784c1a7a1cc4a8eb76be0dde7a97, type: 3}
     - {fileID: 8300000, guid: 3292065d84e56484698f6f140beee64c, type: 3}
   - dataName: gollux_attack_miss
-    volume: 0.4
+    volume: 0.6
     audioClips:
     - {fileID: 8300000, guid: a8cb6c3668ae4a44ba4d91f1fc53e115, type: 3}
   - dataName: gollux_death
@@ -196,7 +196,19 @@ MonoBehaviour:
     audioClips:
     - {fileID: 8300000, guid: 706af4bf2df56964fae8340304dbf019, type: 3}
   bgm:
-  - dataName: bgm_level1
-    volume: 0.5
+  - dataName: bgm_main_menu
+    volume: 0.6
+    audioClips:
+    - {fileID: 8300000, guid: 29662ba9058ace24ca287467ed2f8bb8, type: 3}
+  - dataName: bgm_lv0_normal
+    volume: 0.4
+    audioClips:
+    - {fileID: 8300000, guid: 21615d05ab19ae24592f5c2ba76b91f2, type: 3}
+  - dataName: bgm_lv1_normal
+    volume: 1
+    audioClips:
+    - {fileID: 8300000, guid: 4cd11c43d34149e4a8cdcb20108d1733, type: 3}
+  - dataName: bgm_lv1_battle
+    volume: 1
     audioClips:
     - {fileID: 8300000, guid: ddb58494cee36834dbb316fc96365b81, type: 3}

@@ -163,3 +163,11 @@ public class ClipDataNameStrings
     public const string UI_UNPAUSE = "ui_unpause";
     public const string UI_DECIDE = "ui_decide";
 }
+
+
+public class SceneNameStrings
+{
+    public const string SCENE_MAIN_MENU = "Main_Menu";
+    public const string SCENE_LV0 = "Lv_0";
+    public const string SCENE_LV1 = "Lv_1";
+}

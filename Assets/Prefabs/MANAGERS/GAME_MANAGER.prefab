@@ -120,6 +120,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35508e624b63c8948b94bfdcbb78d011, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scenes:
+  - {fileID: 11400000, guid: 14a9557ca6667444ea0fdda35f34c75b, type: 2}
+  - {fileID: 11400000, guid: b718bc52985339f4383296c2c89c3807, type: 2}
+  - {fileID: 11400000, guid: 966d0febbedbfb34cb1a0fd4829505d5, type: 2}
   fadeScreen: {fileID: 8305393511526536766}
 --- !u!1 &9038219753030173536
 GameObject:

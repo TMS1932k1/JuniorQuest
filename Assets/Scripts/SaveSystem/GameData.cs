@@ -26,6 +26,9 @@ public class GameData
 
     // ELEVATOR DATA
     public SerializationDictionary<string, bool> elevators = new();
+
+    // SCENE DATA
+    public string sceneName;
 }
 
 

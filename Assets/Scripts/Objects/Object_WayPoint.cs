@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Object_WayPoint : MonoBehaviour
 {
-    [SerializeField] string sceneName;
+    [SerializeField] SceneSO sceneData;
     [SerializeField] EWayPoint_Type type;
     [SerializeField] EWayPoint_Type connectType;
     [SerializeField] Transform teleportPoint;
@@ -15,9 +15,13 @@ public class Object_WayPoint : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+
+        if (sceneData == null)
+            return;
+
         if (collision.gameObject.layer == LayerMask.NameToLayer(LayerStrings.PLAYER_LAYER))
         {
-            GameManager.instance.ChangeToScene(sceneName, connectType);
+            GameManager.instance.ChangeToScene(sceneData.sceneName, connectType);
         }
     }
 
@@ -37,6 +41,7 @@ public class Object_WayPoint : MonoBehaviour
             connectType = EWayPoint_Type.Enter;
         }
 
-        gameObject.name = "WayPoint_" + type.ToString() + "_" + sceneName;
+        if (sceneData != null)
+            gameObject.name = "WayPoint_" + type.ToString() + "_" + sceneData.sceneName;
     }
 }

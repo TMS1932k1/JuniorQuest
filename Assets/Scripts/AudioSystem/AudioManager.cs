@@ -36,6 +36,7 @@ public class AudioManager : MonoBehaviour
 
         if (isLoop)
         {
+            audioSource.Stop();
             audioSource.resource = clipsData.GetRandomClip();
             audioSource.Play();
         }
@@ -48,5 +49,10 @@ public class AudioManager : MonoBehaviour
     public void PlayUIAudioClip(string dataName)
     {
         PlayAudioClip(sfx, dataName);
+    }
+
+    public void PlayBgmAudioClip(string dataName)
+    {
+        PlayAudioClip(bgm, dataName, true);
     }
 }

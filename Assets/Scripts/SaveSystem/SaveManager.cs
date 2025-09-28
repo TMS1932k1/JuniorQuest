@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SaveManager : MonoBehaviour
 {
@@ -30,14 +31,16 @@ public class SaveManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    private IEnumerator Start()
+    private void Start()
     {
         Debug.Log(Application.persistentDataPath);
         fileDataHandler = new FileDataHandler(Application.persistentDataPath, fileName);
 
-        yield return new WaitForSeconds(0.1f);
-        LoadGame();
+        // yield return new WaitForSeconds(0.1f);
+        // LoadGame();
     }
+
+    public GameData GetGameData() => gameData;
 
     public void SaveGame()
     {
@@ -55,12 +58,14 @@ public class SaveManager : MonoBehaviour
         fileDataHandler.SaveData(gameData, isEncryptDecrypt);
     }
 
-    public void SavePosition(Vector3 position)
+    public void SaveWayPoint(string sceneName, Vector3 position)
     {
         if (!isActive)
             return;
 
         gameData.position = position;
+        gameData.sceneName = sceneName;
+
         fileDataHandler.SaveData(gameData, isEncryptDecrypt);
     }
 
