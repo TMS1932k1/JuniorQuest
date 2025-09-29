@@ -7,6 +7,10 @@ public class Player : Entity, ISaveable
     public static event Action OnPlayerDeath;
 
 
+    public InputSystemSet input { get; private set; }
+    public Vector2 moveInput { get; private set; }
+
+
     [Header("Move details")]
     public float moveSpeed;
     public float jumpForce;
@@ -53,6 +57,8 @@ public class Player : Entity, ISaveable
     {
         base.Awake();
 
+        input = new InputSystemSet();
+
         idleState = new Player_IdleState(PlayerAnimationStrings.IDLE_ANIM, stateMachine, this);
         moveState = new Player_MoveState(PlayerAnimationStrings.MOVE_ANIM, stateMachine, this);
         jumpState = new Player_JumpState(PlayerAnimationStrings.JUMP_FALL_ANIM, stateMachine, this);
@@ -72,12 +78,17 @@ public class Player : Entity, ISaveable
 
     void OnEnable()
     {
+        input.Enable();
+        HandleInputs();
+
         Enemy.OnEnemyDeath += HandleXPReceive;
         Boss.OnBossDeath += HandleXPReceive;
     }
 
     void OnDisable()
     {
+        input.Disable();
+
         Enemy.OnEnemyDeath -= HandleXPReceive;
         Boss.OnBossDeath -= HandleXPReceive;
     }
@@ -88,17 +99,52 @@ public class Player : Entity, ISaveable
         stateMachine.Initialize(idleState);
     }
 
-    private void HandleXPReceive(float xp)
-    {
-        playerXP.IncrementXP(xp);
-    }
-
     public override void OnDead()
     {
         base.OnDead();
 
         OnPlayerDeath?.Invoke();
         stateMachine.ChangeState(deathState);
+    }
+
+    private void HandleXPReceive(float xp)
+    {
+        playerXP.IncrementXP(xp);
+    }
+
+    private void HandleInputs()
+    {
+        // Movement
+        input.Player.Move.performed += ctx => { moveInput = ctx.ReadValue<Vector2>(); };
+        input.Player.Move.canceled += ctx => { moveInput = Vector2.zero; };
+
+        // Active
+        input.Player.Active.performed += ctx => TryActive();
+    }
+
+    private void TryActive()
+    {
+        Transform closestObj = null;
+        float closeDistance = float.MaxValue;
+
+        Collider2D[] activeTargets = Physics2D.OverlapCircleAll(transform.position, 2f);
+
+        foreach (Collider2D target in activeTargets)
+        {
+            IActive active = target.GetComponent<IActive>();
+            if (active == null) continue;
+
+            float distance = Vector2.Distance(transform.position, target.transform.position);
+
+            if (distance < closeDistance)
+            {
+                closeDistance = distance;
+                closestObj = target.transform;
+            }
+        }
+
+        if (closestObj != null)
+            closestObj.GetComponent<IActive>().Active();
     }
 
     /// <summary>
@@ -140,6 +186,8 @@ public class Player : Entity, ISaveable
 
     public void LoadData(GameData gameData)
     {
+        Debug.Log($"LOAD_MANAGER: Load {gameObject.name} ({uniqueId})");
+
         if (gameData.position != null)
             transform.position = gameData.position;
 

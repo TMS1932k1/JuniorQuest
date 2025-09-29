@@ -5,6 +5,7 @@ public class PlayerState : EntityState
     public Player player;
     protected Player_SFX playerSFX;
     protected Player_SkillsManager playerSkillsManager;
+    protected InputSystemSet input;
 
 
     public PlayerState(string nameState, StateMachine stateMachine, Player player) : base(nameState, stateMachine, player)
@@ -15,6 +16,7 @@ public class PlayerState : EntityState
 
         rb = player.rb;
         anim = player.anim;
+        input = player.input;
     }
 
     public override void Update()

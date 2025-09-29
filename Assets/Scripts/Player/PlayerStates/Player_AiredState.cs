@@ -25,7 +25,7 @@ public class Player_AiredState : PlayerState
         }
 
         // Change DashState
-        if (Input.GetKeyDown(KeyCode.LeftShift) && !player.wallDetect && !player.isDead && CanDash())
+        if (input.Player.Dash.WasPressedThisFrame() && !player.wallDetect && !player.isDead && CanDash())
         {
             stateMachine.ChangeState(player.dashState);
         }

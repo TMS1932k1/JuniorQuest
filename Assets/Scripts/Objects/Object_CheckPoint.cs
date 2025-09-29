@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
-public class Object_CheckPoint : MonoBehaviour, ISaveable
+public class Object_CheckPoint : MonoBehaviour, IActive, ISaveable
 {
     [SerializeField] TextMeshProUGUI saveText;
     [SerializeField] Light2D lightOn;
@@ -37,19 +37,6 @@ public class Object_CheckPoint : MonoBehaviour, ISaveable
 
         EnableCheckPoint(false);
         saveText.gameObject.SetActive(false);
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.F) && isShowingText && !isPlayingVFX)
-        {
-            OffAllCheckPoint();
-            EnableCheckPoint(true);
-            PlayLightVFX();
-
-            AudioManager.instance.PlayAudioClip(audioSource, ClipDataNameStrings.CHECKPOINT_SAVE);
-            SaveManager.instance.SaveGame();
-        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -122,6 +109,19 @@ public class Object_CheckPoint : MonoBehaviour, ISaveable
         }
 
         isPlayingVFX = false;
+    }
+
+    public void Active()
+    {
+        if (isShowingText && !isPlayingVFX)
+        {
+            OffAllCheckPoint();
+            EnableCheckPoint(true);
+            PlayLightVFX();
+
+            AudioManager.instance.PlayAudioClip(audioSource, ClipDataNameStrings.CHECKPOINT_SAVE);
+            SaveManager.instance.SaveGame();
+        }
     }
 
     public void SaveData(ref GameData gameData)

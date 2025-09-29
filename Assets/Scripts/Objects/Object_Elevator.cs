@@ -2,7 +2,7 @@ using System;
 using TMPro;
 using UnityEngine;
 
-public class Object_Elevator : MonoBehaviour, ISaveable
+public class Object_Elevator : MonoBehaviour, IActive, ISaveable
 {
     [SerializeField] string uniqueId;
     [SerializeField] ObjectPickUpSO pickUpData;
@@ -50,19 +50,7 @@ public class Object_Elevator : MonoBehaviour, ISaveable
 
     private void Update()
     {
-        HandleInput();
         HandleMove();
-    }
-
-    private void HandleInput()
-    {
-        if (Input.GetKeyDown(KeyCode.F) && canActive())
-        {
-            inventory.GetOutInventory(pickUpData.pickUpName);
-            isActivity = true;
-
-            AudioManager.instance.PlayAudioClip(audioSource, ClipDataNameStrings.ELEVATOR_ACTIVITY, true);
-        }
     }
 
     private void HandleMove()
@@ -119,6 +107,17 @@ public class Object_Elevator : MonoBehaviour, ISaveable
         {
             uniqueId = Guid.NewGuid().ToString();
             UnityEditor.EditorUtility.SetDirty(this);
+        }
+    }
+
+    public void Active()
+    {
+        if (canActive())
+        {
+            inventory.GetOutInventory(pickUpData.pickUpName);
+            isActivity = true;
+
+            AudioManager.instance.PlayAudioClip(audioSource, ClipDataNameStrings.ELEVATOR_ACTIVITY, true);
         }
     }
 

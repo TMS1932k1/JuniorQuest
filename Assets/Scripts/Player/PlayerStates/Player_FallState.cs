@@ -27,7 +27,7 @@ public class Player_FallState : Player_AiredState
         }
 
         // Change JumpState (Jump Two)
-        if (Input.GetKeyDown(KeyCode.Space) && !isJumpTwo)
+        if (input.Player.Jump.WasPressedThisFrame() && !isJumpTwo)
         {
             isJumpTwo = true;
             anim.SetTrigger(PlayerAnimationStrings.JUMP_TWO_TRIGGER);

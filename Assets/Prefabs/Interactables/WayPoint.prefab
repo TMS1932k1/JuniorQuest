@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 8373914219242145800}
   - component: {fileID: 1937911212806532290}
   m_Layer: 0
-  m_Name: Canvas
+  m_Name: ToolTip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -145,7 +145,7 @@ GameObject:
   - component: {fileID: 2367719822240931193}
   - component: {fileID: 705465128423665353}
   m_Layer: 0
-  m_Name: WayPoint_Enter_
+  m_Name: WayPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -226,7 +226,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72468dcf8cad17c44adf30ca64aa95d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: 
+  sceneData: {fileID: 0}
   type: 0
   connectType: 1
   teleportPoint: {fileID: 5704223080684462929}

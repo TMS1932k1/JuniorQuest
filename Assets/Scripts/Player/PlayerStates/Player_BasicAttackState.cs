@@ -37,7 +37,7 @@ public class Player_BasicAttackState : PlayerState
 
         // OnClick left mouse to queue attack
         // Not allowed when it is end of attack and was full combo attack
-        if (Input.GetKeyDown(KeyCode.Mouse0) && !isAttackEnd && currentAttackIndex < attackIndex)
+        if (input.Player.Attack.WasPressedThisFrame() && !isAttackEnd && currentAttackIndex < attackIndex)
         {
             haveAttackQueue = true;
         }

@@ -22,9 +22,7 @@ public class Player_IdleState : Player_GroundedState
             return;
 
         // Change MoveState
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
-        {
+        if (player.moveInput.x != 0)
             stateMachine.ChangeState(player.moveState);
-        }
     }
 }

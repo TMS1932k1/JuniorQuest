@@ -19,10 +19,8 @@ public class Player_WallSlideState : PlayerState
         HandleSlideSpeed();
         CancleIfNeed();
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
+        if (input.Player.Jump.WasPressedThisFrame())
             stateMachine.ChangeState(player.wallJumpState);
-        }
     }
 
     public override void Exit()

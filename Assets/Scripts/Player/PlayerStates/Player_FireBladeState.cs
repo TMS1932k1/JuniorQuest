@@ -1,4 +1,5 @@
 using System;
+using NUnit.Framework;
 using UnityEngine;
 
 public class Player_FireBladeState : PlayerState
@@ -34,7 +35,7 @@ public class Player_FireBladeState : PlayerState
         HandleFlip(angleZ);
 
         // Perform Attack with dir to mouse
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (input.Player.Attack.WasPressedThisFrame() && isArming)
         {
             playerSFX.PlayFireBlade();
             anim.SetTrigger(PlayerAnimationStrings.FIRE_BLADE_TRIGGER);

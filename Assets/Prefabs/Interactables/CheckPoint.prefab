@@ -100,7 +100,7 @@ GameObject:
   - component: {fileID: 980379219139536146}
   - component: {fileID: 1812575383520625367}
   m_Layer: 5
-  m_Name: Save_Text
+  m_Name: ToolTip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

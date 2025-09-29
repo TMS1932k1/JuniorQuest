@@ -35,9 +35,6 @@ public class SaveManager : MonoBehaviour
     {
         Debug.Log(Application.persistentDataPath);
         fileDataHandler = new FileDataHandler(Application.persistentDataPath, fileName);
-
-        // yield return new WaitForSeconds(0.1f);
-        // LoadGame();
     }
 
     public GameData GetGameData() => gameData;
@@ -46,10 +43,6 @@ public class SaveManager : MonoBehaviour
     {
         if (!isActive)
             return;
-
-        // gameData.entities.Clear();
-        // gameData.interactables.Clear();
-        // gameData.elevators.Clear();
 
         List<ISaveable> saveables = GetAllSaveable();
         foreach (ISaveable saveable in saveables)
@@ -78,7 +71,7 @@ public class SaveManager : MonoBehaviour
 
         if (gameData == null)
         {
-            Debug.Log("Not found save data");
+            Debug.Log("SAVE_MANAGER: Not found saved data");
             gameData = new GameData();
             return;
         }
@@ -91,6 +84,8 @@ public class SaveManager : MonoBehaviour
     [ContextMenu("DELETE SAVE DATA")]
     public void DeleteData()
     {
+        Debug.Log($"SAVE_MANAGER: Delete saved data");
+
         fileDataHandler = new FileDataHandler(Application.persistentDataPath, fileName);
         fileDataHandler.DeleteData();
     }

@@ -18,33 +18,29 @@ public class Player_GroundedState : PlayerState
         base.Update();
 
         // Change JumpState
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
+        if (input.Player.Jump.WasPressedThisFrame())
             stateMachine.ChangeState(player.jumpState);
-        }
 
         // Change FallState
         if (rb.linearVelocityY < 0 && !player.groundDetect)
-        {
             stateMachine.ChangeState(player.fallState);
-        }
 
         // Change AttackState
-        if (Input.GetKeyDown(KeyCode.Mouse0)
+        if (input.Player.Attack.WasPressedThisFrame()
             && !(EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())) // Don't click UI
         {
             stateMachine.ChangeState(player.basicAttackState);
         }
 
         // Change SlideState
-        if (Input.GetKeyDown(KeyCode.LeftShift) && !player.wallDetect && CanSlide())
+        if (input.Player.Dash.WasPressedThisFrame() && !player.wallDetect && CanSlide())
         {
             stateMachine.ChangeState(player.slideState);
             lastSlidePress = Time.time;
         }
 
         // Change CounterState
-        if (Input.GetKeyDown(KeyCode.Q) && CanCounter())
+        if (input.Player.Counter.WasPressedThisFrame() && CanCounter())
         {
             stateMachine.ChangeState(player.counterState);
             lastCounterPress = Time.time;

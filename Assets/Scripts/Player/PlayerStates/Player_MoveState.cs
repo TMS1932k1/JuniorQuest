@@ -19,14 +19,10 @@ public class Player_MoveState : Player_GroundedState
     {
         base.Update();
 
-        player.SetVelocity(Input.GetAxisRaw("Horizontal") * player.moveSpeed, rb.linearVelocityY);
+        player.SetVelocity(player.moveInput.x * player.moveSpeed, rb.linearVelocityY);
 
-        // Change IdleState
-        if ((!Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D)) ||
-            (player.wallDetect && player.faceDir == Input.GetAxisRaw("Horizontal")))
-        {
+        if (player.moveInput == Vector2.zero || (player.wallDetect && player.faceDir == player.moveInput.x))
             stateMachine.ChangeState(player.idleState);
-        }
     }
 
     public override void Exit()
