@@ -15,8 +15,9 @@ public class GameManager : MonoBehaviour
 
 
     [SerializeField] Image fadeScreen;
+    private Coroutine sceneToMainMenuCoroutine;
     private Coroutine ChangeToSceneCoroutine;
-    private Coroutine LoadToSceneCoroutine;
+    private Coroutine mainMenuToSceneCoroutine;
     private Coroutine fadeScreenCoroutine;
 
 
@@ -39,12 +40,32 @@ public class GameManager : MonoBehaviour
         PlayBgmAudio();
     }
 
-    public void LoadToScene()
+    public void SceneToMainMenu()
     {
-        if (LoadToSceneCoroutine != null)
-            StopCoroutine(LoadToSceneCoroutine);
+        if (sceneToMainMenuCoroutine != null)
+            StopCoroutine(sceneToMainMenuCoroutine);
 
-        LoadToSceneCoroutine = StartCoroutine(LoadToSceneCo());
+        sceneToMainMenuCoroutine = StartCoroutine(SceneToMainMenuCo());
+    }
+
+    private IEnumerator SceneToMainMenuCo()
+    {
+        FadeScreen(true);
+        yield return new WaitForSeconds(1f);
+
+        currentScene = SceneNameStrings.SCENE_MAIN_MENU;
+        SceneManager.LoadScene(currentScene);
+
+        FadeScreen(false);
+        PlayBgmAudio();
+    }
+
+    public void MainMenuToScene()
+    {
+        if (mainMenuToSceneCoroutine != null)
+            StopCoroutine(mainMenuToSceneCoroutine);
+
+        mainMenuToSceneCoroutine = StartCoroutine(MainMenuToSceneCo());
     }
 
     /// <summary>
@@ -53,7 +74,7 @@ public class GameManager : MonoBehaviour
     /// </summary>
     /// <param name="sceneName"></param>
     /// <returns></returns>
-    private IEnumerator LoadToSceneCo()
+    private IEnumerator MainMenuToSceneCo()
     {
         FadeScreen(true);
         SaveManager.instance.LoadGame();
@@ -63,7 +84,6 @@ public class GameManager : MonoBehaviour
         string sceneName = SaveManager.instance.GetGameData().sceneName;
         currentScene = !string.IsNullOrEmpty(sceneName) ? sceneName : SceneNameStrings.SCENE_LV0;
         SceneManager.LoadScene(currentScene);
-        PlayBgmAudio();
 
         yield return new WaitForSeconds(0.5f);
         if (string.IsNullOrEmpty(sceneName))
@@ -72,6 +92,7 @@ public class GameManager : MonoBehaviour
             SaveManager.instance.LoadGame();
 
         FadeScreen(false);
+        PlayBgmAudio();
     }
 
     public void ChangeToScene(string sceneName, EWayPoint_Type connectType)
@@ -93,7 +114,6 @@ public class GameManager : MonoBehaviour
         // Change scene
         yield return new WaitForSeconds(1f);
         SceneManager.LoadScene(sceneName);
-        PlayBgmAudio();
 
         // Save position
         yield return new WaitForSeconds(0.5f);
@@ -105,7 +125,7 @@ public class GameManager : MonoBehaviour
         SaveManager.instance.LoadGame();
 
         FadeScreen(false);
-
+        PlayBgmAudio();
     }
 
     private void FadeScreen(bool enable, float duration = 1f)

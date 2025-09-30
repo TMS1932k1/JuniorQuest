@@ -171,3 +171,8 @@ public class SceneNameStrings
     public const string SCENE_LV0 = "Lv_0";
     public const string SCENE_LV1 = "Lv_1";
 }
+
+public class AudioSettingsValues
+{
+    public const float DEFAULT_VALUE = 0.8f;
+}

@@ -37,6 +37,15 @@ public class SaveManager : MonoBehaviour
         fileDataHandler = new FileDataHandler(Application.persistentDataPath, fileName);
     }
 
+    // private IEnumerator Start()
+    // {
+    //     Debug.Log(Application.persistentDataPath);
+    //     fileDataHandler = new FileDataHandler(Application.persistentDataPath, fileName);
+
+    //     yield return new WaitForSeconds(0.2f);
+    //     LoadGame();
+    // }
+
     public GameData GetGameData() => gameData;
 
     public void SaveGame()
@@ -59,6 +68,24 @@ public class SaveManager : MonoBehaviour
         gameData.position = position;
         gameData.sceneName = sceneName;
 
+        fileDataHandler.SaveData(gameData, isEncryptDecrypt);
+    }
+
+    public void SaveEffectsAudio(float value)
+    {
+        gameData.effectsValue = value;
+        fileDataHandler.SaveData(gameData, isEncryptDecrypt);
+    }
+
+    public void SaveUIAudio(float value)
+    {
+        gameData.uiValue = value;
+        fileDataHandler.SaveData(gameData, isEncryptDecrypt);
+    }
+
+    public void SaveBgmAudio(float value)
+    {
+        gameData.bgmValue = value;
         fileDataHandler.SaveData(gameData, isEncryptDecrypt);
     }
 

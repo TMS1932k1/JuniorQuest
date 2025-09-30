@@ -7,20 +7,20 @@ public class UI_MainMenu : MonoBehaviour
         AudioManager.instance.PlayUIAudioClip(ClipDataNameStrings.UI_HOVER);
 
         SaveManager.instance.DeleteData();
-        GameManager.instance.LoadToScene();
+        GameManager.instance.MainMenuToScene();
     }
 
     public void OnLoadGameBTN()
     {
         AudioManager.instance.PlayUIAudioClip(ClipDataNameStrings.UI_HOVER);
 
-        GameManager.instance.LoadToScene();
+        GameManager.instance.MainMenuToScene();
     }
 
-    public void OnSettingBTN()
+    public void OnQuitBTN()
     {
         AudioManager.instance.PlayUIAudioClip(ClipDataNameStrings.UI_HOVER);
 
-        Debug.Log("Setting Game");
+        Application.Quit();
     }
 }

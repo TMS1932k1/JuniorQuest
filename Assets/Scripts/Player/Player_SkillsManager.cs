@@ -19,6 +19,9 @@ public class Player_SkillsManager : MonoBehaviour, ISaveable
     public Skill_Invisibility invisibility { get; private set; }
 
 
+    private Player player;
+
+
     void Awake()
     {
         fireBlade = GetComponentInChildren<Skill_FireBlade>();
@@ -28,6 +31,8 @@ public class Player_SkillsManager : MonoBehaviour, ISaveable
         icePrison = GetComponentInChildren<Skill_IcePrison>();
         battleCry = GetComponentInChildren<Skill_BattleCry>();
         invisibility = GetComponentInChildren<Skill_Invisibility>();
+
+        player = GetComponent<Player>();
     }
 
     public void InstallSkill(ESkill_Type type, out bool success)
@@ -123,18 +128,19 @@ public class Player_SkillsManager : MonoBehaviour, ISaveable
     /// <returns></returns>
     public ESkill_Type HanldeInputUseSkill()
     {
-        ESkill_Type type = ESkill_Type.None;
+        if (player.input.Player.Skill1.WasPressedThisFrame())
+            return GetInstalledSkillType(0);
 
-        for (int i = 0; i < installedList.Count; i++)
-        {
-            if (Input.GetKeyDown(KeyCode.Alpha1 + i))
-            {
-                type = GetInstalledSkillType(i);
-                break;
-            }
-        }
+        if (player.input.Player.Skill2.WasPressedThisFrame())
+            return GetInstalledSkillType(1);
 
-        return type;
+        if (player.input.Player.Skill3.WasPressedThisFrame())
+            return GetInstalledSkillType(2);
+
+        if (player.input.Player.Skill4.WasPressedThisFrame())
+            return GetInstalledSkillType(3);
+
+        return ESkill_Type.None;
     }
 
     private ESkill_Type GetInstalledSkillType(int index)

@@ -56,9 +56,8 @@ public class Player_GroundedState : PlayerState
             case ESkill_Type.FireBlade:
                 {
                     if (playerSkillsManager.fireBlade.CanBeUse())
-                    {
                         playerSkillsManager.fireBlade.PerformSkill();
-                    }
+
                     break;
                 }
 

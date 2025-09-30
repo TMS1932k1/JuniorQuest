@@ -29,6 +29,12 @@ public class GameData
 
     // SCENE DATA
     public string sceneName;
+
+
+    // AUDIO SETTINGS DATA
+    public float effectsValue = AudioSettingsValues.DEFAULT_VALUE;
+    public float uiValue = AudioSettingsValues.DEFAULT_VALUE;
+    public float bgmValue = AudioSettingsValues.DEFAULT_VALUE;
 }
 
 
