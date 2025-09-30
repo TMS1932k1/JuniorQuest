@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using UnityEngine;
 
 public class Boss : Entity, ISaveable
@@ -161,6 +160,8 @@ public class Boss : Entity, ISaveable
         }
         else //HANDLE BOSS LIVE
         {
+            gameObject.SetActive(true);
+
             // Reset health and effect status
             bossHealth.ResetHealth();
             entityHandleEffect.ResetHandleEffect();

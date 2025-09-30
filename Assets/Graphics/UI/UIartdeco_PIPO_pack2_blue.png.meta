@@ -364,8 +364,8 @@ TextureImporter:
       name: UIartdeco_PIPO_pack2_blue_2
       rect:
         serializedVersion: 2
-        x: 419
-        y: 862
+        x: 522
+        y: 889
         width: 82
         height: 23
       alignment: 0
@@ -386,13 +386,13 @@ TextureImporter:
       name: UIartdeco_PIPO_pack2_blue_3
       rect:
         serializedVersion: 2
-        x: 423
-        y: 868
-        width: 107
-        height: 20
+        x: 420
+        y: 863
+        width: 112
+        height: 24
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 5, y: 7, z: 4, w: 4}
       customData: 
       outline: []
       physicsShape: []
@@ -408,8 +408,8 @@ TextureImporter:
       name: UIartdeco_PIPO_pack2_blue_4
       rect:
         serializedVersion: 2
-        x: 500
-        y: 862
+        x: 553
+        y: 863
         width: 13
         height: 6
       alignment: 0
@@ -430,8 +430,8 @@ TextureImporter:
       name: UIartdeco_PIPO_pack2_blue_5
       rect:
         serializedVersion: 2
-        x: 518
-        y: 866
+        x: 547
+        y: 882
         width: 15
         height: 21
       alignment: 0
@@ -1548,6 +1548,28 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: UIartdeco_PIPO_pack2_blue_56
+      rect:
+        serializedVersion: 2
+        x: 559
+        y: 856
+        width: 6
+        height: 2
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1d59abc057d2d64f85717a31af242e3
+      internalID: 1313954876
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -1614,6 +1636,7 @@ TextureImporter:
       UIartdeco_PIPO_pack2_blue_53: 5666738674901725399
       UIartdeco_PIPO_pack2_blue_54: 5292885207979147543
       UIartdeco_PIPO_pack2_blue_55: 1557510371797930350
+      UIartdeco_PIPO_pack2_blue_56: 1313954876
       UIartdeco_PIPO_pack2_blue_6: -4585544152003212975
       UIartdeco_PIPO_pack2_blue_7: 2108229831430630966
       UIartdeco_PIPO_pack2_blue_8: 6805690445609266822

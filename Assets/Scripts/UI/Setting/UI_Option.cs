@@ -22,6 +22,9 @@ public class UI_Option : MonoBehaviour
 
     private void Start()
     {
+        if (SaveManager.instance.GetGameData() == null)
+            return;
+
         effectsSlider.value = SaveManager.instance.GetGameData().effectsValue;
         uiSlider.value = SaveManager.instance.GetGameData().uiValue;
         bgmSlider.value = SaveManager.instance.GetGameData().bgmValue;
