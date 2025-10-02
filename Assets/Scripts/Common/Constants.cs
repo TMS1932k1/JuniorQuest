@@ -172,7 +172,18 @@ public class SceneNameStrings
     public const string SCENE_LV1 = "Lv_1";
 }
 
+
 public class AudioSettingsValues
 {
     public const float DEFAULT_VALUE = 0.8f;
+}
+
+
+public class IdQuestTargetStrings
+{
+    // Enemies
+    public const string ID_GOLEM = "golem";
+    public const string ID_DEMON_FLY = "demon_fly";
+    public const string ID_BAT = "bat";
+    public const string ID_GOLLUX = "gollux";
 }

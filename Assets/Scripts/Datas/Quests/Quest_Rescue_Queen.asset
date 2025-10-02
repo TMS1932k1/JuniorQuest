@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69687d022350ba045a004d67211760d4, type: 3}
+  m_Name: Quest_Rescue_Queen
+  m_EditorClassIdentifier: 
+  saveID: 1e78cf02dd1e2184e837dcc531e015d1
+  questName: Rescue Queen
+  description: Rescue queen in dungeon
+  dialoges:
+  - "Our kingdom is in great danger. The queen has been taken by dark forces. Brave
+    one, I beg you\u2014set forth on this perilous journey, defeat the enemy, and
+    rescue our beloved queen before it\u2019s too late!"
+  targetGoals:
+  - idQuesTarget: queen
+    count: 1

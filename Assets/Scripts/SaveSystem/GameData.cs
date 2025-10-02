@@ -14,6 +14,7 @@ public class GameData
     public List<string> installedSkills = new();
     public SerializationDictionary<string, int> inventory = new();
     public Vector3 position;
+    public string questId;
 
 
     // ENTITIES DATA
@@ -26,6 +27,11 @@ public class GameData
 
     // ELEVATOR DATA
     public SerializationDictionary<string, bool> elevators = new();
+
+
+    // QUEST DATA
+    public SerializationDictionary<string, bool> quests = new();
+
 
     // SCENE DATA
     public string sceneName;

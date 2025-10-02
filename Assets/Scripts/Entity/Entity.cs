@@ -5,6 +5,7 @@ using UnityEngine;
 public abstract class Entity : MonoBehaviour
 {
     [SerializeField] protected string uniqueId;
+    protected string idQuestTarget;
 
 
     [Header("Ground detection")]

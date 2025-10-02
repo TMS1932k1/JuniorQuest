@@ -42,7 +42,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Active",
+                    "name": "Action",
                     "type": "Button",
                     "id": "223980b5-12c2-469c-b4e7-cdc1fca07744",
                     "expectedControlType": "",
@@ -192,7 +192,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "Active",
+                    "action": "Action",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

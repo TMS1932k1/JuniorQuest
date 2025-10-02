@@ -9,6 +9,6 @@ public class ListPickUpSO : ScriptableObject
 
     public ObjectPickUpSO GetPickUpWithSaveID(string saveID)
     {
-        return pickUpList.FirstOrDefault<ObjectPickUpSO>(pickUp => pickUp != null && pickUp.saveID == saveID);
+        return pickUpList.FirstOrDefault(pickUp => pickUp != null && pickUp.saveID == saveID);
     }
 }

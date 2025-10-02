@@ -49,6 +49,7 @@ public class Player : Entity, ISaveable
 
 
     private Player_XP playerXP;
+    private Player_Mission playerMission;
 
     public bool isDead;
 
@@ -74,6 +75,7 @@ public class Player : Entity, ISaveable
         fireBladeState = new Player_FireBladeState(PlayerAnimationStrings.FIRE_BLADE_ANIM, stateMachine, this);
 
         playerXP = GetComponent<Player_XP>();
+        playerMission = GetComponent<Player_Mission>();
     }
 
     void OnEnable()
@@ -118,11 +120,34 @@ public class Player : Entity, ISaveable
         input.Player.Move.performed += ctx => { moveInput = ctx.ReadValue<Vector2>(); };
         input.Player.Move.canceled += ctx => { moveInput = Vector2.zero; };
 
-        // Active
-        input.Player.Active.performed += ctx => TryActive();
+        // Action
+        input.Player.Action.performed += HandleAction;
     }
 
-    private void TryActive()
+    private void HandleAction(UnityEngine.InputSystem.InputAction.CallbackContext ctx)
+    {
+        // NPC Quest
+        ITakeQuest questNPC = TryGetAction<ITakeQuest>();
+        if (questNPC != null)
+        {
+            if (playerMission.IsEmptyMission())
+                questNPC.TakeQuest(playerMission);
+            else
+                Debug.Log("Now having mission");
+
+            return;
+        }
+
+        // Object Active
+        IActive active = TryGetAction<IActive>();
+        if (active != null)
+        {
+            active.Active();
+            return;
+        }
+    }
+
+    private T TryGetAction<T>()
     {
         Transform closestObj = null;
         float closeDistance = float.MaxValue;
@@ -131,7 +156,7 @@ public class Player : Entity, ISaveable
 
         foreach (Collider2D target in activeTargets)
         {
-            IActive active = target.GetComponent<IActive>();
+            T active = target.GetComponent<T>();
             if (active == null) continue;
 
             float distance = Vector2.Distance(transform.position, target.transform.position);
@@ -143,8 +168,7 @@ public class Player : Entity, ISaveable
             }
         }
 
-        if (closestObj != null)
-            closestObj.GetComponent<IActive>().Active();
+        return closestObj.GetComponent<T>();
     }
 
     /// <summary>

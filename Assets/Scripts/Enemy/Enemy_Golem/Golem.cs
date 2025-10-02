@@ -6,6 +6,8 @@ public class Golem : Enemy
     {
         base.Awake();
 
+        idQuestTarget = IdQuestTargetStrings.ID_GOLEM;
+
         idleState = new Enemy_IdleState(EnemyAnimationStrings.IDLE_ANIM, stateMachine, this);
         moveState = new Enemy_GroundMoveState(EnemyAnimationStrings.MOVE_ANIM, stateMachine, this);
         attackState = new Enemy_AttackState(EnemyAnimationStrings.ATTACK_ANIM, stateMachine, this);

@@ -7,6 +7,8 @@ public class FlyDemon : Enemy_Fly
     {
         base.Awake();
 
+        idQuestTarget = IdQuestTargetStrings.ID_DEMON_FLY;
+
         idleState = new Enemy_IdleState(EnemyAnimationStrings.IDLE_ANIM, stateMachine, this);
         moveState = new Enemy_FlyMoveState(EnemyAnimationStrings.MOVE_ANIM, stateMachine, this);
         detectedState = new FlyDemon_DetectedState(EnemyAnimationStrings.DETECTED_ANIM, stateMachine, this);

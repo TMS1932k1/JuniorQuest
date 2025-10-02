@@ -8,6 +8,8 @@ public class Bat : Enemy_Fly
     {
         base.Awake();
 
+        idQuestTarget = IdQuestTargetStrings.ID_BAT;
+
         idleState = new Enemy_IdleState(EnemyAnimationStrings.IDLE_ANIM, stateMachine, this);
         moveState = new Enemy_FlyMoveState(EnemyAnimationStrings.MOVE_ANIM, stateMachine, this);
         detectedState = new Bat_DetectedState(EnemyAnimationStrings.DETECTED_ANIM, stateMachine, this);

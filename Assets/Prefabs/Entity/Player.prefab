@@ -6269,6 +6269,7 @@ GameObject:
   - component: {fileID: 860121727253449391}
   - component: {fileID: 7279033366093361075}
   - component: {fileID: 404300719197481340}
+  - component: {fileID: 3727415869716947060}
   m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
@@ -6594,7 +6595,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventory: []
-  slotCount: 5
+  slotCount: 3
   listPickUpSO: {fileID: 11400000, guid: fae16b560698530429a8ea20645773b3, type: 2}
 --- !u!114 &404300719197481340
 MonoBehaviour:
@@ -6606,6 +6607,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c2504144dc6bce24599f440cc0ebec21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3727415869716947060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5863859148460643105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a5780023bae9f04e99157191a434867, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &5955074756990383278
