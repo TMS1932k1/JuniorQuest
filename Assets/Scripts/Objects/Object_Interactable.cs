@@ -3,7 +3,7 @@ using UnityEngine;
 
 public abstract class Object_Interactable : MonoBehaviour, ISaveable
 {
-    [SerializeField] string uniqueId;
+    [SerializeField] protected string uniqueId;
 
     [Space]
     [SerializeField] protected float moveSpeed;
@@ -22,12 +22,6 @@ public abstract class Object_Interactable : MonoBehaviour, ISaveable
 
     protected virtual void Awake()
     {
-        if (string.IsNullOrEmpty(uniqueId))
-        {
-            uniqueId = Guid.NewGuid().ToString();
-            UnityEditor.EditorUtility.SetDirty(this);
-        }
-
         sr = GetComponentInChildren<SpriteRenderer>();
         auraPs = GetComponentInChildren<ParticleSystem>();
     }
@@ -102,10 +96,12 @@ public abstract class Object_Interactable : MonoBehaviour, ISaveable
 
     protected virtual void OnValidate()
     {
+#if UNITY_EDITOR
         if (string.IsNullOrEmpty(uniqueId))
         {
             uniqueId = Guid.NewGuid().ToString();
             UnityEditor.EditorUtility.SetDirty(this);
         }
+#endif
     }
 }

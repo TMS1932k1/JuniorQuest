@@ -18,7 +18,12 @@ public class AudioSO : ScriptableObject
     [SerializeField] Dictionary<string, AudioClipsData> audioClipsCollection = new();
 
 
-    private void OnValidate()
+    private void OnEnable()
+    {
+        SetAudioClipsCollection();
+    }
+
+    private void SetAudioClipsCollection()
     {
         AddAudioCLip(player);
         AddAudioCLip(golem);
@@ -33,6 +38,9 @@ public class AudioSO : ScriptableObject
 
     public AudioClipsData GetAudioClip(string dataName)
     {
+        if (audioClipsCollection == null || audioClipsCollection.Count <= 0)
+            Debug.LogWarning("AUDIO_MANAGER: Count = " + audioClipsCollection.Count);
+
         return audioClipsCollection.TryGetValue(dataName, out AudioClipsData audioClips) ? audioClips : null;
     }
 

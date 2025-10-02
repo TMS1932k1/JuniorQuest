@@ -11,7 +11,9 @@ public class ObjectPickUpSO : ScriptableObject
 
     private void OnValidate()
     {
+#if UNITY_EDITOR
         string path = AssetDatabase.GetAssetPath(this);
         saveID = AssetDatabase.AssetPathToGUID(path);
+#endif
     }
 }

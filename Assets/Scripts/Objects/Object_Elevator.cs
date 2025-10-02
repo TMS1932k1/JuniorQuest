@@ -31,12 +31,6 @@ public class Object_Elevator : MonoBehaviour, IActive, ISaveable
 
     private void Awake()
     {
-        if (string.IsNullOrEmpty(uniqueId))
-        {
-            uniqueId = Guid.NewGuid().ToString();
-            UnityEditor.EditorUtility.SetDirty(this);
-        }
-
         audioSource = GetComponentInChildren<AudioSource>();
     }
 
@@ -103,11 +97,13 @@ public class Object_Elevator : MonoBehaviour, IActive, ISaveable
 
     private void OnValidate()
     {
+#if UNITY_EDITOR
         if (string.IsNullOrEmpty(uniqueId))
         {
             uniqueId = Guid.NewGuid().ToString();
             UnityEditor.EditorUtility.SetDirty(this);
         }
+#endif
     }
 
     public void Active()
@@ -138,6 +134,8 @@ public class Object_Elevator : MonoBehaviour, IActive, ISaveable
     public void LoadData(GameData gameData)
     {
         Debug.Log($"SAVE_MANAGER: Load {gameObject.name} ({uniqueId})");
+
+        transform.position = originPosition; // Reset position
 
         if (!gameData.elevators.ContainsKey(uniqueId))
             return;

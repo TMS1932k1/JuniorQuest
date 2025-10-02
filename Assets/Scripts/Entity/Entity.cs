@@ -50,12 +50,6 @@ public abstract class Entity : MonoBehaviour
 
     protected virtual void Awake()
     {
-        if (string.IsNullOrEmpty(uniqueId))
-        {
-            uniqueId = Guid.NewGuid().ToString();
-            UnityEditor.EditorUtility.SetDirty(this);
-        }
-
         anim = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody2D>();
         entityHandleEffect = GetComponent<Entity_HandleEffect>();
@@ -177,10 +171,12 @@ public abstract class Entity : MonoBehaviour
 
     private void OnValidate()
     {
+#if UNITY_EDITOR
         if (string.IsNullOrEmpty(uniqueId))
         {
             uniqueId = Guid.NewGuid().ToString();
             UnityEditor.EditorUtility.SetDirty(this);
         }
+#endif
     }
 }

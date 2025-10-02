@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Object_PickUp : Object_Interactable
@@ -28,6 +29,14 @@ public class Object_PickUp : Object_Interactable
     protected override void OnValidate()
     {
         base.OnValidate();
+
+#if UNITY_EDITOR
+        if (string.IsNullOrEmpty(uniqueId))
+        {
+            uniqueId = Guid.NewGuid().ToString();
+            UnityEditor.EditorUtility.SetDirty(this);
+        }
+#endif
 
         if (data == null)
             return;
