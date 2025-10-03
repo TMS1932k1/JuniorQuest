@@ -30,22 +30,23 @@ public class Player_WallSlideState : PlayerState
         player.transform.localScale = new Vector3(1, 1, 1);
 
         // Flip on ground when face direct diffrent with movement direct
-        if (Input.GetAxisRaw("Horizontal") != player.faceDir && player.groundDetect)
-        {
+        if (GetValueInput(player.moveInput.x) != player.faceDir && player.groundDetect)
             player.Flip();
-        }
+    }
+
+    private int GetValueInput(float inputValue)
+    {
+        if (inputValue > 0) return 1;
+        if (inputValue < 0) return -1;
+        return 0;
     }
 
     private void HandleSlideSpeed()
     {
-        if (Input.GetKey(KeyCode.S))
-        {
+        if (player.moveInput.y < 0)
             player.SetVelocity(0, rb.linearVelocityY);
-        }
         else
-        {
             player.SetVelocity(0, rb.linearVelocityY * player.wallSlideMultiplier);
-        }
     }
 
     private void CancleIfNeed()
