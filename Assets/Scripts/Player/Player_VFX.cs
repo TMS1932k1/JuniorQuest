@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class Player_VFX : Entity_VFX
 {
+    private Player player;
+
     [Header("Level Up")]
     [SerializeField] UI_LevelUp lvUpUI;
     [SerializeField] float durationShow;
@@ -30,6 +32,13 @@ public class Player_VFX : Entity_VFX
     [Header("Line Arm skill")]
     [SerializeField] RectTransform lineArmUI;
 
+
+    protected override void Awake()
+    {
+        base.Awake();
+
+        player = GetComponent<Player>();
+    }
 
     public void ShowLevelUpVFX(int level)
     {
@@ -105,13 +114,20 @@ public class Player_VFX : Entity_VFX
 
     public void SetLineArmRotate(out float angleZ)
     {
-        // Get position of mouse
-        Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        mouseWorldPos.z = 0;
+        if (Application.isMobilePlatform) // Get position of stick
+        {
+            angleZ = Mathf.Atan2(player.moveInput.y, player.moveInput.x) * Mathf.Rad2Deg;
+        }
+        else // Get position of mouse
+        {
+            Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            mouseWorldPos.z = 0;
 
-        Vector3 dir = mouseWorldPos - lineArmUI.position;
+            Vector3 dir = mouseWorldPos - lineArmUI.position;
 
-        angleZ = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+            angleZ = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        }
+
         lineArmUI.rotation = Quaternion.Euler(0, 0, angleZ);
     }
 

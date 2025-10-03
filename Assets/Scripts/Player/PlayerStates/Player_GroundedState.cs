@@ -26,11 +26,8 @@ public class Player_GroundedState : PlayerState
             stateMachine.ChangeState(player.fallState);
 
         // Change AttackState
-        if (input.Player.Attack.WasPressedThisFrame()
-            && !(EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())) // Don't click UI
-        {
+        if (input.Player.Attack.WasPressedThisFrame())
             stateMachine.ChangeState(player.basicAttackState);
-        }
 
         // Change SlideState
         if (input.Player.Dash.WasPressedThisFrame() && !player.wallDetect && CanSlide())

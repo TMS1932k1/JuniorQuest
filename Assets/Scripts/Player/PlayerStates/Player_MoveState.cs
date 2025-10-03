@@ -19,7 +19,7 @@ public class Player_MoveState : Player_GroundedState
     {
         base.Update();
 
-        player.SetVelocity(player.moveInput.x * player.moveSpeed, rb.linearVelocityY);
+        player.SetVelocity(Mathf.Sign(player.moveInput.x) * player.moveSpeed, rb.linearVelocityY);
 
         if (player.moveInput == Vector2.zero || (player.wallDetect && player.faceDir == player.moveInput.x))
             stateMachine.ChangeState(player.idleState);

@@ -137436,7 +137436,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3655663323507126779, guid: 56d09314b0d2d034e9a2e0685210fc33, type: 3}
       propertyPath: Composition.ScreenPosition.y
-      value: 0.1
+      value: 0.08
       objectReference: {fileID: 0}
     - target: {fileID: 3655663323507126779, guid: 56d09314b0d2d034e9a2e0685210fc33, type: 3}
       propertyPath: Composition.HardLimits.Size.x
@@ -137456,19 +137456,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4120264711888242404, guid: 56d09314b0d2d034e9a2e0685210fc33, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.348693
+      value: -0.91238886
       objectReference: {fileID: 0}
     - target: {fileID: 4120264711888242404, guid: 56d09314b0d2d034e9a2e0685210fc33, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.995535
+      value: 3.597474
       objectReference: {fileID: 0}
     - target: {fileID: 7246619183017941349, guid: 56d09314b0d2d034e9a2e0685210fc33, type: 3}
       propertyPath: Target.TrackingTarget
       value: 
       objectReference: {fileID: 1881903780}
     - target: {fileID: 7330922177560109088, guid: 56d09314b0d2d034e9a2e0685210fc33, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4.3486924
+      objectReference: {fileID: 0}
+    - target: {fileID: 7330922177560109088, guid: 56d09314b0d2d034e9a2e0685210fc33, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.995535
+      value: 3.5955348
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

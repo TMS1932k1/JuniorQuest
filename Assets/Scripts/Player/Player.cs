@@ -121,33 +121,10 @@ public class Player : Entity, ISaveable
         input.Player.Move.canceled += ctx => { moveInput = Vector2.zero; };
 
         // Action
-        input.Player.Action.performed += HandleAction;
+        input.Player.Action.performed += ctx => TryGetAction();
     }
 
-    private void HandleAction(UnityEngine.InputSystem.InputAction.CallbackContext ctx)
-    {
-        // NPC Quest
-        ITakeQuest questNPC = TryGetAction<ITakeQuest>();
-        if (questNPC != null)
-        {
-            if (playerMission.IsEmptyMission())
-                questNPC.TakeQuest(playerMission);
-            else
-                Debug.Log("Now having mission");
-
-            return;
-        }
-
-        // Object Active
-        IActive active = TryGetAction<IActive>();
-        if (active != null)
-        {
-            active.Active();
-            return;
-        }
-    }
-
-    private T TryGetAction<T>()
+    private void TryGetAction()
     {
         Transform closestObj = null;
         float closeDistance = float.MaxValue;
@@ -156,7 +133,7 @@ public class Player : Entity, ISaveable
 
         foreach (Collider2D target in activeTargets)
         {
-            T active = target.GetComponent<T>();
+            IActive active = target.GetComponent<IActive>();
             if (active == null) continue;
 
             float distance = Vector2.Distance(transform.position, target.transform.position);
@@ -168,7 +145,10 @@ public class Player : Entity, ISaveable
             }
         }
 
-        return closestObj.GetComponent<T>();
+        if (closestObj == null)
+            return;
+
+        closestObj.GetComponent<IActive>().Active();
     }
 
     /// <summary>
