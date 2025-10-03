@@ -5,6 +5,7 @@ using UnityEngine;
 public class FileDataHandler
 {
     private string fullPath;
+    private string myKey = "tms";
 
 
     public FileDataHandler(string dataDirPath, string fileName)
@@ -24,7 +25,7 @@ public class FileDataHandler
 
             // Encrypt data if need
             if (isEncryptDecrypt)
-                dataSave = EncryptDecrypt(dataSave);
+                dataSave = XorCipher.EncryptToBase64(dataSave, myKey);
 
             // Open or create data to file
             using (FileStream stream = new FileStream(fullPath, FileMode.Create))
@@ -61,7 +62,7 @@ public class FileDataHandler
 
                         // Decrypt data if need
                         if (isEncryptDecrypt)
-                            dataLoad = EncryptDecrypt(dataLoad);
+                            dataLoad = XorCipher.DecryptFromBase64(dataLoad, myKey);
 
                         // Convert json to game data
                         data = JsonUtility.FromJson<GameData>(dataLoad);
@@ -81,15 +82,5 @@ public class FileDataHandler
     {
         if (File.Exists(fullPath))
             File.Delete(fullPath);
-    }
-
-    /// <summary>
-    /// Encrypt or decrypt data (XOR Cipher)
-    /// </summary>
-    /// <param name="data"></param>
-    /// <returns></returns>
-    private string EncryptDecrypt(string data)
-    {
-        return data;
     }
 }

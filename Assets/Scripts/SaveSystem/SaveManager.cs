@@ -37,15 +37,6 @@ public class SaveManager : MonoBehaviour
         fileDataHandler = new FileDataHandler(Application.persistentDataPath, fileName);
     }
 
-    // private IEnumerator Start()
-    // {
-    //     Debug.Log(Application.persistentDataPath);
-    //     fileDataHandler = new FileDataHandler(Application.persistentDataPath, fileName);
-
-    //     yield return new WaitForSeconds(0.2f);
-    //     LoadGame();
-    // }
-
     public GameData GetGameData() => gameData;
 
     public void SaveGame()
