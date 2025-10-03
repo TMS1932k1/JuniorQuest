@@ -58,6 +58,7 @@ public class UI_MenuButton : MonoBehaviour, IPointerClickHandler
 
     protected virtual void HandleClick()
     {
+        UI_Controller.instance.EnableInputUI(false);
         windowUI.ShowWindow();
     }
 
@@ -67,5 +68,6 @@ public class UI_MenuButton : MonoBehaviour, IPointerClickHandler
         UpdateSizeIcon();
 
         windowUI.HideWindow();
+        UI_Controller.instance.EnableInputUI(true);
     }
 }

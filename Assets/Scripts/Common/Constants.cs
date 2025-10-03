@@ -88,6 +88,13 @@ public class SummonAnimationStrings : EnemyAnimationStrings
 }
 
 
+public class UIAnimationStrings
+{
+    public const string PRESS_TRIGGER = "press";
+    public const string EXIT_TRIGGER = "exit";
+}
+
+
 public class SourceStatStrings
 {
     public const string POINT_SOURCE = "Point";

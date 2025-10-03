@@ -20189,6 +20189,22 @@ PrefabInstance:
       propertyPath: playerInventory
       value: 
       objectReference: {fileID: 1701335957}
+    - target: {fileID: 2712773066303513104, guid: 3156114c86a5c5747944d03f484666c2, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2712773066303513104, guid: 3156114c86a5c5747944d03f484666c2, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2712773066303513104, guid: 3156114c86a5c5747944d03f484666c2, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2712773066303513104, guid: 3156114c86a5c5747944d03f484666c2, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3053498771542595755, guid: 3156114c86a5c5747944d03f484666c2, type: 3}
       propertyPath: playerXP
       value: 
@@ -20201,6 +20217,22 @@ PrefabInstance:
       propertyPath: playerHealth
       value: 
       objectReference: {fileID: 1701335962}
+    - target: {fileID: 3701574530078149223, guid: 3156114c86a5c5747944d03f484666c2, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3701574530078149223, guid: 3156114c86a5c5747944d03f484666c2, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3701574530078149223, guid: 3156114c86a5c5747944d03f484666c2, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3701574530078149223, guid: 3156114c86a5c5747944d03f484666c2, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3734788575668179372, guid: 3156114c86a5c5747944d03f484666c2, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
@@ -20301,6 +20333,22 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5505805196809391993, guid: 3156114c86a5c5747944d03f484666c2, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5505805196809391993, guid: 3156114c86a5c5747944d03f484666c2, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5505805196809391993, guid: 3156114c86a5c5747944d03f484666c2, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5505805196809391993, guid: 3156114c86a5c5747944d03f484666c2, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5740166970885643762, guid: 3156114c86a5c5747944d03f484666c2, type: 3}
       propertyPath: player
       value: 
@@ -20350,6 +20398,22 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7452485170492399707, guid: 3156114c86a5c5747944d03f484666c2, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7485299391865805698, guid: 3156114c86a5c5747944d03f484666c2, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7485299391865805698, guid: 3156114c86a5c5747944d03f484666c2, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7485299391865805698, guid: 3156114c86a5c5747944d03f484666c2, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7485299391865805698, guid: 3156114c86a5c5747944d03f484666c2, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
@@ -20406,7 +20470,7 @@ SceneRoots:
   - {fileID: 2043603029}
   - {fileID: 1527454600}
   - {fileID: 919421360}
+  - {fileID: 7369772483228540457}
   - {fileID: 2127720174}
   - {fileID: 2122755364}
   - {fileID: 10416517}
-  - {fileID: 7369772483228540457}
