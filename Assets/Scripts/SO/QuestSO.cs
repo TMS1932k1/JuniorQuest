@@ -5,10 +5,15 @@ using UnityEngine;
 [System.Serializable]
 public class TargetGoal
 {
+    public TargetGoal(string idQuesTarget, int count = 0)
+    {
+        this.idQuesTarget = idQuesTarget;
+        this.count = count;
+    }
+
     public string idQuesTarget;
     public int count;
 }
-
 
 [CreateAssetMenu(menuName = "Quest Setup/Create new Quest Data", fileName = "Quest_New")]
 public class QuestSO : ScriptableObject

@@ -45,5 +45,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: filesave.json
-  isEncryptDecrypt: 1
+  isEncryptDecrypt: 0
   isActive: 1

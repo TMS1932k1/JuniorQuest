@@ -4,6 +4,7 @@ using UnityEngine;
 public class Enemy : Entity, ICanCounter, ISaveable
 {
     public static event Action<float> OnEnemyDeath;
+    public static event Action<string> OnCheckQuest;
 
 
     [Header("Move details")]
@@ -68,7 +69,8 @@ public class Enemy : Entity, ICanCounter, ISaveable
         base.OnDead();
 
         stateMachine.ChangeState(deathState);
-        OnEnemyDeath.Invoke(entityStat.GetXp());
+        OnEnemyDeath?.Invoke(entityStat.GetXp());
+        OnCheckQuest?.Invoke(idQuestTarget);
     }
 
     public void HandleCounter()

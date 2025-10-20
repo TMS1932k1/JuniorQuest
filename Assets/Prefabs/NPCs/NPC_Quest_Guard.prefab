@@ -435,5 +435,9 @@ MonoBehaviour:
   idQuestTarget: guard
   avtImage: {fileID: 21300000, guid: 0283276f42a0e204ab695f0646409810, type: 3}
   quests:
+  - questData: {fileID: 11400000, guid: d3e4e8e3e70d8944a833b140888796b3, type: 2}
+    isTaked: 0
   - questData: {fileID: 11400000, guid: 1e78cf02dd1e2184e837dcc531e015d1, type: 2}
-    isCompleted: 0
+    isTaked: 0
+  defaultDialogue:
+  - Hi, i'm a guard at here

@@ -154,6 +154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uniqueId: 2e8f6236-9863-41c5-88e8-5fe2fda5a159
+  idQuestTarget: golem
   groundCheckTransform: {fileID: 1174028357303090005}
   groundCheckDistance: 0.2
   whatIsGround:

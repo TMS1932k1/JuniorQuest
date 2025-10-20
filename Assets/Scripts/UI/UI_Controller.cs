@@ -5,15 +5,19 @@ public class UI_Controller : MonoBehaviour
     public static UI_Controller instance;
 
 
-    [SerializeField] UI_Dialogue dialogueUI;
+    [SerializeField] Canvas dialogueUI;
     [SerializeField] Canvas inGameUI;
     [SerializeField] Canvas inputlUI;
+
+
+    private QuestSO questData;
 
 
     private void Awake()
     {
         instance = this;
         inputlUI.gameObject.SetActive(Application.isMobilePlatform);
+        EnableUI(dialogueUI, false);
 
         if (Application.isMobilePlatform)
             Debug.Log("Game is playing on mobile device");
@@ -21,16 +25,47 @@ public class UI_Controller : MonoBehaviour
             Debug.Log("Game is not playing on mobile device");
     }
 
-    public void EnableDialogueUI(bool enable)
+    public void ShowDialogueUI(string[] dialoges, Sprite avtImage)
     {
-        // Set other UI
-        EnableUI(inGameUI, !enable);
-        EnableUI(inputlUI, !enable && Application.isMobilePlatform);
+        UI_Dialogue dialogue = dialogueUI.gameObject.GetComponent<UI_Dialogue>();
+        dialogue.SetDialogueUI(avtImage, dialoges);
 
-        if (enable)
-            dialogueUI.ShowWindow();
-        else
-            dialogueUI.HideWindow();
+        EnableUI(dialogueUI, true);
+        EnableUI(inGameUI, false);
+        EnableUI(inputlUI, false);
+
+        Time.timeScale = 0f;
+    }
+
+    public void ShowDialogueUI(QuestSO questData, Sprite avtImage)
+    {
+        this.questData = questData;
+
+        UI_Dialogue dialogue = dialogueUI.gameObject.GetComponent<UI_Dialogue>();
+        dialogue.SetDialogueUI(avtImage, questData.dialoges);
+
+        EnableUI(dialogueUI, true);
+        EnableUI(inGameUI, false);
+        EnableUI(inputlUI, false);
+
+        Time.timeScale = 0f;
+    }
+
+    public void HideDialogueUI()
+    {
+        Time.timeScale = 1f;
+
+        EnableUI(dialogueUI, false);
+        EnableUI(inGameUI, true);
+        EnableUI(inputlUI, Application.isMobilePlatform);
+
+        if (questData != null)
+        {
+            Debug.Log("Update Test");
+            GameManager.instance.TakeQuest(questData);
+            questData = null;
+        }
+
     }
 
     public void EnableInputUI(bool enable)

@@ -49,7 +49,6 @@ public class Player : Entity, ISaveable
 
 
     private Player_XP playerXP;
-    private Player_Mission playerMission;
 
     public bool isDead;
 
@@ -75,7 +74,6 @@ public class Player : Entity, ISaveable
         fireBladeState = new Player_FireBladeState(PlayerAnimationStrings.FIRE_BLADE_ANIM, stateMachine, this);
 
         playerXP = GetComponent<Player_XP>();
-        playerMission = GetComponent<Player_Mission>();
     }
 
     void OnEnable()

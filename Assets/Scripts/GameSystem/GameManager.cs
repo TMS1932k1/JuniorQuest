@@ -10,6 +10,14 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
 
+    [Header("Quest Detail")]
+    [SerializeField] ListQuestSO listQuestSO;
+    private QuestSO currentQuest;
+    private List<TargetGoal> targetGoaleds = new();
+    public bool isUpdateQuest = true;
+
+
+    [Header("Scene Detail")]
     [SerializeField] List<SceneSO> scenes;
     private string currentScene;
 
@@ -33,6 +41,18 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         currentScene = SceneNameStrings.SCENE_MAIN_MENU;
+    }
+
+    private void OnEnable()
+    {
+        Object_NpcQuest.OnCheckQuest += OnCheckQuest;
+        Enemy.OnCheckQuest += OnCheckQuest;
+    }
+
+    private void OnDisable()
+    {
+        Object_NpcQuest.OnCheckQuest -= OnCheckQuest;
+        Enemy.OnCheckQuest -= OnCheckQuest;
     }
 
     private void Start()
@@ -186,4 +206,50 @@ public class GameManager : MonoBehaviour
         if (sceneData != null)
             AudioManager.instance.PlayBgmAudioClip(isBattle ? sceneData.battleAudioName : sceneData.normalAudioName);
     }
+
+    public void TakeQuest(QuestSO questSO)
+    {
+        currentQuest = questSO;
+
+        targetGoaleds.Clear();
+        foreach (TargetGoal targetGoal in currentQuest.targetGoals)
+        {
+            targetGoaleds.Add(new TargetGoal(targetGoal.idQuesTarget));
+        }
+
+        isUpdateQuest = true;
+    }
+
+    public void OnCheckQuest(string idQuestTarget)
+    {
+        foreach (TargetGoal targetGoal in targetGoaleds)
+        {
+            if (targetGoal.idQuesTarget == idQuestTarget)
+                targetGoal.count++;
+        }
+
+        CheckCompleteQuest();
+        isUpdateQuest = true;
+    }
+
+    private void CheckCompleteQuest()
+    {
+        foreach (TargetGoal targetGoaled in targetGoaleds)
+        {
+            TargetGoal targetGoal = currentQuest.targetGoals.FirstOrDefault(tg => tg.idQuesTarget == targetGoaled.idQuesTarget);
+            if (targetGoaled.count < targetGoal.count)
+                return;
+        }
+
+        currentQuest = null;
+        targetGoaleds.Clear();
+
+        Debug.Log("Complete quest");
+    }
+
+    public QuestSO GetCurrentQuest => currentQuest;
+
+    public List<TargetGoal> GetTargetGoals => currentQuest.targetGoals;
+
+    public List<TargetGoal> GetTargetGoaleds => targetGoaleds;
 }
