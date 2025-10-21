@@ -502,6 +502,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uniqueId: d63904c9-5e2e-4006-82d2-f88be191f42c
+  idQuestTarget: Gollux
   groundCheckTransform: {fileID: 5752726409314422817}
   groundCheckDistance: 0
   whatIsGround:

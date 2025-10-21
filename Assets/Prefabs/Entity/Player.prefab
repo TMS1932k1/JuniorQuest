@@ -6378,6 +6378,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uniqueId: 19b48025-eacb-4ab9-bb7a-cbf1e9a41901
+  idQuestTarget: Player
   groundCheckTransform: {fileID: 4613991796448538523}
   groundCheckDistance: 1.35
   whatIsGround:

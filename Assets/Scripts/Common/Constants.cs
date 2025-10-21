@@ -169,6 +169,7 @@ public class ClipDataNameStrings
     public const string UI_UNEQUIP = "ui_unequip";
     public const string UI_UNPAUSE = "ui_unpause";
     public const string UI_DECIDE = "ui_decide";
+    public const string UI_COMPLETE = "ui_complete";
 }
 
 
@@ -183,14 +184,4 @@ public class SceneNameStrings
 public class AudioSettingsValues
 {
     public const float DEFAULT_VALUE = 0.8f;
-}
-
-
-public class IdQuestTargetStrings
-{
-    // Enemies
-    public const string ID_GOLEM = "golem";
-    public const string ID_DEMON_FLY = "demon_fly";
-    public const string ID_BAT = "bat";
-    public const string ID_GOLLUX = "gollux";
 }

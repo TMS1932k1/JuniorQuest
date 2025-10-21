@@ -29,8 +29,6 @@ public class Gollux : Boss
     {
         base.Awake();
 
-        idQuestTarget = IdQuestTargetStrings.ID_GOLLUX;
-
         moveCommand = new Gollux_MoveCommand(this, BossAnimationStrings.MOVE_ANIM, 2f);
         rockDropCommand = new Gollux_RockDropCommand(this, GolluxAnimationStrings.ROCK_DROP_ANIM);
         normalAttackCommand = new Gollux_NormalAttackCommand(this, GolluxAnimationStrings.NORMAL_ATTACK_ANIM);

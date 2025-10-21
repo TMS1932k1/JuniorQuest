@@ -373,6 +373,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uniqueId: 3bcd856d-275e-484c-b3b0-98e1fda8589b
+  idQuestTarget: Fly Demon
   groundCheckTransform: {fileID: 800256611644374771}
   groundCheckDistance: 0
   whatIsGround:

@@ -15,7 +15,9 @@ MonoBehaviour:
   saveID: 862ebb6db46db7a47b2b968f172c933c
   questName: Talk Guard
   description: Please talk with guard in castle
-  dialoges: []
+  dialoges:
+  - "You\u2026 you\u2019ve come for me! I feared I would never see the light again"
+  - Please take me back to the castle. Our people must know that hope still stands
   targetGoals:
-  - idQuesTarget: guard
+  - idQuesTarget: Guard
     count: 1

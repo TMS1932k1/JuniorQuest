@@ -123,6 +123,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uniqueId: d1ab1fce-4b04-4b08-93d5-2a0d0420e0ce
+  idQuestTarget: Gollux Summon
   groundCheckTransform: {fileID: 4805592930633043781}
   groundCheckDistance: 0.2
   whatIsGround:

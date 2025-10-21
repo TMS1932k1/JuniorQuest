@@ -189,6 +189,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uniqueId: 1438572a-05de-4bf2-86f9-f31f1fd3a4c0
+  idQuestTarget: Bat
   groundCheckTransform: {fileID: 1959867052953815419}
   groundCheckDistance: 0
   whatIsGround:

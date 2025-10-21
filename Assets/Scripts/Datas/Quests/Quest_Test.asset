@@ -18,5 +18,5 @@ MonoBehaviour:
   dialoges:
   - This is a test dialogue
   targetGoals:
-  - idQuesTarget: golem
-    count: 2
+  - idQuesTarget: Golem
+    count: 1

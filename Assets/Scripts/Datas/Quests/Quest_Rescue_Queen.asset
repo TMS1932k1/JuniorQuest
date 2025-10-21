@@ -20,5 +20,5 @@ MonoBehaviour:
   - "Brave one, I beg you\u2014set forth on this perilous journey, defeat the enemy,
     and rescue our beloved queen before it\u2019s too late!"
   targetGoals:
-  - idQuesTarget: queen
+  - idQuesTarget: Queen
     count: 1

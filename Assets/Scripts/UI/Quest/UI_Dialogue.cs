@@ -27,11 +27,13 @@ public class UI_Dialogue : UI_Window
     /// </summary>
     public void HandleDialogue()
     {
+        if (i > 0)
+            AudioManager.instance.PlayUIAudioClip(ClipDataNameStrings.UI_DECIDE);
+
         if (i < dialogues.Length)
         {
             if (i >= dialogues.Length - 1)
                 acceptButton.text = "Accept";
-
             questDialogue.text = dialogues[i++];
         }
         else

@@ -7,6 +7,7 @@ public class UI_Window : MonoBehaviour
     private Coroutine displayCoroutine;
     private float currentScale;
 
+
     void Awake()
     {
         canvasGroup = GetComponent<CanvasGroup>();
@@ -16,6 +17,7 @@ public class UI_Window : MonoBehaviour
     {
         currentScale = 0f;
         canvasGroup.alpha = currentScale;
+        gameObject.transform.localScale = Vector3.zero;
     }
 
     public void ShowWindow()
@@ -40,7 +42,7 @@ public class UI_Window : MonoBehaviour
         {
             currentScale += Time.deltaTime * 2f;
 
-            //gameObject.transform.localScale = Vector3.Lerp(Vector3.zero, Vector3.one, currentScale); // Scale
+            gameObject.transform.localScale = Vector3.Lerp(Vector3.zero, Vector3.one, currentScale); // Scale
             canvasGroup.alpha = Mathf.Lerp(0, 1, currentScale); // Fade
 
             yield return null;
@@ -57,7 +59,7 @@ public class UI_Window : MonoBehaviour
         {
             currentScale -= Time.deltaTime * 2f;
 
-            //gameObject.transform.localScale = Vector3.Lerp(Vector3.zero, Vector3.one, currentScale); // Scale
+            gameObject.transform.localScale = Vector3.Lerp(Vector3.zero, Vector3.one, currentScale); // Scale
             canvasGroup.alpha = Mathf.Lerp(0, 1, currentScale); // Fade
 
             yield return null;

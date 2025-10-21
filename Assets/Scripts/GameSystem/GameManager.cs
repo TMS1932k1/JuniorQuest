@@ -5,6 +5,13 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+public enum QuestUpdateStatus
+{
+    Complete,
+    Update,
+    None,
+}
+
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
@@ -14,7 +21,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] ListQuestSO listQuestSO;
     private QuestSO currentQuest;
     private List<TargetGoal> targetGoaleds = new();
-    public bool isUpdateQuest = true;
+    public QuestUpdateStatus questUpdateStatus = QuestUpdateStatus.Update;
 
 
     [Header("Scene Detail")]
@@ -217,7 +224,7 @@ public class GameManager : MonoBehaviour
             targetGoaleds.Add(new TargetGoal(targetGoal.idQuesTarget));
         }
 
-        isUpdateQuest = true;
+        questUpdateStatus = QuestUpdateStatus.Update;
     }
 
     public void OnCheckQuest(string idQuestTarget)
@@ -229,7 +236,6 @@ public class GameManager : MonoBehaviour
         }
 
         CheckCompleteQuest();
-        isUpdateQuest = true;
     }
 
     private void CheckCompleteQuest()
@@ -238,13 +244,20 @@ public class GameManager : MonoBehaviour
         {
             TargetGoal targetGoal = currentQuest.targetGoals.FirstOrDefault(tg => tg.idQuesTarget == targetGoaled.idQuesTarget);
             if (targetGoaled.count < targetGoal.count)
+            {
+                questUpdateStatus = QuestUpdateStatus.Update;
                 return;
+            }
         }
 
+        Debug.Log("Complete quest");
+        questUpdateStatus = QuestUpdateStatus.Complete;
+    }
+
+    public void RemoveQuest()
+    {
         currentQuest = null;
         targetGoaleds.Clear();
-
-        Debug.Log("Complete quest");
     }
 
     public QuestSO GetCurrentQuest => currentQuest;
