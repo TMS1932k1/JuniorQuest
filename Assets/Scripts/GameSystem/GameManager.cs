@@ -12,7 +12,7 @@ public enum QuestUpdateStatus
     None,
 }
 
-public class GameManager : MonoBehaviour
+public class GameManager : MonoBehaviour, ISaveable
 {
     public static GameManager instance;
 
@@ -99,7 +99,6 @@ public class GameManager : MonoBehaviour
     /// Change from (MainMenu) to (sceneName)
     /// If (sceneName) is null or empty => Load new game (Change to Lv0)
     /// </summary>
-    /// <param name="sceneName"></param>
     /// <returns></returns>
     private IEnumerator MainMenuToSceneCo()
     {
@@ -258,6 +257,41 @@ public class GameManager : MonoBehaviour
     {
         currentQuest = null;
         targetGoaleds.Clear();
+    }
+
+    public void SaveData(ref GameData gameData)
+    {
+        gameData.currentQuestId = null;
+        gameData.targetGoaleds.Clear();
+
+        if (currentQuest != null)
+        {
+            Debug.Log($"SAVE_MANAGER: Save {gameObject.name} (Quest: {currentQuest?.saveID})");
+
+            gameData.currentQuestId = currentQuest.saveID;
+
+            foreach (TargetGoal targetGoal in targetGoaleds)
+                gameData.targetGoaleds.Add(targetGoal.idQuesTarget, targetGoal.count);
+        }
+    }
+
+    public void LoadData(GameData gameData)
+    {
+        currentQuest = null;
+        targetGoaleds.Clear();
+
+        if (string.IsNullOrEmpty(gameData.currentQuestId))
+        {
+            Debug.Log($"LOAD_MANAGER: Load {gameObject.name} (Not have quest)");
+            questUpdateStatus = QuestUpdateStatus.Update;
+            return;
+        }
+
+        currentQuest = listQuestSO.GetPickUpWithSaveID(gameData.currentQuestId);
+        Debug.Log($"LOAD_MANAGER: Load {gameObject.name} (Quest: {currentQuest?.saveID})");
+
+        foreach (KeyValuePair<string, int> pair in gameData.targetGoaleds)
+            targetGoaleds.Add(new TargetGoal(pair.Key, pair.Value));
     }
 
     public QuestSO GetCurrentQuest => currentQuest;

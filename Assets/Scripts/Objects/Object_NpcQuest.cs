@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Object_NpcQuest : MonoBehaviour, IActive
+public class Object_NpcQuest : MonoBehaviour, IActive, ISaveable
 {
     public static event Action<string> OnCheckQuest;
 
@@ -42,5 +42,35 @@ public class Object_NpcQuest : MonoBehaviour, IActive
     {
         quest.isTaked = true;
         UI_Controller.instance.ShowDialogueUI(quest.questData, avtImage);
+    }
+
+    public void SaveData(ref GameData gameData)
+    {
+        foreach (Quest quest in quests)
+        {
+            if (!gameData.questStatus.ContainsKey(quest.questData.saveID))
+            {
+                Debug.Log($"SAVE_MANAGER: Save {quest.questData.questName} ({quest.questData.saveID})");
+                gameData.questStatus.Add(quest.questData.saveID, quest.isTaked);
+            }
+            else
+            {
+                Debug.Log($"SAVE_MANAGER: Update {quest.questData.questName} ({quest.questData.saveID})");
+                gameData.questStatus[quest.questData.saveID] = quest.isTaked;
+            }
+        }
+    }
+
+    public void LoadData(GameData gameData)
+    {
+        foreach (Quest quest in quests)
+        {
+            Debug.Log($"SAVE_MANAGER: Load {quest.questData.questName} ({quest.questData.saveID})");
+
+            if (!gameData.questStatus.ContainsKey(quest.questData.saveID))
+                continue;
+
+            quest.isTaked = gameData.questStatus[quest.questData.saveID];
+        }
     }
 }
