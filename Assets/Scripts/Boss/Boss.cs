@@ -4,6 +4,7 @@ using UnityEngine;
 public class Boss : Entity, ISaveable
 {
     public static event Action<float> OnBossDeath;
+    public static event Action<string> OnCheckQuest;
 
 
     [Header("Active Arena")]
@@ -68,6 +69,7 @@ public class Boss : Entity, ISaveable
         bossInventory.DropAllInventory();
 
         OnBossDeath.Invoke(entityStat.GetXp());
+        OnCheckQuest?.Invoke(idQuestTarget);
     }
 
     public override void BeFreezed(float duration)

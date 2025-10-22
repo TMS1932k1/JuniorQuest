@@ -7,8 +7,6 @@ public class UI_QuestInfo : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI questString;
 
-    private Coroutine vfxCompleteCouroutine;
-
 
     private void OnEnable()
     {
@@ -51,30 +49,8 @@ public class UI_QuestInfo : MonoBehaviour
 
     private void HandleCompleteQuest()
     {
-        if (vfxCompleteCouroutine != null)
-            StopCoroutine(vfxCompleteCouroutine);
-        vfxCompleteCouroutine = StartCoroutine(VfxCompleteCo());
-    }
-
-    private IEnumerator VfxCompleteCo()
-    {
-        questString.color = Color.green;
         AudioManager.instance.PlayUIAudioClip(ClipDataNameStrings.UI_COMPLETE);
-        yield return new WaitForSeconds(1f);
-
-        float t = 1;
-        while (t > 0)
-        {
-            t -= Time.deltaTime;
-            gameObject.transform.localScale = Vector3.Lerp(Vector3.zero, Vector3.one, t); // Scale
-            yield return new WaitForSeconds(Time.deltaTime);
-        }
-
-        // Restart UI
         questString.text = "";
-        questString.color = Color.white;
-        gameObject.transform.localScale = Vector3.one;
-
         GameManager.instance.RemoveQuest();
     }
 }

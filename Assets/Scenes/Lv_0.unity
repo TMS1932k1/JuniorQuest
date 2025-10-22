@@ -17991,6 +17991,7 @@ Transform:
   - {fileID: 1521176728}
   - {fileID: 1200560887}
   - {fileID: 2165974315019629514}
+  - {fileID: 1055618580846357123}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1701335957 stripped
@@ -20054,6 +20055,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c4391173baeca734ba2e5e38a4fdc408, type: 3}
+--- !u!4 &1055618580846357123 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5135533965333359391, guid: 441603db4893178488ef4a375a0cfcbe, type: 3}
+  m_PrefabInstance: {fileID: 5458651757196314606}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2165974315019629514 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9210835273417787102, guid: 73d36e4e40991d94984b77d9ce0f6022, type: 3}
@@ -20116,6 +20122,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 73d36e4e40991d94984b77d9ce0f6022, type: 3}
+--- !u!1001 &5458651757196314606
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1527454600}
+    m_Modifications:
+    - target: {fileID: 5135533965333359391, guid: 441603db4893178488ef4a375a0cfcbe, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 14.66
+      objectReference: {fileID: 0}
+    - target: {fileID: 5135533965333359391, guid: 441603db4893178488ef4a375a0cfcbe, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.61
+      objectReference: {fileID: 0}
+    - target: {fileID: 5135533965333359391, guid: 441603db4893178488ef4a375a0cfcbe, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5135533965333359391, guid: 441603db4893178488ef4a375a0cfcbe, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5135533965333359391, guid: 441603db4893178488ef4a375a0cfcbe, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5135533965333359391, guid: 441603db4893178488ef4a375a0cfcbe, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5135533965333359391, guid: 441603db4893178488ef4a375a0cfcbe, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5135533965333359391, guid: 441603db4893178488ef4a375a0cfcbe, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5135533965333359391, guid: 441603db4893178488ef4a375a0cfcbe, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5135533965333359391, guid: 441603db4893178488ef4a375a0cfcbe, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8708828499541046652, guid: 441603db4893178488ef4a375a0cfcbe, type: 3}
+      propertyPath: m_Name
+      value: NPC_Quest_QueenCastle
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 441603db4893178488ef4a375a0cfcbe, type: 3}
 --- !u!1001 &5640698475747253440
 PrefabInstance:
   m_ObjectHideFlags: 0

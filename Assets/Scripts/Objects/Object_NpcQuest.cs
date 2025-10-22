@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Object_NpcQuest : MonoBehaviour, IActive, ISaveable
@@ -13,6 +14,51 @@ public class Object_NpcQuest : MonoBehaviour, IActive, ISaveable
     [TextArea]
     [SerializeField] string[] defaultDialogue;
 
+    [Space]
+    [SerializeField] QuestSO questToDisplay;
+    [SerializeField] QuestSO questToHide;
+
+
+    private TextMeshProUGUI tooltipText;
+    private bool needUpdate;
+
+
+    private void Awake()
+    {
+        tooltipText = GetComponentInChildren<TextMeshProUGUI>();
+    }
+
+    private void Start()
+    {
+        // If have condition to display
+        if (questToDisplay != null || questToHide != null)
+        {
+            gameObject.SetActive(false);
+            return;
+        }
+
+        needUpdate = true;
+    }
+
+    private void Update()
+    {
+        if (needUpdate)
+        {
+            needUpdate = false;
+            tooltipText.text = !IsFullTaked() ? "Quest" : "Talk";
+        }
+    }
+
+    private bool IsFullTaked()
+    {
+        foreach (Quest quest in quests)
+        {
+            if (!quest.isTaked)
+                return false;
+        }
+
+        return true;
+    }
 
     public void Active()
     {
@@ -41,6 +87,7 @@ public class Object_NpcQuest : MonoBehaviour, IActive, ISaveable
     private void HandleTakeQuest(Quest quest)
     {
         quest.isTaked = true;
+        needUpdate = true;
         UI_Controller.instance.ShowDialogueUI(quest.questData, avtImage);
     }
 
@@ -48,15 +95,15 @@ public class Object_NpcQuest : MonoBehaviour, IActive, ISaveable
     {
         foreach (Quest quest in quests)
         {
-            if (!gameData.questStatus.ContainsKey(quest.questData.saveID))
+            if (!gameData.allQuestStatus.ContainsKey(quest.questData.saveID))
             {
                 Debug.Log($"SAVE_MANAGER: Save {quest.questData.questName} ({quest.questData.saveID})");
-                gameData.questStatus.Add(quest.questData.saveID, quest.isTaked);
+                gameData.allQuestStatus.Add(quest.questData.saveID, quest.isTaked);
             }
             else
             {
                 Debug.Log($"SAVE_MANAGER: Update {quest.questData.questName} ({quest.questData.saveID})");
-                gameData.questStatus[quest.questData.saveID] = quest.isTaked;
+                gameData.allQuestStatus[quest.questData.saveID] = quest.isTaked;
             }
         }
     }
@@ -67,10 +114,27 @@ public class Object_NpcQuest : MonoBehaviour, IActive, ISaveable
         {
             Debug.Log($"SAVE_MANAGER: Load {quest.questData.questName} ({quest.questData.saveID})");
 
-            if (!gameData.questStatus.ContainsKey(quest.questData.saveID))
+            if (!gameData.allQuestStatus.ContainsKey(quest.questData.saveID))
                 continue;
 
-            quest.isTaked = gameData.questStatus[quest.questData.saveID];
+            quest.isTaked = gameData.allQuestStatus[quest.questData.saveID];
         }
+
+        if (questToHide != null
+            && gameData.allQuestStatus.ContainsKey(questToHide.saveID)
+            && gameData.allQuestStatus[questToHide.saveID]
+        )
+        {
+            gameObject.SetActive(false);
+            return;
+        }
+        else if (questToDisplay != null
+            && gameData.allQuestStatus.ContainsKey(questToDisplay.saveID)
+            && gameData.allQuestStatus[questToDisplay.saveID])
+        {
+            gameObject.SetActive(true);
+        }
+
+        needUpdate = true;
     }
 }

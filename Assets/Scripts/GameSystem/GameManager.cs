@@ -283,6 +283,7 @@ public class GameManager : MonoBehaviour, ISaveable
         if (string.IsNullOrEmpty(gameData.currentQuestId))
         {
             Debug.Log($"LOAD_MANAGER: Load {gameObject.name} (Not have quest)");
+
             questUpdateStatus = QuestUpdateStatus.Update;
             return;
         }

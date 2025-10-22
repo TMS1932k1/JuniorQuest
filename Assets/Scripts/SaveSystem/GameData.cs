@@ -32,7 +32,7 @@ public class GameData
     // QUEST DATA
     public string currentQuestId;
     public SerializationDictionary<string, int> targetGoaleds = new();
-    public SerializationDictionary<string, bool> questStatus = new();
+    public SerializationDictionary<string, bool> allQuestStatus = new();
 
 
     // SCENE DATA
