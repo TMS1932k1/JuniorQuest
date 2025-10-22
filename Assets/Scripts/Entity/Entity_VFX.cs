@@ -133,8 +133,10 @@ public class Entity_VFX : MonoBehaviour
             StopCoroutine(freezedCoroutine);
 
         if (onDamageVFXCoroutine != null)
+
             StopCoroutine(onDamageVFXCoroutine);
 
+        sr.material = originMaterial;
         sr.color = originalColor;
     }
 }

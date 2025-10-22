@@ -34,9 +34,8 @@ public class GolluxSummon_DismissState : EnemyState
 
         if (isTrigger)
         {
-            stateMachine.ChangeState(golluxSummon.idleState);
             ResetGolluxSummon();
-
+            stateMachine.ChangeState(golluxSummon.idleState);
             objectPool.ReturnObject(golluxSummon);
         }
     }
@@ -44,6 +43,7 @@ public class GolluxSummon_DismissState : EnemyState
     private void ResetGolluxSummon()
     {
         enemy.canStunned = true;
+
         enemyHealth.ResetHealth();
         healthBar.gameObject.SetActive(true);
     }
@@ -51,6 +51,7 @@ public class GolluxSummon_DismissState : EnemyState
     private void ResetVFX()
     {
         enemy.canStunned = false;
+
         enemyVFX.ResetVFX();
     }
 }

@@ -18,10 +18,14 @@ public class UI_Window : MonoBehaviour
         currentScale = 0f;
         canvasGroup.alpha = currentScale;
         gameObject.transform.localScale = Vector3.zero;
+
+        gameObject.SetActive(false);
     }
 
     public void ShowWindow()
     {
+        gameObject.SetActive(true);
+
         if (displayCoroutine != null)
             StopCoroutine(displayCoroutine);
 
@@ -64,5 +68,7 @@ public class UI_Window : MonoBehaviour
 
             yield return null;
         }
+
+        gameObject.SetActive(false);
     }
 }

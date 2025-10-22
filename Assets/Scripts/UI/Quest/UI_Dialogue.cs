@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UI_Dialogue : UI_Window
+public class UI_Dialogue : MonoBehaviour
 {
     [Header("Dialogue Details")]
     [SerializeField] Image avtImage;

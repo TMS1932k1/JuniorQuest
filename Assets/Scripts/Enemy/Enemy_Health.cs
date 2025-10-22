@@ -7,6 +7,7 @@ public class Enemy_Health : Entity_Health
 
     private Entity_VFX entityVFX;
 
+
     protected override void Awake()
     {
         base.Awake();

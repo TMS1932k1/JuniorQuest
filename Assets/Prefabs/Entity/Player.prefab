@@ -6481,7 +6481,7 @@ MonoBehaviour:
   maxRandomX: 1
   minRandomY: -1
   maxRandomY: 1
-  burnColor: {r: 1, g: 0.51886785, b: 0.51886785, a: 1}
+  burnColor: {r: 1, g: 0.5176471, b: 0.5176471, a: 1}
   burnDarkColor: {r: 1, g: 0, b: 0, a: 1}
   freezeColor: {r: 0, g: 0, b: 1, a: 1}
   lvUpUI: {fileID: 4615305014458187849}

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Object_DropPickUp : MonoBehaviour
+public class Object_DropPickUp : MonoBehaviour, ISaveable
 {
     [Header("Data")]
     [SerializeField] ObjectPickUpSO data;
@@ -50,5 +50,15 @@ public class Object_DropPickUp : MonoBehaviour
     public void SetVelocity(float x, float y)
     {
         rb.linearVelocity = new Vector2(x, y);
+    }
+
+    public void SaveData(ref GameData gameData)
+    {
+
+    }
+
+    public void LoadData(GameData gameData)
+    {
+
     }
 }
